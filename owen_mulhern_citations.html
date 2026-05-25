@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owen Mulhern — Citations & Press</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2744;
+    --navy-mid: #2d3f6b;
+    --accent: #c8561a;
+    --accent-light: #f5ede6;
+    --text: #1c1c1c;
+    --muted: #666;
+    --border: #e2ddd8;
+    --bg: #faf9f7;
+    --white: #ffffff;
+    --tag-academic: #eef3fb;
+    --tag-academic-text: #1a3a6e;
+    --tag-press: #eef7f2;
+    --tag-press-text: #1a5236;
+    --tag-industry: #fdf3ec;
+    --tag-industry-text: #7a3510;
+    --tag-profile: #f4eeff;
+    --tag-profile-text: #4a1d8a;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 36px;
+    margin-bottom: 48px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.6;
+  }
+
+  .meta-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .meta-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy-mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy-mid);
+    padding-bottom: 1px;
+  }
+
+  .meta-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 52px;
+  }
+
+  .stat {
+    background: var(--white);
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--navy);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .section {
+    margin-bottom: 52px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    font-weight: 400;
+  }
+
+  .section-count {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .citation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .citation {
+    background: var(--white);
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+    transition: background 0.15s;
+  }
+
+  .citation:hover { background: var(--bg); }
+
+  .citation-left {}
+
+  .citation-source {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .citation-source a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .citation-source a:hover { border-color: var(--accent); color: var(--accent); }
+
+  .citation-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .citation-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
+  .tag-academic { background: var(--tag-academic); color: var(--tag-academic-text); }
+  .tag-press { background: var(--tag-press); color: var(--tag-press-text); }
+  .tag-industry { background: var(--tag-industry); color: var(--tag-industry-text); }
+  .tag-profile { background: var(--tag-profile); color: var(--tag-profile-text); }
+
+  .citation-year {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .highlight-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 52px;
+    font-size: 14px;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  .highlight-box strong { font-weight: 500; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 36px 20px 60px; }
+    h1 { font-size: 30px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .citation { grid-template-columns: 1fr; }
+    .citation-right { flex-direction: row; align-items: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Press & Citations</p>
+    <h1>Owen Mulhern</h1>
+    <p class="subtitle">A reference document of third-party citations, republications, and press coverage of work produced at Earth.Org and elsewhere — compiled for prospective clients and employers.</p>
+    <div class="meta-links">
+      <a href="https://muckrack.com/owen-mulhern/articles" target="_blank">Muck Rack profile →</a>
+      <a href="https://earth.org/author/owen-mulhern/" target="_blank">Earth.Org author page →</a>
+      <a href="mailto:owenhmulhern@gmail.com">owenhmulhern@gmail.com</a>
+    </div>
+  </header>
+
+  <div class="stats-row">
+    <div class="stat">
+      <span class="stat-num">20+</span>
+      <span class="stat-label">Citation sources</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">6</span>
+      <span class="stat-label">Law reviews</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">4</span>
+      <span class="stat-label">Universities</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">68×</span>
+      <span class="stat-label">Traffic growth</span>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>Context:</strong> The citations below are organic — no outreach or link-building was involved. All references arose from data journalism and visualizations produced at Earth.Org (2020–2022), where Owen led the data team. Content was cited across peer-reviewed journals, law reviews, government hazard plans, think tanks, and university coursework, spanning topics from climate science to fast fashion to ocean biodiversity.
+  </div>
+
+  <!-- ACADEMIC & INSTITUTIONAL -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Academic & institutional citations</h2>
+      <span class="section-count">13 sources</span>
+    </div>
+    <div class="citation-list">
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://environment.upenn.edu/news-events/news/fast-fashion" target="_blank">UPenn Environmental Innovations Initiative</a></p>
+          <p class="citation-desc">University of Pennsylvania editorial cited Earth.Org fast fashion statistics and embedded an Owen Mulhern data visualization directly in the article body.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">University</span>
+          <span class="citation-year">2024</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://pcc.uw.edu/wp-content/uploads/sites/15/2023/09/Anton_Climate-Science-Without-Climate-Action-An-Impacts-Approach-to-Decarbonizing-University-Systems.pdf" target="_blank">University of Washington — Climate Science paper</a></p>
+          <p class="citation-desc">"Mulhern 2020" cited in the opening section on historical CO₂ levels, referencing Earth.Org data journalism on atmospheric carbon concentrations.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">University</span>
+          <span class="citation-year">2023</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://www.jstor.org/stable/27113977" target="_blank">Carbon & Climate Law Review — JSTOR</a></p>
+          <p class="citation-desc">Peer-reviewed journal article "The Pathway to a Green Gulf" (Vol. 15, No. 4, 2021) citing Earth.Org content, archived on JSTOR.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">Peer-reviewed journal</span>
+          <span class="citation-year">2021</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://scholarship.law.wm.edu/cgi/viewcontent.cgi?article=1892&context=wmelpr" target="_blank">William & Mary Environmental Law & Policy Review</a></p>
+          <p class="citation-desc">Law review article citing Earth.Org environmental data journalism.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">Law review</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://scholarcommons.sc.edu/cgi/viewcontent.cgi?article=4526&context=sclr" target="_blank">South Carolina Law Review</a></p>
+          <p class="citation-desc">Law review article citing Earth.Org content on environmental topics.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">Law review</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://ideaexchange.uakron.edu/cgi/viewcontent.cgi?article=2615&context=akronlawreview" target="_blank">University of Akron Law Review</a></p>
+          <p class="citation-desc">Law review article citing Earth.Org environmental data journalism.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">Law review</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://sites.law.duq.edu/joule/wp-content/uploads/2025/08/Codispot_Joule.pdf" target="_blank">Duquesne Law Journal — Joule</a></p>
+          <p class="citation-desc">Law journal article on fast fashion's climate impact, citing Earth.Org statistics in footnotes alongside UNEP and IUCN.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">Law journal</span>
+          <span class="citation-year">2025</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://repository.rit.edu/cgi/viewcontent.cgi?article=13665&context=theses" target="_blank">Rochester Institute of Technology — Thesis</a></p>
+          <p class="citation-desc">Graduate thesis citing Earth.Org research and data.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">University thesis</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://web.uri.edu/ssirep/wp-content/uploads/sites/1611/Dennis-Haggerty-White-Paper.pdf" target="_blank">University of Rhode Island — Applied History Lab</a></p>
+          <p class="citation-desc">Policy white paper citing Earth.Org as a reference source.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">University</span>
+          <span class="citation-year">2023</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://www.researchgate.net/publication/400303911_Applying_Critical_Theoretical_Frameworks_to_Understand_Biodiversity_Loss_in_India_Present_Concerns_and_the_Way_Forward" target="_blank">ResearchGate — Biodiversity Loss in India</a></p>
+          <p class="citation-desc">Academic paper on biodiversity citing Earth.Org data journalism on ecological topics.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">Academic paper</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://www.researchgate.net/publication/393798551_FROM_HARM_TO_HOPE_SUBSIDY_REFORMS_FOR_A_GREEN_GLOBAL_ECONOMY" target="_blank">ResearchGate — Subsidy Reforms for a Green Global Economy</a></p>
+          <p class="citation-desc">Academic paper on green economic policy citing Earth.Org environmental data.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">Academic paper</span>
+          <span class="citation-year">2023</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://digitalcollection.zhaw.ch/server/api/core/bitstreams/35d5bf06-d328-4777-b160-41cb4ff17fd6/content" target="_blank">ZHAW Zurich University of Applied Sciences</a></p>
+          <p class="citation-desc">Swiss university digital collection citing Earth.Org content.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">University</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://eiui.ca/wp-content/uploads/2021/10/PGWells-Considering-lag-times-in-environmental-science-and-management-CSEB-78-3-2021.pdf" target="_blank">Canadian Journal of Earth Sciences — Environmental Science & Management</a></p>
+          <p class="citation-desc">Peer-reviewed paper on lag times in environmental management citing Earth.Org data.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-academic">Peer-reviewed journal</span>
+          <span class="citation-year">2021</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GOVERNMENT & THINK TANKS -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Government & think tanks</h2>
+      <span class="section-count">4 sources</span>
+    </div>
+    <div class="citation-list">
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://www.caloes.ca.gov/wp-content/uploads/Hazard-Mitigation/Documents/2023-California-SHMP_Volume-1-References_11.10.2023.pdf" target="_blank">California State Hazard Mitigation Plan — Governor's Office of Emergency Services</a></p>
+          <p class="citation-desc">Official state government plan (Gavin Newsom, 2023) citing Earth.Org as a reference source in its hazard mitigation volume.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-industry">Government</span>
+          <span class="citation-year">2023</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://static.rusi.org/future-iuu-fishing-in-a-warming-world-a-global-horizon-scan.pdf" target="_blank">RUSI — Royal United Services Institute</a></p>
+          <p class="citation-desc">Occasional Paper by the UK's leading defence and security think tank: "Future IUU Fishing in a Warming World — A Global Horizon Scan," citing Earth.Org data on ocean and climate topics.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-industry">Think tank</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://www.verisk.com/blog/its-time-to-fill-in-your-2022-emerging-issues-bracket/" target="_blank">Verisk — Emerging Issues 2022</a></p>
+          <p class="citation-desc">Verisk (global risk analytics, $3B+ revenue) blog post on emerging issues for insurers and risk managers, citing Earth.Org environmental data.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-industry">Risk analytics firm</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://www.ppc.gov.qa/Admin/sukkannewsletter/PPC_Sukan_2023_issue53_EN.pdf" target="_blank">Qatar Planning & Statistics Authority — Sukan Newsletter</a></p>
+          <p class="citation-desc">Official government publication of Qatar's Planning and Statistics Authority citing Earth.Org content.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-industry">Government</span>
+          <span class="citation-year">2023</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRESS & EDITORIAL -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Press, editorial & republication</h2>
+      <span class="section-count">5 sources</span>
+    </div>
+    <div class="citation-list">
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://oceanmaterial.com/9-2/" target="_blank">OceanMaterial — Republication</a></p>
+          <p class="citation-desc">Co-authored Earth.Org article on waste management and recycling republished in full under a formal editorial agreement, with byline credit.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-press">Republished</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://www.facadetectonics.org/articles/stop-f-cking-around-build-our-zero-carbon-economy-now" target="_blank">Facade Tectonics Institute</a></p>
+          <p class="citation-desc">Architecture and building science publication citing Earth.Org climate data in a piece on zero-carbon construction.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-press">Trade editorial</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://headmagazine.com/earths-best-friend/" target="_blank">Head Magazine</a></p>
+          <p class="citation-desc">Editorial citing Earth.Org environmental content.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-press">Editorial</span>
+          <span class="citation-year">2021</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://viden.ai/en/debate-is-artificial-intelligence-an-environmental-culprit-or-a-sustainable-solution/" target="_blank">Viden.ai</a></p>
+          <p class="citation-desc">AI and sustainability editorial debate citing Earth.Org data on environmental topics.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-press">Editorial</span>
+          <span class="citation-year">2023</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://www.presbyterianwomen.org/bible-study/justice-live-links/" target="_blank">Presbyterian Women — Justice Live Links</a></p>
+          <p class="citation-desc">Large faith organisation (USA) linking to Earth.Org environmental resources in their Bible study justice curriculum.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-press">Non-profit</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INDUSTRY & DATA AGGREGATORS -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Industry & data aggregators</h2>
+      <span class="section-count">2 sources</span>
+    </div>
+    <div class="citation-list">
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://sylvanapparel.com/fast-fashion-statistics/" target="_blank">Sylvan Apparel — Fast Fashion Statistics</a></p>
+          <p class="citation-desc">Industry statistics roundup listing Earth.Org alongside Statista as a primary data source, with backlink.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-industry">Industry</span>
+          <span class="citation-year">2023</span>
+        </div>
+      </div>
+
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://peaceessaycontest.weebly.com/uploads/1/7/6/2/17625157/final_mar_6_2022__essay_booklet_final.pdf" target="_blank">Peace Essay Contest — Essay Booklet</a></p>
+          <p class="citation-desc">Student essay competition publication citing Earth.Org climate content.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-industry">Publication</span>
+          <span class="citation-year">2022</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JOURNALIST PROFILE -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Journalist profile</h2>
+      <span class="section-count">1 source</span>
+    </div>
+    <div class="citation-list">
+      <div class="citation">
+        <div class="citation-left">
+          <p class="citation-source"><a href="https://muckrack.com/owen-mulhern/articles" target="_blank">Muck Rack — Verified Journalist Profile</a></p>
+          <p class="citation-desc">Verified journalist profile on Muck Rack (the platform used by PR professionals to find and vet journalists), listing all Earth.Org bylines. Used by agencies and PRs to assess editorial reach and credibility.</p>
+        </div>
+        <div class="citation-right">
+          <span class="tag tag-profile">Journalist profile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Owen Mulhern · owenhmulhern@gmail.com · Ho Chi Minh City (Remote)</span>
+    <span>Compiled May 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
