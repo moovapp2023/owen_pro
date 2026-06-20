@@ -344,6 +344,135 @@ nav {
   display: block;
 }
 
+/* ─── AD COPY CARDS ───────────────────────────────────── */
+.ad-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ad-card {
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  overflow: hidden;
+  border-left: 3px solid transparent;
+  transition: border-left-color 0.2s;
+}
+.ad-card:hover { border-left-color: var(--highlight); }
+.ad-card-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.ad-card-content {
+  padding: 28px 36px 32px;
+  display: flex;
+  flex-direction: column;
+}
+.ad-card-eyebrow {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--highlight); margin-bottom: 14px;
+}
+.ad-card-headline {
+  font-size: 18px; font-weight: 400; letter-spacing: -0.01em;
+  color: var(--ink); line-height: 1.3; margin-bottom: 12px;
+}
+.ad-card-body {
+  font-size: 14px; color: var(--ink); line-height: 1.8; flex: 1;
+}
+.ad-card-cta {
+  display: inline-block; margin-top: 14px;
+  font-size: 14px; font-weight: 700; color: var(--highlight);
+}
+.ad-card-rule { height: 1px; background: var(--rule); margin: 18px 0 14px; }
+.ad-card-footer {
+  font-size: 11px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+/* ─── AD GALLERY ──────────────────────────────────────── */
+.ad-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  align-items: start;
+}
+.ad-gallery-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ad-gallery-item {
+  overflow: hidden;
+}
+.ad-gallery-item img {
+  width: 100%; display: block;
+  transition: transform 0.5s ease;
+}
+.ad-gallery-item:hover img { transform: scale(1.02); }
+@media (max-width: 768px) {
+  .ad-gallery { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─── LANDING PAGES ────────────────────────────────────── */
+.lp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2px;
+}
+.lp-item {
+  background: var(--white);
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  position: relative;
+}
+.lp-item:hover .lp-thumb { transform: scale(1.02); }
+.lp-thumb-wrap { overflow: hidden; }
+.lp-thumb {
+  width: 100%; aspect-ratio: 16/10; object-fit: cover;
+  display: block; transition: transform 0.4s ease;
+}
+.lp-placeholder {
+  width: 100%; aspect-ratio: 16/10; background: var(--bg);
+  border-bottom: 1px solid var(--rule); display: flex; align-items: center;
+  justify-content: center; font-size: 11px; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.lp-arrow {
+  position: absolute; top: 12px; right: 12px; width: 30px; height: 30px;
+  background: rgba(255,255,255,0.9); border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-size: 12px;
+  opacity: 0; transition: opacity 0.2s;
+}
+.lp-item:hover .lp-arrow { opacity: 1; }
+.lp-body { padding: 18px 20px 22px; }
+.lp-label { font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--highlight); margin-bottom: 6px; }
+.lp-title { font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 6px; }
+.lp-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ─── FULL-WIDTH LANDING PAGE ─────────────────────────── */
+.lp-full {
+  display: block;
+  text-decoration: none;
+  background: var(--white);
+  overflow: hidden;
+}
+.lp-full-img-wrap { overflow: hidden; }
+.lp-full-img {
+  width: 100%; display: block;
+  transition: transform 0.5s ease;
+}
+.lp-full:hover .lp-full-img { transform: scale(1.01); }
+.lp-full-body {
+  padding: 24px 32px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  border-top: 1px solid var(--rule);
+}
+@media (max-width: 768px) {
+  .lp-full-body { flex-direction: column; align-items: flex-start; }
+}
+
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer {
   padding: 40px; max-width: 1100px; margin: 0 auto;
@@ -382,6 +511,8 @@ footer a:hover { border-color: var(--ink); }
   <a class="client-tab" href="#zest">Zest</a>
   <a class="client-tab" href="#dtctimes">DTC Times</a>
   <a class="client-tab" href="#emails">Email marketing</a>
+  <a class="client-tab" href="#ads">Ad copy &amp; design</a>
+  <a class="client-tab" href="#landingpages">Landing pages</a>
 </div>
 
 <!-- ═══ EARTH.ORG ═══════════════════════════════════════ -->
@@ -442,6 +573,18 @@ footer a:hover { border-color: var(--ink); }
         <p class="work-item-label">Data investigation · 2021</p>
         <h3 class="work-item-title">Fast Fashion &amp; the Environment</h3>
         <p class="work-item-desc">Climate and waste footprint of the global fashion industry. Cited by UPenn and listed alongside Statista as a primary data source.</p>
+      </div>
+    </div>
+
+    <div class="work-item" data-modal="apl">
+      <div style="overflow:hidden;position:relative;">
+        <img class="work-item-img" src="assets/images/air-pollution-london.webp" alt="Air Pollution in London">
+        <span class="work-item-arrow">↗</span>
+      </div>
+      <div class="work-item-body">
+        <p class="work-item-label">Dataviz · 2021</p>
+        <h3 class="work-item-title">Air Pollution in London</h3>
+        <p class="work-item-desc">London's air pollution mapped as cigarette equivalents per week, visualising exposure by borough and population density.</p>
       </div>
     </div>
 
@@ -621,6 +764,16 @@ footer a:hover { border-color: var(--ink); }
       </div>
     </div>
 
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://the.dtctimes.com/p/headwinds-tailwinds" target="_blank">Headwinds &amp; Tailwinds</a></p>
+        <p class="article-desc">How the pandemic changed everything for outdoor DTC — the 7.1 million new participants in 2020 and the brands that became giants overnight.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag written">Contributing</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -716,6 +869,109 @@ footer a:hover { border-color: var(--ink); }
   </div>
 </section>
 
+<!-- ═══ AD COPY & DESIGN ══════════════════════════════════ -->
+<section class="client-section" id="ads">
+  <div class="client-header">
+    <p class="client-eyebrow">Semrush &nbsp;·&nbsp; 2024–2025</p>
+    <h2>Ad copy &amp; design</h2>
+    <p>Sponsored placements written and designed for Semrush, distributed through third-party newsletters. The brief: short, punchy, personality-led copy and visuals that drive trials and free resource downloads.</p>
+    <div class="client-role-note">
+      <strong>Role:</strong> Copywriter and designer. Responsible for concept, copy, CTA, and creative assets.
+    </div>
+  </div>
+
+  <div class="email-subsection">
+    <p class="email-type-label">Image &amp; GIF ads</p>
+    <div class="ad-gallery">
+      <div class="ad-gallery-col">
+        <div class="ad-gallery-item">
+          <img src="assets/ads/gertrude.gif" alt="Gertrude — Semrush animated ad">
+        </div>
+        <div class="ad-gallery-item">
+          <img src="assets/ads/stop-wasting-spend.png" alt="Stop Wasting Ad Spend — Semrush ad">
+        </div>
+        <div class="ad-gallery-item">
+          <img src="assets/ads/find-your-people.png" alt="Find Your People — Semrush ad">
+        </div>
+      </div>
+      <div class="ad-gallery-col">
+        <div class="ad-gallery-item">
+          <img src="assets/ads/how-to-power-up.png" alt="7 Ways to Power Up Your Ads — Semrush ad">
+        </div>
+        <div class="ad-gallery-item">
+          <img src="assets/ads/more-traffic.gif" alt="More traffic than you can handle — Semrush animated ad">
+        </div>
+      </div>
+      <div class="ad-gallery-col">
+        <div class="ad-gallery-item">
+          <img src="assets/ads/real-wealth.png" alt="Real wealth — Semrush editorial ad">
+        </div>
+        <div class="ad-gallery-item">
+          <img src="assets/ads/now-later-seo.png" alt="Now vs Later: Ads vs SEO — Semrush ad">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="email-subsection">
+    <p class="email-type-label">Copy</p>
+    <div class="ad-grid">
+
+      <div class="ad-card">
+        <img class="ad-card-img" src="assets/ads/summariser-banner.png" alt="AI Text Summarizer — Generate Summary for Free">
+        <div class="ad-card-content">
+          <p class="ad-card-eyebrow">Newsletter ad · AI Text Summarizer</p>
+          <p class="ad-card-body">Is your special friend bringing up the same old argument while your mom is calling for the 15th time about your father who won't stop leaving twinkie wrappers between the couch pillows but you still have to read your boss' 1000-word email?</p>
+          <span class="ad-card-cta">[Summarize it.]</span>
+          <p class="ad-card-body" style="margin-top:10px;">Like we should have with that sentence.</p>
+          <div class="ad-card-rule"></div>
+          <p class="ad-card-footer">Placement · Sponsored newsletter ad</p>
+        </div>
+      </div>
+
+      <div class="ad-card">
+        <img class="ad-card-img" src="assets/ads/googlads.png" alt="Googlads illustration">
+        <div class="ad-card-content">
+          <p class="ad-card-eyebrow">Newsletter ad · Google Ads</p>
+          <p class="ad-card-body"><strong>Let me tell you a story.</strong><br><br>Googlads came home on a rainy night and had to apologize to his wife. The day's catch had been small, and it wasn't the first time. With a sad look at the empty pantry, he locked eyes with his wife who gave him an understanding nod. There was only one option left. The gods wanted blood.</p>
+          <p class="ad-card-headline" style="margin-top:16px;">It shouldn't take a sacrifice to get your Google Ads to work.</p>
+          <p class="ad-card-body">Learn how to optimize your campaign with real experts. For free.</p>
+          <span class="ad-card-cta">Click here →</span>
+          <div class="ad-card-rule"></div>
+          <p class="ad-card-footer">Placement · The Growth Bulletin footer</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LANDING PAGES ══════════════════════════════════════ -->
+<section class="client-section" id="landingpages">
+  <div class="client-header">
+    <p class="client-eyebrow">Semrush &nbsp;·&nbsp; 2024–2025</p>
+    <h2>Landing pages</h2>
+    <p>Landing pages built for Semrush's email assets — copy, layout, and structure designed to convert newsletter visitors into subscribers and trial users.</p>
+    <div class="client-role-note">
+      <strong>Role:</strong> Copywriter and designer. Full ownership of copy and page structure.
+    </div>
+  </div>
+
+  <a class="lp-full" href="https://thegrowthbulletin.com" target="_blank">
+    <div class="lp-full-img-wrap">
+      <img class="lp-full-img" src="assets/images/lp-tgb.png" alt="The Growth Bulletin landing page">
+    </div>
+    <div class="lp-full-body">
+      <div>
+        <p class="lp-label">Newsletter landing page</p>
+        <h3 class="lp-title">The Growth Bulletin</h3>
+        <p class="lp-desc">Newsletter landing page for Semrush's acquired growth marketing asset. Copy, structure, and value prop built to convert growth marketers.</p>
+      </div>
+      <span class="case-link" style="margin-top:0;">Visit site ↗</span>
+    </div>
+  </a>
+</section>
+
 <!-- PDF viewer modal -->
 <div class="modal" id="modal-pdf" role="dialog" aria-modal="true">
   <div class="modal-box modal-box-pdf">
@@ -803,7 +1059,23 @@ footer a:hover { border-color: var(--ink); }
       <p class="modal-client">Earth.org &nbsp;·&nbsp; Data investigation</p>
       <h2 class="modal-title">Fast Fashion &amp; the Environment</h2>
       <p class="modal-desc">Aggregated production statistics, per-garment emissions data, and textile waste flows into a single citable reference on fast fashion's climate, waste, and water footprint. Cited by UPenn's Environmental Innovations Initiative and listed alongside Statista as a primary industry data source.</p>
-      <a class="modal-link" href="https://earth.org/data_visualization/in-scope-fast-fashion-the-environment-and-climate-change/" target="_blank">View on Earth.org ↗</a>
+      <a class="modal-link" href="https://earth.org/data_visualization/fast-fashion-the-environment-and-climate-change-a-data-viz-story/" target="_blank">View on Earth.org ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- Air Pollution London -->
+<div class="modal" id="modal-apl" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-img-wrap">
+      <img class="modal-img" src="assets/images/air-pollution-london.webp" alt="Air Pollution in London">
+    </div>
+    <div class="modal-body">
+      <p class="modal-client">Earth.org &nbsp;·&nbsp; Dataviz</p>
+      <h2 class="modal-title">Air Pollution in London</h2>
+      <p class="modal-desc">London's air pollution expressed as cigarette equivalents per week — mapping PM2.5 exposure across boroughs with population density overlaid. The visualisation makes invisible harm legible: at its worst, breathing London's air is equivalent to smoking over five cigarettes a week.</p>
+      <a class="modal-link" href="https://earth.org/data_visualization/air-pollution-in-london/" target="_blank">View on Earth.org ↗</a>
     </div>
   </div>
 </div>
