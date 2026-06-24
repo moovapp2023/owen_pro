@@ -687,23 +687,22 @@ footer {
 
 .modal-link:hover { color: var(--highlight); border-color: var(--highlight); }
 
-/* ─── RESPONSIVE ──────────────────────────────────────── */
-@media (max-width: 768px) {
-  nav { padding: 0 20px; }
 /* ─── PULL QUOTE ──────────────────────────────────────── */
 .quote-section {
-  padding: 80px 80px;
+  padding: 96px 80px;
   max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid var(--rule);
 }
 .pull-quote {
-  font-size: clamp(26px, 3.5vw, 46px);
+  font-size: clamp(28px, 3.8vw, 52px);
   font-weight: 300;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.15;
   color: var(--ink);
-  max-width: 900px;
-  margin-bottom: 24px;
+  max-width: 860px;
+  margin: 0 auto 28px;
 }
 .pull-quote-attr {
   font-size: 11px;
@@ -715,7 +714,7 @@ footer {
 
 /* ─── SERVICES ────────────────────────────────────────── */
 .services-section {
-  padding: 80px 80px;
+  padding: 80px 80px 96px;
   max-width: 1200px;
   margin: 0 auto;
   border-top: 1px solid var(--rule);
@@ -726,7 +725,7 @@ footer {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--highlight);
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 .services-grid {
   display: grid;
@@ -735,37 +734,43 @@ footer {
 }
 .service-card {
   background: var(--white);
-  padding: 36px 32px 40px;
+  padding: 40px 36px 48px;
+  border-top: 3px solid var(--rule);
+  transition: border-color 0.2s;
 }
+.service-card:hover { border-top-color: var(--highlight); }
 .service-num {
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 20px;
+  color: var(--highlight);
+  margin-bottom: 24px;
 }
 .service-title {
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
   color: var(--ink);
-  line-height: 1.2;
-  margin-bottom: 16px;
+  line-height: 1.15;
+  margin-bottom: 20px;
 }
 .service-desc {
   font-size: 14px;
   color: var(--muted);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
   .hero { padding: 100px 20px 60px; grid-template-columns: 1fr; gap: 40px; }
   .hero-photo { width: 160px; border-radius: 50%; }
   .cited-inner { padding: 24px 20px; gap: 24px; }
-  .quote-section { padding: 48px 20px; }
+  .quote-section { padding: 56px 20px; }
   .carousel-header { padding: 0 20px; }
   .testimonials-section { padding: 60px 20px; }
   .testimonials-grid { grid-template-columns: 1fr; }
-  .services-section { padding: 48px 20px; }
+  .services-section { padding: 48px 20px 64px; }
   .services-grid { grid-template-columns: 1fr; }
   .clients-section { padding: 48px 20px; }
   footer { padding: 28px 20px; flex-direction: column; gap: 8px; }
@@ -824,7 +829,7 @@ footer {
 
 <!-- PULL QUOTE -->
 <div class="quote-section">
-  <p class="pull-quote">"He treats whatever channel he's running like it's his own business."</p>
+  <p class="pull-quote">"One of those growth marketers who's just as comfortable in a strategy conversation as he is deep in a spreadsheet."</p>
   <p class="pull-quote-attr">— Beatus Hoang &nbsp;·&nbsp; Sr. Growth Manager, Semrush &nbsp;·&nbsp; managed Owen directly</p>
 </div>
 
