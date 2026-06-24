@@ -724,6 +724,14 @@ footer {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--highlight);
+  margin-bottom: 16px;
+}
+.services-heading {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
   margin-bottom: 48px;
 }
 .services-grid {
@@ -743,21 +751,36 @@ footer {
   font-weight: 400;
   letter-spacing: 0.1em;
   color: var(--highlight);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .service-title {
-  font-size: 24px;
-  font-weight: 300;
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--ink);
   line-height: 1.15;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .service-desc {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.75;
 }
+.services-cta {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: color 0.15s, border-color 0.15s;
+}
+.services-cta:hover { color: var(--highlight); border-color: var(--highlight); }
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 768px) {
@@ -961,6 +984,7 @@ footer {
 <!-- SERVICES -->
 <section class="services-section">
   <p class="services-eyebrow">Services</p>
+  <h2 class="services-heading">What I can do for you</h2>
   <div class="services-grid">
 
     <div class="service-card">
@@ -982,6 +1006,7 @@ footer {
     </div>
 
   </div>
+  <a class="services-cta" href="mailto:owenhmulhern@gmail.com">Let's talk ↗</a>
 </section>
 
 <!-- TESTIMONIALS -->
