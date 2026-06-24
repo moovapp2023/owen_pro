@@ -265,7 +265,7 @@ nav {
 
 /* ─── WORK CAROUSEL ───────────────────────────────────── */
 .carousel-section {
-  padding: 80px 0;
+  padding: 56px 0 80px;
 }
 
 .carousel-header {
@@ -689,11 +689,10 @@ footer {
 
 /* ─── PULL QUOTE ──────────────────────────────────────── */
 .quote-section {
-  padding: 96px 80px;
+  padding: 80px 80px 64px;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
-  border-top: 1px solid var(--rule);
 }
 .pull-quote {
   font-size: clamp(28px, 3.8vw, 52px);
@@ -883,15 +882,39 @@ footer {
         </div>
       </div>
 
-      <div class="work-card" data-modal="fastfashion">
+      <div class="work-card" data-modal="airpollution">
         <div style="overflow:hidden;position:relative;">
-          <img class="work-card-img" src="assets/images/fastfashion.webp" alt="Fast Fashion">
+          <img class="work-card-img" src="assets/images/air-pollution-london.webp" alt="Air Pollution London">
           <span class="work-card-arrow">↗</span>
         </div>
         <div class="work-card-body">
           <p class="work-card-client">Earth.org</p>
-          <h3 class="work-card-title">Fast Fashion &amp; the Environment</h3>
-          <p class="work-card-desc">Data-led investigation into the climate and waste footprint of the fashion industry. Cited by UPenn and industry data aggregators.</p>
+          <h3 class="work-card-title">Air Pollution in London</h3>
+          <p class="work-card-desc">Dataviz translating London's toxic air into cigarette equivalents — making an invisible public health crisis viscerally legible.</p>
+        </div>
+      </div>
+
+      <div class="work-card" data-modal="dams">
+        <div style="overflow:hidden;position:relative;">
+          <img class="work-card-img" src="assets/images/dams.webp" alt="US Dams Under Pressure">
+          <span class="work-card-arrow">↗</span>
+        </div>
+        <div class="work-card-body">
+          <p class="work-card-client">Earth.org</p>
+          <h3 class="work-card-title">Hotspots: US Dams Under Pressure</h3>
+          <p class="work-card-desc">Hexagonal mapping of 91,000 aging US dams against extreme temperature projections under 2°C and 4°C warming scenarios.</p>
+        </div>
+      </div>
+
+      <div class="work-card" data-modal="shiftingbaselines">
+        <div style="overflow:hidden;position:relative;">
+          <img class="work-card-img" src="assets/images/shifting-baselines.webp" alt="Shifting Baselines">
+          <span class="work-card-arrow">↗</span>
+        </div>
+        <div class="work-card-body">
+          <p class="work-card-client">Earth.org</p>
+          <h3 class="work-card-title">Shifting Baselines</h3>
+          <p class="work-card-desc">Why each generation accepts a degraded climate as the new normal — shown through 60 years of German hot days and frost days data.</p>
         </div>
       </div>
 
@@ -935,6 +958,32 @@ footer {
   </div>
 </section>
 
+<!-- SERVICES -->
+<section class="services-section">
+  <p class="services-eyebrow">Services</p>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <p class="service-num">01</p>
+      <h3 class="service-title">Growth</h3>
+      <p class="service-desc">I will ask you about which metrics you want to move, and figure out how to do so.</p>
+    </div>
+
+    <div class="service-card">
+      <p class="service-num">02</p>
+      <h3 class="service-title">Data storytelling</h3>
+      <p class="service-desc">I will turn science &amp; technicals into narratives and visuals to move your audience.</p>
+    </div>
+
+    <div class="service-card">
+      <p class="service-num">03</p>
+      <h3 class="service-title">Portfolio consultant</h3>
+      <p class="service-desc">I will help with investment evaluation, value creation strategy and fundraising support.</p>
+    </div>
+
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section>
   <div class="testimonials-section">
@@ -964,32 +1013,6 @@ footer {
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services-section">
-  <p class="services-eyebrow">Services</p>
-  <div class="services-grid">
-
-    <div class="service-card">
-      <p class="service-num">01</p>
-      <h3 class="service-title">Growth</h3>
-      <p class="service-desc">I will ask you about which metrics you want to move, and figure out how to do so.</p>
-    </div>
-
-    <div class="service-card">
-      <p class="service-num">02</p>
-      <h3 class="service-title">Data storytelling</h3>
-      <p class="service-desc">I will turn science &amp; technicals into narratives and visuals to move your audience.</p>
-    </div>
-
-    <div class="service-card">
-      <p class="service-num">03</p>
-      <h3 class="service-title">Portfolio consultant</h3>
-      <p class="service-desc">I will help with investment evaluation, value creation strategy and fundraising support.</p>
-    </div>
-
   </div>
 </section>
 
@@ -1056,18 +1079,50 @@ footer {
   </div>
 </div>
 
-<!-- Fast Fashion -->
-<div class="modal" id="modal-fastfashion" role="dialog" aria-modal="true">
+<!-- Air Pollution London -->
+<div class="modal" id="modal-airpollution" role="dialog" aria-modal="true">
   <div class="modal-box">
     <button class="modal-close" aria-label="Close">&times;</button>
     <div class="modal-img-wrap">
-      <img class="modal-img" src="assets/images/fastfashion.webp" alt="Fast Fashion">
+      <img class="modal-img" src="assets/images/air-pollution-london.webp" alt="Air Pollution in London">
     </div>
     <div class="modal-body">
       <p class="modal-client">Earth.org</p>
-      <h2 class="modal-title">Fast Fashion &amp; the Environment</h2>
-      <p class="modal-desc">Data-driven investigation into the climate, waste, and water footprint of the global fashion industry. The piece aggregated production statistics, per-garment emissions data, and textile waste flows into a single, citable reference. Cited by UPenn's Environmental Innovations Initiative and industry data aggregators.</p>
-      <a class="modal-link" href="https://earth.org/data_visualization/in-scope-fast-fashion-the-environment-and-climate-change/" target="_blank">View on Earth.org ↗</a>
+      <h2 class="modal-title">Air Pollution in London</h2>
+      <p class="modal-desc">A dataviz piece translating London's ambient air pollution into cigarette equivalents — reframing an invisible public health crisis into something viscerally understandable. The approach of converting abstract µg/m³ readings into a relatable metric made the data land with a general audience and drove significant organic shares.</p>
+      <a class="modal-link" href="https://earth.org/data_visualization/air-pollution-in-london/" target="_blank">View on Earth.org ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- US Dams -->
+<div class="modal" id="modal-dams" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-img-wrap">
+      <img class="modal-img" src="assets/images/dams.webp" alt="US Dams Under Pressure">
+    </div>
+    <div class="modal-body">
+      <p class="modal-client">Earth.org</p>
+      <h2 class="modal-title">Hotspots: US Dams Under Pressure</h2>
+      <p class="modal-desc">Of the 91,000 dams in the United States — averaging 57 years old — 15,500 were classified as extremely hazardous in 2018. This piece maps Texan dams against extreme temperature projections from the Max Planck Institute climate model, showing which structures could face 45°C+ heat events under 2°C warming, and 50°C+ under 4°C. The rehabilitation bill: over $65 billion.</p>
+      <a class="modal-link" href="https://earth.org/data_visualization/hotspots-us-dams-under-pressure/" target="_blank">View on Earth.org ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- Shifting Baselines -->
+<div class="modal" id="modal-shiftingbaselines" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-img-wrap">
+      <img class="modal-img" src="assets/images/shifting-baselines.webp" alt="Shifting Baselines">
+    </div>
+    <div class="modal-body">
+      <p class="modal-client">Earth.org</p>
+      <h2 class="modal-title">Shifting Baselines and the Elusiveness of Climate Change</h2>
+      <p class="modal-desc">Each generation inherits a degraded environment as its baseline, erasing the memory of what came before. Using 60 years of German weather data, this piece shows how average hot days rose from 4 per year for Baby Boomers to 9 for Gen Z, while frost days fell by 16 across the same period — a generational amnesia that slows the collective response to climate change.</p>
+      <a class="modal-link" href="https://earth.org/data_visualization/shifting-baselines-and-the-elusiveness-of-climate-change/" target="_blank">View on Earth.org ↗</a>
     </div>
   </div>
 </div>
