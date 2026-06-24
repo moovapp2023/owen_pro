@@ -32,16 +32,16 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f5f4f0;
+  --bg: #f9f9f7;
   --ink: #111110;
   --muted: #7a7975;
-  --rule: #dddbd5;
+  --rule: #e4e2dc;
   --accent: #1a1a18;
   --highlight: #c8561a;
   --white: #ffffff;
   --card-bg: #ffffff;
   --cited-bg: #111110;
-  --cited-text: #f5f4f0;
+  --cited-text: #f9f9f7;
 }
 
 html { scroll-behavior: smooth; }
@@ -67,7 +67,7 @@ nav {
   justify-content: space-between;
   padding: 0 40px;
   height: 56px;
-  background: rgba(245, 244, 240, 0.92);
+  background: rgba(249, 249, 247, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
@@ -101,9 +101,22 @@ nav {
 
 /* ─── HERO ────────────────────────────────────────────── */
 .hero {
-  padding: 140px 40px 80px;
+  padding: 140px 80px 80px;
   max-width: 1200px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 80px;
+  align-items: center;
+}
+.hero-text { }
+.hero-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border-radius: 2px;
 }
 
 .hero-eyebrow {
@@ -677,11 +690,83 @@ footer {
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
-  .hero { padding: 120px 20px 60px; }
+/* ─── PULL QUOTE ──────────────────────────────────────── */
+.quote-section {
+  padding: 80px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.pull-quote {
+  font-size: clamp(26px, 3.5vw, 46px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ink);
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+.pull-quote-attr {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── SERVICES ────────────────────────────────────────── */
+.services-section {
+  padding: 80px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid var(--rule);
+}
+.services-eyebrow {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--highlight);
+  margin-bottom: 40px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.service-card {
+  background: var(--white);
+  padding: 36px 32px 40px;
+}
+.service-num {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.service-title {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.service-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+  .hero { padding: 100px 20px 60px; grid-template-columns: 1fr; gap: 40px; }
+  .hero-photo { width: 160px; border-radius: 50%; }
   .cited-inner { padding: 24px 20px; gap: 24px; }
+  .quote-section { padding: 48px 20px; }
   .carousel-header { padding: 0 20px; }
   .testimonials-section { padding: 60px 20px; }
   .testimonials-grid { grid-template-columns: 1fr; }
+  .services-section { padding: 48px 20px; }
+  .services-grid { grid-template-columns: 1fr; }
   .clients-section { padding: 48px 20px; }
   footer { padding: 28px 20px; flex-direction: column; gap: 8px; }
 }
@@ -701,13 +786,16 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">Ho Chi Minh City</p>
-  <h1>Owen Mulhern<br><em>analyst &amp; communicator</em></h1>
-  <div class="hero-tags">
-    <span class="hero-tag">Data journalism</span>
-    <span class="hero-tag">Content marketing</span>
-    <span class="hero-tag">Portfolio support</span>
+  <div class="hero-text">
+    <p class="hero-eyebrow">Ho Chi Minh City</p>
+    <h1>Owen Mulhern<br><em>analyst &amp; communicator</em></h1>
+    <div class="hero-tags">
+      <span class="hero-tag">Data journalism</span>
+      <span class="hero-tag">Content marketing</span>
+      <span class="hero-tag">Portfolio support</span>
+    </div>
   </div>
+  <img class="hero-photo" src="assets/images/owen-profile.webp" alt="Owen Mulhern">
 </section>
 
 <!-- CITED-BY BAR -->
@@ -732,6 +820,12 @@ footer {
       </div>
     </div>
   </div>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="quote-section">
+  <p class="pull-quote">"He treats whatever channel he's running like it's his own business."</p>
+  <p class="pull-quote-attr">— Beatus Hoang &nbsp;·&nbsp; Sr. Growth Manager, Semrush &nbsp;·&nbsp; managed Owen directly</p>
 </div>
 
 <!-- WORK CAROUSEL -->
@@ -762,7 +856,7 @@ footer {
 
       <div class="work-card" data-modal="slr2100">
         <div style="overflow:hidden;position:relative;">
-          <img class="work-card-img" src="assets/images/slr-hcm.jpg" alt="Sea Level Rise 2100">
+          <img class="work-card-img" src="assets/images/slr-hcm.webp" alt="Sea Level Rise 2100">
           <span class="work-card-arrow">↗</span>
         </div>
         <div class="work-card-body">
@@ -868,6 +962,32 @@ footer {
   </div>
 </section>
 
+<!-- SERVICES -->
+<section class="services-section">
+  <p class="services-eyebrow">Services</p>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <p class="service-num">01</p>
+      <h3 class="service-title">Growth</h3>
+      <p class="service-desc">I will ask you about which metrics you want to move, and figure out how to do so.</p>
+    </div>
+
+    <div class="service-card">
+      <p class="service-num">02</p>
+      <h3 class="service-title">Data storytelling</h3>
+      <p class="service-desc">I will turn science &amp; technicals into narratives and visuals to move your audience.</p>
+    </div>
+
+    <div class="service-card">
+      <p class="service-num">03</p>
+      <h3 class="service-title">Portfolio consultant</h3>
+      <p class="service-desc">I will help with investment evaluation, value creation strategy and fundraising support.</p>
+    </div>
+
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <span class="footer-left">Owen Mulhern &nbsp;·&nbsp; owenhmulhern@gmail.com</span>
@@ -904,7 +1024,7 @@ footer {
   <div class="modal-box">
     <button class="modal-close" aria-label="Close">&times;</button>
     <div class="modal-img-wrap">
-      <img class="modal-img" src="assets/images/slr-hcm.jpg" alt="Sea Level Rise 2100">
+      <img class="modal-img" src="assets/images/slr-hcm.webp" alt="Sea Level Rise 2100">
     </div>
     <div class="modal-body">
       <p class="modal-client">Earth.org</p>
