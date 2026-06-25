@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owen Mulhern | Portfolio Support</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<style>
+@font-face {
+  font-family: 'Aeonik';
+  src: url('assets/fonts/Aeonik-Light.woff2') format('woff2'), url('assets/fonts/Aeonik-Light.woff') format('woff');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aeonik';
+  src: url('assets/fonts/Aeonik-Regular.woff2') format('woff2'), url('assets/fonts/Aeonik-Regular.woff') format('woff');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aeonik';
+  src: url('assets/fonts/Aeonik-Bold.woff2') format('woff2'), url('assets/fonts/Aeonik-Bold.woff') format('woff');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f9f9f7;
+  --ink: #111110;
+  --muted: #5a5855;
+  --rule: #e4e2dc;
+  --highlight: #c8561a;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Aeonik', -apple-system, sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 56px;
+  background: rgba(249, 249, 247, 0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--ink); }
+
+/* ─── HERO ────────────────────────────────────────────── */
+.hero {
+  padding: 140px 80px 80px; max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 280px; gap: 80px; align-items: center;
+}
+.hero-photo { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center top; display: block; border-radius: 2px; }
+.hero-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--highlight); margin-bottom: 24px; }
+.hero h1 { font-size: clamp(36px, 5vw, 68px); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 20px; }
+.hero h1 em { font-style: normal; color: var(--highlight); }
+.hero-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 540px; margin-bottom: 28px; }
+.hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.hero-tag { font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); border-radius: 100px; padding: 6px 14px; }
+
+/* ─── WHAT I DO ───────────────────────────────────────── */
+.capabilities {
+  background: var(--ink); padding: 64px 80px;
+}
+.capabilities-inner { max-width: 1200px; margin: 0 auto; }
+.capabilities-label { font-size: 10px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,244,240,0.5); margin-bottom: 40px; }
+.cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.cap-item { }
+.cap-num { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; color: var(--highlight); margin-bottom: 12px; }
+.cap-title { font-size: 18px; font-weight: 400; color: rgba(245,244,240,0.9); margin-bottom: 10px; letter-spacing: -0.01em; }
+.cap-desc { font-size: 13px; color: rgba(245,244,240,0.5); line-height: 1.7; }
+
+/* ─── PULL QUOTE ──────────────────────────────────────── */
+.quote-section { padding: 80px 80px 32px; max-width: 1200px; margin: 0 auto; text-align: center; }
+.pull-quote { font-size: clamp(22px, 3vw, 40px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); max-width: 800px; margin: 0 auto 24px; }
+.pull-quote-attr { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+/* ─── SECTION ─────────────────────────────────────────── */
+.page-section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--rule); }
+.section-eyebrow { font-size: 10px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--highlight); margin-bottom: 12px; }
+.section-heading { font-size: clamp(26px, 3.2vw, 44px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; color: var(--ink); margin-bottom: 16px; }
+.section-desc { font-size: 15px; color: var(--muted); max-width: 620px; line-height: 1.7; margin-bottom: 40px; }
+.role-note { padding: 14px 18px; background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--highlight); border-radius: 2px; font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 40px; }
+.role-note strong { color: var(--ink); font-weight: 400; }
+
+/* ─── CASE STUDY ──────────────────────────────────────── */
+.metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 2px; }
+.metric-box { background: var(--ink); padding: 24px 20px; text-align: center; }
+.metric-box-num { font-size: 26px; font-weight: 300; color: var(--white); display: block; letter-spacing: -0.02em; margin-bottom: 4px; }
+.metric-box-label { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.55); }
+.case-study { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.case-block { background: var(--white); padding: 32px; }
+.case-block.full { grid-column: 1 / -1; }
+.case-block h3 { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.case-block p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.case-block p + p { margin-top: 10px; }
+.case-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.case-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 400; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px; margin-top: 16px; transition: color 0.15s, border-color 0.15s; }
+.case-link:hover { color: var(--highlight); border-color: var(--highlight); }
+
+/* ─── ARTICLE LIST ────────────────────────────────────── */
+.article-list { display: flex; flex-direction: column; gap: 1px; }
+.article-item { background: var(--white); padding: 20px 24px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; transition: background 0.12s; }
+.article-item:hover { background: #efefeb; }
+.article-title { font-size: 15px; font-weight: 400; color: var(--ink); margin-bottom: 4px; }
+.article-title a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s, color 0.15s; }
+.article-title a:hover { color: var(--highlight); border-color: var(--highlight); }
+.article-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.article-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.article-tag { font-size: 10px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; white-space: nowrap; background: #f0eeea; color: var(--muted); }
+
+/* ─── DATA SKILLS ─────────────────────────────────────── */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.skill-card { background: var(--white); padding: 28px 28px 32px; }
+.skill-label { font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--highlight); margin-bottom: 10px; }
+.skill-title { font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 8px; }
+.skill-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.skill-stack { font-size: 10px; color: var(--muted); margin-top: 12px; letter-spacing: 0.07em; font-style: italic; opacity: 0.75; }
+
+/* ─── TESTIMONIALS ────────────────────────────────────── */
+.testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.testimonial { background: var(--white); padding: 36px; }
+.testimonial-quote { font-size: 15px; font-weight: 300; line-height: 1.75; color: #3a3935; margin-bottom: 28px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 14px; }
+.testimonial-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.testimonial-name { font-size: 14px; font-weight: 400; color: var(--ink); }
+.testimonial-name a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+.testimonial-name a:hover { border-color: var(--ink); }
+.testimonial-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule); padding: 32px 40px;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-left { font-size: 13px; color: var(--muted); }
+.footer-right a { font-size: 13px; color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+.footer-right a:hover { border-color: var(--ink); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .hero { padding: 100px 20px 60px; grid-template-columns: 1fr; gap: 40px; }
+  .hero-photo { width: 160px; border-radius: 50%; }
+  .capabilities { padding: 48px 20px; }
+  .cap-grid { grid-template-columns: 1fr; gap: 32px; }
+  .quote-section { padding: 56px 20px 24px; }
+  .page-section { padding: 60px 20px; }
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+  .case-study { grid-template-columns: 1fr; }
+  .case-block.full { grid-column: 1; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  footer { padding: 28px 20px; flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="home.html">Owen Mulhern</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="citations.html">Citations</a></li>
+    <li><a href="mailto:owenhmulhern@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Growth &amp; Operational Analytics</p>
+    <h1>Owen Mulhern<br><em>portfolio support</em></h1>
+    <p class="hero-sub">Post-acquisition growth infrastructure, content attribution audits, and media asset management for portfolio companies.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Post-acquisition growth</span>
+      <span class="hero-tag">GA4 &amp; attribution</span>
+      <span class="hero-tag">Statistical modeling</span>
+      <span class="hero-tag">LTV:CAC analysis</span>
+    </div>
+  </div>
+  <img class="hero-photo" src="assets/images/owen-profile.webp" alt="Owen Mulhern">
+</section>
+
+<!-- CAPABILITIES -->
+<div class="capabilities">
+  <div class="capabilities-inner">
+    <p class="capabilities-label">What I do for portfolio companies</p>
+    <div class="cap-grid">
+      <div class="cap-item">
+        <p class="cap-num">01</p>
+        <h3 class="cap-title">Post-acquisition growth audit</h3>
+        <p class="cap-desc">I come in after close and map the current state: what the attribution is actually showing, where the GA4 data is broken, what content is working and what isn't. I give you a prioritised action list, not a slide deck.</p>
+      </div>
+      <div class="cap-item">
+        <p class="cap-num">02</p>
+        <h3 class="cap-title">Content infrastructure &amp; LTV:CAC</h3>
+        <p class="cap-desc">I have run acquired email newsletter assets end-to-end — strategy, programme management, deliverability, and content experiments. I understand how content maps to LTV:CAC from first touch to close.</p>
+      </div>
+      <div class="cap-item">
+        <p class="cap-num">03</p>
+        <h3 class="cap-title">Advanced statistical modeling</h3>
+        <p class="cap-desc">Original research and quantitative analysis cited by US law reviews, peer-reviewed journals, and government agencies. I build defensible numbers, not summaries of existing data.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="quote-section">
+  <p class="pull-quote">"He treats whatever channel he's running like it's his own business."</p>
+  <p class="pull-quote-attr">— Beatus Hoang &nbsp;·&nbsp; Sr. Growth Manager, Semrush &nbsp;·&nbsp; managed Owen directly</p>
+</div>
+
+<!-- ZEST — PRIMARY CASE STUDY -->
+<section class="page-section">
+  <p class="section-eyebrow">Zest &nbsp;·&nbsp; 2024–2026 &nbsp;·&nbsp; Post-acquisition content programme</p>
+  <h2 class="section-heading">Inherited an underperforming content asset. Rebuilt the funnel. Drove 232 demos.</h2>
+  <p class="section-desc">Zest is a French HR SaaS. The pillar article was ranking at position 12 with no conversion path. I diagnosed the failure, rebuilt the funnel architecture, and built two new tools from scratch — a survey generator and an ROI calculator, both independently built in HTML/CSS/JS, both now the top lead capture assets on the site.</p>
+  <div class="role-note">
+    <strong>Role:</strong> Freelance content strategist and copywriter. Full ownership from keyword analysis and tool development to conversion tracking. All tools built independently — no engineering resource required.
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-box">
+      <span class="metric-box-num">1,100+</span>
+      <span class="metric-box-label">Sessions from content</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">232</span>
+      <span class="metric-box-label">Demos reserved</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">27%</span>
+      <span class="metric-box-label">Lead capture rate</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">6m 9s</span>
+      <span class="metric-box-label">Avg. time on tool page</span>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="case-block full">
+      <h3>The diagnosis &amp; the rebuild</h3>
+      <p>The conversion problem was a mismatch between reader stage and CTA weight — the existing article sent cold traffic directly to a demo request. I rebuilt the funnel in three stages: a pillar article at the top, a free survey generator as the mid-funnel capture point (7% CTR from the pillar, 27% lead capture), and an ROI calculator as the bottom-funnel closer.</p>
+      <p>The ROI calculator was a sector first — no comparable tool existed in this niche. It passed independent expert scrutiny and now averages 6 minutes 9 seconds on page. Pillar article moved from position 12 to 4.</p>
+      <a class="case-link" href="https://zestmeup.com/solution/barometre-social-outil-rh-de-mesure-du-climat-social/" target="_blank">View pillar article ↗</a>
+    </div>
+    <div class="case-block">
+      <h3>Pillar performance</h3>
+      <img class="case-img" src="assets/images/pillar-performance.png" alt="Pillar article performance" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+      <p style="display:none;font-size:13px;color:var(--muted);margin-top:8px;">Position 12 → 4, climbing</p>
+      <p>Position 12 → 4. 7% CTR from pillar to survey generator.</p>
+      <a class="case-link" href="https://zestmeup.com/lp/generateur-de-questionnaire-barometre-social-gratuit-baromex-by-zest/" target="_blank">View survey generator ↗</a>
+    </div>
+    <div class="case-block">
+      <h3>ROI calculator</h3>
+      <img class="case-img" src="assets/images/roi-calculator.png" alt="ROI calculator" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+      <p style="display:none;font-size:13px;color:var(--muted);margin-top:8px;">6m 9s average time on page</p>
+      <p>Sector-first ROI model, independently built. 6m 9s average time on page — deeper engagement than any other asset on the site.</p>
+      <a class="case-link" href="https://zestmeup.com/livre-blanc/calculez-le-roi-de-votre-ecoute-avec-zest/" target="_blank">View ROI calculator ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- SEMRUSH — ACQUIRED MEDIA -->
+<section class="page-section">
+  <p class="section-eyebrow">Semrush &nbsp;·&nbsp; 2024–2025 &nbsp;·&nbsp; Acquired email asset management</p>
+  <h2 class="section-heading">Due diligence &amp; post-acquisition growth</h2>
+  <p class="section-desc">Managed Semrush's two acquired newsletter assets — The Growth Bulletin and The Early Checkout — across the full operational lifecycle. Audited GA4 data discrepancies and restored purchase-path attribution. Cut 50K unengaged contacts to protect deliverability. Content experiments doubled click volume.</p>
+  <div class="role-note">
+    <strong>Role:</strong> Growth manager reporting to Sr. Growth Manager Beatus Hoang. Full ownership of strategy, content, contractor management, platform migration (ActiveCampaign → Beehiiv), rebranding, deliverability, and analytics. Managed budget and contractor relationships independently.
+  </div>
+
+  <div class="article-list">
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://newsletter.thegrowthbulletin.com/p/get-big-1-how-to-build-a-revenue-generating-content-strategy" target="_blank">How to Build a Revenue-Generating Content Strategy</a></p>
+        <p class="article-desc">A tactical guide on mapping content directly to enterprise revenue pipelines, used internally to audit and restructure content attribution for acquired media assets. Directly addresses how to track impact on LTV:CAC from first touch to close.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag">Written</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://newsletter.thegrowthbulletin.com/p/marketing-for-growth-marketing-finance" target="_blank">Marketing for Growth: Marketing &amp; Finance</a></p>
+        <p class="article-desc">Long-form piece on the relationship between marketing investment and financial performance — the framing that PE portfolio teams and CFOs use to structure budget allocation decisions.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag">Written</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://moovapp2023.github.io/FACTS_framework/" target="_blank">The FACTS Framework — Original AIO Framework</a></p>
+        <p class="article-desc">Original AI Optimisation framework built from Semrush proprietary research data. Source-first, methodology-transparent — the same analytical rigour as the Earth.org statistical modeling work, applied to a commercial search problem.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag">Framework</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTICAL MODELING -->
+<section class="page-section">
+  <p class="section-eyebrow">Earth.org &nbsp;·&nbsp; 2020–2022</p>
+  <h2 class="section-heading">Advanced statistical modeling &amp; risk analysis</h2>
+  <p class="section-desc">Original research and quantitative analysis cited by US law reviews, peer-reviewed journals, and government agencies. Work features original projections, novel calculation methodologies, and geospatial risk mapping — built from primary source data, not secondary summaries.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <p class="skill-label">Original research</p>
+      <h3 class="skill-title">California Groundwater Crisis</h3>
+      <p class="skill-desc">Original projection estimating 250 years of viable aquifer extraction remaining in the Central Valley. Built on USGS, GRACE satellite data, and CVHM2 hydrological basin modeling. Cited in US law reviews.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Risk modeling</p>
+      <h3 class="skill-title">US Dams Under Pressure</h3>
+      <p class="skill-desc">Infrastructure risk analysis of 91,000 US dams against projected heat extremes using Max Planck Institute climate simulations. Quantified the $65B+ rehabilitation liability under 2°C and 4°C warming scenarios.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Climate projection</p>
+      <h3 class="skill-title">Sea Level Rise 2100</h3>
+      <p class="skill-desc">Modelled six major coastal cities against peer-reviewed IPCC projections and city-level elevation data. Cited in US law reviews and university research on climate adaptation and municipal risk.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Agricultural risk</p>
+      <h3 class="skill-title">Extreme Temperatures: France &amp; Canada</h3>
+      <p class="skill-desc">Agricultural risk mapping under 2–4°C warming scenarios using MPI-GE climate simulations. Modelled existential exposure thresholds for dairy, wine, and canola — the kind of commodity risk analysis PE firms use in due diligence.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Public health</p>
+      <h3 class="skill-title">Air Pollution in London</h3>
+      <p class="skill-desc">PM2.5 exposure converted to cigarette equivalents per week, mapped by borough and population density. An example of translating technical risk data into a metric that moves decision-makers.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Longitudinal analysis</p>
+      <h3 class="skill-title">Shifting Baselines</h3>
+      <p class="skill-desc">60-year longitudinal analysis of climate exposure across four generational cohorts using German weather service data. Demonstrates cohort-level trend analysis and normalisation modeling.</p>
+      <p class="skill-stack">Python · Illustrator</p>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="page-section">
+  <p class="section-eyebrow">References</p>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <p class="testimonial-quote">"Owen is one of those growth marketers who's just as comfortable in a strategy conversation as he is deep in a spreadsheet debugging GA4 tracking issues. He reported to me while running Semrush's acquired email assets, The Growth Bulletin and The Early Checkout. He didn't just keep the lights on. He completely overhauled our email program… Whether he was tracking down data discrepancies or running content experiments that doubled our click volume, he owned it completely. He never made excuses and was fully transparent when things didn't work. He's calm under pressure, manages contractors and budgets well, and treats whatever channel he's running like it's his own business. I highly recommend Owen for any growth role."</p>
+      <div class="testimonial-author">
+        <img class="testimonial-avatar" src="assets/images/beatus.jpeg" alt="Beatus Hoang">
+        <div>
+          <p class="testimonial-name"><a href="https://www.linkedin.com/in/beatus-hoang/" target="_blank">Beatus Hoang</a></p>
+          <p class="testimonial-role">Sr. Growth Manager, Semrush &nbsp;·&nbsp; managed Owen directly &nbsp;·&nbsp; Feb 2026</p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <p class="testimonial-quote">"J'ai eu le plaisir de collaborer avec Owen et je le recommande sans hésitation. Owen dispose d'une excellente capacité d'analyse et saisit rapidement les enjeux d'un projet. Il sait transformer ses analyses en plans d'action concrets et efficaces, parfaitement adaptés aux objectifs. Au-delà de ses compétences techniques, Owen apporte une vraie valeur par sa collaboration naturelle. C'est un professionnel sur qui on peut compter. Owen réunit toutes les qualités d'un excellent growth marketer : rigueur analytique, pragmatisme et intelligence relationnelle. Je le recommande les yeux fermés."</p>
+      <div class="testimonial-author">
+        <img class="testimonial-avatar" src="assets/images/sandrine.jpeg" alt="Sandrine Dervin">
+        <div>
+          <p class="testimonial-name"><a href="https://www.linkedin.com/in/sandrine-dervin/" target="_blank">Sandrine Dervin</a></p>
+          <p class="testimonial-role">Head of Marketing, Zest &nbsp;·&nbsp; client &nbsp;·&nbsp; ongoing</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-left">Owen Mulhern &nbsp;·&nbsp; owenhmulhern@gmail.com &nbsp;·&nbsp; <a href="mailto:owenhmulhern@gmail.com" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);">Get in touch</a></span>
+  <span class="footer-right"><a href="home.html">← Full portfolio</a></span>
+</footer>
+
+</body>
+</html>

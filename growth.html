@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owen Mulhern | Growth & Email Marketing</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<style>
+@font-face {
+  font-family: 'Aeonik';
+  src: url('assets/fonts/Aeonik-Light.woff2') format('woff2'), url('assets/fonts/Aeonik-Light.woff') format('woff');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aeonik';
+  src: url('assets/fonts/Aeonik-Regular.woff2') format('woff2'), url('assets/fonts/Aeonik-Regular.woff') format('woff');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aeonik';
+  src: url('assets/fonts/Aeonik-Bold.woff2') format('woff2'), url('assets/fonts/Aeonik-Bold.woff') format('woff');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f9f9f7;
+  --ink: #111110;
+  --muted: #5a5855;
+  --rule: #e4e2dc;
+  --highlight: #c8561a;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Aeonik', -apple-system, sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 56px;
+  background: rgba(249, 249, 247, 0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--ink); }
+
+/* ─── HERO ────────────────────────────────────────────── */
+.hero {
+  padding: 140px 80px 80px; max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 280px; gap: 80px; align-items: center;
+}
+.hero-photo { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center top; display: block; border-radius: 2px; }
+.hero-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--highlight); margin-bottom: 24px; }
+.hero h1 { font-size: clamp(38px, 5.5vw, 72px); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 20px; }
+.hero h1 em { font-style: normal; color: var(--highlight); }
+.hero-sub { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 540px; margin-bottom: 28px; }
+.hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.hero-tag { font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); border-radius: 100px; padding: 6px 14px; }
+
+/* ─── METRICS BAR ─────────────────────────────────────── */
+.metrics-bar {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.metric-item { background: var(--ink); padding: 28px 24px; text-align: center; }
+.metric-num { font-size: 30px; font-weight: 300; color: var(--white); display: block; letter-spacing: -0.02em; margin-bottom: 6px; }
+.metric-label { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.55); }
+
+/* ─── PULL QUOTE ──────────────────────────────────────── */
+.quote-section { padding: 80px 80px 32px; max-width: 1200px; margin: 0 auto; text-align: center; }
+.pull-quote { font-size: clamp(24px, 3.2vw, 44px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); max-width: 820px; margin: 0 auto 24px; }
+.pull-quote-attr { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+/* ─── SECTION ─────────────────────────────────────────── */
+.page-section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--rule); }
+.section-eyebrow { font-size: 10px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--highlight); margin-bottom: 12px; }
+.section-heading { font-size: clamp(28px, 3.5vw, 46px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; color: var(--ink); margin-bottom: 16px; }
+.section-desc { font-size: 15px; color: var(--muted); max-width: 620px; line-height: 1.7; margin-bottom: 40px; }
+.role-note { padding: 14px 18px; background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--highlight); border-radius: 2px; font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 40px; }
+.role-note strong { color: var(--ink); font-weight: 400; }
+
+/* ─── ARTICLE LIST ────────────────────────────────────── */
+.article-list { display: flex; flex-direction: column; gap: 1px; }
+.article-item { background: var(--white); padding: 20px 24px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; transition: background 0.12s; }
+.article-item:hover { background: #efefeb; }
+.article-title { font-size: 15px; font-weight: 400; color: var(--ink); margin-bottom: 4px; }
+.article-title a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s, color 0.15s; }
+.article-title a:hover { color: var(--highlight); border-color: var(--highlight); }
+.article-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.article-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.article-tag { font-size: 10px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; white-space: nowrap; background: #f0eeea; color: var(--muted); }
+.article-tag.framework { background: #fdf3ec; color: #7a3510; }
+.article-tag.written { background: #eef7f2; color: #1a5236; }
+.article-tag.edited { background: #eef3fb; color: #1a3a6e; }
+
+/* ─── CASE STUDY METRICS ──────────────────────────────── */
+.metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 2px; }
+.metric-box { background: var(--ink); padding: 24px 20px; text-align: center; }
+.metric-box-num { font-size: 26px; font-weight: 300; color: var(--white); display: block; letter-spacing: -0.02em; margin-bottom: 4px; }
+.metric-box-label { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,240,0.55); }
+
+/* ─── CASE STUDY GRID ─────────────────────────────────── */
+.case-study { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.case-block { background: var(--white); padding: 32px; }
+.case-block.full { grid-column: 1 / -1; }
+.case-block h3 { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.case-block p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.case-block p + p { margin-top: 10px; }
+.case-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.case-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 400; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px; margin-top: 16px; transition: color 0.15s, border-color 0.15s; }
+.case-link:hover { color: var(--highlight); border-color: var(--highlight); }
+
+/* ─── DATA SKILLS GRID ─────────────────────────────────── */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.skill-card { background: var(--white); padding: 28px 28px 32px; }
+.skill-label { font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--highlight); margin-bottom: 10px; }
+.skill-title { font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 8px; }
+.skill-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.skill-stack { font-size: 10px; color: var(--muted); margin-top: 12px; letter-spacing: 0.07em; font-style: italic; opacity: 0.75; }
+
+/* ─── TESTIMONIAL ─────────────────────────────────────── */
+.testimonial-section { padding: 0 40px 80px; max-width: 1200px; margin: 0 auto; }
+.testimonial { background: var(--white); padding: 36px; }
+.testimonial-quote { font-size: 15px; font-weight: 300; line-height: 1.75; color: #3a3935; margin-bottom: 28px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 14px; }
+.testimonial-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.testimonial-name { font-size: 14px; font-weight: 400; color: var(--ink); }
+.testimonial-name a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+.testimonial-name a:hover { border-color: var(--ink); }
+.testimonial-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule); padding: 32px 40px;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-left { font-size: 13px; color: var(--muted); }
+.footer-right a { font-size: 13px; color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+.footer-right a:hover { border-color: var(--ink); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .hero { padding: 100px 20px 60px; grid-template-columns: 1fr; gap: 40px; }
+  .hero-photo { width: 160px; border-radius: 50%; }
+  .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+  .quote-section { padding: 56px 20px 24px; }
+  .page-section { padding: 60px 20px; }
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+  .case-study { grid-template-columns: 1fr; }
+  .case-block.full { grid-column: 1; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .testimonial-section { padding: 0 20px 60px; }
+  footer { padding: 28px 20px; flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="home.html">Owen Mulhern</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="citations.html">Citations</a></li>
+    <li><a href="mailto:owenhmulhern@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Growth &amp; Email Marketing</p>
+    <h1>Owen Mulhern<br><em>growth infrastructure</em></h1>
+    <p class="hero-sub">Email programme management, GA4 attribution, content strategy, and deliverability for acquired and scaling media assets.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Email marketing</span>
+      <span class="hero-tag">GA4 &amp; attribution</span>
+      <span class="hero-tag">Content strategy</span>
+      <span class="hero-tag">Deliverability</span>
+      <span class="hero-tag">Data journalism</span>
+    </div>
+  </div>
+  <img class="hero-photo" src="assets/images/owen-profile.webp" alt="Owen Mulhern">
+</section>
+
+<!-- METRICS -->
+<div class="metrics-bar">
+  <div class="metric-item">
+    <span class="metric-num">2×</span>
+    <span class="metric-label">Click volume increase</span>
+  </div>
+  <div class="metric-item">
+    <span class="metric-num">50K</span>
+    <span class="metric-label">Unengaged contacts cut</span>
+  </div>
+  <div class="metric-item">
+    <span class="metric-num">232</span>
+    <span class="metric-label">Demos booked (Zest)</span>
+  </div>
+  <div class="metric-item">
+    <span class="metric-num">27%</span>
+    <span class="metric-label">Lead capture rate</span>
+  </div>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="quote-section">
+  <p class="pull-quote">"Just as comfortable in a strategy conversation as he is deep in a spreadsheet debugging GA4 tracking issues."</p>
+  <p class="pull-quote-attr">— Beatus Hoang &nbsp;·&nbsp; Sr. Growth Manager, Semrush &nbsp;·&nbsp; managed Owen directly</p>
+</div>
+
+<!-- SEMRUSH -->
+<section class="page-section">
+  <p class="section-eyebrow">Semrush &nbsp;·&nbsp; 2024–2025</p>
+  <h2 class="section-heading">Growth media &amp; email programme</h2>
+  <p class="section-desc">Managed Semrush's two acquired email assets — The Growth Bulletin and The Early Checkout. Audited GA4 data discrepancies to restore purchase-path attribution, restructured the full email programme, cut 50K unengaged contacts to protect deliverability, and ran content experiments that doubled click volume.</p>
+  <div class="role-note">
+    <strong>Role:</strong> Growth manager reporting to Sr. Growth Manager Beatus Hoang. Full ownership of strategy, content production, contractor management, platform migration (ActiveCampaign → Beehiiv), deliverability, and analytics. Managed budget and contractor relationships independently.
+  </div>
+
+  <div class="article-list">
+
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://moovapp2023.github.io/FACTS_framework/" target="_blank">The FACTS Framework — Original AIO Framework</a></p>
+        <p class="article-desc">An original AI Optimisation framework built from Semrush proprietary research data — not consensus opinion. FACTS gives content teams a measurable structure for AI-generated search, developed when most practitioners were still guessing. Source-first and methodology-transparent.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag framework">Original framework</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://newsletter.thegrowthbulletin.com/p/get-big-1-how-to-build-a-revenue-generating-content-strategy" target="_blank">How to Build a Revenue-Generating Content Strategy</a></p>
+        <p class="article-desc">A tactical guide on mapping content directly to enterprise revenue pipelines. Covers funnel architecture, content-to-revenue attribution, and distribution for acquired media assets — written from the perspective of someone who has audited GA4 discrepancies, restructured attribution, and tracked impact on LTV:CAC from first touch to close.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag written">Written</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://newsletter.thegrowthbulletin.com/p/marketing-for-growth-marketing-finance" target="_blank">Marketing for Growth: Marketing &amp; Finance</a></p>
+        <p class="article-desc">Long-form piece on the relationship between marketing investment and financial performance — the framing that CMOs and PE portfolio teams use to structure budget allocation decisions.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag written">Written</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://thegrowthbulletin.com/12-ways-to-streamline-your-marketing-efforts-with-ai/" target="_blank">12 Ways to Streamline Your Marketing Efforts with AI</a></p>
+        <p class="article-desc">Part of the content experiment programme that doubled click volume. Edited for The Growth Bulletin — practical AI applications for marketing teams, structured to drive direct traffic to Semrush product pages.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag edited">Edited</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+
+    <div class="article-item">
+      <div>
+        <p class="article-title"><a href="https://thegrowthbulletin.com" target="_blank">The Growth Bulletin — Newsletter Landing Page</a></p>
+        <p class="article-desc">Copy, structure, and value proposition for Semrush's acquired growth marketing newsletter. Built to convert growth marketers arriving from paid and organic channels.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag written">Copy &amp; design</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ZEST CASE STUDY -->
+<section class="page-section">
+  <p class="section-eyebrow">Zest &nbsp;·&nbsp; 2024–2026</p>
+  <h2 class="section-heading">Content &amp; conversion, a case study</h2>
+  <p class="section-desc">Zest is a French HR SaaS company. Inherited a pillar article at position 12 with a weak conversion path. Rebuilt the funnel, built original tools independently, and drove 232 demo reservations from content that previously generated nothing.</p>
+  <div class="role-note">
+    <strong>Role:</strong> Freelance content strategist and copywriter. Full ownership from keyword analysis to tool development to conversion tracking. All tools built independently using HTML/CSS/JS.
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-box">
+      <span class="metric-box-num">1,100+</span>
+      <span class="metric-box-label">Sessions from content</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">232</span>
+      <span class="metric-box-label">Demos reserved</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">27%</span>
+      <span class="metric-box-label">Lead capture rate</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">6m 9s</span>
+      <span class="metric-box-label">Avg. time on tool page</span>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="case-block full">
+      <h3>What was done</h3>
+      <p>Diagnosed the conversion gap: the CTA (reserve a demo) was too strong for the reader stage. Rebuilt the funnel from the reader's perspective.</p>
+      <p>Built a custom HTML survey generator that captures leads at a 27% rate, currently pulling 7% CTR from the pillar article. Extended the cluster with a budget-allocation article featuring an independently-built ROI calculator — a sector first that passed expert scrutiny and averages 6 minutes 9 seconds on page.</p>
+      <a class="case-link" href="https://zestmeup.com/solution/barometre-social-outil-rh-de-mesure-du-climat-social/" target="_blank">View pillar article ↗</a>
+    </div>
+    <div class="case-block">
+      <h3>Pillar performance</h3>
+      <img class="case-img" src="assets/images/pillar-performance.png" alt="Pillar article performance" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+      <p style="display:none;font-size:13px;color:var(--muted);margin-top:8px;">Position 12 → 4, climbing</p>
+      <p>Pillar article moved from position 12 to 4, with 7% CTR to the survey generator.</p>
+      <a class="case-link" href="https://zestmeup.com/lp/generateur-de-questionnaire-barometre-social-gratuit-baromex-by-zest/" target="_blank">View survey generator ↗</a>
+    </div>
+    <div class="case-block">
+      <h3>ROI calculator</h3>
+      <img class="case-img" src="assets/images/roi-calculator.png" alt="ROI calculator" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+      <p style="display:none;font-size:13px;color:var(--muted);margin-top:8px;">6m 9s average time on page</p>
+      <p>Independently built a calculation formula for the ROI of social climate measurement — a sector first. Average time on page: 6 minutes and 9 seconds.</p>
+      <a class="case-link" href="https://zestmeup.com/livre-blanc/calculez-le-roi-de-votre-ecoute-avec-zest/" target="_blank">View ROI calculator ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+  <div class="testimonial">
+    <p class="testimonial-quote">"Owen is one of those growth marketers who's just as comfortable in a strategy conversation as he is deep in a spreadsheet debugging GA4 tracking issues. He reported to me while running Semrush's acquired email assets, The Growth Bulletin and The Early Checkout. He didn't just keep the lights on. He completely overhauled our email program… Whether he was tracking down data discrepancies or running content experiments that doubled our click volume, he owned it completely. He never made excuses and was fully transparent when things didn't work. He's calm under pressure, manages contractors and budgets well, and treats whatever channel he's running like it's his own business. I highly recommend Owen for any growth role."</p>
+    <div class="testimonial-author">
+      <img class="testimonial-avatar" src="assets/images/beatus.jpeg" alt="Beatus Hoang">
+      <div>
+        <p class="testimonial-name"><a href="https://www.linkedin.com/in/beatus-hoang/" target="_blank">Beatus Hoang</a></p>
+        <p class="testimonial-role">Sr. Growth Manager, Semrush &nbsp;·&nbsp; managed Owen directly &nbsp;·&nbsp; Feb 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA SKILLS -->
+<section class="page-section">
+  <p class="section-eyebrow">Earth.org &nbsp;·&nbsp; 2020–2022</p>
+  <h2 class="section-heading">Technical data skills</h2>
+  <p class="section-desc">Led the data team at Earth.org, producing original research and data visualisations cited by US law reviews, peer-reviewed journals, and government agencies. The same analytical rigour applied to the Semrush and Zest work above.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <p class="skill-label">Original research · 2025</p>
+      <h3 class="skill-title">California Groundwater Crisis</h3>
+      <p class="skill-desc">Original projection estimating 250 years of viable aquifer extraction, built on USGS and GRACE satellite data. Cited in US law reviews.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Dataviz series · 2021</p>
+      <h3 class="skill-title">Sea Level Rise 2100</h3>
+      <p class="skill-desc">Six major coastal cities modelled under projected 2100 sea level rise scenarios using IPCC projection datasets and city-level elevation data.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Data journalism · 2021</p>
+      <h3 class="skill-title">Too Hot To Live</h3>
+      <p class="skill-desc">Wet-bulb temperature modelling across Latin America and the Middle East. Examines the physical limits of human habitability under warming scenarios.</p>
+      <p class="skill-stack">Python · R · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Dataviz · 2021</p>
+      <h3 class="skill-title">Air Pollution in London</h3>
+      <p class="skill-desc">PM2.5 exposure mapped as cigarette equivalents per week by borough — making invisible public health risk legible to a general audience.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Dataviz · 2020</p>
+      <h3 class="skill-title">US Dams Under Pressure</h3>
+      <p class="skill-desc">91,000 US dams mapped against projected heat extremes under 2°C and 4°C warming using MPI-GE climate simulations.</p>
+      <p class="skill-stack">Python · QGIS · Illustrator</p>
+    </div>
+    <div class="skill-card">
+      <p class="skill-label">Data journalism · 2021</p>
+      <h3 class="skill-title">Shifting Baselines</h3>
+      <p class="skill-desc">60 years of German weather data charted across four generations — demonstrating how each cohort normalises a warmer baseline.</p>
+      <p class="skill-stack">Python · Illustrator</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-left">Owen Mulhern &nbsp;·&nbsp; owenhmulhern@gmail.com</span>
+  <span class="footer-right"><a href="home.html">← Full portfolio</a></span>
+</footer>
+
+</body>
+</html>
