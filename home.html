@@ -917,7 +917,7 @@ footer {
 
       <div class="work-card" data-modal="groundwater">
         <div style="overflow:hidden;position:relative;">
-          <img class="work-card-img" src="assets/groundwater/frame-16.jpg" alt="California Groundwater">
+          <img class="work-card-img" src="assets/groundwater/gw-01.jpg" alt="California Groundwater">
           <span class="work-card-arrow">↗</span>
         </div>
         <div class="work-card-body">
@@ -995,12 +995,12 @@ footer {
 
       <div class="work-card" data-modal="facts">
         <div style="overflow:hidden;position:relative;">
-          <img class="work-card-img" src="assets/images/facts-cover.png" alt="FACTS Framework">
+          <img class="work-card-img" src="assets/images/facts-cover.png" alt="FACTS GEO Framework">
           <span class="work-card-arrow">↗</span>
         </div>
         <div class="work-card-body">
           <p class="work-card-client">Semrush</p>
-          <h3 class="work-card-title">The FACTS Framework</h3>
+          <h3 class="work-card-title">The FACTS GEO Framework</h3>
           <p class="work-card-desc">Original AIO content framework built from Semrush proprietary research data — not consensus opinion. A measurable structure for AI-era search, developed when most practitioners were still guessing.</p>
         </div>
       </div>
@@ -1164,17 +1164,13 @@ footer {
     <button class="modal-close" aria-label="Close">&times;</button>
     <div class="modal-img-wrap">
       <button class="modal-img-nav prev" aria-label="Previous">&#8592;</button>
-      <img class="modal-img" src="assets/groundwater/frame-16.jpg" alt="Groundwater panel">
+      <img class="modal-img" src="assets/groundwater/gw-01.jpg" alt="Groundwater panel">
       <button class="modal-img-nav next" aria-label="Next">&#8594;</button>
     </div>
     <div class="modal-body">
       <p class="modal-client">Earth.org</p>
-      <p class="modal-counter" id="gw-counter">1 / 3</p>
-      <div class="modal-dots">
-        <button class="modal-dot active" data-idx="0"></button>
-        <button class="modal-dot" data-idx="1"></button>
-        <button class="modal-dot" data-idx="2"></button>
-      </div>
+      <p class="modal-counter" id="gw-counter">1 / 16</p>
+      <div class="modal-dots"></div>
       <h2 class="modal-title" id="gw-title">The Scanlon extrapolation</h2>
       <p class="modal-desc" id="gw-desc">The headline figure, 250 years of viable extraction remaining, is an original calculation built on depletion rate projections from Scanlon et al. (2012) and CVHM2 hydrological basin modeling. Satellite GRACE data provides the empirical depletion curve that anchors the projection to observed drawdown since the 1960s.</p>
       <p class="modal-stack">Built using Python, QGIS, and Adobe Illustrator.</p>
@@ -1272,11 +1268,11 @@ footer {
   <div class="modal-box">
     <button class="modal-close" aria-label="Close">&times;</button>
     <div class="modal-img-wrap">
-      <img class="modal-img" src="assets/images/facts-cover.png" alt="FACTS Framework">
+      <img class="modal-img" src="assets/images/facts-cover.png" alt="FACTS GEO Framework">
     </div>
     <div class="modal-body">
       <p class="modal-client">Semrush</p>
-      <h2 class="modal-title">The FACTS Framework</h2>
+      <h2 class="modal-title">The FACTS GEO Framework</h2>
       <p class="modal-desc">An original AI Optimisation framework built from Semrush proprietary research data — not a summary of existing guidance. FACTS gives content teams a measurable structure for performing in AI-generated search results, developed at a time when most practitioners were still guessing. Built with the same rigour as the Earth.org research pieces: source-first, methodology-transparent, and independently verifiable.</p>
       <a class="modal-link" href="https://moovapp2023.github.io/FACTS_framework/" target="_blank">Read the FACTS Framework ↗</a>
     </div>
@@ -1508,11 +1504,37 @@ footer {
 
   // ─── MODALS ─────────────────────────────────────────
   var GW_PANELS = [
-    { src: 'assets/groundwater/frame-16.jpg', title: 'The Scanlon extrapolation', desc: 'The headline figure, 250 years of viable extraction remaining, is an original calculation built on depletion rate projections from Scanlon et al. (2012) and CVHM2 hydrological basin modeling. Satellite GRACE data provides the empirical depletion curve that anchors the projection to observed drawdown since the 1960s. The estimate assumes no major change in extraction demand, which drought cycles are already eroding.' },
-    { src: 'assets/groundwater/frame-18.jpg', title: 'Permanent loss: subsidence and collapsed storage', desc: 'USGS data places permanent aquifer storage loss in the Central Valley at roughly 15%. When depletion consistently outpaces recharge, the clay interbeds between aquifer zones compact and collapse, a process called subsidence. Critically, the pockets lost first are the shallowest: the easiest to reach and, under normal conditions, the easiest to recharge.' },
-    { src: 'assets/groundwater/frame-19.jpg', title: 'More droughts, deeper depletion, SGMA on the horizon', desc: 'Climate projections point toward more frequent and more severe droughts across California, each episode driving extraction further beyond recharge thresholds. The Sustainable Groundwater Management Act (SGMA), passed in 2014, mandates that all high- and medium-priority basins reach sustainability by 2040, the first binding regulatory ceiling on Central Valley extraction.' }
+    { src: 'assets/groundwater/gw-01.jpg', title: 'Californian agriculture\'s groundwater', desc: 'The aquifer took 15,000 years to fill. Since 1960, extraction has drawn down a measurable share of that stock — with 234 years of viable supply remaining at current depletion rates. The gap between recharge and extraction has been widening for decades, and the usable portion is shrinking faster than the raw figure suggests.' },
+    { src: 'assets/groundwater/gw-02.jpg', title: 'This much is gone forever', desc: 'Each drought accelerates depletion, and the losses don\'t recover. The red band marks storage permanently removed — clay interbeds compacted by over-extraction collapse and can\'t hold water again. Six distinct drought episodes since the 1960s have each driven the baseline permanently lower.' },
+    { src: 'assets/groundwater/gw-03.jpg', title: 'Where groundwater goes', desc: 'Agriculture accounts for the overwhelming majority of Central Valley groundwater use — consistently around 90% from 1960 to 2020. Cities draw the remainder. The demand side of the equation is almost entirely agricultural, and that share has barely budged over sixty years.' },
+    { src: 'assets/groundwater/gw-04.jpg', title: 'Agriculture\'s reliance', desc: 'During drought peaks, agriculture\'s groundwater dependence spikes to 70% of total water used. Surface water shortfalls are offset almost entirely by pumping deeper into aquifers — accelerating depletion exactly when conditions are most stressed.' },
+    { src: 'assets/groundwater/gw-05.jpg', title: 'It\'s emptying locals\' water', desc: 'Reported dry wells track closely with depletion events. The spike in the chart corresponds to the 2012–2016 drought, where hundreds of domestic wells — serving households, not farms — ran dry in a matter of months, with spikes reaching 250 reported failures in a single year.' },
+    { src: 'assets/groundwater/gw-06.jpg', title: 'One drought, 2,600 homes waterless', desc: 'The 2012–2016 drought left at least 2,600 homes without water. The dry well breakdown by outcome — resolved, interim solution, or outage — shows most were not cleanly resolved. The figure is a floor estimate: reporting was voluntary, and the real count is likely far higher.' },
+    { src: 'assets/groundwater/gw-07.jpg', title: 'What dry wells cost whom', desc: 'Resolution costs fall entirely on residents. A fully resolved dry well runs $15,000–$35,000+. Interim state-funded connections cost $1,500–$3,500 upfront plus $300–$700 per month. Those left unresolved pay $100–$600 per month indefinitely out of pocket — or go without running water.' },
+    { src: 'assets/groundwater/gw-08.jpg', title: 'Where the water went in 2020', desc: 'Of the groundwater used by Central Valley agriculture in 2020, 32.2% went to almonds and pistachios — both primarily export crops. Another 24.6% went to perennials: long-lived trees that must be irrigated through droughts regardless of conditions, making demand inelastic to water scarcity.' },
+    { src: 'assets/groundwater/gw-09.jpg', title: 'The (agricultural) revenue generated', desc: 'Almonds generated $4.95B and pistachios $2.93B — both classified as largely untaxed exports. Total Central Valley agricultural revenue runs to $61B per year, mostly untaxed. The water enabling that revenue is extracted from a shared public aquifer with no extraction charge.' },
+    { src: 'assets/groundwater/gw-10.jpg', title: 'Yearly groundwater P&L', desc: 'Agriculture draws billions in revenue from groundwater. The public absorbs at least $1.5 billion annually in costs — emergency water solutions, subsidence damage, infrastructure repair — with no mechanism to recover those costs from the extractors generating the surplus.' },
+    { src: 'assets/groundwater/gw-11.jpg', title: 'The public cost itemised', desc: 'The $1.5B+ annual public cost breaks into five categories: emergency and replacement water solutions, subsidence-driven infrastructure damage, higher pumping energy costs from deeper extraction, diminishing property values in affected areas, and the sunk cost of dead wells.' },
+    { src: 'assets/groundwater/gw-12.jpg', title: '$4.24 billion and counting', desc: 'At least $4.24 billion has been spent helping households whose wells have gone dry. The figure is a floor estimate — reported programmes only, covering a fraction of affected households. Most are still fending for themselves with no state assistance.' },
+    { src: 'assets/groundwater/gw-13.jpg', title: 'Who\'s fending for themselves', desc: 'Most households left without state assistance are Latinx communities — the same workers employed on the farms that are drying their wells. The populations most exposed to extraction\'s costs are also the least positioned to absorb them financially or politically.' },
+    { src: 'assets/groundwater/gw-14.jpg', title: 'The economic case, scrutinised', desc: 'California agriculture\'s economic justification — jobs and tax revenue — doesn\'t hold up under scrutiny. The jobs created are overwhelmingly minimum wage. The tax contribution is limited by extensive agricultural exemptions that reduce the sector\'s public fiscal return.' },
+    { src: 'assets/groundwater/gw-15.jpg', title: 'The exact P&L is unknown', desc: 'The analysis here captures only the variables that can be quantified. The true cost of Central Valley groundwater depletion involves far more: long-run food security, compounding drought risk, ecological externalities, and the full scale of land subsidence on infrastructure.' },
+    { src: 'assets/groundwater/gw-16.jpg', title: 'I intend to investigate', desc: 'This is the opening data brief on California\'s Central Valley groundwater. The reporting continues — this series is the foundation for a deeper investigation into how water rights, agricultural subsidies, and regulatory gaps interact to produce a structural depletion crisis.' }
   ];
   var gwCurrent = 0;
+
+  function gwBuildDots() {
+    var m = document.getElementById('modal-groundwater');
+    var container = m.querySelector('.modal-dots');
+    container.innerHTML = '';
+    GW_PANELS.forEach(function (_, i) {
+      var btn = document.createElement('button');
+      btn.className = 'modal-dot' + (i === 0 ? ' active' : '');
+      btn.dataset.idx = i;
+      btn.addEventListener('click', function () { gwShow(i); });
+      container.appendChild(btn);
+    });
+  }
 
   function gwShow(idx) {
     gwCurrent = (idx + GW_PANELS.length) % GW_PANELS.length;
@@ -1527,14 +1549,11 @@ footer {
 
   document.getElementById('modal-groundwater').querySelector('.prev').addEventListener('click', function () { gwShow(gwCurrent - 1); });
   document.getElementById('modal-groundwater').querySelector('.next').addEventListener('click', function () { gwShow(gwCurrent + 1); });
-  document.getElementById('modal-groundwater').querySelectorAll('.modal-dot').forEach(function (d) {
-    d.addEventListener('click', function () { gwShow(parseInt(d.dataset.idx)); });
-  });
 
   function openModal(id) {
     var m = document.getElementById('modal-' + id);
     if (!m) return;
-    if (id === 'groundwater') gwShow(0);
+    if (id === 'groundwater') { gwBuildDots(); gwShow(0); }
     m.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
