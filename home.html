@@ -686,6 +686,78 @@ footer {
 
 .modal-link:hover { color: var(--highlight); border-color: var(--highlight); }
 
+/* ─── GTM CARD & MODAL ────────────────────────────────── */
+.work-card-visual {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.4s ease;
+}
+.work-card:hover .work-card-visual { transform: scale(1.02); }
+.work-card-visual-num {
+  color: var(--white);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.work-card-visual-label {
+  color: rgba(255,255,255,0.45);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.modal-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.modal-metric {
+  background: var(--white);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.modal-metric-num {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.modal-metric-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.modal-case-block { margin-bottom: 28px; }
+.modal-case-block:last-child { margin-bottom: 0; }
+.modal-case-block h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.modal-case-block p {
+  font-size: 15px;
+  color: #4a4640;
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+.modal-case-block p:last-child { margin-bottom: 0; }
+
 /* ─── PULL QUOTE ──────────────────────────────────────── */
 .quote-section {
   padding: 80px 80px 32px;
@@ -861,7 +933,7 @@ footer {
 <section class="hero">
   <div class="hero-text">
     <p class="hero-eyebrow">Ho Chi Minh City</p>
-    <h1>Owen Mulhern<br><em>growth strategist</em></h1>
+    <h1>Owen Mulhern</h1>
     <div class="hero-tags">
       <span class="hero-tag">Growth strategy</span>
       <span class="hero-tag">Data journalism &amp; content</span>
@@ -914,6 +986,22 @@ footer {
 
   <div class="carousel-viewport" id="carViewport">
     <div class="carousel-track" id="carTrack">
+
+      <div class="work-card" data-modal="gtm">
+        <div style="overflow:hidden;position:relative;">
+          <div class="work-card-visual">
+            <span class="work-card-visual-num">3.87x</span>
+            <span class="work-card-visual-label">LTV:CAC</span>
+          </div>
+          <span class="work-card-arrow">↗</span>
+        </div>
+        <div class="work-card-body">
+          <p class="work-card-client">Confidential client · 2026</p>
+          <h3 class="work-card-title">GTM strategy & revenue model for a broken advisory</h3>
+          <p class="work-card-desc">VC advisory running 0.64x LTV:CAC with a leaking qualification funnel. Quantified the problem, identified four levers, built a live scenario model to profitability.</p>
+          <p class="work-card-stack">Revenue modelling · GTM strategy · Fractional growth</p>
+        </div>
+      </div>
 
       <div class="work-card" data-modal="groundwater">
         <div style="overflow:hidden;position:relative;">
@@ -1033,53 +1121,6 @@ footer {
   </div>
 </section>
 
-<!-- GTM GROWTH STRATEGY CASE STUDY -->
-<section class="page-section">
-  <p class="section-eyebrow">Confidential client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy engagement</p>
-  <h2 class="section-heading">GTM strategy &amp; revenue model for a broken advisory</h2>
-  <p class="section-desc">A VC advisory firm with unsustainable unit economics — high CAC, low LTV, and a qualification process burning human time on calls that went nowhere. Came in to quantify the problem, diagnose the levers, and build a live revenue model charting the path to profitability.</p>
-  <div class="role-note">
-    <strong>Role:</strong> Fractional growth strategist. Diagnosis, market segmentation, product strategy, and revenue modelling. The model stays live — every assumption is a toggle, re-runnable against real data as it comes in.
-  </div>
-
-  <div class="metrics-row">
-    <div class="metric-box">
-      <span class="metric-box-num">3.87x</span>
-      <span class="metric-box-label">Modelled LTV:CAC (from 0.64x)</span>
-    </div>
-    <div class="metric-box">
-      <span class="metric-box-num">$284</span>
-      <span class="metric-box-label">Modelled CAC (from $471)</span>
-    </div>
-    <div class="metric-box">
-      <span class="metric-box-num">$1,100</span>
-      <span class="metric-box-label">Modelled LTV (from $300)</span>
-    </div>
-    <div class="metric-box">
-      <span class="metric-box-num">+$43K</span>
-      <span class="metric-box-label">Month-24 cash (before overhead)</span>
-    </div>
-  </div>
-
-  <div class="case-study">
-    <div class="case-block full">
-      <h3>The problem</h3>
-      <p>The client ran a VC advisory for founders who couldn't raise. Natural market. Broken economics: $471 CAC, $300 LTV, 0.64x ratio, burning cash by month 24. The ask was qualitative — "we're not converting well." The real issues were structural: an unstandardised product, no trust infrastructure, and an unfiltered qualification funnel absorbing human time on calls that went nowhere.</p>
-      <p>My job was to quantify it, name the levers, and build a model that answered the actual question: what does fixing this look like, and what does it cost?</p>
-    </div>
-    <div class="case-block">
-      <h3>Diagnosis: four levers</h3>
-      <p>After mapping the full acquisition funnel — cold outbound, IRL meetups, VC rejection volume — the fix came down to four things: productise the IP into a repeatable framework, rebuild website authority around real expertise, automate lead filtering with a scoring form built on that framework, and a minimal content tier for thought leadership. Each lever had a modelled impact on CAC, LTV, and human time cost.</p>
-      <p>The channel choice (cold outbound) is correct for a high-value service. The problem was running a high-CAC channel against a low-LTV product. Productising the IP to reach $1,000+ LTV is what makes the channel work.</p>
-    </div>
-    <div class="case-block">
-      <h3>The model</h3>
-      <p>Built a live revenue model covering all four levers across 18 configurations — LTV configs from $300 to $1,100, content tiers from signal-only to heavy investment, engagement level from none to $3,000/mo fractional. Every number is a toggle, not a fixed assumption.</p>
-      <p>Optimised scenario: 3.87x CAC:LTV, positive cash by month 24. The largest single variable — automatically converting VC rejection volume into advisory leads — is likely underestimated in the model and could be the difference-maker.</p>
-    </div>
-  </div>
-</section>
-
 <!-- SERVICES -->
 <section class="services-section">
   <p class="services-eyebrow">Services</p>
@@ -1157,6 +1198,38 @@ footer {
 </footer>
 
 <!-- ─── WORK MODALS ──────────────────────────────────── -->
+
+<!-- GTM Case Study -->
+<div class="modal" id="modal-gtm" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-body" style="padding-top:56px;">
+      <p class="modal-client">Confidential client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy</p>
+      <h2 class="modal-title">GTM strategy &amp; revenue model for a broken advisory</h2>
+      <div class="modal-metrics">
+        <div class="modal-metric"><span class="modal-metric-num">3.87x</span><span class="modal-metric-label">LTV:CAC (from 0.64x)</span></div>
+        <div class="modal-metric"><span class="modal-metric-num">$284</span><span class="modal-metric-label">CAC (from $471)</span></div>
+        <div class="modal-metric"><span class="modal-metric-num">$1,100</span><span class="modal-metric-label">LTV (from $300)</span></div>
+        <div class="modal-metric"><span class="modal-metric-num">+$43K</span><span class="modal-metric-label">Month-24 cash</span></div>
+      </div>
+      <div class="modal-case-block">
+        <h3>The problem</h3>
+        <p>The client ran a VC advisory for founders who couldn't raise. Natural market. Broken economics: $471 CAC, $300 LTV, 0.64x ratio, burning cash by month 24. The ask was qualitative — "we're not converting well." The real issues were structural: an unstandardised product, no trust infrastructure, and an unfiltered qualification funnel absorbing human time on calls that went nowhere.</p>
+        <p>My job was to quantify it, name the levers, and build a model that answered the actual question: what does fixing this look like, and what does it cost?</p>
+      </div>
+      <div class="modal-case-block">
+        <h3>Diagnosis: four levers</h3>
+        <p>After mapping the full acquisition funnel — cold outbound, IRL meetups, VC rejection volume — the fix came down to four things: productise the IP into a repeatable framework, rebuild website authority around real expertise, automate lead filtering with a scoring form built on that framework, and a minimal content tier for thought leadership. Each lever had a modelled impact on CAC, LTV, and human time cost.</p>
+        <p>The channel choice (cold outbound) is correct for a high-value service. The problem was running a high-CAC channel against a low-LTV product. Productising the IP to reach $1,000+ LTV is what makes the channel work.</p>
+      </div>
+      <div class="modal-case-block">
+        <h3>The model</h3>
+        <p>Built a live revenue model covering all four levers across 18 configurations — LTV configs from $300 to $1,100, content tiers from signal-only to heavy investment, engagement level from none to $3,000/mo fractional. Every number is a toggle, not a fixed assumption.</p>
+        <p>Optimised scenario: 3.87x CAC:LTV, positive cash by month 24. The largest single variable — automatically converting VC rejection volume into advisory leads — is likely underestimated in the model and could be the difference-maker.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Groundwater -->
 <div class="modal" id="modal-groundwater" role="dialog" aria-modal="true">
