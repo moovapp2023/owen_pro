@@ -433,7 +433,6 @@ nav {
   line-height: 1.75;
   color: #3a3935;
   margin-bottom: 28px;
-  font-style: italic;
 }
 
 .testimonial-author {
@@ -788,16 +787,46 @@ footer {
   color: var(--muted);
   margin-top: 8px;
   letter-spacing: 0.07em;
-  font-style: italic;
   opacity: 0.75;
 }
 .modal-stack {
   font-size: 12px;
   color: var(--muted);
   letter-spacing: 0.04em;
-  font-style: italic;
   margin-bottom: 20px;
 }
+
+/* ─── CONTACT ─────────────────────────────────────────── */
+.contact-section {
+  background: var(--ink);
+  padding: 88px 40px;
+  text-align: center;
+}
+.contact-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.contact-eyebrow {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(245,244,240,0.45); margin-bottom: 16px;
+}
+.contact-heading {
+  font-size: clamp(36px, 4.5vw, 56px); font-weight: 300; letter-spacing: -0.02em;
+  line-height: 1.1; color: #f5f4f0; margin-bottom: 16px;
+}
+.contact-desc {
+  font-size: 15px; color: rgba(245,244,240,0.55); line-height: 1.7; margin-bottom: 36px;
+}
+.contact-email-link {
+  display: inline-block;
+  font-size: 20px; font-weight: 300; color: #f5f4f0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245,244,240,0.3);
+  padding-bottom: 4px;
+  letter-spacing: -0.01em;
+  transition: color 0.15s, border-color 0.15s;
+}
+.contact-email-link:hover { color: var(--highlight); border-color: var(--highlight); }
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 768px) {
@@ -824,7 +853,7 @@ footer {
   <ul class="nav-links">
     <li><a href="index.html">Work</a></li>
     <li><a href="citations.html">Citations</a></li>
-    <li><a href="mailto:owenhmulhern@gmail.com">Contact</a></li>
+    <li><a href="mailto:owen@getmulhern.com">Contact</a></li>
   </ul>
 </nav>
 
@@ -832,11 +861,11 @@ footer {
 <section class="hero">
   <div class="hero-text">
     <p class="hero-eyebrow">Ho Chi Minh City</p>
-    <h1>Owen Mulhern<br><em>analyst &amp; communicator</em></h1>
+    <h1>Owen Mulhern<br><em>growth strategist</em></h1>
     <div class="hero-tags">
-      <span class="hero-tag">Data journalism</span>
-      <span class="hero-tag">Content marketing</span>
-      <span class="hero-tag">Portfolio support</span>
+      <span class="hero-tag">Growth strategy</span>
+      <span class="hero-tag">Data journalism &amp; content</span>
+      <span class="hero-tag">Fundraising support</span>
     </div>
   </div>
   <img class="hero-photo" src="assets/images/owen-profile.webp" alt="Owen Mulhern">
@@ -1004,6 +1033,53 @@ footer {
   </div>
 </section>
 
+<!-- GTM GROWTH STRATEGY CASE STUDY -->
+<section class="page-section">
+  <p class="section-eyebrow">Confidential client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy engagement</p>
+  <h2 class="section-heading">GTM strategy &amp; revenue model for a broken advisory</h2>
+  <p class="section-desc">A VC advisory firm with unsustainable unit economics — high CAC, low LTV, and a qualification process burning human time on calls that went nowhere. Came in to quantify the problem, diagnose the levers, and build a live revenue model charting the path to profitability.</p>
+  <div class="role-note">
+    <strong>Role:</strong> Fractional growth strategist. Diagnosis, market segmentation, product strategy, and revenue modelling. The model stays live — every assumption is a toggle, re-runnable against real data as it comes in.
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-box">
+      <span class="metric-box-num">3.87x</span>
+      <span class="metric-box-label">Modelled LTV:CAC (from 0.64x)</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">$284</span>
+      <span class="metric-box-label">Modelled CAC (from $471)</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">$1,100</span>
+      <span class="metric-box-label">Modelled LTV (from $300)</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-box-num">+$43K</span>
+      <span class="metric-box-label">Month-24 cash (before overhead)</span>
+    </div>
+  </div>
+
+  <div class="case-study">
+    <div class="case-block full">
+      <h3>The problem</h3>
+      <p>The client ran a VC advisory for founders who couldn't raise. Natural market. Broken economics: $471 CAC, $300 LTV, 0.64x ratio, burning cash by month 24. The ask was qualitative — "we're not converting well." The real issues were structural: an unstandardised product, no trust infrastructure, and an unfiltered qualification funnel absorbing human time on calls that went nowhere.</p>
+      <p>My job was to quantify it, name the levers, and build a model that answered the actual question: what does fixing this look like, and what does it cost?</p>
+    </div>
+    <div class="case-block">
+      <h3>Diagnosis: four levers</h3>
+      <p>After mapping the full acquisition funnel — cold outbound, IRL meetups, VC rejection volume — the fix came down to four things: productise the IP into a repeatable framework, rebuild website authority around real expertise, automate lead filtering with a scoring form built on that framework, and a minimal content tier for thought leadership. Each lever had a modelled impact on CAC, LTV, and human time cost.</p>
+      <p>The channel choice (cold outbound) is correct for a high-value service. The problem was running a high-CAC channel against a low-LTV product. Productising the IP to reach $1,000+ LTV is what makes the channel work.</p>
+    </div>
+    <div class="case-block">
+      <h3>The model</h3>
+      <p>Built a live revenue model covering all four levers across 18 configurations — LTV configs from $300 to $1,100, content tiers from signal-only to heavy investment, engagement level from none to $3,000/mo fractional. Every number is a toggle, not a fixed assumption.</p>
+      <p>Optimised scenario: 3.87x CAC:LTV, positive cash by month 24. The largest single variable — automatically converting VC rejection volume into advisory leads — is likely underestimated in the model and could be the difference-maker.</p>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section class="services-section">
   <p class="services-eyebrow">Services</p>
@@ -1012,24 +1088,24 @@ footer {
 
     <div class="service-card">
       <p class="service-num">01</p>
-      <h3 class="service-title">Growth</h3>
-      <p class="service-desc">Email programmes, content funnels, GA4 attribution, deliverability. Tell me which metric to move — I'll diagnose where it's leaking and build the system to move it.</p>
+      <h3 class="service-title">Growth strategy</h3>
+      <p class="service-desc">GTM strategy, revenue modelling, go-to-market diagnosis. I quantify what's broken, identify the levers, build the model — then stay on to run it as a fractional growth officer.</p>
     </div>
 
     <div class="service-card">
       <p class="service-num">02</p>
-      <h3 class="service-title">Data storytelling</h3>
-      <p class="service-desc">I turn raw datasets and technical models into narratives and visuals calibrated to your audience — general readers, specialist outlets, or investors.</p>
+      <h3 class="service-title">Data journalism &amp; content</h3>
+      <p class="service-desc">Original research and content strategy that compounds. I produce data-led work that gets cited — and content funnels, attribution infrastructure, and email programmes that you can track to revenue.</p>
     </div>
 
     <div class="service-card">
       <p class="service-num">03</p>
-      <h3 class="service-title">Portfolio consultant</h3>
-      <p class="service-desc">Post-acquisition growth audits, attribution infrastructure, and LTV:CAC analysis. I have operated the kind of acquired media and content programmes that PE firms build value in.</p>
+      <h3 class="service-title">Fundraising support</h3>
+      <p class="service-desc">Growth infrastructure for funds and advisory services operating in the fundraising ecosystem. GTM strategy, LTV:CAC modelling, and post-acquisition programme management.</p>
     </div>
 
   </div>
-  <a class="services-cta" href="mailto:owenhmulhern@gmail.com">Let's talk ↗</a>
+  <a class="services-cta" href="mailto:owen@getmulhern.com">Let's talk ↗</a>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -1064,9 +1140,19 @@ footer {
   </div>
 </section>
 
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-inner">
+    <p class="contact-eyebrow">Get in touch</p>
+    <h2 class="contact-heading">Let's work together</h2>
+    <p class="contact-desc">Growth strategy, data journalism &amp; content, or fundraising support engagements.</p>
+    <a class="contact-email-link" href="mailto:owen@getmulhern.com">owen@getmulhern.com</a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
-  <span class="footer-left">Owen Mulhern &nbsp;·&nbsp; owenhmulhern@gmail.com</span>
+  <span class="footer-left">Owen Mulhern &nbsp;·&nbsp; <a href="mailto:owen@getmulhern.com">owen@getmulhern.com</a></span>
   <span class="footer-right"><a href="citations.html">Citations page &rarr;</a></span>
 </footer>
 
