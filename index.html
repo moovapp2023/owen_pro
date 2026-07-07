@@ -173,6 +173,10 @@ nav {
 .case-block h3 { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
 .case-block p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 .case-block p + p { margin-top: 10px; }
+#gtm .case-block h3 { font-size: 26px; font-weight: 400; letter-spacing: -0.01em; text-transform: none; color: var(--ink); margin-bottom: 16px; }
+.case-list { list-style: none; padding: 0; margin: 0 0 16px; }
+.case-list li { font-size: 14px; color: var(--muted); line-height: 1.5; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.case-list li:last-child { border-bottom: none; }
 
 .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 2px; }
 .metric { background: var(--ink); padding: 24px 20px; text-align: center; }
@@ -527,11 +531,11 @@ footer a:hover { border-color: var(--ink); }
 <!-- ═══ GROWTH STRATEGY ═══════════════════════════════════ -->
 <section class="client-section" id="gtm">
   <div class="client-header">
-    <p class="client-eyebrow">Confidential client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy engagement</p>
+    <p class="client-eyebrow">Confidential client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy</p>
     <h2>GTM strategy &amp; revenue model for a broken advisory</h2>
-    <p>A VC advisory firm with unsustainable unit economics — high CAC, low LTV, and a qualification process burning human time on calls that went nowhere. Brought in to quantify the problem, diagnose the levers, and build a live revenue model charting a path to profitability.</p>
+    <p>A VC advisory for founders who couldn't raise. Big market, broken unit economics. Brought in to quantify what was wrong, identify the levers, and build a live model charting the path to profitability.</p>
     <div class="client-role-note">
-      <strong>Role:</strong> Fractional growth strategist. Diagnosis, market segmentation, product strategy, and revenue modelling. The model stays live — every assumption is a toggle, re-runnable against real data as it comes in.
+      <strong>Role:</strong> Fractional growth strategist. Diagnosis, market segmentation, product strategy, revenue modelling. Model stays live with every assumption as a toggle.
     </div>
   </div>
 
@@ -556,19 +560,34 @@ footer a:hover { border-color: var(--ink); }
 
   <div class="case-study">
     <div class="case-block full">
-      <h3>The problem</h3>
-      <p>The client ran a VC advisory for founders who couldn't raise. Natural market. Broken economics: $471 CAC, $300 LTV, 0.64x ratio, burning cash by month 24. The ask was qualitative — "we're not converting well." The real issues were structural: an unstandardised product, no trust infrastructure, and an unfiltered qualification funnel absorbing human time on calls that went nowhere.</p>
-      <p>My job was to quantify it, name the levers, and build a model that answered the actual question: what does fixing this look like, and what does it cost?</p>
+      <h3>Initial state</h3>
+      <ul class="case-list">
+        <li>LTV:CAC at 0.64x. Cash flow negative by month 24.</li>
+        <li>$471 CAC against a $300 LTV product.</li>
+        <li>Qualification funnel unfiltered. Human time burned on calls that went nowhere.</li>
+        <li>No standardised product. No trust infrastructure. No lead scoring.</li>
+      </ul>
     </div>
     <div class="case-block">
-      <h3>Diagnosis: four levers</h3>
-      <p>After mapping the full acquisition funnel — cold outbound, IRL meetups, VC rejection volume — the fix came down to four things: productise the IP into a repeatable framework, rebuild website authority around real expertise, automate lead filtering with a scoring form built on that framework, and a minimal content tier for thought leadership. Each lever had a modelled impact on CAC, LTV, and human time cost.</p>
-      <p>The channel choice (cold outbound) is correct for a high-value service. The problem was running a high-CAC channel against a low-LTV product. Productising the IP to reach $1,000+ LTV is what makes the channel work.</p>
+      <h3>Solution</h3>
+      <p>Mapped the acquisition funnel. Identified four fixable levers.</p>
+      <ul class="case-list">
+        <li>Productise the IP into a repeatable framework.</li>
+        <li>Rebuild authority around demonstrable expertise.</li>
+        <li>Automate lead qualification with a framework-based scoring form.</li>
+        <li>Minimal content tier for inbound signal.</li>
+      </ul>
+      <p>Built a live model across 18 configurations. Every assumption a toggle, not a fixed input.</p>
     </div>
     <div class="case-block">
-      <h3>The model</h3>
-      <p>Built a live revenue model covering all four levers across 18 configurations — LTV configs from $300 to $1,100, content tiers from signal-only to heavy investment, engagement level from none to $3,000/mo fractional. Every number is a toggle, not a fixed assumption.</p>
-      <p>Optimised scenario: 3.87x CAC:LTV, positive cash by month 24. The largest single variable — automatically converting VC rejection volume into advisory leads — is likely underestimated in the model and could be the difference-maker.</p>
+      <h3>Outcome</h3>
+      <ul class="case-list">
+        <li>LTV:CAC from 0.64x to 3.87x</li>
+        <li>CAC from $471 to $284</li>
+        <li>LTV from $300 to $1,100</li>
+        <li>Cash positive by month 24. +$43K before overhead.</li>
+      </ul>
+      <p>VC rejection pipeline likely underestimated. Biggest upside variable in the model.</p>
     </div>
   </div>
 </section>
