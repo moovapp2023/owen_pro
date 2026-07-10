@@ -1358,13 +1358,13 @@ footer a:hover { border-color: var(--ink); }
 
   pdfModal.querySelector('.modal-close').addEventListener('click', function () {
     pdfModal.classList.remove('open');
-    pdfIframe.src = '';
+    pdfIframe.src = 'about:blank';
     document.body.style.overflow = '';
   });
   pdfModal.addEventListener('click', function (e) {
     if (e.target === pdfModal) {
       pdfModal.classList.remove('open');
-      pdfIframe.src = '';
+      pdfIframe.src = 'about:blank';
       document.body.style.overflow = '';
     }
   });
