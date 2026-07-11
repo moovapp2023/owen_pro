@@ -97,7 +97,24 @@ nav {
   transition: color 0.15s;
 }
 
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+.nav-item { position: relative; }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 1px); left: -16px;
+  background: var(--bg); border: 1px solid var(--rule);
+  min-width: 180px; display: none; flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07); z-index: 110;
+}
+.nav-item:hover .nav-dropdown-menu { display: flex; }
+.nav-dropdown-item {
+  display: block; padding: 10px 16px;
+  font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  border-bottom: 1px solid var(--rule); transition: color 0.12s, background 0.12s;
+}
+.nav-dropdown-item:last-child { border-bottom: none; }
+.nav-dropdown-item:hover { color: var(--ink); background: #eeece6; }
 
 /* ─── HERO ────────────────────────────────────────────── */
 .hero {
@@ -836,7 +853,7 @@ footer {
 }
 .service-desc {
   font-size: 15px;
-  color: var(--muted);
+  color: #3a3835;
   line-height: 1.75;
 }
 .services-cta {
@@ -925,7 +942,24 @@ footer {
 <nav>
   <a class="nav-name" href="/">Owen Mulhern</a>
   <ul class="nav-links">
-    <li><a href="/work">Work</a></li>
+    <li class="nav-item">
+      <a href="/growth">Growth</a>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="/growth#gtm">GTM strategy</a>
+        <a class="nav-dropdown-item" href="/growth#zest">Zest</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="/work">Content</a>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="/work#earthorg">Earth.org</a>
+        <a class="nav-dropdown-item" href="/work#semrush">Semrush</a>
+        <a class="nav-dropdown-item" href="/work#dtctimes">DTC Times</a>
+        <a class="nav-dropdown-item" href="/work#emails">Email marketing</a>
+        <a class="nav-dropdown-item" href="/work#ads">Ad copy &amp; design</a>
+        <a class="nav-dropdown-item" href="/work#landingpages">Landing pages</a>
+      </div>
+    </li>
     <li><a href="/citations">Citations</a></li>
     <li><a href="mailto:owen@getmulhern.com">Contact</a></li>
   </ul>
@@ -1133,13 +1167,13 @@ footer {
     <div class="service-card">
       <p class="service-num">01</p>
       <h3 class="service-title">Growth strategy</h3>
-      <p class="service-desc">GTM strategy, revenue modelling, go-to-market diagnosis. I quantify what's broken, identify the levers, build the model — then stay on to run it as a fractional growth officer.</p>
+      <p class="service-desc">GTM strategy, revenue modelling, go-to-market diagnosis. I quantify what's broken, identify the levers, build the model. Then stay on to run it as a fractional growth officer.</p>
     </div>
 
     <div class="service-card">
       <p class="service-num">02</p>
       <h3 class="service-title">Data journalism &amp; content</h3>
-      <p class="service-desc">Original research and content strategy that compounds. I produce data-led work that gets cited — and content funnels, attribution infrastructure, and email programmes that you can track to revenue.</p>
+      <p class="service-desc">Original research and content strategy that compounds. I produce data-led work that gets cited, and content funnels, attribution infrastructure, and email programmes you can track to revenue.</p>
     </div>
 
     <div class="service-card">
