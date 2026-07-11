@@ -108,13 +108,18 @@ nav {
 }
 .nav-item:hover .nav-dropdown-menu { display: flex; }
 .nav-dropdown-item {
-  display: block; padding: 10px 16px;
+  display: flex; align-items: center; gap: 10px; padding: 10px 16px;
   font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--muted); text-decoration: none;
   border-bottom: 1px solid var(--rule); transition: color 0.12s, background 0.12s;
 }
 .nav-dropdown-item:last-child { border-bottom: none; }
 .nav-dropdown-item:hover { color: var(--ink); background: #eeece6; }
+.nav-dropdown-logo {
+  height: 14px; width: auto; max-width: 44px;
+  object-fit: contain; flex-shrink: 0;
+  filter: grayscale(1); opacity: 0.6; mix-blend-mode: multiply;
+}
 
 /* ─── HERO ────────────────────────────────────────────── */
 .hero {
@@ -946,15 +951,15 @@ footer {
       <a href="/growth">Growth</a>
       <div class="nav-dropdown-menu">
         <a class="nav-dropdown-item" href="/growth#gtm">Private client</a>
-        <a class="nav-dropdown-item" href="/growth#zest">Zest</a>
+        <a class="nav-dropdown-item" href="/growth#zest"><img class="nav-dropdown-logo" src="/assets/logos/zest.webp" alt="">Zest</a>
       </div>
     </li>
     <li class="nav-item">
       <a href="/work">Content</a>
       <div class="nav-dropdown-menu">
-        <a class="nav-dropdown-item" href="/work#earthorg">Earth.org</a>
-        <a class="nav-dropdown-item" href="/work#semrush">Semrush</a>
-        <a class="nav-dropdown-item" href="/work#dtctimes">DTC Times</a>
+        <a class="nav-dropdown-item" href="/work#earthorg"><img class="nav-dropdown-logo" src="/assets/logos/earthorg.jpeg" alt="">Earth.org</a>
+        <a class="nav-dropdown-item" href="/work#semrush"><img class="nav-dropdown-logo" src="/assets/logos/semrush.png" alt="">Semrush</a>
+        <a class="nav-dropdown-item" href="/work#dtctimes"><img class="nav-dropdown-logo" src="/assets/logos/dtctimes.avif" alt="">DTC Times</a>
         <a class="nav-dropdown-item" href="/work#emails">Email marketing</a>
         <a class="nav-dropdown-item" href="/work#ads">Ad copy &amp; design</a>
         <a class="nav-dropdown-item" href="/work#landingpages">Landing pages</a>

@@ -68,13 +68,18 @@ nav {
 }
 .nav-item:hover .nav-dropdown-menu { display: flex; }
 .nav-dropdown-item {
-  display: block; padding: 10px 16px;
+  display: flex; align-items: center; gap: 10px; padding: 10px 16px;
   font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--muted); text-decoration: none;
   border-bottom: 1px solid var(--rule); transition: color 0.12s, background 0.12s;
 }
 .nav-dropdown-item:last-child { border-bottom: none; }
 .nav-dropdown-item:hover { color: var(--ink); background: #eeece6; }
+.nav-dropdown-logo {
+  height: 14px; width: auto; max-width: 44px;
+  object-fit: contain; flex-shrink: 0;
+  filter: grayscale(1); opacity: 0.6; mix-blend-mode: multiply;
+}
 
 /* ─── CLIENT NAV BAR ──────────────────────────────────── */
 .client-tabs {
@@ -87,10 +92,16 @@ nav {
 }
 .client-tabs::-webkit-scrollbar { display: none; }
 .client-tab {
+  display: flex; align-items: center; gap: 8px;
   font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--muted); text-decoration: none;
   padding: 16px 20px 14px; border-bottom: 2px solid transparent;
   white-space: nowrap; transition: color 0.15s, border-color 0.15s;
+}
+.client-tab-logo {
+  height: 16px; width: auto; max-width: 50px;
+  object-fit: contain; flex-shrink: 0;
+  filter: grayscale(1); opacity: 0.55; mix-blend-mode: multiply;
 }
 .client-tab:hover { color: var(--ink); }
 .client-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
@@ -174,15 +185,15 @@ footer a:hover { border-color: var(--ink); }
       <a href="/growth" class="active">Growth</a>
       <div class="nav-dropdown-menu">
         <a class="nav-dropdown-item" href="/growth#gtm">Private client</a>
-        <a class="nav-dropdown-item" href="/growth#zest">Zest</a>
+        <a class="nav-dropdown-item" href="/growth#zest"><img class="nav-dropdown-logo" src="/assets/logos/zest.webp" alt="">Zest</a>
       </div>
     </li>
     <li class="nav-item">
       <a href="/work">Content</a>
       <div class="nav-dropdown-menu">
-        <a class="nav-dropdown-item" href="/work#earthorg">Earth.org</a>
-        <a class="nav-dropdown-item" href="/work#semrush">Semrush</a>
-        <a class="nav-dropdown-item" href="/work#dtctimes">DTC Times</a>
+        <a class="nav-dropdown-item" href="/work#earthorg"><img class="nav-dropdown-logo" src="/assets/logos/earthorg.jpeg" alt="">Earth.org</a>
+        <a class="nav-dropdown-item" href="/work#semrush"><img class="nav-dropdown-logo" src="/assets/logos/semrush.png" alt="">Semrush</a>
+        <a class="nav-dropdown-item" href="/work#dtctimes"><img class="nav-dropdown-logo" src="/assets/logos/dtctimes.avif" alt="">DTC Times</a>
         <a class="nav-dropdown-item" href="/work#emails">Email marketing</a>
         <a class="nav-dropdown-item" href="/work#ads">Ad copy &amp; design</a>
         <a class="nav-dropdown-item" href="/work#landingpages">Landing pages</a>
@@ -195,67 +206,47 @@ footer a:hover { border-color: var(--ink); }
 
 <div class="client-tabs">
   <a class="client-tab active" href="#gtm">Growth strategy</a>
-  <a class="client-tab" href="#zest">Zest</a>
+  <a class="client-tab" href="#zest"><img class="client-tab-logo" src="/assets/logos/zest.webp" alt="">Zest</a>
 </div>
 
 <!-- ═══ GTM STRATEGY ════════════════════════════════════════ -->
 <section class="client-section" id="gtm">
   <div class="client-header">
-    <p class="client-eyebrow">Confidential client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy</p>
-    <h2>GTM strategy &amp; revenue model for a broken advisory</h2>
-    <p>A VC advisory for founders who couldn't raise. Big market, broken unit economics. Brought in to quantify what was wrong, identify the levers, and build a live model charting the path to profitability.</p>
+    <p class="client-eyebrow">Private client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy</p>
+    <h2>GTM strategy for a VC-backed advisory with broken unit economics</h2>
+    <p>A VC fund launching an advisory arm for founders who couldn't raise. Structurally good market: fund managers encounter thousands of qualified rejections. Problem was structural, not demand. Brought in to diagnose, identify levers, build a sequenced roadmap, and deliver a live financial model.</p>
     <div class="client-role-note">
-      <strong>Role:</strong> Fractional growth strategist. Diagnosis, market segmentation, product strategy, revenue modelling. Model stays live with every assumption as a toggle.
-    </div>
-  </div>
-
-  <div class="metrics-row">
-    <div class="metric">
-      <span class="metric-num">3.87x</span>
-      <span class="metric-label">LTV:CAC (from 0.64x)</span>
-    </div>
-    <div class="metric">
-      <span class="metric-num">$284</span>
-      <span class="metric-label">CAC (from $471)</span>
-    </div>
-    <div class="metric">
-      <span class="metric-num">$1,100</span>
-      <span class="metric-label">LTV (from $300)</span>
-    </div>
-    <div class="metric">
-      <span class="metric-num">+$43K</span>
-      <span class="metric-label">Month-24 cash</span>
+      <strong>Role:</strong> Fractional growth strategist. Full diagnosis, persona and channel analysis, product strategy, revenue modelling, roadmap with costs and sequencing. Model stays live with every assumption as a toggle.
     </div>
   </div>
 
   <div class="case-study">
 
     <div class="case-block">
-      <h3>Initial state</h3>
-      <ul class="case-list">
-        <li>LTV:CAC at 0.64x. Cash flow negative by month 24.</li>
-        <li>$471 CAC against a $300 LTV product.</li>
-        <li>Qualification funnel unfiltered. Human time burned on calls that went nowhere.</li>
-        <li>No standardised product. No trust infrastructure. No lead scoring.</li>
-      </ul>
+      <h3>The diagnosis</h3>
+      <p>Four structural problems, not one. Cold outbound is the right channel for high-value advisory. Running it against a $300 LTV product is not. Associates were absorbing unfiltered inbound and burning time on calls that didn't convert. No standardised product meant quality depended on which associate answered. No trust infrastructure meant every conversion relied on personal relationships that don't scale.</p>
+      <p>The fix is not switching channels. It is fixing LTV by productizing the IP, then making the channel economics work.</p>
     </div>
 
     <div class="case-block">
-      <h3>Solution</h3>
-      <p>Mapped the acquisition funnel. Identified four fixable levers.</p>
-      <ul class="case-list" style="margin-top:12px;">
-        <li>Productise the IP into a repeatable framework.</li>
-        <li>Rebuild authority around demonstrable expertise.</li>
-        <li>Automate lead qualification with a framework-based scoring form.</li>
-        <li>Minimal content tier for inbound signal.</li>
+      <h3>Four levers identified</h3>
+      <ul class="case-list">
+        <li>Productize the IP into a repeatable framework (Evidence Library, Scoring Rubric, Report Generator). Removes associate variability, unlocks higher LTV, enables automation.</li>
+        <li>Build website authority around demonstrable expertise, not generic advisory copy.</li>
+        <li>Automated application and scoring form built on the productized framework. Filters bad leads, signals value before the call, converts VC rejection traffic.</li>
+        <li>Minimal thought leadership tier for inbound signal and trust compounding.</li>
       </ul>
-      <p style="margin-top:12px;">Built a live model across 18 configurations. Every assumption a toggle, not a fixed input.</p>
     </div>
 
     <div class="case-block full">
-      <h3>Outcome</h3>
-      <p>LTV:CAC from 0.64x to 3.87x. CAC from $471 to $284. LTV from $300 to $1,100. Cash positive by month 24 with +$43K before overhead.</p>
-      <p>VC rejection pipeline likely underestimated. Biggest upside variable in the model.</p>
+      <h3>What was delivered</h3>
+      <p>A structured diagnosis document, segmented by lead intent (funding seekers vs. advisory-ready) and by stage (pre-seed through Series A personas with distinct price sensitivity and urgency profiles). A five-step sequenced roadmap with scoped costs and durations: productize IP ($3K), website authority ($5K), scoring form ($4K), tracking handoff (gifted), fractional growth officer ($2-3K/mo ongoing). Total build approximately three months before all three levers are live.</p>
+      <p>A live financial model covering all four levers across 18 configurations. Every variable a toggle: LTV config, content tier, outreach spend, VC rejection capture rate, Owen's engagement level. The model stays interactive, not a fixed snapshot.</p>
+    </div>
+
+    <div class="case-block full" style="background:#f7f6f2;border-top:1px solid var(--rule);">
+      <h3>Optimised scenario (model projection, not realised)</h3>
+      <p>With website authority on, application form on, product at Config 5 ($1,100 LTV), signal-only content tier, and fractional growth officer at $2K/mo: blended CAC $284, blended LTV $1,100, LTV:CAC 3.87x, breakeven at month 7 before overhead. Cash position at month 24: +$43,657 before overhead. VC rejection capture is likely underestimated in the model and could be the difference-maker.</p>
     </div>
 
   </div>
