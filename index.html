@@ -119,13 +119,25 @@ nav {
   border-radius: 2px;
 }
 
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+.hero-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-bottom: 24px;
+}
+
+.hero-pillar {
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.hero-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0 0 28px;
 }
 
 .hero h1 {
@@ -134,7 +146,7 @@ nav {
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--ink);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .hero h1 em {
@@ -142,21 +154,12 @@ nav {
   color: var(--highlight);
 }
 
-.hero-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.hero-tag {
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink);
-  border: 1px solid #c5c2bb;
-  border-radius: 100px;
-  padding: 9px 20px;
+.hero-desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 440px;
 }
 
 /* ─── CITED-BY BAR ────────────────────────────────────── */
@@ -932,13 +935,14 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <p class="hero-eyebrow">Ho Chi Minh City</p>
-    <h1>Owen Mulhern</h1>
-    <div class="hero-tags">
-      <span class="hero-tag">Growth strategy</span>
-      <span class="hero-tag">Data journalism &amp; content</span>
-      <span class="hero-tag">Fundraising support</span>
+    <div class="hero-pillars">
+      <span class="hero-pillar">Growth strategy</span>
+      <span class="hero-pillar">Data journalism &amp; content</span>
+      <span class="hero-pillar">Fundraising support</span>
     </div>
+    <hr class="hero-rule">
+    <h1>Owen Mulhern</h1>
+    <p class="hero-desc">Growth strategy and data journalism with a formal science background. MSc, Imperial College London.</p>
   </div>
   <img class="hero-photo" src="assets/images/owen-profile.webp" alt="Owen Mulhern">
 </section>
