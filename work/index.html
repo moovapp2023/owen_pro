@@ -477,6 +477,79 @@ nav {
   .lp-full-body { flex-direction: column; align-items: flex-start; }
 }
 
+/* ─── WORK OVERVIEW ───────────────────────────────────── */
+.work-overview {
+  padding: 88px 40px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.work-overview-cats {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2px;
+  align-items: start;
+}
+.work-cat-header {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--highlight);
+  padding-bottom: 10px;
+  margin-bottom: 2px;
+  border-bottom: 1px solid var(--rule);
+}
+.work-cat-tiles { display: flex; flex-direction: column; gap: 2px; }
+.work-cat-tiles--grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.wov-tile {
+  display: block;
+  background: var(--white);
+  text-decoration: none;
+  overflow: hidden;
+  transition: background 0.12s;
+}
+.wov-tile:hover { background: #efefeb; }
+.wov-tile-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.wov-tile-visual {
+  width: 100%; aspect-ratio: 16/9;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 4px;
+}
+.wov-tile-visual--dark { background: var(--ink); }
+.wov-tile-visual--light { background: #f0eeea; }
+.wov-tile-num { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; color: var(--white); line-height: 1; }
+.wov-tile-num-sub { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.wov-icon { font-size: 22px; color: var(--muted); }
+.wov-tile-body { padding: 11px 14px 14px; }
+.wov-tile-title { font-size: 13px; font-weight: 400; color: var(--ink); margin-bottom: 2px; }
+.wov-tile-meta { font-size: 11px; color: var(--muted); }
+
+/* ─── WORK GROUP MARKER ───────────────────────────────── */
+.work-group-marker {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 40px 0;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--highlight);
+}
+
+/* ─── CLIENT TAB SEPARATOR ────────────────────────────── */
+.client-tab-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--rule);
+  margin: auto 8px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer {
   padding: 40px; max-width: 1100px; margin: 0 auto;
@@ -502,6 +575,10 @@ footer a:hover { border-color: var(--ink); }
   .metrics-row { grid-template-columns: repeat(2, 1fr); }
   .case-block.full { grid-column: 1; }
   footer { padding: 32px 20px; flex-direction: column; gap: 8px; }
+  .work-overview { padding: 72px 20px 0; }
+  .work-overview-cats { grid-template-columns: 1fr; }
+  .work-cat-tiles--grid { grid-template-columns: repeat(2, 1fr); }
+  .work-group-marker { padding: 36px 20px 0; }
 }
 </style>
 </head>
@@ -516,17 +593,101 @@ footer a:hover { border-color: var(--ink); }
   </ul>
 </nav>
 
+<!-- WORK OVERVIEW -->
+<div class="work-overview">
+  <div class="work-overview-cats">
+    <!-- Strategy -->
+    <div class="work-cat">
+      <p class="work-cat-header">Strategy</p>
+      <div class="work-cat-tiles">
+        <a class="wov-tile" href="#gtm">
+          <div class="wov-tile-visual wov-tile-visual--dark">
+            <span class="wov-tile-num">3.87x</span>
+            <span class="wov-tile-num-sub">LTV:CAC</span>
+          </div>
+          <div class="wov-tile-body">
+            <p class="wov-tile-title">Growth strategy</p>
+            <p class="wov-tile-meta">GTM · Revenue modelling</p>
+          </div>
+        </a>
+        <a class="wov-tile" href="#zest">
+          <img class="wov-tile-thumb" src="/assets/images/roi-calculator.png" alt="Zest">
+          <div class="wov-tile-body">
+            <p class="wov-tile-title">Zest</p>
+            <p class="wov-tile-meta">Content &amp; conversion</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- Content & media -->
+    <div class="work-cat">
+      <p class="work-cat-header">Content &amp; media</p>
+      <div class="work-cat-tiles work-cat-tiles--grid">
+        <a class="wov-tile" href="#earthorg">
+          <img class="wov-tile-thumb" src="/assets/images/slr-hcm.webp" alt="Earth.org">
+          <div class="wov-tile-body">
+            <p class="wov-tile-title">Earth.org</p>
+            <p class="wov-tile-meta">Data journalism</p>
+          </div>
+        </a>
+        <a class="wov-tile" href="#semrush">
+          <img class="wov-tile-thumb" src="/assets/images/facts-cover.png" alt="Semrush">
+          <div class="wov-tile-body">
+            <p class="wov-tile-title">Semrush</p>
+            <p class="wov-tile-meta">Frameworks &amp; editorial</p>
+          </div>
+        </a>
+        <a class="wov-tile" href="#dtctimes">
+          <div class="wov-tile-visual wov-tile-visual--light">
+            <span class="wov-icon">DTC</span>
+          </div>
+          <div class="wov-tile-body">
+            <p class="wov-tile-title">DTC Times</p>
+            <p class="wov-tile-meta">Newsletter copy</p>
+          </div>
+        </a>
+        <a class="wov-tile" href="#emails">
+          <div class="wov-tile-visual wov-tile-visual--light">
+            <span class="wov-icon">✉</span>
+          </div>
+          <div class="wov-tile-body">
+            <p class="wov-tile-title">Email marketing</p>
+            <p class="wov-tile-meta">Semrush · Newsletter copy</p>
+          </div>
+        </a>
+        <a class="wov-tile" href="#ads">
+          <img class="wov-tile-thumb" src="/assets/ads/stop-wasting-spend.webp" alt="Ad copy &amp; design">
+          <div class="wov-tile-body">
+            <p class="wov-tile-title">Ad copy &amp; design</p>
+            <p class="wov-tile-meta">Semrush · Placements</p>
+          </div>
+        </a>
+        <a class="wov-tile" href="#landingpages">
+          <img class="wov-tile-thumb" src="/assets/images/lp-tgb.webp" alt="Landing pages">
+          <div class="wov-tile-body">
+            <p class="wov-tile-title">Landing pages</p>
+            <p class="wov-tile-meta">Semrush · Conversion copy</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Client section tabs -->
 <div class="client-tabs">
   <a class="client-tab active" href="#gtm">Growth strategy</a>
+  <a class="client-tab" href="#zest">Zest</a>
+  <span class="client-tab-sep"></span>
   <a class="client-tab" href="#earthorg">Earth.org</a>
   <a class="client-tab" href="#semrush">Semrush</a>
-  <a class="client-tab" href="#zest">Zest</a>
   <a class="client-tab" href="#dtctimes">DTC Times</a>
   <a class="client-tab" href="#emails">Email marketing</a>
   <a class="client-tab" href="#ads">Ad copy &amp; design</a>
   <a class="client-tab" href="#landingpages">Landing pages</a>
 </div>
+
+<p class="work-group-marker">Strategy</p>
 
 <!-- ═══ GROWTH STRATEGY ═══════════════════════════════════ -->
 <section class="client-section" id="gtm">
@@ -558,39 +719,68 @@ footer a:hover { border-color: var(--ink); }
     </div>
   </div>
 
-  <div class="case-study">
-    <div class="case-block full">
-      <h3>Initial state</h3>
-      <ul class="case-list">
-        <li>LTV:CAC at 0.64x. Cash flow negative by month 24.</li>
-        <li>$471 CAC against a $300 LTV product.</li>
-        <li>Qualification funnel unfiltered. Human time burned on calls that went nowhere.</li>
-        <li>No standardised product. No trust infrastructure. No lead scoring.</li>
-      </ul>
-    </div>
-    <div class="case-block">
-      <h3>Solution</h3>
-      <p>Mapped the acquisition funnel. Identified four fixable levers.</p>
-      <ul class="case-list">
-        <li>Productise the IP into a repeatable framework.</li>
-        <li>Rebuild authority around demonstrable expertise.</li>
-        <li>Automate lead qualification with a framework-based scoring form.</li>
-        <li>Minimal content tier for inbound signal.</li>
-      </ul>
-      <p>Built a live model across 18 configurations. Every assumption a toggle, not a fixed input.</p>
-    </div>
-    <div class="case-block">
-      <h3>Outcome</h3>
-      <ul class="case-list">
-        <li>LTV:CAC from 0.64x to 3.87x</li>
-        <li>CAC from $471 to $284</li>
-        <li>LTV from $300 to $1,100</li>
-        <li>Cash positive by month 24. +$43K before overhead.</li>
-      </ul>
-      <p>VC rejection pipeline likely underestimated. Biggest upside variable in the model.</p>
+</section>
+
+<!-- ═══ ZEST (moved here — Strategy group) ═══════════════ -->
+<section class="client-section" id="zest">
+  <div class="client-header">
+    <p class="client-eyebrow">Zest &nbsp;·&nbsp; 2024–2026</p>
+    <h2>Content &amp; conversion, a case study</h2>
+    <p>Zest is a French HR SaaS company specialising in employee engagement and social climate measurement. Brought in to improve SEO performance and build a conversion funnel around their core pillar content. Built original tools and content from scratch in a domain I had no prior expertise in.</p>
+    <div class="client-role-note">
+      <strong>Role:</strong> Freelance content strategist and copywriter. Full ownership of the content cluster, from keyword analysis to tool development to conversion tracking. All tools built independently using HTML/CSS/JS.
     </div>
   </div>
+
+  <!-- Metrics -->
+  <div class="metrics-row">
+    <div class="metric">
+      <span class="metric-num">1,100+</span>
+      <span class="metric-label">Sessions from content</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">232</span>
+      <span class="metric-label">Demos reserved</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">27%</span>
+      <span class="metric-label">Lead capture rate</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">6m 9s</span>
+      <span class="metric-label">Avg. time on tool page</span>
+    </div>
+  </div>
+
+  <div class="case-study">
+
+    <div class="case-block full">
+      <h3>What was done</h3>
+      <p>Inherited a pillar article ranking at position 12. Diagnosed the conversion gap: the CTA (reserve a demo) was too strong for the reader stage. Rebuilt the funnel from the reader's perspective.</p>
+      <p>Built a custom HTML tool that generates free social climate surveys based on company goals, currently pulling 7% CTR from the pillar article. The tool page captures leads at a 27% rate. Then extended the content cluster with a budget-allocation article featuring an independently-built ROI calculator, the first of its kind for this niche, which has since passed expert scrutiny.</p>
+      <a class="case-link" href="https://zestmeup.com/solution/barometre-social-outil-rh-de-mesure-du-climat-social/" target="_blank">View pillar article ↗</a>
+    </div>
+
+    <div class="case-block">
+      <h3>Pillar performance</h3>
+      <img class="case-img" src="/assets/images/pillar-performance.png" alt="Pillar article performance" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+      <p style="display:none;font-size:13px;color:var(--muted);margin-top:8px;">Position 12 → 4, climbing</p>
+      <p>Pillar article moved from position 12 to 4, with 7% CTR to the survey generator tool.</p>
+      <a class="case-link" href="https://zestmeup.com/lp/generateur-de-questionnaire-barometre-social-gratuit-baromex-by-zest/" target="_blank">View survey generator ↗</a>
+    </div>
+
+    <div class="case-block">
+      <h3>ROI calculator tool</h3>
+      <img class="case-img" src="/assets/images/roi-calculator.png" alt="ROI calculator" onerror="this.style.display='none';this.nextSibling.style.display='block'">
+      <p style="display:none;font-size:13px;color:var(--muted);margin-top:8px;">6m 9s average time on page</p>
+      <p>Independently built a calculation formula for the ROI of social climate measurement, a sector-first. Average time on page: 6 minutes and 9 seconds.</p>
+      <a class="case-link" href="https://zestmeup.com/livre-blanc/calculez-le-roi-de-votre-ecoute-avec-zest/" target="_blank">View ROI calculator ↗</a>
+    </div>
+
+  </div>
 </section>
+
+<p class="work-group-marker">Content &amp; media</p>
 
 <!-- ═══ EARTH.ORG ═══════════════════════════════════════ -->
 <section class="client-section" id="earthorg">
@@ -778,65 +968,6 @@ footer a:hover { border-color: var(--ink); }
         <span class="article-tag edited">Edited</span>
         <span style="font-size:12px;color:var(--muted);">2025</span>
       </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══ ZEST ══════════════════════════════════════════════ -->
-<section class="client-section" id="zest">
-  <div class="client-header">
-    <p class="client-eyebrow">Zest &nbsp;·&nbsp; 2024–2026</p>
-    <h2>Content &amp; conversion, a case study</h2>
-    <p>Zest is a French HR SaaS company specialising in employee engagement and social climate measurement. Brought in to improve SEO performance and build a conversion funnel around their core pillar content. Built original tools and content from scratch in a domain I had no prior expertise in.</p>
-    <div class="client-role-note">
-      <strong>Role:</strong> Freelance content strategist and copywriter. Full ownership of the content cluster, from keyword analysis to tool development to conversion tracking. All tools built independently using HTML/CSS/JS.
-    </div>
-  </div>
-
-  <!-- Metrics -->
-  <div class="metrics-row">
-    <div class="metric">
-      <span class="metric-num">1,100+</span>
-      <span class="metric-label">Sessions from content</span>
-    </div>
-    <div class="metric">
-      <span class="metric-num">232</span>
-      <span class="metric-label">Demos reserved</span>
-    </div>
-    <div class="metric">
-      <span class="metric-num">27%</span>
-      <span class="metric-label">Lead capture rate</span>
-    </div>
-    <div class="metric">
-      <span class="metric-num">6m 9s</span>
-      <span class="metric-label">Avg. time on tool page</span>
-    </div>
-  </div>
-
-  <div class="case-study">
-
-    <div class="case-block full">
-      <h3>What was done</h3>
-      <p>Inherited a pillar article ranking at position 12. Diagnosed the conversion gap: the CTA (reserve a demo) was too strong for the reader stage. Rebuilt the funnel from the reader's perspective.</p>
-      <p>Built a custom HTML tool that generates free social climate surveys based on company goals, currently pulling 7% CTR from the pillar article. The tool page captures leads at a 27% rate. Then extended the content cluster with a budget-allocation article featuring an independently-built ROI calculator, the first of its kind for this niche, which has since passed expert scrutiny.</p>
-      <a class="case-link" href="https://zestmeup.com/solution/barometre-social-outil-rh-de-mesure-du-climat-social/" target="_blank">View pillar article ↗</a>
-    </div>
-
-    <div class="case-block">
-      <h3>Pillar performance</h3>
-      <img class="case-img" src="/assets/images/pillar-performance.png" alt="Pillar article performance" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-      <p style="display:none;font-size:13px;color:var(--muted);margin-top:8px;">Position 12 → 4, climbing</p>
-      <p>Pillar article moved from position 12 to 4, with 7% CTR to the survey generator tool.</p>
-      <a class="case-link" href="https://zestmeup.com/lp/generateur-de-questionnaire-barometre-social-gratuit-baromex-by-zest/" target="_blank">View survey generator ↗</a>
-    </div>
-
-    <div class="case-block">
-      <h3>ROI calculator tool</h3>
-      <img class="case-img" src="/assets/images/roi-calculator.png" alt="ROI calculator" onerror="this.style.display='none';this.nextSibling.style.display='block'">
-      <p style="display:none;font-size:13px;color:var(--muted);margin-top:8px;">6m 9s average time on page</p>
-      <p>Independently built a calculation formula for the ROI of social climate measurement, a sector-first. Average time on page: 6 minutes and 9 seconds.</p>
-      <a class="case-link" href="https://zestmeup.com/livre-blanc/calculez-le-roi-de-votre-ecoute-avec-zest/" target="_blank">View ROI calculator ↗</a>
     </div>
 
   </div>
