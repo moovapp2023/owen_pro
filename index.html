@@ -924,6 +924,14 @@ footer {
 }
 .contact-email-link:hover { color: var(--highlight); border-color: var(--highlight); }
 
+/* ─── GROUNDWATER MODAL IMAGES ────────────────────────── */
+#modal-groundwater .modal-img {
+  aspect-ratio: auto;
+  max-height: 440px;
+  object-fit: contain;
+  background: #f0ede6;
+}
+
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 768px) {
   nav { padding: 0 20px; }
@@ -1032,16 +1040,33 @@ footer {
       <div class="work-card" data-modal="gtm">
         <div style="overflow:hidden;position:relative;">
           <div class="work-card-visual">
-            <span class="work-card-visual-num">3.87x</span>
-            <span class="work-card-visual-label">LTV:CAC</span>
+            <span class="work-card-visual-label">Private client &nbsp;·&nbsp; 2026</span>
+            <span class="work-card-visual-num" style="font-size:28px;font-weight:300;letter-spacing:-0.02em;text-align:center;">Growth<br>strategy</span>
           </div>
           <span class="work-card-arrow">↗</span>
         </div>
         <div class="work-card-body">
-          <p class="work-card-client">Confidential client · 2026</p>
-          <h3 class="work-card-title">GTM strategy & revenue model for a broken advisory</h3>
-          <p class="work-card-desc">VC advisory running 0.64x LTV:CAC with a leaking qualification funnel. Quantified the problem, identified four levers, built a live scenario model to profitability.</p>
+          <p class="work-card-client">Private client · 2026</p>
+          <h3 class="work-card-title">GTM strategy for a VC-backed advisory with broken unit economics</h3>
+          <p class="work-card-desc">VC fund launching an advisory arm with an inverted CAC:LTV and an unfiltered funnel. Diagnosed four structural problems, built a sequenced roadmap and a live 18-configuration model.</p>
           <p class="work-card-stack">Revenue modelling · GTM strategy · Fractional growth</p>
+        </div>
+      </div>
+
+      <div class="work-card" data-modal="zest">
+        <div style="overflow:hidden;position:relative;">
+          <div class="work-card-visual" style="background:#21304E;">
+            <span class="work-card-visual-label">Zest &nbsp;·&nbsp; 2024–2026</span>
+            <span class="work-card-visual-num">27%</span>
+            <span class="work-card-visual-label" style="margin-top:-2px;">lead capture rate</span>
+          </div>
+          <span class="work-card-arrow">↗</span>
+        </div>
+        <div class="work-card-body">
+          <p class="work-card-client">Zest · 2024–2026</p>
+          <h3 class="work-card-title">Content and conversion funnel for a French HR SaaS</h3>
+          <p class="work-card-desc">Rebuilt the SEO funnel around a high-intent pillar article. Built a custom survey generator and an ROI calculator from scratch. 232 demos reserved, 27% lead capture on the tool page.</p>
+          <p class="work-card-stack">SEO · Content strategy · HTML/CSS/JS tool development</p>
         </div>
       </div>
 
@@ -1246,29 +1271,50 @@ footer {
   <div class="modal-box">
     <button class="modal-close" aria-label="Close">&times;</button>
     <div class="modal-body" style="padding-top:56px;">
-      <p class="modal-client">Confidential client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy</p>
-      <h2 class="modal-title">GTM strategy &amp; revenue model for a broken advisory</h2>
-      <div class="modal-metrics">
-        <div class="modal-metric"><span class="modal-metric-num">3.87x</span><span class="modal-metric-label">LTV:CAC (from 0.64x)</span></div>
-        <div class="modal-metric"><span class="modal-metric-num">$284</span><span class="modal-metric-label">CAC (from $471)</span></div>
-        <div class="modal-metric"><span class="modal-metric-num">$1,100</span><span class="modal-metric-label">LTV (from $300)</span></div>
-        <div class="modal-metric"><span class="modal-metric-num">+$43K</span><span class="modal-metric-label">Month-24 cash</span></div>
+      <p class="modal-client">Private client &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Growth strategy</p>
+      <h2 class="modal-title">GTM strategy for a VC-backed advisory with broken unit economics</h2>
+      <p class="modal-desc">A VC fund launching an advisory arm for founders who could not raise. Structurally good market. Broken economics. Brought in to diagnose, identify levers, build a sequenced roadmap, and deliver a live financial model.</p>
+      <div class="modal-case-block">
+        <h3>The diagnosis</h3>
+        <p>Four structural problems, not one. Cold outbound is the right channel for high-value advisory. Running it against a $300 LTV product is not. Associates were absorbing unfiltered inbound and burning time on calls that did not convert. No standardised product meant quality depended on which associate answered. No trust infrastructure meant every conversion relied on personal relationships that do not scale.</p>
       </div>
+      <div class="modal-case-block">
+        <h3>Four levers identified</h3>
+        <p>Productize the IP into a repeatable framework. Build website authority around demonstrable expertise. Automated application and scoring form to filter bad leads and signal value before the call. A minimal thought leadership tier for inbound signal and trust compounding.</p>
+      </div>
+      <div class="modal-case-block">
+        <h3>What was delivered</h3>
+        <p>A structured diagnosis document segmented by lead intent and stage. A five-step sequenced roadmap with scoped costs and durations. A live financial model covering all four levers across 18 configurations: LTV config, content tier, outreach spend, VC rejection capture rate, fractional engagement level. Every variable a toggle, not a fixed snapshot.</p>
+      </div>
+      <div class="modal-case-block" style="background:#f7f6f2;border-radius:2px;padding:20px;border:1px solid #e4e2dc;">
+        <h3>Model projection (not realised)</h3>
+        <p>Optimised scenario: blended CAC $284, blended LTV $1,100, LTV:CAC 3.87x, breakeven at month 7 before overhead. Cash position at month 24: +$43,657 before overhead. VC rejection capture is likely underestimated in the model and could be the difference-maker.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Zest -->
+<div class="modal" id="modal-zest" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-body" style="padding-top:56px;">
+      <p class="modal-client">Zest &nbsp;·&nbsp; 2024–2026 &nbsp;·&nbsp; Content strategy</p>
+      <h2 class="modal-title">Content and conversion funnel for a French HR SaaS</h2>
+      <p class="modal-desc">Zest is a French HR SaaS company specialising in employee engagement and social climate measurement. Brought in to improve SEO performance and build a conversion funnel around their core pillar content. Built original tools and content from scratch in a domain I had no prior expertise in.</p>
       <div class="modal-case-block">
         <h3>The problem</h3>
-        <p>The client ran a VC advisory for founders who couldn't raise. Natural market. Broken economics: $471 CAC, $300 LTV, 0.64x ratio, burning cash by month 24. The ask was qualitative — "we're not converting well." The real issues were structural: an unstandardised product, no trust infrastructure, and an unfiltered qualification funnel absorbing human time on calls that went nowhere.</p>
-        <p>My job was to quantify it, name the levers, and build a model that answered the actual question: what does fixing this look like, and what does it cost?</p>
+        <p>Inherited a pillar article ranking at position 12. The CTA was too aggressive for the reader stage: book a demo, directly from a content page. The conversion gap between article traffic and the product was structural, not copy-level. The funnel needed rebuilding from the reader's perspective.</p>
       </div>
       <div class="modal-case-block">
-        <h3>Diagnosis: four levers</h3>
-        <p>After mapping the full acquisition funnel — cold outbound, IRL meetups, VC rejection volume — the fix came down to four things: productise the IP into a repeatable framework, rebuild website authority around real expertise, automate lead filtering with a scoring form built on that framework, and a minimal content tier for thought leadership. Each lever had a modelled impact on CAC, LTV, and human time cost.</p>
-        <p>The channel choice (cold outbound) is correct for a high-value service. The problem was running a high-CAC channel against a low-LTV product. Productising the IP to reach $1,000+ LTV is what makes the channel work.</p>
+        <h3>What was built</h3>
+        <p>A custom HTML survey generator that creates free social climate surveys based on company goals. A free-value offer timed to reader intent, pulling 7% CTR from the pillar article and capturing leads at 27% on the tool page. Then extended the cluster with a budget-allocation article featuring an independently built ROI calculator, the first of its kind in this niche.</p>
       </div>
       <div class="modal-case-block">
-        <h3>The model</h3>
-        <p>Built a live revenue model covering all four levers across 18 configurations — LTV configs from $300 to $1,100, content tiers from signal-only to heavy investment, engagement level from none to $3,000/mo fractional. Every number is a toggle, not a fixed assumption.</p>
-        <p>Optimised scenario: 3.87x CAC:LTV, positive cash by month 24. The largest single variable — automatically converting VC rejection volume into advisory leads — is likely underestimated in the model and could be the difference-maker.</p>
+        <h3>Results</h3>
+        <p>1,100+ sessions from the content cluster. 232 demos reserved. 27% lead capture rate on the tool page. Average time on the ROI calculator: 6 minutes and 9 seconds.</p>
       </div>
+      <a class="modal-link" href="https://zestmeup.com/solution/barometre-social-outil-rh-de-mesure-du-climat-social/" target="_blank">View pillar article ↗</a>
     </div>
   </div>
 </div>
