@@ -925,10 +925,17 @@ footer {
 .contact-email-link:hover { color: var(--highlight); border-color: var(--highlight); }
 
 /* ─── GROUNDWATER MODAL IMAGES ────────────────────────── */
+#modal-groundwater .modal-img-wrap {
+  overflow: visible;
+}
 #modal-groundwater .modal-img {
   aspect-ratio: auto;
-  max-height: 440px;
+  width: auto;
+  max-width: 100%;
+  max-height: 520px;
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
   background: #f0ede6;
 }
 
