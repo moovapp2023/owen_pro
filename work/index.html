@@ -187,6 +187,9 @@ nav {
 .article-tag.written { background: #eef7f2; color: #1a5236; }
 .article-tag.edited { background: #eef3fb; color: #1a3a6e; }
 .article-tag.framework { background: #fdf3ec; color: #7a3510; }
+.article-tag.resource { background: #f0f4ff; color: #1a2e6e; }
+.article-item.has-thumb { grid-template-columns: 96px 1fr auto; }
+.article-thumb { width: 96px; height: 72px; object-fit: cover; border-radius: 3px; display: block; }
 
 /* ─── CASE STUDY ──────────────────────────────────────── */
 .case-study { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
@@ -779,7 +782,8 @@ footer a:hover { border-color: var(--ink); }
 
   <div class="article-list">
 
-    <div class="article-item">
+    <div class="article-item has-thumb">
+      <img class="article-thumb" src="/assets/images/facts-cover.png" alt="">
       <div>
         <p class="article-title"><a href="https://moovapp2023.github.io/FACTS_framework/" target="_blank">The FACTS GEO Framework, Original AIO Framework</a></p>
         <p class="article-desc">An original AI Optimisation framework built from Semrush proprietary research data — not a summary of existing guidance. FACTS gives content teams a measurable structure for performing in AI-generated search results, developed when most practitioners were still guessing. Source-first and methodology-transparent: the same rigour as the Earth.org research pieces, applied to a commercial SEO problem.</p>
@@ -790,7 +794,8 @@ footer a:hover { border-color: var(--ink); }
       </div>
     </div>
 
-    <div class="article-item">
+    <div class="article-item has-thumb">
+      <img class="article-thumb" src="/assets/images/content-strategy.png" alt="">
       <div>
         <p class="article-title"><a href="https://newsletter.thegrowthbulletin.com/p/get-big-1-how-to-build-a-revenue-generating-content-strategy" target="_blank">How to Build a Revenue-Generating Content Strategy</a></p>
         <p class="article-desc">A tactical guide on mapping content directly to enterprise revenue pipelines. Covers funnel architecture, content-to-revenue attribution, and distribution for acquired media assets — written from the perspective of someone who has audited GA4 discrepancies, restructured attribution, and scaled email assets post-acquisition. Directly addresses how to track impact on LTV:CAC from first touch to close.</p>
@@ -801,7 +806,8 @@ footer a:hover { border-color: var(--ink); }
       </div>
     </div>
 
-    <div class="article-item">
+    <div class="article-item has-thumb">
+      <img class="article-thumb" src="/assets/images/pillar-performance.png" alt="">
       <div>
         <p class="article-title"><a href="https://newsletter.thegrowthbulletin.com/p/marketing-for-growth-marketing-finance" target="_blank">Marketing for Growth: Marketing &amp; Finance</a></p>
         <p class="article-desc">Long-form piece on the relationship between marketing investment and financial performance — the framing that PE portfolio teams and CMOs use to justify and structure budget allocation. Part of the ongoing Growth Bulletin editorial programme.</p>
@@ -812,7 +818,8 @@ footer a:hover { border-color: var(--ink); }
       </div>
     </div>
 
-    <div class="article-item">
+    <div class="article-item has-thumb">
+      <img class="article-thumb" src="/assets/images/lp-tgb.webp" alt="">
       <div>
         <p class="article-title"><a href="https://thegrowthbulletin.com/thought-leadership-isn-t-for-you/" target="_blank">Thought Leadership Isn't for You</a></p>
         <p class="article-desc">Edited for The Growth Bulletin. The brief: drive brand PR and AI presence for Semrush while producing opinionated, useful content for senior marketers.</p>
@@ -823,13 +830,26 @@ footer a:hover { border-color: var(--ink); }
       </div>
     </div>
 
-    <div class="article-item">
+    <div class="article-item has-thumb">
+      <img class="article-thumb" src="/assets/images/12ways.png" alt="">
       <div>
         <p class="article-title"><a href="https://thegrowthbulletin.com/12-ways-to-streamline-your-marketing-efforts-with-ai/" target="_blank">12 Ways to Streamline Your Marketing Efforts with AI</a></p>
         <p class="article-desc">Edited for The Growth Bulletin. Part of the content experiment programme that doubled click volume over the engagement. Practical AI applications for marketing teams, structured to drive direct traffic to Semrush product pages.</p>
       </div>
       <div class="article-meta">
         <span class="article-tag edited">Edited</span>
+        <span style="font-size:12px;color:var(--muted);">2025</span>
+      </div>
+    </div>
+
+    <div class="article-item has-thumb">
+      <img class="article-thumb" src="/assets/images/seo-audit-thumb.jpg" alt="">
+      <div>
+        <p class="article-title"><a href="/assets/emails/sf-seo-audit-diy.pdf" target="_blank">DIY 1-Hour SEO Audit</a></p>
+        <p class="article-desc">Step-by-step SEO audit guide produced for Semrush's Growth Bulletin. A practical, tool-led walkthrough covering site speed, crawlability, and on-page fundamentals — designed as a high-value subscriber resource and lead magnet.</p>
+      </div>
+      <div class="article-meta">
+        <span class="article-tag resource">Resource</span>
         <span style="font-size:12px;color:var(--muted);">2025</span>
       </div>
     </div>
