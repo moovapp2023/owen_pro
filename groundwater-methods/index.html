@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>California groundwater: methods and sources | Owen Mulhern</title>
+<meta name="description" content="How the dry-well cost figures and counts in the California groundwater series were built, with sources.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+<style>
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/assets/fonts/Aeonik-Light.woff2') format('woff2'), url('/assets/fonts/Aeonik-Light.woff') format('woff');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/assets/fonts/Aeonik-Regular.woff2') format('woff2'), url('/assets/fonts/Aeonik-Regular.woff') format('woff');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/assets/fonts/Aeonik-Bold.woff2') format('woff2'), url('/assets/fonts/Aeonik-Bold.woff') format('woff');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f4f0;
+  --ink: #111110;
+  --muted: #5a5855;
+  --rule: #dddbd5;
+  --highlight: #c8561a;
+  --white: #ffffff;
+  --tag-academic-bg: #eef3fb;
+  --tag-academic-ink: #1a3a6e;
+  --tag-press-bg: #eef7f2;
+  --tag-press-ink: #1a5236;
+  --tag-industry-bg: #fdf3ec;
+  --tag-industry-ink: #7a3510;
+  --tag-profile-bg: #f4eeff;
+  --tag-profile-ink: #4a1d8a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Aeonik', -apple-system, sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 56px;
+  background: rgba(245, 244, 240, 0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+.nav-item { position: relative; }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 1px); left: -16px;
+  background: var(--bg); border: 1px solid var(--rule);
+  min-width: 180px; display: none; flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07); z-index: 110;
+}
+.nav-item:hover .nav-dropdown-menu { display: flex; }
+.nav-dropdown-item {
+  display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+  font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  border-bottom: 1px solid var(--rule); transition: color 0.12s, background 0.12s;
+}
+.nav-dropdown-item:last-child { border-bottom: none; }
+.nav-dropdown-item:hover { color: var(--ink); background: #eeece6; }
+.nav-dropdown-logo {
+  height: 14px; width: auto; max-width: 44px;
+  object-fit: contain; flex-shrink: 0;
+  filter: grayscale(1); opacity: 0.6; mix-blend-mode: multiply;
+}
+
+/* ─── PAGE ────────────────────────────────────────────── */
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 100px 40px 100px;
+}
+
+/* ─── HEADER ──────────────────────────────────────────── */
+.page-header {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 40px;
+  margin-bottom: 52px;
+}
+.page-eyebrow {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--highlight); margin-bottom: 16px;
+}
+.page-header h1 {
+  font-size: clamp(32px, 5vw, 48px); font-weight: 300; letter-spacing: -0.02em;
+  line-height: 1.1; color: var(--ink); margin-bottom: 16px;
+}
+.page-header p {
+  font-size: 15px; color: var(--muted); max-width: 540px; line-height: 1.65;
+}
+.header-links {
+  margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap;
+}
+.header-links a {
+  font-size: 12px; font-weight: 400; letter-spacing: 0.04em; color: var(--ink);
+  text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.header-links a:hover { color: var(--highlight); border-color: var(--highlight); }
+
+/* ─── STATS ROW ───────────────────────────────────────── */
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 4px;
+  overflow: hidden; margin-bottom: 56px;
+}
+.stat { background: var(--white); padding: 22px 20px; text-align: center; }
+.stat-num { font-size: 28px; font-weight: 300; color: var(--ink); display: block; letter-spacing: -0.02em; }
+.stat-label { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; display: block; }
+
+/* ─── CONTEXT BOX ─────────────────────────────────────── */
+.context-box {
+  background: var(--white); border: 1px solid var(--rule);
+  border-left: 3px solid var(--highlight);
+  border-radius: 2px; padding: 20px 24px;
+  font-size: 14px; color: var(--muted); line-height: 1.7;
+  margin-bottom: 52px;
+}
+.context-box strong { color: var(--ink); font-weight: 400; }
+
+/* ─── SECTION ─────────────────────────────────────────── */
+.section { margin-bottom: 48px; }
+.section-header {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 16px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-header h2 { font-size: 18px; font-weight: 400; color: var(--ink); }
+.section-count { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+
+/* ─── CITATION LIST ───────────────────────────────────── */
+.citation-list {
+  display: flex; flex-direction: column; gap: 1px;
+  border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+}
+.citation {
+  background: var(--white); padding: 16px 20px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 16px; align-items: start;
+  transition: background 0.12s;
+}
+.citation:hover { background: var(--bg); }
+.citation-source { font-weight: 400; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.citation-source a {
+  color: inherit; text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color 0.15s, color 0.15s;
+}
+.citation-source a:hover { color: var(--highlight); border-color: var(--highlight); }
+.citation-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.citation-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.citation-year { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+/* ─── TAGS ────────────────────────────────────────────── */
+.tag {
+  font-size: 10px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 100px; white-space: nowrap;
+}
+.tag-academic { background: var(--tag-academic-bg); color: var(--tag-academic-ink); }
+.tag-press    { background: var(--tag-press-bg);    color: var(--tag-press-ink); }
+.tag-industry { background: var(--tag-industry-bg); color: var(--tag-industry-ink); }
+.tag-profile  { background: var(--tag-profile-bg);  color: var(--tag-profile-ink); }
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+footer {
+  margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; color: var(--muted);
+}
+footer a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+footer a:hover { border-color: var(--ink); }
+
+@media (max-width: 660px) {
+  nav { padding: 0 20px; }
+  .page { padding: 88px 20px 80px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .citation { grid-template-columns: 1fr; }
+  .citation-right { flex-direction: row; align-items: center; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+/* ─── METHODS ─────────────────────────────────────────── */
+.method { margin-bottom: 44px; }
+.method h2 { font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.method h3 { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--highlight); margin: 22px 0 6px; }
+.method p, .method li { font-size: 14px; color: #4a4640; line-height: 1.75; }
+.method p { margin-bottom: 10px; }
+.method ul { padding-left: 18px; margin: 4px 0 10px; }
+.method li { margin-bottom: 4px; }
+.method a, .sources a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color 0.15s, border-color 0.15s; }
+.method a:hover, .sources a:hover { color: var(--highlight); border-color: var(--highlight); }
+.big-range { font-size: 26px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 4px; }
+.tag-doc { background: var(--tag-press-bg); color: var(--tag-press-ink); }
+.tag-der { background: var(--tag-academic-bg); color: var(--tag-academic-ink); }
+.tag-est { background: var(--tag-industry-bg); color: var(--tag-industry-ink); }
+.tag { margin-right: 6px; vertical-align: 1px; }
+.stage-table { width: 100%; border-collapse: collapse; margin: 6px 0 14px; font-size: 13px; }
+.stage-table th, .stage-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.5; }
+.stage-table th { font-size: 10px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.stage-table td:first-child { white-space: nowrap; color: var(--ink); }
+.sources { list-style: none; padding: 0; }
+.sources li { font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--rule); color: var(--muted); }
+.sources li a { color: var(--ink); }
+@media (max-width: 660px) { .stage-table td:first-child { white-space: normal; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="/">Owen Mulhern</a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/growth">Growth</a>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="/growth#gtm">Private client</a>
+        <a class="nav-dropdown-item" href="/growth#zest">Zest</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="/work">Content</a>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="/work#earthorg">Earth.org</a>
+        <a class="nav-dropdown-item" href="/work#semrush">Semrush</a>
+        <a class="nav-dropdown-item" href="/work#dtctimes">DTC Times</a>
+        <a class="nav-dropdown-item" href="/work#emails">Email marketing</a>
+        <a class="nav-dropdown-item" href="/work#ads">Ad copy &amp; design</a>
+        <a class="nav-dropdown-item" href="/work#landingpages">Landing pages</a>
+      </div>
+    </li>
+    <li><a href="/citations">Citations</a></li>
+    <li><a href="mailto:owen@getmulhern.com">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <header class="page-header">
+    <p class="page-eyebrow">California groundwater · Methods</p>
+    <h1>What a dry well costs: methods and sources</h1>
+    <p>How the figures in the California groundwater series were built. Last checked 1 October 2026.</p>
+    <div class="header-links">
+      <a href="/work#earthorg">← Back to the series</a>
+    </div>
+  </header>
+
+  <div class="context-box">
+    <strong>How to read the tags.</strong> <span class="tag tag-doc">Documented</span> a source states the figure. <span class="tag tag-der">Derived</span> my arithmetic on sourced numbers, shown. <span class="tag tag-est">Estimate</span> a market or illustrative figure, not a household report. Costs are per household. Dry-well counts are self-reported to the State and are a floor, not a full count.
+  </div>
+
+  <section class="method" id="counts">
+    <h2>1. Dry-well counts</h2>
+    <p>The counts come from the State of California's public dry-well reporting system (Department of Water Resources). Households report their own failures voluntarily, so every count is a floor.</p>
+    <p><span class="tag tag-der">Derived</span> I analysed the public export downloaded in May 2026: 6,139 household water shortage reports, of which 5,891 are dry wells. By current status, 2,954 are outages (50%), 1,047 have an interim solution (18%), 1,880 are resolved (32%) and 10 are listed as vulnerable.</p>
+    <p><span class="tag tag-der">Derived</span> The time charts place each report in the month its problem began. 1,573 dry-well reports (27%) have no start date and are left out of those charts, so the charts understate the total. The largest month on record is July 2021, with 283 reports.</p>
+  </section>
+
+  <section class="method" id="stages">
+    <h2>2. How costs are split into three stages</h2>
+    <table class="stage-table">
+      <tr><th>Stage</th><th>Meaning</th><th>Who pays</th><th>Unit</th></tr>
+      <tr><td>Unresolved</td><td>No state help yet, so the household covers its own water.</td><td>The household</td><td>Per month</td></tr>
+      <tr><td>Interim</td><td>Temporary water supplied by the state or its partners while a household waits for a permanent fix: bottled water, a tank filled by truck, or both.</td><td>The state</td><td>Per month</td></tr>
+      <tr><td>Resolved</td><td>A new well or a connection to a public water system.</td><td>Usually the state</td><td>One-time, per well</td></tr>
+    </table>
+    <p>The units differ between stages, so the three numbers are not additive.</p>
+  </section>
+
+  <section class="method" id="unresolved">
+    <h2>3. Unresolved: about $100 to $600 a month, paid by the household</h2>
+    <h3>Low end</h3>
+    <ul>
+      <li><span class="tag tag-doc">Documented</span> $80 a month for bottled water for drinking and cooking, El Adobe (<a href="#src-circle">Circle of Blue</a>, 2021). This is a contamination case, not a dry well, and the household still has tap water for hygiene.</li>
+      <li><span class="tag tag-doc">Documented</span> The State's cost model assumes $1.25 a gallon and 60 gallons a month ($75) plus $22 a month for delivery, about $97 a month (<a href="#src-cost">2024 Cost Assessment</a>, supplemental appendix). This is a program cost, not household spending.</li>
+      <li>The $100 low end rounds these two figures up.</li>
+    </ul>
+    <h3>High end</h3>
+    <p>No single source reports $600. It is the sum of documented costs for a household that has lost its well entirely:</p>
+    <ul>
+      <li><span class="tag tag-doc">Documented</span> Bottled water: $80 to $97 a month (above).</li>
+      <li><span class="tag tag-doc">Documented</span> Trucked water: about $200 a month for 5,000 gallons, Clovis area (<a href="#src-cnbc">CNBC</a>, 2015; haulers charged $200 to $500 per truckload), and about $350 a month, Paso Robles area, three dry wells and a 500-gallon tank (<a href="#src-slo">SLO Tribune via Yahoo</a>).</li>
+      <li><span class="tag tag-doc">Documented</span> Laundromat: $30 per weekly visit, about $130 a month, Glenn County dry-well resident (<a href="#src-calmatters">CalMatters</a>, 2021).</li>
+      <li><span class="tag tag-doc">Documented</span> Gym memberships for showers: $10 a month (<a href="#src-usda">USDA Rural Development</a>).</li>
+      <li><span class="tag tag-der">Derived</span> $80 to $97 + $200 to $350 + $130 = about $410 to $580; with gym memberships, about $600.</li>
+    </ul>
+    <h3>Caveats</h3>
+    <ul>
+      <li>The sources span 2015 to 2024 and different regions (Clovis, Paso Robles, Glenn County, El Adobe).</li>
+      <li>The range shows what families spent, not what they needed. Hygiene water costs are poorly documented.</li>
+      <li>Informal sharing, such as a neighbour's hose or relatives hauling water, is documented in the USDA and Food &amp; Water Watch accounts but without costs.</li>
+      <li>Tank hardware is excluded because the State normally supplies tanks in the interim stage. Households that are ineligible (renters, for example) or still waiting may buy their own; a generic installed estimate is $1,620 to $3,170 (<a href="#src-angi">Angi</a>) <span class="tag tag-est">Estimate</span>.</li>
+    </ul>
+  </section>
+
+  <section class="method" id="interim">
+    <h2>4. Interim: about $55 to $1,100 a month, paid by the state</h2>
+    <p>Households typically pay nothing at this stage. DWR's <a href="#src-tank">Water Tank Program</a> provides a 2,500-gallon tank, delivery and installation, a small pump and plumbing, and hauled water. DWR publishes no per-household price for the tank.</p>
+    <h3>Low end, bottled water only</h3>
+    <p><span class="tag tag-der">Derived</span> Self-Help Enterprises' regional table (<a href="#src-fep">FY 2026-27 Fund Expenditure Plan</a>, Appendix N, Table N-1) lists $1,740,312 across 2,681 bottled-water households, about $649 per household. $649 / 12 is about $54 a month. The table gives no period, so treat this as approximate.</p>
+    <h3>High end, tank plus hauled water</h3>
+    <p><span class="tag tag-doc">Documented</span> Appendix N (page 83) states an average annual cost of $13,000 per household for bottled or hauled water. $13,000 / 12 is about $1,083 a month.</p>
+    <h3>Disclosed discrepancy</h3>
+    <p><span class="tag tag-der">Derived</span> Table N-1 lists $15,027,287 for 529 hauled-water households, about $28,400 each, which does not reconcile with the $13,000 average, and the table does not state periods. The series uses $13,000 as the State's stated average.</p>
+    <h3>Cross-checks</h3>
+    <ul>
+      <li>The State's model for bottled water is about $97 a month (stage 3).</li>
+      <li>Privately bought trucked water runs $200 to $350 a month (stage 3).</li>
+      <li>Duration varies. Self-Help Enterprises says participants may stay on the tank program about a year; East Orosi relied on State-supplied water for 14 years.</li>
+      <li>Not every household in the dry-well count gets interim help (renters, people who never apply), so the range applies only if the State steps in.</li>
+    </ul>
+  </section>
+
+  <section class="method" id="resolved">
+    <h2>5. Resolved: about $54,000 per well, usually state-funded</h2>
+    <ul>
+      <li><span class="tag tag-doc">Documented</span> Appendix N (page 83) gives $54,000 as the average cost of constructing a new domestic well, in Self-Help Enterprises' state-funded program.</li>
+      <li><span class="tag tag-der">Derived</span> Table N-1 lists 196 wells drilled for $10,486,906, about $53,500 each.</li>
+    </ul>
+    <h3>Cross-checks</h3>
+    <ul>
+      <li><span class="tag tag-der">Derived</span> The State's cost model for a 500-foot private well uses $65 a foot ($32,500 of drilling). The itemised equation sums to about $46,000 before the county permit and 3.1% inflation. Self-Help Enterprises' reported average drilling cost in the model is $31,250.</li>
+      <li>Resident and program quotes: $35,000 and $55,000 (<a href="#src-fww">Food &amp; Water Watch</a>), $48,000 or more for a 420-foot well and pump (<a href="#src-rcac">RCAC</a>), and $85,000 for an 800-foot well in San Luis Obispo County (<a href="#src-slo">SLO Tribune via Yahoo</a>).</li>
+      <li>Household financing is capped well below these costs: USDA household well loans cap at $11,000, and RCAC grants can reach $60,000.</li>
+    </ul>
+  </section>
+
+  <section class="method" id="omitted">
+    <h2>6. What the cost slide leaves out</h2>
+    <p>Connection to a public water system (consolidation) is omitted from the headline number because it is priced per connection on whole-system projects, not per household bill:</p>
+    <ul>
+      <li>Regional approaches: $7,000 to $39,000 per connection (Monterey County, 85 small systems; <a href="#src-revelator">The Revelator</a>).</li>
+      <li><span class="tag tag-der">Derived</span> East Porterville: $48 million for 755 homes, about $63,600 each (<a href="#src-eportv">DWR</a>).</li>
+      <li>State average for water-system construction: $69,500 per connection (<a href="#src-fep">FY 2026-27 Fund Expenditure Plan</a>, Table C-7), covering all construction types, not only consolidation.</li>
+      <li><span class="tag tag-der">Derived</span> East Orosi, an outlier: $13.5 million for about 103 connections, about $131,000 each (<a href="#src-orosi">State Water Board order</a> and <a href="#src-orosires">Resolution 2024-0008</a>).</li>
+    </ul>
+    <p>The series does not estimate a total or annual public cost of groundwater depletion. Costs such as subsidence damage to infrastructure, property values and pumping energy are not quantified here.</p>
+  </section>
+
+  <section class="method" id="projection">
+    <h2>7. The depletion projection</h2>
+    <p>The opening slides show an original projection of how long Central Valley groundwater can keep being extracted at current rates. It builds on depletion-rate projections from <a href="https://pubmed.ncbi.nlm.nih.gov/22645352/" target="_blank" rel="noopener">Scanlon et al. (2012)</a> and CVHM2 hydrological basin modelling, with satellite GRACE data providing the empirical depletion curve.</p>
+  </section>
+
+  <section class="method" id="sources">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li id="src-circle"><a href="https://www.circleofblue.org/2021/supply/water-management/infrastructure/some-rural-california-residents-doubt-theyll-ever-get-clean-water/" target="_blank" rel="noopener">Circle of Blue, El Adobe</a></li>
+      <li id="src-fww"><a href="https://www.foodandwaterwatch.org/2023/03/03/fighting-for-water-tombstone-california/" target="_blank" rel="noopener">Food &amp; Water Watch, Tombstone Territory</a></li>
+      <li id="src-cnbc"><a href="https://www.cnbc.com/2015/04/08/californias-four-year-drought-starts-a-water-truck-boom.html" target="_blank" rel="noopener">CNBC, California drought "water truck" boom (2015)</a></li>
+      <li id="src-slo"><a href="https://www.yahoo.com/news/no-water-wine-country-slo-120000260.html" target="_blank" rel="noopener">Yahoo / SLO Tribune, San Luis Obispo County dry wells</a></li>
+      <li id="src-calmatters"><a href="https://calmatters.org/environment/2021/08/california-groundwater-dry/" target="_blank" rel="noopener">CalMatters, dry wells and groundwater (2021)</a></li>
+      <li id="src-usda"><a href="https://www.rd.usda.gov/newsroom/success-stories/partnering-resilience-helping-rural-families-keeps-homes-and-water-california" target="_blank" rel="noopener">USDA Rural Development, re-drilling story</a></li>
+      <li id="src-cost"><a href="https://water.waterboards.ca.gov/drinking_water/certlic/drinkingwater/documents/needs/2024/2024costassessment-add-longterm-solutions.pdf" target="_blank" rel="noopener">State Water Board, 2024 Cost Assessment (additional long-term solutions)</a></li>
+      <li id="src-fep"><a href="https://www.waterboards.ca.gov/water_issues/programs/grants_loans/docs/2026/draft_fy2026-27_fep_appendices_0926.pdf" target="_blank" rel="noopener">State Water Board, FY 2026-27 Fund Expenditure Plan appendices (Appendix N, Table C-7)</a></li>
+      <li id="src-tank"><a href="https://water.ca.gov/-/media/DWR-Website/Web-Pages/Water-Basics/Drought/Files/Resources/Water-Tank-Program.pdf" target="_blank" rel="noopener">DWR, Water Tank Program flyer</a></li>
+      <li id="src-eportv"><a href="https://water.ca.gov/News/News-Releases/2018/Feb-18/East-Porterville-Water-Supply-Project-Connects-755-Homes" target="_blank" rel="noopener">DWR, East Porterville Water Supply Project</a></li>
+      <li id="src-revelator"><a href="https://therevelator.org/california-water-assessment/" target="_blank" rel="noopener">The Revelator, California water needs assessment</a></li>
+      <li id="src-orosi"><a href="https://www.waterboards.ca.gov/press_room/press_releases/2026/pr20260227-east-orosi-consolidation-order.html" target="_blank" rel="noopener">State Water Board, East Orosi consolidation order</a></li>
+      <li id="src-orosires"><a href="https://www.waterboards.ca.gov/board_decisions/adopted_orders/resolutions/2024/rs2024-0008.pdf" target="_blank" rel="noopener">State Water Board, Resolution 2024-0008 (East Orosi grant)</a></li>
+      <li id="src-rcac"><a href="https://www.rcac.org/water-is-life-cdwwr-2026/" target="_blank" rel="noopener">RCAC, well replacement program</a></li>
+      <li id="src-angi"><a href="https://www.angi.com/articles/how-much-does-water-tank-replacement-cost.htm" target="_blank" rel="noopener">Angi, water tank cost (estimate only)</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Owen Mulhern &middot; owen@getmulhern.com</span>
+    <a href="/">← Back to portfolio</a>
+  </footer>
+
+</div>
+</body>
+</html>

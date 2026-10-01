@@ -226,6 +226,15 @@ nav {
 .modal-close:hover { background: var(--rule); }
 .modal-img-wrap { position: relative; overflow: hidden; }
 .modal-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+/* Groundwater slides are near-square: show the whole slide, never crop it */
+#modal-gw .modal-img-wrap { background: #fff; }
+#modal-gw .modal-img { aspect-ratio: 1640 / 1454; height: auto; max-height: min(72vh, 727px); object-fit: contain; background: #fff; }
+#modal-gw .modal-img-nav { border: 1px solid var(--rule); }
+#modal-gw .modal-methods { margin-top: 4px; }
+@media (max-width: 640px) {
+  #modal-gw .modal-img-wrap { padding-bottom: 48px; }
+  #modal-gw .modal-img-nav { top: auto; bottom: 6px; transform: none; }
+}
 .modal-img-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,0.9); border: none; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .modal-img-nav.prev { left: 16px; }
 .modal-img-nav.next { right: 16px; }
@@ -664,7 +673,7 @@ footer a:hover { border-color: var(--ink); }
 
     <div class="work-item" data-modal="gw">
       <div style="overflow:hidden;position:relative;">
-        <img class="work-item-img" src="/assets/groundwater/gw-01.jpg" alt="California Groundwater">
+        <img class="work-item-img" src="/assets/groundwater/gw-card.webp" alt="California Groundwater Crisis: opening slide of the series">
         <span class="work-item-arrow">↗</span>
       </div>
       <div class="work-item-body">
@@ -1135,7 +1144,7 @@ footer a:hover { border-color: var(--ink); }
     <button class="modal-close" aria-label="Close">&times;</button>
     <div class="modal-img-wrap">
       <button class="modal-img-nav prev" aria-label="Previous">&#8592;</button>
-      <img class="modal-img" src="/assets/groundwater/gw-01.jpg" alt="">
+      <img class="modal-img" src="/assets/groundwater/gw-01.webp" alt="Chart of Central Valley groundwater from 1960 to 2020: a blue block with a thin red band at the top marking what has been lost, and a note that about 245 years of supply remain." width="1640" height="1454" loading="lazy" decoding="async">
       <button class="modal-img-nav next" aria-label="Next">&#8594;</button>
     </div>
     <div class="modal-body">
@@ -1143,7 +1152,8 @@ footer a:hover { border-color: var(--ink); }
       <p class="modal-counter" id="gw-counter">1 / 11</p>
       <div class="modal-dots"></div>
       <h2 class="modal-title" id="gw-title">The Scanlon extrapolation</h2>
-      <p class="modal-desc" id="gw-desc">The headline figure, 250 years of viable extraction remaining, is an original calculation built on depletion rate projections from Scanlon et al. (2012) and CVHM2 hydrological basin modeling. Satellite GRACE data provides the empirical depletion curve.</p>
+      <p class="modal-desc" id="gw-desc">The aquifer took 15,000 years to fill. Since 1960, extraction has drawn down a measurable share of that stock, leaving roughly 245 years of viable supply at current depletion rates. The gap between recharge and extraction has been widening for decades, and the usable portion is shrinking faster than the raw figure suggests.</p>
+      <p class="modal-methods"><a class="modal-link" href="/groundwater-methods/">Methods and sources</a></p>
     </div>
   </div>
 </div>
@@ -1265,17 +1275,17 @@ footer a:hover { border-color: var(--ink); }
 
   // Copy Zest screenshots to assets if available
   var GW_PANELS = [
-    { src: '/assets/groundwater/gw-01.jpg', title: 'Californian agriculture\'s groundwater', desc: 'The aquifer took 15,000 years to fill. Since 1960, extraction has drawn down a measurable share of that stock — with 234 years of viable supply remaining at current depletion rates. The gap between recharge and extraction has been widening for decades, and the usable portion is shrinking faster than the raw figure suggests.' },
-    { src: '/assets/groundwater/gw-02.jpg', title: 'This much is gone forever', desc: 'Each drought accelerates depletion, and the losses don\'t recover. The red band marks storage permanently removed — clay interbeds compacted by over-extraction collapse and can\'t hold water again. Six distinct drought episodes since the 1960s have each driven the baseline permanently lower.' },
-    { src: '/assets/groundwater/gw-03.jpg', title: 'Where groundwater goes', desc: 'Agriculture accounts for the overwhelming majority of Central Valley groundwater use — consistently around 90% from 1960 to 2020. Cities draw the remainder. The demand side of the equation is almost entirely agricultural, and that share has barely budged over sixty years.' },
-    { src: '/assets/groundwater/gw-04.jpg', title: 'Agriculture\'s reliance', desc: 'During drought peaks, agriculture\'s groundwater dependence spikes to 70% of total water used. Surface water shortfalls are offset almost entirely by pumping deeper into aquifers — accelerating depletion exactly when conditions are most stressed.' },
-    { src: '/assets/groundwater/gw-05.jpg', title: 'It\'s emptying locals\' water', desc: 'Reported dry wells track closely with depletion events. The spike in the chart corresponds to the 2012–2016 drought, where hundreds of domestic wells — serving households, not farms — ran dry in a matter of months, with spikes reaching 250 reported failures in a single year.' },
-    { src: '/assets/groundwater/gw-06.jpg', title: 'One drought, 2,600 homes waterless', desc: 'The 2012–2016 drought left at least 2,600 homes without water. The dry well breakdown by outcome — resolved, interim solution, or outage — shows most were not cleanly resolved. The figure is a floor estimate: reporting was voluntary, and the real count is likely far higher.' },
-    { src: '/assets/groundwater/gw-07.jpg', title: 'What dry wells cost whom', desc: 'Resolution costs fall entirely on residents. A fully resolved dry well runs $15,000–$35,000+. Interim state-funded connections cost $1,500–$3,500 upfront plus $300–$700 per month. Those left unresolved pay $100–$600 per month indefinitely out of pocket — or go without running water.' },
-    { src: '/assets/groundwater/gw-08.jpg', title: 'Where the water went in 2020', desc: 'Of the groundwater used by Central Valley agriculture in 2020, 32.2% went to almonds and pistachios — both primarily export crops. Another 24.6% went to perennials: long-lived trees that must be irrigated through droughts regardless of conditions, making demand inelastic to water scarcity.' },
-    { src: '/assets/groundwater/gw-09.jpg', title: 'The (agricultural) revenue generated', desc: 'Almonds generated $4.95B and pistachios $2.93B — both classified as largely untaxed exports. Total Central Valley agricultural revenue runs to $61B per year, mostly untaxed. The water enabling that revenue is extracted from a shared public aquifer with no extraction charge.' },
-    { src: '/assets/groundwater/gw-10.jpg', title: 'Yearly groundwater P&L', desc: 'Agriculture draws billions in revenue from groundwater. The public absorbs at least $1.5 billion annually in costs — emergency water solutions, subsidence damage, infrastructure repair — with no mechanism to recover those costs from the extractors generating the surplus.' },
-    { src: '/assets/groundwater/gw-11.jpg', title: 'The public cost itemised', desc: 'The $1.5B+ annual public cost breaks into five categories: emergency and replacement water solutions, subsidence-driven infrastructure damage, higher pumping energy costs from deeper extraction, diminishing property values in affected areas, and the sunk cost of dead wells.' },
+    { src: "/assets/groundwater/gw-01.webp", alt: "Chart of Central Valley groundwater from 1960 to 2020: a blue block with a thin red band at the top marking what has been lost, and a note that about 245 years of supply remain.", title: "Californian agriculture's groundwater", desc: "The aquifer took 15,000 years to fill. Since 1960, extraction has drawn down a measurable share of that stock, leaving roughly 245 years of viable supply at current depletion rates. The gap between recharge and extraction has been widening for decades, and the usable portion is shrinking faster than the raw figure suggests." },
+    { src: "/assets/groundwater/gw-02.webp", alt: "Line chart of Central Valley groundwater storage falling across six labelled droughts, with a red band showing storage that has been permanently lost.", title: "This much is gone forever", desc: "Each drought accelerates depletion, and the losses don't recover. The red band marks storage permanently removed: clay interbeds compacted by over-extraction collapse and can't hold water again. Six distinct drought episodes since the 1960s have each driven the baseline permanently lower." },
+    { src: "/assets/groundwater/gw-03.webp", alt: "The same line chart extended into a grey panel labelled 'Future, probably', where a dashed line keeps falling and the permanently lost red area grows.", title: "The part that never comes back", desc: "The grey panel extends the same trend forward. It is a projection, not observed data, which is why it is labelled 'probably'. Storage lost to compaction does not return, so each future drought adds to the red area instead of resetting it." },
+    { src: "/assets/groundwater/gw-04.webp", alt: "Stacked bars from 1960 to 2020: agriculture in red makes up almost all Central Valley groundwater use, with cities in blue as a thin band on top.", title: "Where groundwater goes", desc: "Agriculture accounts for the overwhelming majority of Central Valley groundwater use, consistently around 90% from 1960 to 2020. Cities draw the remainder. The demand side of the equation is almost entirely agricultural, and that share has barely budged over sixty years." },
+    { src: "/assets/groundwater/gw-05.webp", alt: "Bar chart from 2002 to 2022 of agricultural groundwater use in red, under a dotted blue line for total water use.", title: "Agriculture's reliance", desc: "Groundwater is one part of agriculture's total water supply, and how much it carries changes from year to year. The dotted line is total water use; the red bars are the part pumped from underground." },
+    { src: "/assets/groundwater/gw-06.webp", alt: "The same chart with the tallest red bar labelled 70% and 'drought peaks'.", title: "At the drought peak", desc: "During drought peaks, agriculture's groundwater dependence spikes to 70% of total water used. Surface water shortfalls are offset almost entirely by pumping deeper into aquifers, accelerating depletion exactly when conditions are most stressed." },
+    { src: "/assets/groundwater/gw-07.webp", alt: "Bar chart of reported dry wells per month from 2012 to 2026 in black, with smaller spikes around 2014 to 2016 and two much larger spikes in 2021 and 2022, over the red agricultural groundwater bars.", title: "It's drying locals' water", desc: "Reported dry wells spike in droughts. The black bars count reports to the State's dry-well reporting system by the month the problem began: smaller peaks around 2014 to 2016, then the largest in 2021 and 2022, topping out at 283 reports in July 2021. Reporting is voluntary, so these counts are a floor." },
+    { src: "/assets/groundwater/gw-08.webp", alt: "Stacked bars of reported dry wells coloured by outcome (resolved in green, interim solution in blue, outage in red), with the 2012 to 2016 drought boxed and a note that the count is reported and a strong underestimate.", title: "One drought, and who was left without", desc: "The boxed years mark the 2012-2016 drought. Colours show where each report stands now: outage (red), interim solution (blue) or resolved (green). Across all 5,891 dry-well reports in the file analysed, about half are still listed as outages and about a third as resolved. Reporting is voluntary, so every count here is a floor." },
+    { src: "/assets/groundwater/gw-09.webp", alt: "Three rows of dry-well reports by outcome, each with a cost: resolved, about $54,000 per well, state and community; interim solution, state funded, $55 to $1,100 a month; unresolved, fend for yourself, $100 to $600 a month.", title: "What dry wells cost whom", desc: "Costs are per household, and the units differ: monthly for the first two stages, one-time for the third. Unresolved: no state help yet, so the household pays for its own water (bottled and trucked water, laundromats), about $100 to $600 a month based on documented spending from 2015 to 2024. Interim: the state or its partners supply bottled water, or a tank with hauled water, at about $55 to $1,100 a month in cost to the state. Resolved: a new well or a connection, about $54,000 per well on average, usually state-funded. Dry-well counts are self-reported and likely undercount." },
+    { src: "/assets/groundwater/gw-10.webp", alt: "Single bar of 2020 Central Valley agricultural groundwater use: almonds and pistachios 32.2%, other perennial tree crops 24.6%, other agricultural products 43.2%, with part of the almond and pistachio share marked as exported.", title: "Where the water went in 2020", desc: "Of the groundwater used by Central Valley agriculture in 2020, 32.2% went to almonds and pistachios, both primarily export crops. Another 24.6% went to perennials: long-lived trees that must be irrigated through droughts regardless of conditions, making demand inelastic to water scarcity." },
+    { src: "/assets/groundwater/gw-11.webp", alt: "Bar comparing almond revenue of $4.95 billion and pistachio revenue of $2.93 billion, both exported, against $61 billion a year in total Central Valley agricultural revenue.", title: "The agricultural revenue generated", desc: "Almonds generated $4.95B and pistachios $2.93B, both classified as largely untaxed exports. Total Central Valley agricultural revenue runs to $61B per year, mostly untaxed. The water enabling that revenue is extracted from a shared public aquifer with no extraction charge." },
   ];
   var gwCurrent = 0;
 
@@ -1296,7 +1306,9 @@ footer a:hover { border-color: var(--ink); }
     gwCurrent = (idx + GW_PANELS.length) % GW_PANELS.length;
     var p = GW_PANELS[gwCurrent];
     var m = document.getElementById('modal-gw');
-    m.querySelector('.modal-img').src = p.src;
+    var gi = m.querySelector('.modal-img');
+    gi.src = p.src; gi.alt = p.alt;
+    var nx = GW_PANELS[(gwCurrent + 1) % GW_PANELS.length]; (new Image()).src = nx.src;
     m.querySelector('#gw-title').textContent = p.title;
     m.querySelector('#gw-desc').textContent  = p.desc;
     m.querySelector('#gw-counter').textContent = (gwCurrent + 1) + ' / ' + GW_PANELS.length;
