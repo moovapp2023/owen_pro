@@ -397,6 +397,7 @@ nav {
   min-height: 200px;
 }
 .ad-card-content {
+  flex: 1;
   padding: 28px 36px 32px;
   display: flex;
   flex-direction: column;
