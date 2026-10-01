@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>California groundwater: methods and sources | Owen Mulhern</title>
-<meta name="description" content="How the dry-well cost figures and counts in the California groundwater series were built, with sources.">
+<title>California groundwater series: methods and sources | Owen Mulhern</title>
+<meta name="description" content="How the depletion projection, dry-well counts, costs and other figures in the California groundwater series were built, with sources.">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
 <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 <style>
@@ -219,6 +219,7 @@ footer a:hover { border-color: var(--ink); }
 .tag-doc { background: var(--tag-press-bg); color: var(--tag-press-ink); }
 .tag-der { background: var(--tag-academic-bg); color: var(--tag-academic-ink); }
 .tag-est { background: var(--tag-industry-bg); color: var(--tag-industry-ink); }
+.tag-ill { background: #f1f1ef; color: #4a4640; }
 .tag { margin-right: 6px; vertical-align: 1px; }
 .stage-table { width: 100%; border-collapse: collapse; margin: 6px 0 14px; font-size: 13px; }
 .stage-table th, .stage-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.5; }
@@ -262,7 +263,7 @@ footer a:hover { border-color: var(--ink); }
 
   <header class="page-header">
     <p class="page-eyebrow">California groundwater · Methods</p>
-    <h1>What a dry well costs: methods and sources</h1>
+    <h1>California groundwater series: methods and sources</h1>
     <p>How the figures in the California groundwater series were built. Last checked 1 October 2026.</p>
     <div class="header-links">
       <a href="/work#earthorg">← Back to the series</a>
@@ -270,16 +271,17 @@ footer a:hover { border-color: var(--ink); }
   </header>
 
   <div class="context-box">
-    <strong>How to read the tags.</strong> <span class="tag tag-doc">Documented</span> a source states the figure. <span class="tag tag-der">Derived</span> my arithmetic on sourced numbers, shown. <span class="tag tag-est">Estimate</span> a market or illustrative figure, not a household report. Costs are per household. Dry-well counts are self-reported to the State and are a floor, not a full count.
+    <strong>How to read the tags.</strong> <span class="tag tag-doc">Documented</span> a source states the figure. <span class="tag tag-der">Derived</span> my arithmetic on sourced numbers, shown. <span class="tag tag-est">Estimate</span> a market or illustrative figure, not a household report. <span class="tag tag-ill">Illustration</span> a drawing of an idea, with no data behind it. Costs are per household. Dry-well counts are self-reported to the State and are a floor, not a full count.
   </div>
 
   <section class="method" id="counts">
     <h2>1. Dry-well counts</h2>
-    <p>The counts come from the State of California's public dry-well reporting system (Department of Water Resources). Households report their own failures voluntarily, so every count is a floor.</p>
-    <p><span class="tag tag-der">Derived</span> I analysed the public export downloaded in May 2026: 6,139 household water shortage reports, of which 5,891 are dry wells. By current status, 2,954 are outages (50%), 1,047 have an interim solution (18%), 1,880 are resolved (32%) and 10 are listed as vulnerable.</p>
+    <p>The counts come from the Department of Water Resources' Household Water Supply Shortage Reporting System, published on the state open data portal as <a href="#src-cnra">Dry Well Reporting (GIS Feature Service)</a>. Households report their own failures voluntarily, and each report carries a status (outage, interim solution, resolved or vulnerable) that is current as of the export, so every count is a floor.</p>
+    <p><span class="tag tag-der">Derived</span> I analysed the public export downloaded in May 2026: 6,139 household water shortage reports, of which 5,891 are dry wells (those whose shortage type mentions a dry well or groundwater). By current status, 2,954 are outages (50%), 1,047 have an interim solution (18%), 1,880 are resolved (32%) and 10 are listed as vulnerable.</p>
     <p><span class="tag tag-der">Derived</span> The time charts place each report in the month its problem began. 1,573 dry-well reports (27%) have no start date and are left out of those charts, so the charts understate the total. The largest month on record is July 2021, with 283 reports.</p>
     <p><span class="tag tag-doc">Documented</span> The "at least 2,600" figure for the 2012-2016 drought is from the Public Policy Institute of California: "at least 2,600 well-dependent households experienced water shortages" (<a href="#src-ppic">PPIC</a>). PPIC does not say how it was counted. The reporting system is a separate, smaller tally: it holds 2,332 dry-well reports created between 2012 and 2016.</p>
     <p><span class="tag tag-der">Derived</span> 1,193 of those 2,332 were created in August 2016, 1,154 of them on a single day (12 August), and 1,158 are in Tulare County. They look like a bulk entry of existing households: 94% have no start date and 94% are listed as resolved or interim. Because the time charts need a start date, these reports are counted in the totals but not plotted.</p>
+    <p><span class="tag tag-der">Derived</span> By current status, the 2,332 reports created in 2012-2016 are 39% outage (916), 39% resolved (902) and 22% interim solution (511), with 3 vulnerable. The boxed years on the chart show only the 978 reports whose start date falls in 2012-2016, and 80% of those are outages (778, against 115 resolved and 83 interim). The chart looks outage-heavy partly because the 1,428 reports created in that period with no start date cannot be plotted, and 85% of them are resolved or interim.</p>
   </section>
 
   <section class="method" id="stages">
@@ -364,8 +366,46 @@ footer a:hover { border-color: var(--ink); }
   </section>
 
   <section class="method" id="projection">
-    <h2>7. The depletion projection</h2>
-    <p>The opening slides show an original projection of how long Central Valley groundwater can keep being extracted at current rates. It builds on depletion-rate projections from <a href="https://pubmed.ncbi.nlm.nih.gov/22645352/" target="_blank" rel="noopener">Scanlon et al. (2012)</a> and CVHM2 hydrological basin modelling, with satellite GRACE data providing the empirical depletion curve.</p>
+    <h2>7. The depletion curve and the 231-year figure</h2>
+    <p>The opening slides show how much Central Valley groundwater storage has been lost since 1960, and how long what is left would last if it kept falling at the recent rate.</p>
+
+    <h3>The curve</h3>
+    <p><span class="tag tag-doc">Documented</span> Storage from the early 1960s to 2014 is modelled storage change from the USGS Central Valley Hydrologic Model, taken from the dataset published with <a href="#src-liu">Liu et al. (2022)</a>. Later years, to 2023, come from NASA's <a href="#src-grace">GRACE-FO</a> satellite measurements, which DWR integrated over the Central Valley. The two series come from different methods, so the join between them is approximate. GRACE-FO measures total water storage, so it also registers snow, soil moisture and surface water, not only groundwater.</p>
+    <p><span class="tag tag-der">Derived</span> DWR's column header for the satellite series reads TAF, but the values are consistent with acre-feet, so I converted them as acre-feet.</p>
+
+    <h3>The calculation</h3>
+    <ul>
+      <li><span class="tag tag-doc">Documented</span> Starting point: <a href="#src-scanlon">Scanlon et al. (2012)</a> put the Central Valley aquifer's lifespan at 390 years, from 860 km³ of storage remaining in 2000 and a depletion rate of 2.2 km³ a year, using the Central Valley Hydrologic Model (860 ÷ 2.2 ≈ 390).</li>
+      <li><span class="tag tag-der">Derived</span> Storage lost since: 71.6 km³ between 2000 and 2023, which leaves 788 km³ in 2023 (860 − 71.6).</li>
+      <li><span class="tag tag-der">Derived</span> Rate: a straight-line trend through the post-2000 storage series (R² = 0.90) falls by 3.37 km³ a year, about 1.5 times Scanlon's rate.</li>
+      <li><span class="tag tag-der">Derived</span> Result: 788 ÷ 3.37 ≈ 234 years from 2023, so storage would reach zero around 2257. Counted from 2026, that is about 231 years, the figure on the slides.</li>
+    </ul>
+
+    <h3>What the number does and does not mean</h3>
+    <p>It is a straight-line extrapolation of total stored water, not a forecast. The rate will not stay fixed: droughts have accelerated the loss, while the Sustainable Groundwater Management Act requires overdrafted basins to be brought into balance, which could slow it. The result is also sensitive to the rate used. The plain average loss over 2000 to 2023 (71.6 km³ over 23 years, about 3.1 km³ a year) would stretch the same 788 km³ to about 250 years from 2026.</p>
+    <p><span class="tag tag-ill">Illustration</span> The figure counts storage, not usable water. As the water table falls, what remains is deeper, costlier to pump and can be of poorer quality, so the water that is practical to use would run short sooner. The "less usable" slide draws that idea and carries no data.</p>
+  </section>
+
+  <section class="method" id="usage">
+    <h2>8. Who uses the groundwater</h2>
+    <p><span class="tag tag-doc">Documented</span> The cities-versus-agriculture chart redraws Figure 4B of <a href="#src-faunt">Faunt et al. (2024)</a>, which shows urban and agricultural groundwater use simulated by the Central Valley Hydrologic Model, version 2 (CVHM2). Agriculture is roughly nine-tenths of the total across 1960 to 2020.</p>
+  </section>
+
+  <section class="method" id="reliance">
+    <h2>9. Agriculture's reliance on groundwater</h2>
+    <p><span class="tag tag-der">Derived</span> The 2002 to 2022 bars are groundwater as a share of total water supply for each water year, computed from DWR's <a href="#src-wb">Water Plan Water Balance Data</a> on the state open data portal. The highest year is about 70%, during the 2012-2016 drought.</p>
+  </section>
+
+  <section class="method" id="crops">
+    <h2>10. Where the water went in 2020</h2>
+    <p><span class="tag tag-der">Derived</span> The shares are of irrigation water applied to crops in 2020, from DWR's <a href="#src-agwater">Statewide Agricultural Water Use Data 2016-2020</a>, which reports applied water in acre-feet by crop category. Almonds and pistachios together took 32.2%, other perennial tree crops 24.6% and all other crops 43.2%.</p>
+    <p>The export marking is indicative. Much of the almond and pistachio crop is sold abroad, but the slide does not measure an export share.</p>
+  </section>
+
+  <section class="method" id="revenue">
+    <h2>11. Revenue and tax</h2>
+    <p><span class="tag tag-doc">Documented</span> The $61 billion total is California's agricultural production value, reported as $61.2 billion for 2024 (<a href="#src-ag61">Valley Ag Voice</a>). It is a statewide figure, not a Central Valley one.</p>
+    <p>"Untaxed" is shorthand. The US Constitution bars taxes on goods in the course of export (Article I, Sections 9 and 10), so exports cannot be taxed as exports. That does not mean farm income or land goes untaxed. "Mostly untaxed" for the rest of the sector is my characterisation and is not quantified here.</p>
   </section>
 
   <section class="method" id="sources">
@@ -387,6 +427,14 @@ footer a:hover { border-color: var(--ink); }
       <li id="src-orosires"><a href="https://www.waterboards.ca.gov/board_decisions/adopted_orders/resolutions/2024/rs2024-0008.pdf" target="_blank" rel="noopener">State Water Board, Resolution 2024-0008 (East Orosi grant)</a></li>
       <li id="src-rcac"><a href="https://www.rcac.org/water-is-life-cdwwr-2026/" target="_blank" rel="noopener">RCAC, well replacement program</a></li>
       <li id="src-angi"><a href="https://www.angi.com/articles/how-much-does-water-tank-replacement-cost.htm" target="_blank" rel="noopener">Angi, water tank cost (estimate only)</a></li>
+      <li id="src-cnra"><a href="https://data.cnra.ca.gov/dataset/calgw-live/resource/f2ab3a81-0b75-4dfc-a736-3fdd6d0177b1" target="_blank" rel="noopener">California Natural Resources Agency open data portal, Dry Well Reporting (GIS Feature Service), from DWR's Household Water Supply Shortage Reporting System</a></li>
+      <li id="src-scanlon"><a href="https://www.pnas.org/doi/10.1073/pnas.1200311109" target="_blank" rel="noopener">Scanlon et al. (2012), Groundwater depletion and sustainability of irrigation in the US High Plains and Central Valley, PNAS 109:9320-9325</a></li>
+      <li id="src-liu"><a href="https://www.nature.com/articles/s41467-022-35582-x" target="_blank" rel="noopener">Liu et al. (2022), Groundwater depletion in California's Central Valley accelerates during megadrought, Nature Communications</a> (<a href="https://doi.org/10.5281/zenodo.7392554" target="_blank" rel="noopener">dataset</a>)</li>
+      <li id="src-grace"><a href="https://www.earthdata.nasa.gov/data/catalog/pocloud-tellus-grfo-l3-csr-rl06.3-lnd-v04-rl06.3v04" target="_blank" rel="noopener">NASA Earthdata, GRACE-FO terrestrial water storage anomaly (Level 3, CSR RL06.3)</a></li>
+      <li id="src-faunt"><a href="https://www.mdpi.com/2073-4441/16/8/1189" target="_blank" rel="noopener">Faunt et al. (2024), Groundwater Sustainability and Land Subsidence in California's Central Valley, Water 16(8):1189</a></li>
+      <li id="src-wb"><a href="https://data.cnra.ca.gov/dataset/water-plan-water-balance-data" target="_blank" rel="noopener">DWR, Water Plan Water Balance Data</a></li>
+      <li id="src-agwater"><a href="https://data.cnra.ca.gov/dataset/agricultural-water-use-data-2016-2020" target="_blank" rel="noopener">DWR, Statewide Agricultural Water Use Data 2016-2020</a></li>
+      <li id="src-ag61"><a href="https://www.valleyagvoice.com/california-ag-production-value-hits-record-61-2-billion/" target="_blank" rel="noopener">Valley Ag Voice, California ag production value hits record $61.2 billion</a></li>
     </ul>
   </section>
 
