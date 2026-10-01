@@ -271,7 +271,7 @@ footer a:hover { border-color: var(--ink); }
   </header>
 
   <div class="context-box">
-    <strong>How to read the tags.</strong> <span class="tag tag-doc">Documented</span> a source states the figure. <span class="tag tag-der">Derived</span> my arithmetic on sourced numbers, shown. <span class="tag tag-est">Estimate</span> a market or illustrative figure, not a household report. <span class="tag tag-ill">Illustration</span> a drawing of an idea, with no data behind it. Costs are per household. Dry-well counts are self-reported to the State and are a floor, not a full count.
+    <strong>How to read the tags.</strong> <span class="tag tag-doc">Documented</span> a source states the figure. <span class="tag tag-der">Derived</span> my arithmetic on sourced numbers, shown. <span class="tag tag-est">Estimate</span> my estimate rather than a published or counted figure, such as a market price or a working input. <span class="tag tag-ill">Illustration</span> a drawing of an idea, with no data behind it. Costs are per household. Dry-well counts are self-reported to the State and are a floor, not a full count.
   </div>
 
   <section class="method" id="counts">
@@ -366,23 +366,33 @@ footer a:hover { border-color: var(--ink); }
   </section>
 
   <section class="method" id="projection">
-    <h2>7. The depletion curve and the 231-year figure</h2>
-    <p>The opening slides show how much Central Valley groundwater storage has been lost since 1960, and how long what is left would last if it kept falling at the recent rate.</p>
+    <h2>7. The depletion curve and the 202-year figure</h2>
+    <p>The opening slides show how much Central Valley groundwater storage has been lost since 1960, and how long what is left would last if it kept falling at the recent rate. The answer is about 200 years, give or take a few decades depending on how the recent rate is measured.</p>
 
     <h3>The curve</h3>
-    <p><span class="tag tag-doc">Documented</span> Storage from the early 1960s to 2014 is modelled storage change from the USGS Central Valley Hydrologic Model, taken from the dataset published with <a href="#src-liu">Liu et al. (2022)</a>. Later years, to 2023, come from NASA's <a href="#src-grace">GRACE-FO</a> satellite measurements, which DWR integrated over the Central Valley. The two series come from different methods, so the join between them is approximate. GRACE-FO measures total water storage, so it also registers snow, soil moisture and surface water, not only groundwater.</p>
+    <p><span class="tag tag-doc">Documented</span> Storage from the early 1960s to 2014 is modelled storage change from the USGS Central Valley Hydrologic Model, taken from the dataset published with <a href="#src-liu">Liu et al. (2022)</a>. Later years, to 2023, come from <a href="#src-grace">DWR's GRACE series</a>, built from NASA's GRACE and GRACE-FO satellites. The series runs monthly from October 2006 to December 2023, with a gap from May 2017 to May 2018 between the two missions. The two parts of the curve come from different methods, so the join between them is approximate.</p>
+    <p>Satellites measure changes in total water storage. DWR's series is labelled a groundwater storage anomaly, and I have not checked how DWR separates groundwater from snow, soil moisture and surface water.</p>
     <p><span class="tag tag-der">Derived</span> DWR's column header for the satellite series reads TAF, but the values are consistent with acre-feet, so I converted them as acre-feet.</p>
 
     <h3>The calculation</h3>
     <ul>
       <li><span class="tag tag-doc">Documented</span> Starting point: <a href="#src-scanlon">Scanlon et al. (2012)</a> put the Central Valley aquifer's lifespan at 390 years, from 860 km³ of storage remaining in 2000 and a depletion rate of 2.2 km³ a year, using the Central Valley Hydrologic Model (860 ÷ 2.2 ≈ 390).</li>
-      <li><span class="tag tag-der">Derived</span> Storage lost since: 71.6 km³ between 2000 and 2023, which leaves 788 km³ in 2023 (860 − 71.6).</li>
-      <li><span class="tag tag-der">Derived</span> Rate: a straight-line trend through the post-2000 storage series (R² = 0.90) falls by 3.37 km³ a year, about 1.5 times Scanlon's rate.</li>
-      <li><span class="tag tag-der">Derived</span> Result: 788 ÷ 3.37 ≈ 234 years from 2023, so storage would reach zero around 2257. Counted from 2026, that is about 231 years, the figure on the slides.</li>
+      <li><span class="tag tag-est">Estimate</span> Storage lost since: 71.6 km³ between 2000 and 2023, which leaves 788 km³ in 2023 (860 − 71.6). This is an estimate, not a published figure. As a rough cross-check, DWR's satellite series alone falls by about 60 km³ from October 2006 to December 2023, and Scanlon's 2.2 km³ a year over 2000 to 2006 adds about 13 km³, which comes to about 73 km³.</li>
+      <li><span class="tag tag-der">Derived</span> Rate: a straight-line trend through DWR's monthly satellite series from October 2006 to December 2023 (194 monthly values, R² = 0.74) falls by 3.9 km³ a year (3.905 before rounding), about 1.8 times Scanlon's rate.</li>
+      <li><span class="tag tag-der">Derived</span> Result: 788 ÷ 3.9 ≈ 202 years, counted from 2023, the last data point, so storage would reach zero around 2225. Counted from 2026 it is about 199 years. The slides use 202.</li>
     </ul>
 
     <h3>What the number does and does not mean</h3>
-    <p>It is a straight-line extrapolation of total stored water, not a forecast. The rate will not stay fixed: droughts have accelerated the loss, while the Sustainable Groundwater Management Act requires overdrafted basins to be brought into balance, which could slow it. The result is also sensitive to the rate used. The plain average loss over 2000 to 2023 (71.6 km³ over 23 years, about 3.1 km³ a year) would stretch the same 788 km³ to about 250 years from 2026.</p>
+    <p>It is a straight-line extrapolation of total stored water, not a forecast. The rate will not stay fixed: droughts have accelerated the loss, while the Sustainable Groundwater Management Act requires overdrafted basins to be brought into balance, which could slow it.</p>
+    <p><span class="tag tag-der">Derived</span> The result is also sensitive to the window used for the trend, which is a choice. I used the whole satellite record because it has the most data and the best fit. The same 788 km³ gives:</p>
+    <ul>
+      <li>Trend from 2006: 3.9 km³ a year (R² 0.74), about 202 years. This is the figure used.</li>
+      <li>Trend from 2008: 3.6 km³ a year (R² 0.68), about 218 years.</li>
+      <li>Trend from 2010: 3.55 km³ a year (R² 0.59), about 222 years.</li>
+      <li>Trend from 2012: 3.25 km³ a year (R² 0.46), about 243 years.</li>
+      <li>Trend from 2014 or 2015: about 1.9 km³ a year, about 400 years. This line fits the data poorly (R² 0.14 to 0.18). The period includes the wet winters of 2017 and 2019 and the 2017-18 data gap, so I do not rely on it.</li>
+    </ul>
+    <p>So the range is roughly 200 to 245 years across the windows that fit reasonably. It is not a precise year.</p>
     <p><span class="tag tag-ill">Illustration</span> The figure counts storage, not usable water. As the water table falls, what remains is deeper, costlier to pump and can be of poorer quality, so the water that is practical to use would run short sooner. The "less usable" slide draws that idea and carries no data.</p>
   </section>
 
