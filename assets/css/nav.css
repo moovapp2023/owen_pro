@@ -1,0 +1,57 @@
+/* Navigation only, for pages that keep their own inline styles. */
+/* ─── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 56px;
+  background: rgba(245, 244, 240, 0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+.nav-item { position: relative; }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 1px); left: -16px;
+  background: var(--bg); border: 1px solid var(--rule);
+  min-width: 180px; display: none; flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07); z-index: 110;
+}
+.nav-item:hover .nav-dropdown-menu { display: flex; }
+.nav-dropdown-item {
+  display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+  font-size: 11px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  border-bottom: 1px solid var(--rule); transition: color 0.12s, background 0.12s;
+}
+.nav-dropdown-item:last-child { border-bottom: none; }
+.nav-dropdown-item:hover { color: var(--ink); background: #eeece6; }
+.nav-dropdown-logo {
+  height: 14px; width: auto; max-width: 44px;
+  object-fit: contain; flex-shrink: 0;
+  filter: grayscale(1); opacity: 0.6; mix-blend-mode: multiply;
+}
+
+
+/* ═══ NEW STRUCTURE: shared additions (2026-10) ═══════════════════════ */
+
+/* nav: five items, short labels on small screens */
+.nav-links .short { display: none; }
+@media (max-width: 760px) {
+  nav { padding: 0 16px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 10px; letter-spacing: 0.04em; }
+  .nav-links .long { display: none; }
+  .nav-links .short { display: inline; }
+  .nav-name { font-size: 12px; }
+  .nav-dropdown-menu { display: none !important; }
+}
+@media (max-width: 480px) {
+  .nav-links { gap: 10px; }
+  .nav-links li.nav-contact { display: none; }
+  .nav-name { font-size: 11px; }
+}
+

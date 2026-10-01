@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>California Groundwater Crisis: how long will the water last? | Owen Mulhern</title>
+<meta name="description" content="A 12-slide data series estimating about 202 years of Central Valley groundwater left at the recent rate of loss, with the methods, sources and limits explained in plain language.">
+<link rel="canonical" href="https://getmulhern.com/climate-data/california-groundwater/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Owen Mulhern">
+<meta property="og:title" content="California Groundwater Crisis: how long will the water last? | Owen Mulhern">
+<meta property="og:description" content="A 12-slide data series estimating about 202 years of Central Valley groundwater left at the recent rate of loss, with the methods, sources and limits explained in plain language.">
+<meta property="og:url" content="https://getmulhern.com/climate-data/california-groundwater/">
+<meta property="og:image" content="https://getmulhern.com/assets/groundwater/gw-01.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="/">Owen Mulhern</a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/climate-data/" class="active"><span class="long">Climate data</span><span class="short">Climate</span></a>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="/climate-data/california-groundwater/">California groundwater</a>
+        <a class="nav-dropdown-item" href="/climate-data/sea-level-rise-2100/">Sea Level Rise 2100</a>
+        <a class="nav-dropdown-item" href="/climate-data/air-pollution-london/">Air pollution in London</a>
+        <a class="nav-dropdown-item" href="/climate-data/us-dams-under-pressure/">US dams under pressure</a>
+        <a class="nav-dropdown-item" href="/climate-data/">All climate data</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="/reach-and-results/"><span class="long">Reach and results</span><span class="short">Results</span></a>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="/reach-and-results/zest-pillar-page/">Zest: pillar page (SEO)</a>
+        <a class="nav-dropdown-item" href="/reach-and-results/zest-roi-calculator/">Zest: ROI calculator</a>
+        <a class="nav-dropdown-item" href="/reach-and-results/zest-2023/">Zest: audience work, 2023</a>
+        <a class="nav-dropdown-item" href="/reach-and-results/semrush-newsletters/">Semrush newsletter turnaround</a>
+        <a class="nav-dropdown-item" href="/reach-and-results/private-client-gtm/">Private client GTM model</a>
+        <a class="nav-dropdown-item" href="/reach-and-results/">All reach and results</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="/writing/"><span class="long">Writing</span><span class="short">Writing</span></a>
+      <div class="nav-dropdown-menu">
+        <a class="nav-dropdown-item" href="/writing/dtc-times/">DTC Times</a>
+        <a class="nav-dropdown-item" href="/writing/semrush/">Semrush articles</a>
+        <a class="nav-dropdown-item" href="/writing/email/">Email newsletters</a>
+        <a class="nav-dropdown-item" href="/writing/ads/">Ad copy &amp; design</a>
+        <a class="nav-dropdown-item" href="/writing/landing-pages/">Landing pages</a>
+        <a class="nav-dropdown-item" href="/writing/">All writing</a>
+      </div>
+    </li>
+    <li><a href="/citations/">Citations</a></li>
+    <li class="nav-contact"><a href="mailto:owen@getmulhern.com">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="project">
+  <a class="crumb" href="/climate-data/">&larr; Climate data</a>
+  <p class="client-eyebrow">Independent work &nbsp;·&nbsp; 2026</p>
+  <h1>California Groundwater Crisis</h1>
+  <p class="project-lede">A 12-slide series asking how long California's Central Valley groundwater would last at the recent rate of loss. The answer is about 202 years, roughly half the 390 years in the widely cited 2012 study, and the page shows how the number was built.</p>
+  <dl class="project-facts"><div><dt>Year</dt><dd>Independent work, 2026</dd></div><div><dt>Role</dt><dd>Research, analysis and design, done hands-on by me</dd></div><div><dt>Tools</dt><dd>Python, Google Sheets, Figma</dd></div><div><dt>Data</dt><dd>USGS CVHM, NASA GRACE (via DWR), DWR dry-well records</dd></div></dl>
+  <div class="viewer" id="slides">
+    <div class="viewer-stage">
+      <img class="viewer-img" id="v-img" src="/assets/groundwater/gw-01.webp" alt="Chart of Central Valley groundwater storage from 1960 to 2020: a blue block with a thin red band at the top marking what has been lost, and a note that about 202 years are left." width="1640" height="1454" decoding="async">
+    </div>
+    <div class="viewer-body">
+      <div class="viewer-controls">
+        <p class="viewer-counter" id="v-counter">1 / 12</p>
+        <div class="viewer-buttons">
+          <button class="viewer-nav prev" id="v-prev" aria-label="Previous slide">&larr;</button>
+          <button class="viewer-nav next" id="v-next" aria-label="Next slide">&rarr;</button>
+        </div>
+      </div>
+      <div class="viewer-dots" id="v-dots"></div>
+      <h2 class="viewer-title" id="v-title">Californian agriculture&#x27;s groundwater</h2>
+      <p class="viewer-desc" id="v-desc">The blue block is the Central Valley&#x27;s stored groundwater; the red band is the part that is not coming back. An estimated 788 km³ remained in 2023, and satellite data show storage falling by about 3.9 km³ a year (the 2006 to 2023 trend). At that rate it lasts about 202 years from 2023, to around 2225. That is a straight-line projection of total storage, not of usable water (see the next slide), and other trend windows give roughly 200 to 245 years (see the methods). The deep layers took a very long time to fill and shallower layers cycle much faster, so there is no single fill time.</p>
+    </div>
+  </div>
+  <noscript><p class="cs-note">The slides need JavaScript. The full text of every caption is in <a href="/groundwater-methods/">the methods page</a>.</p></noscript>
+  <section class="cs">
+<h2>The problem</h2>
+<p>Central Valley farms lean heavily on groundwater, and the water table has been falling for decades. The question I wanted answered was simple: if it keeps falling at the recent rate, how long does the stored water last?</p>
+<p>A widely cited 2012 study (Scanlon et al., <em>PNAS</em>) put the answer at about 390 years. That number is now old, and the loss has not slowed. I wanted to update it with the years since, and show how the number is built so that anyone can check it.</p>
+<p>The series goes on to show who uses the water (agriculture is roughly nine-tenths of Central Valley groundwater use, slide 5) and what happens to households when wells run dry (slides 8 to 10).</p>
+</section>
+<section class="cs">
+<h2>What I did</h2>
+<ol>
+<li><strong>Built the curve of stored water.</strong> From the early 1960s to 2014 I used modelled storage change from the USGS Central Valley Hydrologic Model. From 2006 to 2023 I used NASA satellite measurements (GRACE and GRACE-FO) as processed by California's Department of Water Resources. The two come from different methods, so where they join is approximate.</li>
+<li><strong>Started from the 2012 study's numbers.</strong> It counted 860 km&sup3; of storage remaining in 2000, drawn down at 2.2 km&sup3; a year. That is where 390 years comes from (860 &divide; 2.2).</li>
+<li><strong>Brought the storage up to date.</strong> I estimate about 71.6 km&sup3; was lost between 2000 and 2023, which leaves about 788 km&sup3;.</li>
+<li><strong>Measured the recent rate.</strong> A straight line through the satellite series from late 2006 to the end of 2023 falls by about 3.9 km&sup3; a year, roughly 1.8 times the rate in the 2012 study.</li>
+<li><strong>Divided.</strong> 788 &divide; 3.9 is about 202 years, counted from 2023.</li>
+<li><strong>Followed the people.</strong> The dry-well slides use the State's dry-well reporting records, with household costs sourced to the State Water Board, DWR and others. Every number on those slides is traced on the <a href="/groundwater-methods/">methods page</a>.</li>
+</ol>
+</section>
+<section class="cs">
+<h2>Tools, and how they fit together</h2>
+<p>Python for the analysis and the charts, Google Sheets for converting the satellite data's units, and Figma to turn the charts into the slides. The numbers flow one way: public datasets, then the analysis, then the slides, with every caption written to say where its number came from.</p>
+<!-- TODO(Owen): Tools confirmed by Owen (Python, Google Sheets, Figma). Still to say: whether a developer or anyone else was involved. -->
+</section>
+<section class="cs">
+<h2>Result</h2>
+<p>About <strong>202 years</strong> of storage left at the recent rate, counted from 2023, roughly half the 2012 study's 390. Measuring the recent rate over different windows gives anything from about 200 to 245 years, so the honest summary is "a bit over two centuries, not a precise year".</p>
+<p>This is independent work. It was not commissioned.</p>
+</section>
+<section class="cs">
+<h2>Limits</h2>
+<p>This extends a published model. I did not independently re-verify the original volume estimates. The satellite data and the hydrological model do not reconcile cleanly, and the estimate assumes the recent rate continues, which it may not: droughts have sped up the loss, and the Sustainable Groundwater Management Act could slow it.</p>
+<p>The figure counts stored water, not usable water. As the water table falls, what is left is deeper, costlier to pump and can be of poorer quality, so the practical limit would arrive sooner. Land subsidence has also permanently reduced storage capacity (about 15% of what has been drawn, per USGS), which the calculation does not model.</p>
+<!-- TODO(Owen): The "about 15%, per USGS" subsidence figure comes from the source doc and has not been checked against the USGS source. -->
+</section>
+<section class="cs">
+<h2>Technical detail</h2>
+<details class="tech"><summary>Datasets and citations</summary><div class="tech-body">
+<ul>
+<li>Storage curve to 2014: USGS Central Valley Hydrologic Model, from the dataset published with Liu et al. (2022), <em>Groundwater depletion in California's Central Valley accelerates during megadrought</em>, <em>Nature Communications</em> (dataset doi 10.5281/zenodo.7392554).</li>
+<li>Storage curve 2006 to 2023: DWR's GRACE groundwater storage anomaly series for the Central Valley (194 monthly values, with a gap from May 2017 to May 2018 between the two satellite missions).</li>
+<li>Baseline: Scanlon et al. (2012), <em>PNAS</em> 109:9320-9325.</li>
+<li>Dry wells: DWR Household Water Supply Shortage Reporting System, published on the California Natural Resources Agency open data portal.</li>
+</ul><!-- TODO(Owen): The earlier brief credited the stitched CVHM and GRACE series to Alam et al. 2022 (Nature Communications); the methods page cites the Liu et al. 2022 dataset. Confirm which is right. -->
+</div></details>
+<details class="tech"><summary>The calculation, and how sensitive it is</summary><div class="tech-body">
+<p>788 &divide; 3.9 &asymp; 202 years. The rate is the slope of an ordinary least-squares line through the monthly satellite series (3.905 km&sup3; a year, R&sup2; = 0.74). The window used for the trend is a choice, and it moves the answer:</p>
+<table class="mini"><tr><th>Trend from</th><th>km&sup3; a year</th><th>R&sup2;</th><th>Years left</th></tr>
+<tr><td>Oct 2006 (used)</td><td>3.9</td><td>0.74</td><td>202</td></tr>
+<tr><td>2008</td><td>3.6</td><td>0.68</td><td>218</td></tr>
+<tr><td>2010</td><td>3.55</td><td>0.59</td><td>222</td></tr>
+<tr><td>2012</td><td>3.25</td><td>0.46</td><td>243</td></tr>
+<tr><td>2014 or 2015</td><td>1.9</td><td>0.14 to 0.18</td><td>about 400 (poor fit, not relied on)</td></tr></table>
+<p>The full working, with every source, is on the <a href="/groundwater-methods/">methods and sources page</a>.</p>
+</div></details>
+</section>
+
+  <div class="project-links">
+    <a class="case-link" href="/groundwater-methods/">Full methods and sources &nearr;</a>
+    <a class="case-link" href="/climate-data/">More climate data work &nearr;</a>
+  </div>
+</main>
+
+<footer>
+  <span>Owen Mulhern &middot; <a href="mailto:owen@getmulhern.com">owen@getmulhern.com</a></span>
+  <span><a href="/citations/">Citations</a> &nbsp;&middot;&nbsp; <a href="/">Home</a></span>
+</footer>
+
+<script>
+(function () {
+  var P = [{"src": "/assets/groundwater/gw-01.webp", "alt": "Chart of Central Valley groundwater storage from 1960 to 2020: a blue block with a thin red band at the top marking what has been lost, and a note that about 202 years are left.", "title": "Californian agriculture's groundwater", "desc": "The blue block is the Central Valley's stored groundwater; the red band is the part that is not coming back. An estimated 788 km\u00b3 remained in 2023, and satellite data show storage falling by about 3.9 km\u00b3 a year (the 2006 to 2023 trend). At that rate it lasts about 202 years from 2023, to around 2225. That is a straight-line projection of total storage, not of usable water (see the next slide), and other trend windows give roughly 200 to 245 years (see the methods). The deep layers took a very long time to fill and shallower layers cycle much faster, so there is no single fill time."}, {"src": "/assets/groundwater/gw-02.webp", "alt": "The same groundwater block shaded from light blue at the top to dark blue-grey at the bottom, with an arrow labelled less usable pointing down.", "title": "Stored is not the same as usable", "desc": "An illustration of an idea, not a measurement. As the water table falls, what remains is deeper, costlier to pump and can be of poorer quality, so the 202-year figure counts stored water, not water that is easy or safe to use. The shading carries no data."}, {"src": "/assets/groundwater/gw-03.webp", "alt": "Line chart of Central Valley groundwater storage falling across six labelled droughts, with a red band showing storage that has been permanently lost.", "title": "This much is gone forever", "desc": "Each drought accelerates depletion, and the losses don't recover. The red band marks storage permanently removed: clay interbeds compacted by over-extraction collapse and can't hold water again. Six distinct drought episodes since the 1960s have each driven the baseline permanently lower."}, {"src": "/assets/groundwater/gw-04.webp", "alt": "The same line chart extended into a grey panel labelled Future, probably, where a dashed line keeps falling and the permanently lost red area grows.", "title": "The same curve, projected forward", "desc": "The previous chart, extended forward. The grey panel is a projection, not observed data, which is why it is labelled 'probably'. Storage lost to compaction does not return, so each future drought adds to the red area instead of resetting it."}, {"src": "/assets/groundwater/gw-05.webp", "alt": "Stacked bars from 1960 to 2020: agriculture in red makes up almost all Central Valley groundwater use, with cities in blue as a thin band on top.", "title": "Where groundwater goes", "desc": "Agriculture accounts for the large majority of Central Valley groundwater use, roughly nine-tenths across 1960 to 2020, as simulated by the Central Valley Hydrologic Model. Cities draw the remainder. The demand side of the equation is almost entirely agricultural, and that share has stayed high for sixty years."}, {"src": "/assets/groundwater/gw-06.webp", "alt": "Bar chart from 2002 to 2022 of agricultural groundwater use in red, under a dotted blue line for total water use.", "title": "Agriculture's reliance", "desc": "Groundwater is one part of agriculture's total water supply, and how much it carries changes from year to year. The dotted line is total water use; the red bars are the part pumped from underground."}, {"src": "/assets/groundwater/gw-07.webp", "alt": "The same chart with the tallest red bar labelled 70% and drought peaks.", "title": "Agriculture's reliance, drought peak marked", "desc": "The same chart, with the peak marked. At the drought peak, groundwater supplies about 70% of agriculture's total water. Surface water shortfalls are largely made up by pumping deeper into aquifers, accelerating depletion exactly when conditions are most stressed."}, {"src": "/assets/groundwater/gw-08.webp", "alt": "Bar chart of reported dry wells per month from 2012 to 2026 in black, with smaller spikes around 2014 to 2016 and two much larger spikes in 2021 and 2022, over the red agricultural groundwater bars.", "title": "It's drying locals' water", "desc": "Reported dry wells spike in droughts. The black bars count reports to the State's dry-well reporting system by the month the problem began: smaller peaks around 2014 to 2016, then the largest in 2021 and 2022, topping out at 283 reports in July 2021. Reporting is voluntary, so these counts are a floor."}, {"src": "/assets/groundwater/gw-09.webp", "alt": "Stacked bars of reported dry wells coloured by outcome (resolved in green, interim solution in blue, outage in red), with the 2012 to 2016 drought boxed and a note that the count is reported and a strong underestimate.", "title": "One drought, at least 2,600 households short of water", "desc": "The boxed years mark the 2012-2016 drought, when at least 2,600 well-dependent households experienced water shortages (Public Policy Institute of California). The bars show reports that carry a start date, coloured by where each stands now: outage (red), interim solution (blue) or resolved (green). Reporting is voluntary, so counts are a floor."}, {"src": "/assets/groundwater/gw-10.webp", "alt": "Three rows of dry-well reports by outcome, each with a cost: resolved, about $54,000 per well, state and community; interim solution, state funded, $55 to $1,100 a month; unresolved, fend for yourself, $100 to $600 a month.", "title": "What dry wells cost whom", "desc": "Costs are per household, and the units differ: monthly for the first two stages, one-time for the third. Unresolved: no state help yet, so the household pays for its own water (bottled and trucked water, laundromats), about $100 to $600 a month based on documented spending from 2015 to 2024. Interim: the state or its partners supply bottled water, or a tank with hauled water, at about $55 to $1,100 a month in cost to the state. Resolved: a new well or a connection, about $54,000 per well on average, usually state-funded. Dry-well counts are self-reported and likely undercount."}, {"src": "/assets/groundwater/gw-11.webp", "alt": "Single bar of 2020 California agricultural water use: almonds and pistachios 32.2%, other perennial tree crops 24.6%, other agricultural products 43.2%, with part of the bar marked as exported.", "title": "Where the water went in 2020", "desc": "Of the irrigation water applied to California crops in 2020, 32.2% went to almonds and pistachios and 24.6% to other perennials: long-lived trees that must be irrigated through droughts regardless of conditions, which makes demand inelastic to water scarcity. Other crops took the remaining 43.2%. The bracket marks the part going to exported crops; it is indicative, not a measured share."}, {"src": "/assets/groundwater/gw-12.webp", "alt": "Bar comparing almond revenue of $4.95 billion and pistachio revenue of $2.93 billion, both marked exported and untaxed, against a total of $61 billion a year in agricultural revenue.", "title": "Agricultural revenue", "desc": "Almond and pistachio revenue set against total agricultural production value of about $61 billion a year. That total is a statewide California figure (the 2024 value was reported at $61.2 billion), not a Central Valley one. 'Untaxed' is shorthand: the US Constitution bars taxes on goods in the course of export, which does not mean farm income or land goes untaxed. 'Mostly untaxed' for the rest is a characterisation and is not quantified here."}];
+  var cur = 0;
+  var img = document.getElementById('v-img'), ttl = document.getElementById('v-title'),
+      dsc = document.getElementById('v-desc'), cnt = document.getElementById('v-counter'),
+      dots = document.getElementById('v-dots');
+  P.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.className = 'viewer-dot' + (i === 0 ? ' active' : '');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function () { show(i); });
+    dots.appendChild(b);
+  });
+  function show(i) {
+    cur = (i + P.length) % P.length;
+    var p = P[cur];
+    img.src = p.src; img.alt = p.alt;
+    ttl.textContent = p.title; dsc.textContent = p.desc;
+    cnt.textContent = (cur + 1) + ' / ' + P.length;
+    Array.prototype.forEach.call(dots.children, function (d, j) { d.classList.toggle('active', j === cur); });
+    (new Image()).src = P[(cur + 1) % P.length].src;
+  }
+  document.getElementById('v-prev').addEventListener('click', function () { show(cur - 1); });
+  document.getElementById('v-next').addEventListener('click', function () { show(cur + 1); });
+  document.addEventListener('keydown', function (e) {
+    if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+  var h = location.hash.match(/^#slide-(\d+)$/);
+  if (h) show(parseInt(h[1], 10) - 1);
+})();
+</script>
+</body>
+</html>
