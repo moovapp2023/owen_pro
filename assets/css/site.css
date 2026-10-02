@@ -1174,3 +1174,5 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 @media (max-width: 640px) { .clip-grid { grid-template-columns: 1fr; } }
 .clip-excerpt h4 { font-size: 15px; font-weight: 500; margin: 0 0 0.6em; }
 .clip-excerpt + .clip-excerpt { margin-top: 10px; }
+.clip-frame-full { max-width: 668px; }
+.clip-frame-full::after { height: 90px; }
