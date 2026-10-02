@@ -76,8 +76,18 @@
       <p class="clip-label">The Growth Bulletin &nbsp;·&nbsp; Oct 30, 2024</p>
       <h3 class="clip-title">BFCM Prep Guide</h3>
       <p class="clip-read"><span class="clip-read-tag">Read this part</span>The Ghost energy drink and P.T. Barnum segments.</p>
-      <!-- TODO(Owen): paste 1 to 2 paragraphs of the section above (Ghost energy drink and P.T. Barnum segments) into the empty clip-excerpt blockquote, wrapped in <p> tags. Check the publisher is fine with a short excerpt. The caption appears automatically once the excerpt has text. -->
-      <blockquote class="clip-excerpt"></blockquote>
+      <div class="clip-frame" data-h="480">
+        <div class="clip-stage" style="height:480px">
+          <iframe src="https://newsletter.thegrowthbulletin.com/p/bfcm-tactics-ghost-drinks-billion-dollar-exit" style="top:-3098px;height:8368px" title="The section &ldquo;A Billion Dollar Exit Not Built On Meta&rdquo; from The Growth Bulletin" loading="lazy" tabindex="-1" sandbox referrerpolicy="no-referrer"></iframe>
+        </div>
+        <a class="clip-frame-link" href="https://newsletter.thegrowthbulletin.com/p/bfcm-tactics-ghost-drinks-billion-dollar-exit" target="_blank" rel="noopener" aria-label="Read the full issue"></a>
+      </div>
+      <div class="clip-frame" data-h="480">
+        <div class="clip-stage" style="height:480px">
+          <iframe src="https://newsletter.thegrowthbulletin.com/p/bfcm-tactics-ghost-drinks-billion-dollar-exit" style="top:-5071px;height:8368px" title="The section &ldquo;P.T. Barnum's Publicity Stunts&rdquo; from The Growth Bulletin" loading="lazy" tabindex="-1" sandbox referrerpolicy="no-referrer"></iframe>
+        </div>
+        <a class="clip-frame-link" href="https://newsletter.thegrowthbulletin.com/p/bfcm-tactics-ghost-drinks-billion-dollar-exit" target="_blank" rel="noopener" aria-label="Read the full issue"></a>
+      </div>
       <p class="clip-caption">From The Growth Bulletin. The only issue bylined to me; I wrote these two segments.</p>
       <a class="clip-link" href="https://newsletter.thegrowthbulletin.com/p/bfcm-tactics-ghost-drinks-billion-dollar-exit" target="_blank" rel="noopener">Read the full issue &nearr;</a>
     </article>
@@ -85,9 +95,18 @@
       <p class="clip-label">The Growth Bulletin &nbsp;·&nbsp; Oct 9, 2024</p>
       <h3 class="clip-title">Issue of Oct 9, 2024</h3>
       <p class="clip-read"><span class="clip-read-tag">Read this part</span>The intro and the Kotler segment.</p>
-      <!-- TODO(Owen): paste 1 to 2 paragraphs of the section above (intro and Kotler segment) into the empty clip-excerpt blockquote, wrapped in <p> tags. Check the publisher is fine with a short excerpt. The caption appears automatically once the excerpt has text. -->
-      <!-- TODO(Owen): confirm the caption and the authorship of the intro and Kotler segment for the Oct 9 issue. It is not the issue bylined to you, so the caption says only that you wrote those two parts. -->
-      <blockquote class="clip-excerpt"></blockquote>
+      <div class="clip-frame" data-h="480">
+        <div class="clip-stage" style="height:480px">
+          <iframe src="https://newsletter.thegrowthbulletin.com/p/1-campaign-1-day-113-044-conversions" style="top:-806px;height:6715px" title="The section &ldquo;Intro&rdquo; from The Growth Bulletin" loading="lazy" tabindex="-1" sandbox referrerpolicy="no-referrer"></iframe>
+        </div>
+        <a class="clip-frame-link" href="https://newsletter.thegrowthbulletin.com/p/1-campaign-1-day-113-044-conversions" target="_blank" rel="noopener" aria-label="Read the full issue"></a>
+      </div>
+      <div class="clip-frame" data-h="480">
+        <div class="clip-stage" style="height:480px">
+          <iframe src="https://newsletter.thegrowthbulletin.com/p/1-campaign-1-day-113-044-conversions" style="top:-3656px;height:6715px" title="The section &ldquo;The trend was set in '69&rdquo; from The Growth Bulletin" loading="lazy" tabindex="-1" sandbox referrerpolicy="no-referrer"></iframe>
+        </div>
+        <a class="clip-frame-link" href="https://newsletter.thegrowthbulletin.com/p/1-campaign-1-day-113-044-conversions" target="_blank" rel="noopener" aria-label="Read the full issue"></a>
+      </div>
       <p class="clip-caption">From The Growth Bulletin. I wrote the intro and the Kotler segment.</p>
       <a class="clip-link" href="https://newsletter.thegrowthbulletin.com/p/1-campaign-1-day-113-044-conversions" target="_blank" rel="noopener">Read the full issue &nearr;</a>
     </article>
@@ -180,5 +199,19 @@
   <span><a href="/citations/">Citations</a> &nbsp;&middot;&nbsp; <a href="/">Home</a></span>
 </footer>
 
+<script>
+(function(){
+  function fit(){
+    document.querySelectorAll('.clip-frame').forEach(function(el){
+      var s = el.clientWidth / 668;
+      el.style.setProperty('--s', s);
+      el.style.height = (parseFloat(el.dataset.h) * s) + 'px';
+    });
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+})();
+</script>
 </body>
 </html>
