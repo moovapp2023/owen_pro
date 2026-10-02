@@ -1144,7 +1144,7 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 }
 
 /* CLIP CARDS: a pulled-out section of a newsletter issue, with a link to the full issue */
-.clip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; margin: 0 0 32px; }
+.clip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 22px; margin: 0 0 32px; }
 .clip-card { background: var(--white); border: 1px solid var(--rule); border-left: 3px solid var(--highlight); border-radius: 3px; padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 14px 30px -18px rgba(17,17,16,0.35), 0 2px 6px rgba(17,17,16,0.05); transition: transform 0.18s ease, box-shadow 0.18s ease; }
 .clip-card:hover { transform: translateY(-2px); box-shadow: 0 18px 34px -18px rgba(17,17,16,0.4), 0 2px 8px rgba(17,17,16,0.06); }
 .clip-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0; }
@@ -1163,3 +1163,12 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
   .clip-grid { grid-template-columns: 1fr; gap: 18px; }
   .clip-card { padding: 18px 18px 16px; }
 }
+
+/* Clip frames: a cropped, live view of one section of the published issue */
+.clip-frame { position: relative; width: 100%; height: 400px; overflow: hidden; background: var(--white); border: 1px solid var(--rule); margin: 4px 0 2px; }
+.clip-stage { position: absolute; left: 0; top: 0; width: 668px; overflow: hidden; transform-origin: 0 0; transform: scale(var(--s, 0.6)); }
+.clip-stage iframe { position: absolute; left: -16px; width: 700px; border: 0; pointer-events: none; }
+.clip-frame::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: linear-gradient(to bottom, rgba(255,255,255,0), var(--white)); pointer-events: none; }
+.clip-frame-link { position: absolute; inset: 0; z-index: 2; }
+.clip-frame-link:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+@media (max-width: 640px) { .clip-grid { grid-template-columns: 1fr; } }
