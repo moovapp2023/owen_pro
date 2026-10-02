@@ -1176,3 +1176,4 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 .clip-excerpt + .clip-excerpt { margin-top: 10px; }
 .clip-frame-full { max-width: 668px; }
 .clip-frame-full::after { height: 90px; }
+.clip-frame:not(.clip-frame-full) { background: linear-gradient(90deg, #f5f4f0 0%, #fff 50%, #f5f4f0 100%); }
