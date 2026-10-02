@@ -1181,3 +1181,8 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 .clip-preview h4 { font-size: 18px; font-weight: 700; line-height: 1.25; margin: 0 0 10px; }
 .clip-preview p { font-size: 14px; line-height: 1.55; margin: 0 0 9px; }
 .clip-preview::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: linear-gradient(to bottom, rgba(255,255,255,0), var(--white)); }
+.social-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 22px; align-items: start; margin-bottom: 32px; }
+.social-item { display: flex; flex-direction: column; gap: 8px; min-height: 120px; }
+.social-item .twitter-tweet { margin: 0 !important; }
+.social-cover { height: 180px; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 22px; letter-spacing: 0.12em; }
+@media (max-width: 640px) { .social-grid { grid-template-columns: 1fr; } }
