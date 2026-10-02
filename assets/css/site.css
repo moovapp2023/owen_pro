@@ -1172,3 +1172,5 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 .clip-frame-link { position: absolute; inset: 0; z-index: 2; }
 .clip-frame-link:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 @media (max-width: 640px) { .clip-grid { grid-template-columns: 1fr; } }
+.clip-excerpt h4 { font-size: 15px; font-weight: 500; margin: 0 0 0.6em; }
+.clip-excerpt + .clip-excerpt { margin-top: 10px; }
