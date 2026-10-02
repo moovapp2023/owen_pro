@@ -1186,3 +1186,10 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 .social-item .twitter-tweet { margin: 0 !important; }
 .social-cover { height: 180px; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 22px; letter-spacing: 0.12em; }
 @media (max-width: 640px) { .social-grid { grid-template-columns: 1fr; } }
+.read-article { max-width: 668px; background: var(--white); border: 1px solid var(--rule); padding: 28px 30px 24px; font-family: Georgia, "Times New Roman", serif; color: #1a1a1a; }
+.read-article h3 { font-size: 24px; font-weight: 700; line-height: 1.25; margin: 0 0 16px; }
+.read-article p, .read-article li { font-size: 17px; line-height: 1.7; margin: 0 0 14px; }
+.read-article ul { margin: 0 0 14px; padding-left: 22px; }
+@media (max-width: 640px) { .read-article { padding: 20px 18px; } .read-article p, .read-article li { font-size: 16px; } }
+.clip-card { position: relative; cursor: pointer; }
+.clip-card .clip-title a::after, .clip-card .clip-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }

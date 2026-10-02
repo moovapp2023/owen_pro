@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://getmulhern.com/writing/dtc-times/issue-17/">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
 <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-<link rel="stylesheet" href="/assets/css/site.css?v=20261002a">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261002b">
 </head>
 <body>
 
@@ -62,12 +62,26 @@
     <p><strong>Read this part:</strong> The Google leak and Rand Fishkin.</p>
   </div>
 
-  <div class="clip-frame clip-frame-full" data-h="1000">
-    <div class="clip-stage" style="height:1000px">
-      <iframe src="https://the.dtctimes.com/p/issue-17-creative-testing-showdown" style="top:-8293px;height:11811px" title="The section &ldquo;The Google Leak&rdquo; from the DTC Times issue" tabindex="-1" sandbox referrerpolicy="no-referrer"></iframe>
-    </div>
-  </div>
-  <p class="clip-caption" style="margin-top:12px;">From The DTC Times, which is bylined to the newsletter. I wrote it.</p>
+  <article class="read-article">
+<h3>The Google Leak</h3>
+<p>The man above is Rand Fishkin, the co-founder of sparktoro.com and snackbarstudio.com, and an SEO expert who’s been battling Google for some time.</p>
+<p>Battling over what?</p>
+<p>Over what Google’s algorithm tracks, and how it decides what ranks.</p>
+<p>While at Moz, which Fishkin co-founded, he developed the concept of domain authority, a metric that predicts a website's ability to rank on search engine results pages (SERPs). Google denied using any such metric, but domain authority became widely adopted by the SEO community.</p>
+<p>Next, Fishkin conducted various experiments, the results of which suggested that Google uses click-through rates (CTR) and user engagement as ranking factors. Once again, Google denied the “allegation”.</p>
+<p>Lastly, Fishkin suspected the existence of a Google “sandbox” effect where new websites are temporarily prevented from ranking well in search results. Guess what Google said?</p>
+<p>Here are some of the statements from Google representatives over the years denying Fishkin’s theories and even calling his takes “made-up crap”.</p>
+<p>On May 5th, Fishkin received an email from a person claiming to have access to a massive leak of API documentation from Google Search division. Authenticity was verified with the help of ex-Google employees.</p>
+<p>Turns out… Fishkin was right about the CTR and the sandbox. And while Google doesn’t use Moz’s exact domain authority metric, it has a similar one.</p>
+<p>Mike King, a renowned technical SEO and founder of iPullRank, picked the documentation apart and broke it down in an in-depth blog post if you want a closer look.</p>
+<p>Briefly:</p>
+<p>There is no detail about Google’s scoring functions in the documentation.</p>
+<p>There is a wealth of information about data and features manipulated and stored by Google to run its search engine.</p>
+<p>The man who leaked the documentation later came forward with a statement.</p>
+<p><strong>Takeaway:</strong> Google has apparently been less than truthful for years. And while we can empathize with them protecting proprietary information, their efforts to discredit people like Fishkin are condemnable.</p>
+<p>Both this leak and information revealed during Google’s DOJ trial have shown that Google consistently attempts to veil the truth, which makes it hard to trust its future statements.</p>
+  </article>
+  <p class="clip-caption" style="margin-top:12px;">From The DTC Times, which is bylined to the newsletter. I wrote it. Images and embeds from the original are left out.</p>
   <p style="margin-top:20px;"><a class="case-link" href="https://the.dtctimes.com/p/issue-17-creative-testing-showdown" target="_blank" rel="noopener">Read the full issue on The DTC Times &nearr;</a></p>
   <p class="group-label" style="margin-top:56px;">More writing</p>
   <div class="jump-links"><a href="/writing/dtc-times/">All DTC Times issues</a><a href="/writing/semrush/">Semrush articles</a><a href="/writing/email/">Email newsletters</a><a href="/writing/ads/">Ad copy &amp; design</a></div>
@@ -78,19 +92,5 @@
   <span><a href="/citations/">Citations</a> &nbsp;&middot;&nbsp; <a href="/">Home</a></span>
 </footer>
 
-<script>
-(function(){
-  function fit(){
-    document.querySelectorAll('.clip-frame').forEach(function(el){
-      var s = Math.min(1, el.clientWidth / 668);
-      el.style.setProperty('--s', s);
-      el.style.height = (parseFloat(el.dataset.h) * s) + 'px';
-    });
-  }
-  fit();
-  window.addEventListener('resize', fit);
-  window.addEventListener('load', fit);
-})();
-</script>
 </body>
 </html>
