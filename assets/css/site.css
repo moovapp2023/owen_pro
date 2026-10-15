@@ -1193,3 +1193,11 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 @media (max-width: 640px) { .read-article { padding: 20px 18px; } .read-article p, .read-article li { font-size: 16px; } }
 .clip-card { position: relative; cursor: pointer; }
 .clip-card .clip-title a::after, .clip-card .clip-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+
+/* slide variants (first slide) */
+.viewer-variants { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 28px; border-top: 1px solid var(--rule); }
+.viewer-variant { font: inherit; font-size: 12px; letter-spacing: 0.04em; padding: 6px 14px; background: transparent; color: var(--muted); border: 1px solid var(--rule); cursor: pointer; }
+.viewer-variant:hover { border-color: var(--ink); color: var(--ink); }
+.viewer-variant.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+.viewer-variants[hidden] { display: none; }
+@media (max-width: 640px) { .viewer-variants { padding: 10px 18px; } }
