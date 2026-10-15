@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
 <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-<link rel="stylesheet" href="/assets/css/site.css?v=20261015c">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261015e">
 </head>
 <body>
 
@@ -109,15 +109,12 @@
 
 <!-- THE THREE ROWS -->
 <section class="home-rows">
-  <div class="home-row">
+  <div class="home-row home-row--climate">
     <div class="home-row-head">
       <div>
         <a class="home-row-title" href="/climate-data/"><h2>Climate data stories</h2></a>
       </div>
-      <div class="row-controls">
-        <button class="row-btn row-prev" type="button" aria-label="Scroll Climate data stories left">&larr;</button>
-        <button class="row-btn row-next" type="button" aria-label="Scroll Climate data stories right">&rarr;</button>
-      </div>
+      <a class="home-row-all" href="/climate-data/">See all &rarr;</a>
     </div>
     <div class="tile-row">
       <a class="tile" href="/climate-data/california-groundwater/" title="California Groundwater Crisis" aria-label="California Groundwater Crisis"><div class="tile-media"><img src="/assets/groundwater/gw-card.webp" alt="California Groundwater Crisis: opening slide of the series" loading="lazy"></div></a>
@@ -128,17 +125,15 @@
       <a class="tile" href="/climate-data/shifting-baselines/" title="Shifting Baselines and the Elusiveness of Climate Change" aria-label="Shifting Baselines and the Elusiveness of Climate Change"><div class="tile-media"><img src="/assets/images/shifting-baselines.webp" alt="Shifting Baselines and the Elusiveness of Climate Change" loading="lazy"></div></a>
       <a class="tile" href="/climate-data/extreme-temperatures-france/" title="Extreme Temperatures, Part II: France" aria-label="Extreme Temperatures, Part II: France"><div class="tile-media"><img src="/assets/images/temp-france.webp" alt="Extreme Temperatures, Part II: France" loading="lazy"></div></a>
       <a class="tile" href="/climate-data/extreme-temperatures-canada/" title="Extreme Temperatures, Part III: Canada" aria-label="Extreme Temperatures, Part III: Canada"><div class="tile-media"><img src="/assets/images/temp-canada.webp" alt="Extreme Temperatures, Part III: Canada" loading="lazy"></div></a>
+      <a class="tile-all" href="/climate-data/">All climate data &rarr;</a>
     </div>
   </div>
-  <div class="home-row">
+  <div class="home-row home-row--cases">
     <div class="home-row-head">
       <div>
-        <a class="home-row-title" href="/reach-and-results/"><h2>Reach and results case studies</h2></a>
+        <a class="home-row-title" href="/reach-and-results/"><h2>Content marketing case studies</h2></a>
       </div>
-      <div class="row-controls">
-        <button class="row-btn row-prev" type="button" aria-label="Scroll Reach and results case studies left">&larr;</button>
-        <button class="row-btn row-next" type="button" aria-label="Scroll Reach and results case studies right">&rarr;</button>
-      </div>
+      <a class="home-row-all" href="/reach-and-results/">See all &rarr;</a>
     </div>
     <div class="tile-row">
       <a class="tile" href="/reach-and-results/zest-pillar-page/" title="Zest pillar page rebuild" aria-label="Zest pillar page rebuild"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">SEO</span><span class="tile-visual-big">HR software</span></div></div></a>
@@ -148,15 +143,12 @@
       <a class="tile" href="/reach-and-results/private-client-gtm/" title="Go-to-market strategy for a venture advisory" aria-label="Go-to-market strategy for a venture advisory"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">Strategy</span><span class="tile-visual-big">Venture advisory</span></div></div></a>
     </div>
   </div>
-  <div class="home-row">
+  <div class="home-row home-row--writing">
     <div class="home-row-head">
       <div>
         <a class="home-row-title" href="/writing/"><h2>Writing</h2></a>
       </div>
-      <div class="row-controls">
-        <button class="row-btn row-prev" type="button" aria-label="Scroll Writing left">&larr;</button>
-        <button class="row-btn row-next" type="button" aria-label="Scroll Writing right">&rarr;</button>
-      </div>
+      <a class="home-row-all" href="/writing/">See all &rarr;</a>
     </div>
     <div class="tile-row">
       <a class="tile" href="/writing/dtc-times/" title="DTC Times" aria-label="DTC Times"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">Newsletter</span><span class="tile-visual-big">E-commerce</span></div></div></a>
@@ -330,31 +322,6 @@
 })();
 </script>
 
-<script>
-(function () {
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.home-row').forEach(function (row) {
-    var track = row.querySelector('.tile-row');
-    var prev = row.querySelector('.row-prev');
-    var next = row.querySelector('.row-next');
-    if (!track || !prev || !next) return;
-    function step() {
-      var t = track.querySelector('.tile');
-      return t ? (t.getBoundingClientRect().width + 12) * 2 : 300;
-    }
-    function go(dir) { track.scrollBy({ left: dir * step(), behavior: reduce ? 'auto' : 'smooth' }); }
-    function update() {
-      prev.disabled = track.scrollLeft <= 2;
-      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
-    }
-    prev.addEventListener('click', function () { go(-1); });
-    next.addEventListener('click', function () { go(1); });
-    track.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-  });
-})();
-</script>
 <script>
 (function () {
   var track = document.getElementById('friezeTrack');

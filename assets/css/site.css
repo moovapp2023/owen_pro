@@ -1119,7 +1119,7 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 
 /* ─── HOME ROWS: small sliding tile rows ───────────────── */
 .home-rows { max-width: 1100px; margin: 0 auto; padding: 64px 40px 8px; }
-.home-row { margin-bottom: 56px; }
+.home-row { margin-bottom: 40px; }
 .home-row-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
 .home-row-title { color: var(--ink); text-decoration: none; display: inline-block; }
 .home-row-title h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; margin: 0; }
@@ -1130,9 +1130,9 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 .row-btn:hover:not(:disabled) { border-color: var(--ink); }
 .row-btn:disabled { opacity: 0.35; cursor: default; }
 .tile-row { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 8px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-.tile { flex: 0 0 150px; scroll-snap-align: start; background: none; color: inherit; text-decoration: none; display: block; overflow: hidden; border-radius: 2px; }
+.tile { flex: 1 0 150px; scroll-snap-align: start; background: none; color: inherit; text-decoration: none; display: block; overflow: hidden; border-radius: 2px; }
 .tile:focus-visible, .tile-all:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.tile-media { height: 96px; overflow: hidden; background: none; }
+.tile-media { height: 112px; overflow: hidden; background: none; }
 .tile-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
 .tile:hover .tile-media img, .tile:hover .tile-visual { transform: scale(1.03); }
 .tile-visual { background: var(--ink); height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: 12px; transition: transform 0.4s ease; }
@@ -1146,7 +1146,7 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 @media (max-width: 640px) {
   .home-rows { padding: 48px 20px 0; }
   .row-controls { display: none; }
-  .tile { flex-basis: 130px; }
+  .tile { flex: 0 0 130px; }
   .tile-media { height: 84px; }
 }
 
@@ -1217,3 +1217,24 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 @keyframes frieze-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .frieze-track.is-moving { animation: none; } }
 @media (max-width: 640px) { .frieze-head { padding: 36px 20px 14px; } .frieze { margin-bottom: 40px; } }
+
+/* home: one grid of tiles, three tinted bands (climate, case studies, writing) inside a single frame */
+.home-rows { display: block; max-width: 1100px; margin: 64px auto 24px; padding: 0; background: var(--white); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+.home-row { margin: 0; padding: 24px 28px 28px; border: 0; border-radius: 0; background: var(--white); }
+.home-row + .home-row { border-top: 1px solid var(--rule); }
+.home-row--cases { background: #efece4; }
+.home-row--writing { background: #e4e0d6; }
+.home-row-head { margin-bottom: 16px; align-items: baseline; }
+.home-row-all { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.home-row-all:hover, .home-row-all:focus-visible { color: var(--ink); }
+.tile-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; overflow: visible; padding-bottom: 0; }
+.tile { flex: none; min-width: 0; }
+.tile-media { height: auto; aspect-ratio: 3 / 2; }
+.tile-all { grid-column: span 2; flex: none; background: transparent; }
+@media (max-width: 900px) { .home-rows { margin: 48px 20px 24px; } .tile-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } .tile-all { grid-column: span 1; } }
+@media (max-width: 640px) {
+  .home-rows { margin: 36px 16px 20px; padding: 0; }
+  .home-row { padding: 18px 14px 20px; }
+  .tile-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile-all { grid-column: span 2; }
+}
