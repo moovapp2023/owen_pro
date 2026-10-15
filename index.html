@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
 <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-<link rel="stylesheet" href="/assets/css/site.css?v=20261002b">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261015c">
 </head>
 <body>
 
@@ -96,6 +96,16 @@
     </div>
   </div>
 </div>
+
+<!-- CALIFORNIA GROUNDWATER FRIEZE -->
+<section class="frieze" aria-label="California groundwater series">
+  <div class="frieze-head">
+    <a class="frieze-title" href="/climate-data/california-groundwater/">California groundwater: who profits, and who pays when wells run dry <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="frieze-viewport">
+    <div class="frieze-track" id="friezeTrack"><a class="frieze-item" href="/climate-data/california-groundwater/#slide-1" tabindex="-1" aria-label="California groundwater, slide 1 of 12"><img src="/assets/groundwater/gw-01a.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-2" tabindex="-1" aria-label="California groundwater, slide 2 of 12"><img src="/assets/groundwater/gw-02.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-3" tabindex="-1" aria-label="California groundwater, slide 3 of 12"><img src="/assets/groundwater/gw-03.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-4" tabindex="-1" aria-label="California groundwater, slide 4 of 12"><img src="/assets/groundwater/gw-04.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-5" tabindex="-1" aria-label="California groundwater, slide 5 of 12"><img src="/assets/groundwater/gw-05.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-6" tabindex="-1" aria-label="California groundwater, slide 6 of 12"><img src="/assets/groundwater/gw-06.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-7" tabindex="-1" aria-label="California groundwater, slide 7 of 12"><img src="/assets/groundwater/gw-07.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-8" tabindex="-1" aria-label="California groundwater, slide 8 of 12"><img src="/assets/groundwater/gw-08.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-9" tabindex="-1" aria-label="California groundwater, slide 9 of 12"><img src="/assets/groundwater/gw-09.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-10" tabindex="-1" aria-label="California groundwater, slide 10 of 12"><img src="/assets/groundwater/gw-10.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-11" tabindex="-1" aria-label="California groundwater, slide 11 of 12"><img src="/assets/groundwater/gw-11.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a><a class="frieze-item" href="/climate-data/california-groundwater/#slide-12" tabindex="-1" aria-label="California groundwater, slide 12 of 12"><img src="/assets/groundwater/gw-12.webp" alt="" width="1640" height="1454" loading="lazy" decoding="async"></a></div>
+  </div>
+</section>
 
 <!-- THE THREE ROWS -->
 <section class="home-rows">
@@ -343,6 +353,20 @@
     window.addEventListener('resize', update);
     update();
   });
+})();
+</script>
+<script>
+(function () {
+  var track = document.getElementById('friezeTrack');
+  if (!track) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  Array.prototype.slice.call(track.children).forEach(function (a) {
+    var c = a.cloneNode(true);
+    c.setAttribute('aria-hidden', 'true');
+    track.appendChild(c);
+  });
+  track.classList.add('is-moving');
 })();
 </script>
 </body>
