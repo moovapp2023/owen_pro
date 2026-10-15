@@ -696,8 +696,15 @@ table.mini th { font-weight: 400; color: var(--ink); font-size: 11px; letter-spa
 
 /* in-page slide viewer (replaces the popup) */
 .viewer { margin: 32px 0 8px; background: var(--white); border: 1px solid var(--rule); }
+@media (min-width: 900px) {
+  /* wider than the text column, image beside the caption so a slide fits one screen */
+  .viewer { width: min(1120px, calc(100vw - 80px)); margin-left: 50%; transform: translateX(-50%); display: grid; grid-template-columns: minmax(0, 1fr) 340px; align-items: stretch; }
+  .viewer-stage { display: flex; align-items: center; justify-content: center; }
+  .viewer-img { width: auto; max-width: 100%; max-height: calc(100vh - 150px); }
+  .viewer-body { border-top: none; border-left: 1px solid var(--rule); overflow-y: auto; max-height: calc(100vh - 150px); }
+}
 .viewer-stage { position: relative; background: #fff; }
-.viewer-img { width: 100%; height: auto; display: block; aspect-ratio: 1640 / 1454; }
+.viewer-img { width: 100%; height: auto; display: block; aspect-ratio: 1640 / 1454; max-height: 75vh; object-fit: contain; }
 .viewer-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .viewer-controls .viewer-counter { margin-bottom: 0; }
 .viewer-buttons { display: flex; gap: 8px; }
@@ -1194,10 +1201,3 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 .clip-card { position: relative; cursor: pointer; }
 .clip-card .clip-title a::after, .clip-card .clip-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 
-/* slide variants (first slide) */
-.viewer-variants { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 28px; border-top: 1px solid var(--rule); }
-.viewer-variant { font: inherit; font-size: 12px; letter-spacing: 0.04em; padding: 6px 14px; background: transparent; color: var(--muted); border: 1px solid var(--rule); cursor: pointer; }
-.viewer-variant:hover { border-color: var(--ink); color: var(--ink); }
-.viewer-variant.active { background: var(--ink); border-color: var(--ink); color: #fff; }
-.viewer-variants[hidden] { display: none; }
-@media (max-width: 640px) { .viewer-variants { padding: 10px 18px; } }
