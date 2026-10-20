@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
 <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-<link rel="stylesheet" href="/assets/css/site.css?v=20261002b">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261020a">
 </head>
 <body>
 
@@ -68,6 +68,7 @@
     <div class="jump-links">
       <a href="#independent">Independent work</a>
       <a href="#earthorg">Earth.Org</a>
+      <a href="#earthorg-social">Social media viz</a>
     </div>
   </div>
 
@@ -175,12 +176,70 @@
       </div>
     </a>
   </div>
+
+  <p class="group-label" id="earthorg-social" style="margin-top:56px;">Earth.Org, social media viz</p>
+  <p class="section-intro">Graphics built for Earth.Org's social media channels, in the square format those feeds use. The methane piece was a five-slide carousel; swipe or use the arrows to move through it.</p>
+  <div class="social-grid">
+    <div class="social-tile"><img class="social-img" src="/assets/social/displacements.webp" alt="Internal displacements by cause, in millions: a radial bar chart of conflict and violence versus natural disasters by country, source Internal Displacement Monitoring Centre" width="1080" height="1080" loading="lazy"></div>
+    <div class="social-tile"><img class="social-img" src="/assets/social/waste-disposal.webp" alt="How are countries disposing of waste? France and Turkey compared by method of disposal" width="1080" height="1080" loading="lazy"></div>
+    <div class="social-tile"><img class="social-img" src="/assets/social/too-hot-thailand.webp" alt="Too Hot To Live: Thailand 2070, map of mean annual temperature with the share of population affected" width="1080" height="1080" loading="lazy"></div>
+    <div class="social-tile"><img class="social-img" src="/assets/social/species-lost.webp" alt="It makes a difference: share of species lost (plants, insects, birds, mammals) at 1.5°C versus 2°C of warming" width="1080" height="1080" loading="lazy"></div>
+    <div class="social-tile"><img class="social-img" src="/assets/social/arctic-melt.webp" alt="Arctic Melt: 2021 sea ice extent against the 1981 to 2010 average and the 2012 record low" width="1080" height="1080" loading="lazy"></div>
+    <div class="social-tile"><img class="social-img" src="/assets/social/billion-dollar-disasters.webp" alt="Are billion-dollar disasters becoming more frequent? A month-by-year dot chart of US events by type" width="1080" height="1080" loading="lazy"></div>
+    <div class="social-tile" data-carousel>
+      <div class="social-carousel-track" tabindex="0" aria-label="Methane carousel, 5 slides">
+        <img class="social-img" src="/assets/social/methane-1.webp" alt="Methane carousel, slide 1 of 5: Methane and why it is so important, title slide" width="1080" height="1080" loading="lazy">
+        <img class="social-img" src="/assets/social/methane-2.webp" alt="Methane carousel, slide 2 of 5: atmospheric methane concentrations over 400,000 years, now 2.5 times higher than in pre-industrial times" width="1080" height="1080" loading="lazy">
+        <img class="social-img" src="/assets/social/methane-3.webp" alt="Methane carousel, slide 3 of 5: CO2 molecules outnumber methane 200 to 1 in the atmosphere, yet methane is responsible for a quarter of observed global warming" width="1080" height="1080" loading="lazy">
+        <img class="social-img" src="/assets/social/methane-4.webp" alt="Methane carousel, slide 4 of 5: global warming potential of methane versus CO2 over 20 and 100 years, 82 times and 28 times" width="1080" height="1080" loading="lazy">
+        <img class="social-img" src="/assets/social/methane-5.webp" alt="Methane carousel, slide 5 of 5: how we can cut at least 24% of global methane emissions, by source" width="1080" height="1080" loading="lazy">
+      </div>
+      <div class="social-carousel-bar">
+        <span class="social-carousel-count" aria-live="polite">1 / 5</span>
+        <div class="social-carousel-buttons">
+          <button type="button" class="social-carousel-btn" data-prev aria-label="Previous slide">&larr;</button>
+          <button type="button" class="social-carousel-btn" data-next aria-label="Next slide">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
   <span>Owen Mulhern &middot; <a href="mailto:owen@getmulhern.com">owen@getmulhern.com</a></span>
   <span><a href="/citations/">Citations</a> &nbsp;&middot;&nbsp; <a href="/">Home</a></span>
 </footer>
+
+
+<script>
+document.querySelectorAll('[data-carousel]').forEach(function (c) {
+  var track = c.querySelector('.social-carousel-track');
+  var slides = track.children;
+  var count = c.querySelector('.social-carousel-count');
+  var prev = c.querySelector('[data-prev]');
+  var next = c.querySelector('[data-next]');
+  function index() { return Math.round(track.scrollLeft / track.clientWidth); }
+  function update() {
+    var i = index();
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    prev.disabled = i <= 0;
+    next.disabled = i >= slides.length - 1;
+  }
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+  }
+  prev.addEventListener('click', function () { go(index() - 1); });
+  next.addEventListener('click', function () { go(index() + 1); });
+  track.addEventListener('scroll', update, { passive: true });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(index() + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(index() - 1); }
+  });
+  window.addEventListener('resize', update);
+  update();
+});
+</script>
 
 </body>
 </html>

@@ -1238,3 +1238,20 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
   .tile-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tile-all { grid-column: span 2; }
 }
+
+/* ─── SOCIAL MEDIA VIZ (climate-data, Earth.Org) ─────── */
+.social-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; }
+.social-tile { background: var(--white); overflow: hidden; position: relative; }
+.social-img { width: 100%; height: auto; aspect-ratio: 1 / 1; display: block; }
+.social-carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.social-carousel-track::-webkit-scrollbar { display: none; }
+.social-carousel-track .social-img { flex: 0 0 100%; scroll-snap-align: start; }
+.social-carousel-bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; pointer-events: none; }
+.social-carousel-bar > * { pointer-events: auto; }
+.social-carousel-count { font-size: 11px; letter-spacing: 0.06em; color: var(--ink); background: rgba(255,255,255,0.92); padding: 4px 9px; border-radius: 100px; }
+.social-carousel-buttons { display: flex; gap: 8px; }
+.social-carousel-btn { width: 34px; height: 34px; border: 1px solid var(--rule); background: rgba(255,255,255,0.92); border-radius: 50%; font-size: 15px; cursor: pointer; color: var(--ink); }
+.social-carousel-btn:hover { background: #fff; border-color: var(--ink); }
+.social-carousel-btn:disabled { opacity: 0.35; cursor: default; }
+@media (max-width: 900px) { .social-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .social-grid { grid-template-columns: 1fr; } }
