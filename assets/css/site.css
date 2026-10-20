@@ -1201,23 +1201,6 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 .clip-card { position: relative; cursor: pointer; }
 .clip-card .clip-title a::after, .clip-card .clip-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 
-
-/* California groundwater frieze (home) */
-.frieze { margin: 0 0 56px; }
-.frieze-head { max-width: 1100px; margin: 0 auto; padding: 48px 40px 16px; }
-.frieze-title { color: var(--ink); text-decoration: none; font-size: clamp(18px, 2.2vw, 24px); font-weight: 300; letter-spacing: -0.01em; line-height: 1.25; }
-.frieze-title:hover, .frieze-title:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
-.frieze-viewport { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: #fff; }
-.frieze-viewport::-webkit-scrollbar { display: none; }
-.frieze-track { display: flex; width: max-content; }
-.frieze-item { display: block; flex: 0 0 auto; height: clamp(170px, 21vw, 280px); }
-.frieze-item img { height: 100%; width: auto; display: block; }
-.frieze-track.is-moving { animation: frieze-scroll 90s linear infinite; }
-.frieze-viewport:hover .frieze-track.is-moving { animation-play-state: paused; }
-@keyframes frieze-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .frieze-track.is-moving { animation: none; } }
-@media (max-width: 640px) { .frieze-head { padding: 36px 20px 14px; } .frieze { margin-bottom: 40px; } }
-
 /* home: one grid of tiles, three tinted bands (climate, case studies, writing) inside a single frame */
 .home-rows { display: block; max-width: 1100px; margin: 64px auto 24px; padding: 0; background: var(--white); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
 .home-row { margin: 0; padding: 24px 28px 28px; border: 0; border-radius: 0; background: var(--white); }
