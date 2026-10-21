@@ -1,3 +1,6 @@
+@font-face{font-family:'Azeret Mono';font-weight:400;font-display:swap;src:url('/assets/fonts/azeret-mono-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Azeret Mono';font-weight:700;font-display:swap;src:url('/assets/fonts/azeret-mono-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Archivo Black';font-weight:400;font-display:swap;src:url('/assets/fonts/archivo-black-latin-400-normal.woff2') format('woff2')}
 
 @font-face {
   font-family: 'Aeonik';
@@ -18,18 +21,21 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f5f4f0;
-  --ink: #111110;
-  --muted: #5a5855;
-  --rule: #dddbd5;
-  --highlight: #c8561a;
+  --bg: #fff;
+  --ink: #000;
+  --muted: #5d6670;
+  --rule: #000;
+  --hair: #ccc;
+  --highlight: #5d6670;
   --white: #ffffff;
+  --mono: 'Azeret Mono', ui-monospace, monospace;
+  --display: 'Archivo Black', Impact, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Aeonik', -apple-system, sans-serif;
+  font-family: var(--mono);
   font-weight: 300;
   background: var(--bg);
   color: var(--ink);
@@ -1238,3 +1244,130 @@ a.email-card:focus-visible, a.work-item:focus-visible, a.article-item:focus-visi
 .social-carousel-btn:disabled { opacity: 0.35; cursor: default; }
 @media (max-width: 900px) { .social-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .social-grid { grid-template-columns: 1fr; } }
+
+/* ═══ GROUNDWATER LOOK, SITE-WIDE (2026-10-21) ═══════════════════════
+   White canvas, black ink, Azeret Mono for text, Archivo Black caps for
+   titles, 1px black rules, bordered square buttons, underlined links that
+   invert on hover. Matches the methods section of the groundwater piece. */
+html, body { background: #fff; color: #000; }
+body { font-weight: 400; line-height: 1.7; }
+p, li, dd, dt, td, th, summary, span, a, button, input, textarea { font-family: var(--mono); }
+
+/* titles: Archivo Black, uppercase */
+h1, h2, .client-header h2, .project h1, .hero h1, .hero h1.hero-headline, .home-row-title h2,
+.home-section-block h2, .services-heading, .contact-heading, .service-title, .pull-quote,
+.case-block h3, #gtm .case-block h3, .read-article h3 {
+  font-family: var(--display); font-weight: 400; text-transform: uppercase;
+  letter-spacing: 0; line-height: 1.02; color: #000;
+}
+.client-header h2 { font-size: clamp(26px, 4.4vw, 52px); }
+.project h1 { font-size: clamp(28px, 5vw, 56px); }
+.hero h1.hero-headline { font-size: clamp(28px, 5vw, 64px); }
+.hero h1 em { font-family: var(--display); font-style: normal; }
+.home-row-title h2, .home-section-block h2 { font-size: clamp(20px, 2.6vw, 30px); }
+.services-heading, .contact-heading { font-size: clamp(26px, 4vw, 48px); }
+.service-title { font-size: clamp(16px, 1.8vw, 22px); }
+.pull-quote { font-size: clamp(22px, 3.4vw, 44px); line-height: 1.12; }
+.case-block h3, .read-article h3 { font-size: 16px; }
+#gtm .case-block h3 { font-size: 22px; }
+
+/* kickers and small labels: mono caps, muted */
+.client-eyebrow, .hero-eyebrow, .work-item-label, .modal-client, .lp-label, .tile-label, .clip-read-tag,
+.service-sub, .project-facts dt, .cs h2, .group-label, .case-block h3 {
+  font-family: var(--mono); font-weight: 400; letter-spacing: 0.06em; color: var(--muted);
+}
+.cs h2 { font-size: 12px; margin-bottom: 12px; }
+.cs h2, .group-label { text-transform: uppercase; }
+
+/* nav */
+nav { background: rgba(255,255,255,0.94); border-bottom: 1px solid #000; }
+.nav-name { font-size: 12px; color: #000; }
+.nav-links a { font-size: 11px; color: #000; }
+.nav-links a:hover, .nav-links a.active { color: #000; text-decoration: underline; text-underline-offset: 4px; }
+.nav-dropdown-menu { background: #fff; border: 1px solid #000; box-shadow: none; }
+.nav-dropdown-item { color: #000; border-bottom: 1px solid var(--hair); }
+.nav-dropdown-item:hover { background: #000; color: #fff; }
+
+/* links: underline, invert on hover */
+.cs a, .case-link, .modal-link, .services-cta, .contact-email-link, .clip-link, .article-title a {
+  color: #000; border-color: #000;
+}
+.cs a:hover, .case-link:hover, .modal-link:hover, .services-cta:hover, .contact-email-link:hover,
+.clip-link:hover, .clip-link:focus-visible, .article-title a:hover {
+  background: #000; color: #fff; border-color: #000;
+}
+.jump-links a { border: 1px solid #000; border-radius: 0; background: #fff; color: #000; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+.jump-links a:hover { background: #000; color: #fff; border-color: #000; }
+
+/* boxes: square corners, no shadows, black rules */
+.client-role-note, .cs-note, .writing-note, .clip-card, details.tech, .home-rows { border-radius: 0; box-shadow: none; }
+.client-role-note, .cs-note, .writing-note, .clip-card { border-left-width: 1px; border-left-color: #000; }
+.home-row { background: #fff !important; }
+.home-row + .home-row { border-top: 1px solid #000; }
+.work-grid, .project-facts { background: #000; }
+.work-item { border: 0; }
+.work-item-title, .article-title { font-weight: 700; }
+.tile-all { border: 1px solid #000; }
+.ad-card:hover { border-left-color: #000; }
+.service-card { border-top: 1px solid #000; }
+.service-card:hover { border-top-color: #000; background: #000; color: #fff; }
+.service-card:hover * { color: #fff; }
+
+/* row-style lists get hairlines, not full black */
+.case-list li, .press-list li, table.mini th, table.mini td, .ad-card-rule, .clip-excerpt { border-color: var(--hair); }
+.ad-card-rule { background: var(--hair); }
+table.mini th, table.mini td { color: #000; font-weight: 400; }
+
+/* round controls become square */
+.row-btn, .viewer-nav, .social-carousel-btn, .modal-close, .work-item-arrow { border-radius: 0; border-color: #000; }
+.viewer-dot, .modal-dot { border-radius: 0; background: var(--hair); }
+.viewer-dot.active, .modal-dot.active { background: #000; }
+
+/* body copy tones */
+.viewer-desc, .work-item-desc, .article-desc, .clip-excerpt, .case-list li { color: #000; }
+.client-header p, .section-intro, .work-item-desc, .article-desc { font-size: 13px; }
+.work-item-desc { color: var(--muted); }
+footer { border-top: 1px solid #000; }
+footer, footer a { font-size: 12px; }
+
+/* case-study section titles match the methods section: Archivo Black, black */
+.cs h2 { font-family: var(--display); font-size: clamp(16px, 2vw, 22px); text-transform: uppercase; letter-spacing: 0; line-height: 1.1; color: #000; margin: 2em 0 .6em; }
+
+/* grids: black rules drawn as borders so a short last row leaves white, not black */
+.work-grid { background: none; gap: 0; border-top: 1px solid #000; border-left: 1px solid #000; }
+.work-item { border: 0; border-right: 1px solid #000; border-bottom: 1px solid #000; }
+
+/* mono is wider than Aeonik: keep the nav on one line on phones */
+@media (max-width: 760px) {
+  .nav-name { font-size: 11px; }
+  .nav-links { gap: 10px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0; }
+}
+@media (max-width: 480px) {
+  nav { padding: 0 12px; }
+  .nav-links { gap: 8px; }
+}
+
+/* square borders drawn per item, overlapping by 1px, so empty cells stay white */
+.work-grid { border: 0; gap: 0; padding: 0 1px 1px 0; }
+.work-item { border: 1px solid #000; margin: 0 -1px -1px 0; }
+
+/* citation tags: outlined, not coloured pills */
+.tag, .article-tag { border-radius: 0; background: #fff !important; color: #000 !important; border: 1px solid #000; }
+.metrics-row, .metric, .stat { border-radius: 0; }
+.citation-year, .citation-desc { color: var(--muted); }
+.citation-source { color: #000; }
+
+/* square corners everywhere */
+*, *::before, *::after { border-radius: 0 !important; }
+.hero-photo, .hero-img, .portrait, img.avatar { border-radius: 0 !important; }
+
+/* pulled-out newsletter text stays in the newsletter's own serif, as before */
+.read-article, .read-article *, .clip-preview, .clip-preview * { font-family: Georgia, "Times New Roman", serif !important; }
+.read-article h3, .clip-preview h3 { text-transform: none; letter-spacing: 0; font-size: 22px; line-height: 1.25; font-weight: 700; }
+
+/* wide tables scroll inside themselves rather than widening the page on phones */
+@media (max-width: 640px) {
+  table.stage-table { display: block; overflow-x: auto; max-width: 100%; }
+  table.stage-table th, table.stage-table td { font-size: 11px; padding: 6px 8px 6px 0; }
+}
