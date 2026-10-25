@@ -1643,7 +1643,6 @@ const T1=tl1.duration();
 // ---- info notes: small buttons that appear while their scene is on screen; hover, focus or tap opens the note
 const NOTES=[
  {from:11.4,to:19.2,btn:'Why 1960?',txt:'The valley-wide record used here starts in the early 1960s because that is where the USGS Central Valley Hydrologic Model begins (1961 to 2003, then extended with satellite data). It is not when farming or pumping began: land in the valley has been sinking from groundwater pumping since the 1920s, so some of the loss happened before the curve starts.'},
- {from:20.8,to:22.4,btn:'Why “less usable”?',txt:'As the water table falls, pumping pulls shallow water, which carries salts, fertiliser nitrate and uranium from irrigated land, down toward the deeper wells, and some of what is already down there is naturally contaminated, arsenic among it. So the water that is left is harder to reach and often poorer to drink or irrigate with.'},
  {from:25.2,to:33.9,btn:'Why is it gone forever?',txt:'When the water is pumped out of clay layers, they compact like a squeezed sponge and the ground sinks. The space that held the water is lost for good. USGS puts about 15% of the roughly 158 km³ of storage lost from before development through 2019 as permanent. The red part shows it.'}];
 { const host=document.getElementById('gwNotes');
   NOTES.forEach(n=>{ const w=document.createElement('div'); w.className='gw-note'; w.hidden=true;
