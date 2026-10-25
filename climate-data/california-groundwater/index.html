@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>California Groundwater Crisis: how long will the water last? | Owen Mulhern</title>
+<title>California’s Groundwater Crisis: Who Pays? | Owen Mulhern</title>
 <meta name="description" content="A scroll-driven look at California's Central Valley groundwater: how much has been lost, how agriculture's reliance on pumping connects to dry household wells, and who pays when wells run dry. Methods and sources are one click away.">
 <link rel="canonical" href="https://getmulhern.com/climate-data/california-groundwater/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Owen Mulhern">
-<meta property="og:title" content="California Groundwater Crisis: how long will the water last? | Owen Mulhern">
+<meta property="og:title" content="California’s Groundwater Crisis: Who Pays? | Owen Mulhern">
 <meta property="og:description" content="A scroll-driven look at California's Central Valley groundwater: how much has been lost, how agriculture's reliance on pumping connects to dry household wells, and who pays when wells run dry.">
 <meta property="og:url" content="https://getmulhern.com/climate-data/california-groundwater/">
 <meta property="og:image" content="https://getmulhern.com/assets/groundwater/gw-cover-202.webp">
@@ -57,6 +57,14 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 .gw-bar a{pointer-events:auto;color:#000;text-decoration:none;background:rgba(255,255,255,.9);border:1px solid #000;padding:9px 12px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .gw-bar a:hover,.gw-bar a:focus-visible{background:#000;color:#fff;outline:none}
 .gw-methods{position:relative;background:#fff;color:#000;border-top:1px solid #000;padding:clamp(56px,10vh,120px) max(24px,6vw) 0}
+.gw-notes{position:fixed;right:max(16px,3vw);bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:90;display:flex;flex-direction:column;gap:8px;align-items:flex-end;pointer-events:none;font:400 12px/1.5 'Azeret Mono',ui-monospace,monospace}
+.gw-note{position:relative;pointer-events:auto}
+.gw-note[hidden]{display:none}
+.gw-note button{font:inherit;line-height:1;color:#000;background:rgba(255,255,255,.92);border:1px solid #000;padding:9px 12px;cursor:pointer}
+.gw-note button:hover,.gw-note button:focus-visible,.gw-note button[aria-expanded=true]{background:#000;color:#fff;outline:none}
+.gw-note p{position:absolute;right:0;bottom:calc(100% + 8px);margin:0;width:min(42ch,calc(100vw - 32px));padding:12px 14px;background:#fff;border:1px solid #000;color:#000;display:none}
+.gw-note button[aria-expanded=true]+p{display:block}
+@media (max-width:520px){.gw-notes{font-size:11px;bottom:max(40px,env(safe-area-inset-bottom,0px))}}
 .gw-methods .in{max-width:72ch} .gw-methods .back{margin:0 0 2.2em;font:400 12px/1 'Azeret Mono',ui-monospace,monospace} .gw-methods .back a{color:#000;text-decoration:underline;text-underline-offset:3px} .gw-methods .back a:hover,.gw-methods .back a:focus-visible{background:#000;color:#fff;outline:none;text-decoration:none}
 .gw-methods h2{margin:2.4em 0 .7em;font:400 clamp(18px,2.4vw,26px)/1.05 'Archivo Black',Impact,sans-serif;text-transform:uppercase}
 .gw-methods h2:first-of-type{margin-top:0}
@@ -85,12 +93,13 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 </style>
 
 <header class="gw-bar"><a href="/">Owen Mulhern</a><a href="#methods">Methods &amp; write-up &darr;</a></header>
+<div class="gw-notes" id="gwNotes"></div>
 <noscript><p style="padding:72px 24px 0;font:14px/1.6 'Azeret Mono',monospace">This piece needs JavaScript to scroll. The methods and sources are below, and on <a href="/groundwater-methods/">the full methods page</a>.</p></noscript>
 <section class="intro cover" id="top">
   <div class="cover-text">
     <p class="cover-eyebrow">Independent work &middot; 2026</p>
-    <h1>Groundwater in California&rsquo;s Central Valley</h1>
-    <p>The heart of its agriculture</p>
+    <h1>California&rsquo;s Groundwater Crisis: Who Pays?</h1>
+    <p>In the Central Valley, the heart of its agriculture</p>
   </div>
   <div class="hint" id="gwHint">scroll</div>
 </section>
@@ -1313,7 +1322,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 <section class="gw-methods" id="methods" aria-labelledby="m-title"><div class="in">
 <p class="back"><a href="#top">&uarr; Back to the scroll</a></p>
 <p class="kicker">Methods &amp; sources</p>
-<h1 class="m-title" id="m-title" style="font-size:clamp(28px,5vw,56px)">California Groundwater Crisis</h1>
+<h1 class="m-title" id="m-title" style="font-size:clamp(28px,5vw,56px)">California&rsquo;s Groundwater Crisis: Who Pays?</h1>
 <p class="project-lede">A scroll-driven piece connecting California's groundwater depletion to agriculture's reliance on it, and the cost that lands on the public when household wells run dry in droughts. It is a tragedy of the commons told in data, and one result along the way is a re-estimate of how long the water lasts: about 202 years, roughly half the 390 in the widely cited 2012 study.</p>
 <dl class="project-facts"><div><dt>Year</dt><dd>Independent work, 2026</dd></div><div><dt>Role</dt><dd>Research, analysis and design, done hands-on by me</dd></div><div><dt>Tools</dt><dd>Python, Google Sheets, Figma</dd></div><div><dt>Data</dt><dd>USGS CVHM, NASA GRACE (via DWR), DWR dry-well records</dd></div></dl>
 <section class="cs">
@@ -1330,6 +1339,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 <li><strong>Brought the storage up to date.</strong> I estimate about 71.6 km&sup3; was lost between 2000 and 2023, which leaves about 788 km&sup3;.</li>
 <li><strong>Measured the recent rate.</strong> A straight line through the satellite series from late 2006 to the end of 2023 falls by about 3.9 km&sup3; a year, roughly 1.8 times the rate in the 2012 study.</li>
 <li><strong>Divided.</strong> 788 &divide; 3.9 is about 202 years, counted from 2023.</li>
+<li><strong>Drew LA to scale.</strong> The small blue block in the opening scene is the City of Los Angeles&rsquo; yearly water supply, about 487,000 acre-feet (roughly 0.6 km&sup3;) for more than four million people, drawn at the same scale as the 860 km&sup3; of Central Valley storage. It is the city, not the wider Los Angeles area.</li>
 <li><strong>Followed the people.</strong> The dry-well scenes use the State's dry-well reporting records, with household costs sourced to the State Water Board, DWR and others. Every number in those scenes is traced on the <a href="/groundwater-methods/">methods page</a>.</li>
 </ol>
 </section>
@@ -1346,6 +1356,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 <section class="cs">
 <h2>Limits</h2>
 <p>This extends a published model. I did not independently re-verify the original volume estimates. The satellite data and the hydrological model do not reconcile cleanly, and the estimate assumes the recent rate continues, which it may not: droughts have sped up the loss, and the Sustainable Groundwater Management Act could slow it.</p>
+<p>The curve starts in the early 1960s because that is where the model&rsquo;s record begins. Pumping and land subsidence began earlier (the valley has been sinking since the 1920s), so some of the loss happened before the curve starts.</p>
 <p>The figure counts stored water, not usable water. As the water table falls, what is left is deeper, costlier to pump and can be of poorer quality (naturally occurring contaminants such as arsenic, and pollution from human activity such as fertilizer nitrate), so the practical limit would arrive sooner. Land subsidence has also permanently reduced storage capacity: USGS puts about 15% of the roughly 158 km&sup3; of Central Valley storage lost from before development through 2019 as permanent. The calculation does not model that.</p>
 </section>
 <section class="cs">
@@ -1355,6 +1366,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 <li>Storage curve to 2014: USGS Central Valley Hydrologic Model, from the dataset published with Liu et al. (2022), <em>Groundwater depletion in California's Central Valley accelerates during megadrought</em>, <em>Nature Communications</em> (dataset doi 10.5281/zenodo.7392554).</li>
 <li>Storage curve 2006 to 2023: DWR's GRACE groundwater storage anomaly series for the Central Valley (194 monthly values, with a gap from May 2017 to May 2018 between the two satellite missions).</li>
 <li>Baseline: Scanlon et al. (2012), <em>PNAS</em> 109:9320-9325.</li>
+<li>LA water supply (opening scene): Los Angeles Department of Water and Power, about 487,000 acre-feet a year, more than four million people served. <!-- TODO(Owen): swap in the primary LADWP source (Urban Water Management Plan) and year --></li>
 <li>Permanent storage loss from subsidence (about 15%): USGS, <a href="https://pubs.usgs.gov/publication/70253177" target="_blank" rel="noopener">Groundwater sustainability and land subsidence in California's Central Valley</a>.</li>
 <li>Dry wells: DWR Household Water Supply Shortage Reporting System, published on the California Natural Resources Agency open data portal.</li>
 </ul><!-- TODO(Owen): The earlier brief credited the stitched CVHM and GRACE series to Alam et al. 2022 (Nature Communications); the methods page cites the Liu et al. 2022 dataset. Confirm which is right. -->
@@ -1461,12 +1473,13 @@ const L1=[
  {id:'t202',txt:'202 years\nleft',k:'mono',fs:209,x:4605,y:2460,lh:.79,w:1152},
  {id:'tRate',txt:'at this rate',k:'mono',fs:120,x:4605,y:2225,min:9},
  {id:'tLess',txt:'less usable &\nharder to get',k:'mono',col:'#94BED8',fs:135,x:4011,y:2250,lh:.85,w:1074},
- {id:'tHead',txt:'THIS MUCH IS\nGONE FOREVER',k:'arch',fs:165,x:2669,y:1971,lh:.89,w:1580,min:15},
- {id:'tNever',txt:'NEVER\nCOMING\nBACK PART',k:'arch',fs:150,x:3603,y:1872,lh:.8,w:945,min:15},
+ {id:'tHead',txt:'THIS MUCH IS\nGONE FOREVER',k:'arch',col:'#FF6161',fs:165,x:2669,y:1925,lh:.89,w:1580,min:15},
+ {id:'tNever',txt:'NEVER\nCOMING\nBACK PART',k:'arch',col:'#FF6161',fs:150,x:3603,y:1872,lh:.8,w:945,min:15},
  {id:'tFuture',txt:'FUTURE,\nPROBABLY',k:'arch',fs:150,x:4107,y:4188,c:1,ta:'center',lh:.78,w:888,min:15},
  {id:'tWhere',txt:'Where did this go?',k:'sans',fs:200,x:2420,y:1950,c:1,min:17,w:1800},
  {id:'tCV1',txt:'If this is the Central Valley\u2019s\ngroundwater,',k:'mono',fs:150,x:3026,y:1270,c:1,ta:'center',lh:1.2,min:13},
  {id:'tLA',txt:'This is LA\u2019s water\nusage in one year',k:'mono',fs:150,x:3067,y:636,c:1,ta:'center',lh:1.2,min:13},
+ {id:'tLAtag',txt:'City of Los Angeles,\nabout 4 million people',k:'monor',col:'#5d6670',fs:110,lh:1.2,x:3800,y:513,min:11},
  {id:'tUsesH',txt:'LA water includes:',k:'mono',fs:150,x:3800,y:813,min:13},
  {id:'tUses',items:LAUSES,k:'monor',fs:135,x:3800,y:1018,wd:2600,lh:1.25,min:12},
  {id:'tLets',txt:'LET\u2019S LOOK AT\nGROUNDWATER\nIN THE REGION\nOVER TIME',k:'arch',fs:270,x:3800,y:2000,lh:.95,min:16},
@@ -1536,7 +1549,7 @@ function init(){
 // opening scene: when the type size floor makes the text taller than the gap, the LA mark (and everything hung on it) moves up so the text has room
 { S1.apply(); const s=S1.scale, mn=zoomFor($('#stage1'))<.7?6:13, fz=Math.max(150,mn/s), gp=16/s, LD=Math.max(0,2.4*fz+2*gp-(1640-1102.4));
   const setY=(id,y)=>{ const l=L1.find(q=>q.id===id); l.y=y; };
-  setY('tCV1',1640-gp-2.4*fz+.24*fz); setY('tLA',1032-LD-gp-2.4*fz+.24*fz); setY('tUsesH',813-LD); setY('tUses',1018-LD);
+  setY('tCV1',1640-gp-2.4*fz+.24*fz); setY('tLA',1032-LD-gp-2.4*fz+.24*fz); setY('tUsesH',813-LD); { const mt=zoomFor($('#stage1'))<.7?6:11, ft=Math.max(110,mt/s); setY('tLAtag',813-LD-gp-2.4*ft+.24*ft); } setY('tUses',1018-LD);
   $('#laRect').setAttribute('y',1032-LD); $('#laLine').setAttribute('y',1061-LD); }
 { const a1=S1.apply; S1.apply=()=>{ a1(); const e=document.getElementById('tNever'), p=S1.POS.tNever, wd=document.getElementById('wedge'); if(!e||!p||!wd||FULL) return; const wb=wd.getBBox(); gsap.set(e,{y:Math.min(p.y,wb.y-e.offsetHeight-8/S1.scale)}); }; }
 { const a2=S2.apply; S2.apply=()=>{ a2(); const r=document.getElementById('tRes'), i=document.getElementById('tInt'), o=document.getElementById('tOut'), pr=S2.POS.tRes; if(!r||!i||!o||!pr||FULL) return; const st=Math.max(168,1.35*(parseFloat(r.style.fontSize)||157)); gsap.set(i,{y:pr.y+st}); gsap.set(o,{y:pr.y+2*st}); }; }   // legend lines keep clear of each other when the type floor kicks in
@@ -1619,14 +1632,31 @@ tl1.fromTo('#laMark',{opacity:0},{opacity:1,duration:.7,ease:'power1.inOut'},1.4
 fade(tl1,E1('tLA'),1.8,1,.6);                                                    // "This is LA's water usage in one year"
 fade(tl1,[E1('tCV1'),E1('tLA')],2.9,0,.5);
 if(zoomFor($('#stage1'))>.7) camTween(tl1,S1,{cx:4650,cy:2650,w:4400,h:3700},2.9,1);   // narrow windows only: make room on the right
-fade(tl1,E1('tUsesH'),3.5,1,.5);                                                 // "LA water includes:"
+fade(tl1,[E1('tUsesH'),E1('tLAtag')],3.5,1,.5);                                                 // "LA water includes:"
 tl1.fromTo('#laLine',{attr:{width:0}},{attr:{width:670},duration:.6,ease:'none',immediateRender:false},3.5);   // line from the LA block to the list
 tl1.fromTo(useEls,{opacity:0,y:-30},{opacity:1,y:0,duration:.5,stagger:.14,ease:'power1.out',immediateRender:false},4.1);   // the list unfolds
-fade(tl1,[E1('tUses'),E1('tUsesH'),'#laMark','#laLine'],6.3,0,.5);
+fade(tl1,[E1('tUses'),E1('tUsesH'),E1('tLAtag'),'#laMark','#laLine'],6.3,0,.5);
 fade(tl1,E1('tLets'),6.9,1,.7);                                                  // "Let's look at groundwater in the region over time"
 fade(tl1,E1('tLets'),8.4,0,.5);
 S1.apply();
 const T1=tl1.duration();
+// ---- info notes: small buttons that appear while their scene is on screen; hover, focus or tap opens the note
+const NOTES=[
+ {from:11.4,to:19.2,btn:'Why 1960?',txt:'The valley-wide record used here starts in the early 1960s because that is where the USGS Central Valley Hydrologic Model begins (1961 to 2003, then extended with satellite data). It is not when farming or pumping began: land in the valley has been sinking from groundwater pumping since the 1920s, so some of the loss happened before the curve starts.'},
+ {from:20.8,to:22.4,btn:'Why “less usable”?',txt:'As the water table falls, pumping pulls shallow water, which carries salts, fertiliser nitrate and uranium from irrigated land, down toward the deeper wells, and some of what is already down there is naturally contaminated, arsenic among it. So the water that is left is harder to reach and often poorer to drink or irrigate with.'},
+ {from:25.2,to:33.9,btn:'Why is it gone forever?',txt:'When the water is pumped out of clay layers, they compact like a squeezed sponge and the ground sinks. The space that held the water is lost for good. USGS puts about 15% of the roughly 158 km³ of storage lost from before development through 2019 as permanent. The red part shows it.'}];
+{ const host=document.getElementById('gwNotes');
+  NOTES.forEach(n=>{ const w=document.createElement('div'); w.className='gw-note'; w.hidden=true;
+    const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-expanded','false'); b.textContent=n.btn;
+    const p=document.createElement('p'); p.setAttribute('role','note'); p.textContent=n.txt; w.append(b,p); host.appendChild(w); n.el=w; n.b=b;
+    const open=v=>b.setAttribute('aria-expanded',v?'true':'false');
+    w.addEventListener('mouseenter',()=>open(true)); w.addEventListener('mouseleave',()=>open(false));
+    b.addEventListener('focus',()=>open(true)); b.addEventListener('blur',()=>open(false));
+    b.addEventListener('click',()=>open(b.getAttribute('aria-expanded')!=='true'));
+    b.addEventListener('keydown',e=>{ if(e.key==='Escape') open(false); }); });
+  const sync=()=>{ const t=tl1.time(); NOTES.forEach(n=>{ const on=t>=n.from&&t<=n.to; if(n.el.hidden===on){ n.el.hidden=!on; if(!on) n.b.setAttribute('aria-expanded','false'); } }); };
+  tl1.eventCallback('onUpdate',()=>{ S1.apply(); sync(); }); sync(); }
+
 ScrollTrigger.create({trigger:'#stage1',start:'top top',end:()=>'+='+Math.round(innerHeight*(reduce?.01:T1*.5)),pin:true,scrub:reduce?true:.7,anticipatePin:1,animation:tl1,invalidateOnRefresh:true});
 
 /* ---------- stage 2 ---------- */
