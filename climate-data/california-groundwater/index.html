@@ -57,7 +57,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 .gw-bar a{pointer-events:auto;color:#000;text-decoration:none;background:rgba(255,255,255,.9);border:1px solid #000;padding:9px 12px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .gw-bar a:hover,.gw-bar a:focus-visible{background:#000;color:#fff;outline:none}
 .gw-methods{position:relative;background:#fff;color:#000;border-top:1px solid #000;padding:clamp(56px,10vh,120px) max(24px,6vw) 0}
-.gw-methods .in{max-width:72ch}
+.gw-methods .in{max-width:72ch} .gw-methods .back{margin:0 0 2.2em;font:400 12px/1 'Azeret Mono',ui-monospace,monospace} .gw-methods .back a{color:#000;text-decoration:underline;text-underline-offset:3px} .gw-methods .back a:hover,.gw-methods .back a:focus-visible{background:#000;color:#fff;outline:none;text-decoration:none}
 .gw-methods h2{margin:2.4em 0 .7em;font:400 clamp(18px,2.4vw,26px)/1.05 'Archivo Black',Impact,sans-serif;text-transform:uppercase}
 .gw-methods h2:first-of-type{margin-top:0}
 .gw-methods .kicker{margin:0 0 .9em;font:400 12px/1 'Azeret Mono',ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -84,7 +84,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 @media (max-width:520px){.gw-bar{font-size:11px}.gw-bar a{padding:8px 10px}}
 </style>
 
-<header class="gw-bar"><a href="/">Owen Mulhern</a><a href="#methods">Methods</a></header>
+<header class="gw-bar"><a href="/">Owen Mulhern</a><a href="#methods">Methods &amp; write-up &darr;</a></header>
 <noscript><p style="padding:72px 24px 0;font:14px/1.6 'Azeret Mono',monospace">This piece needs JavaScript to scroll. The methods and sources are below, and on <a href="/groundwater-methods/">the full methods page</a>.</p></noscript>
 <section class="intro cover" id="top">
   <div class="cover-text">
@@ -1311,6 +1311,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Azeret Mon
 </section>
 
 <section class="gw-methods" id="methods" aria-labelledby="m-title"><div class="in">
+<p class="back"><a href="#top">&uarr; Back to the scroll</a></p>
 <p class="kicker">Methods &amp; sources</p>
 <h1 class="m-title" id="m-title" style="font-size:clamp(28px,5vw,56px)">California Groundwater Crisis</h1>
 <p class="project-lede">A scroll-driven piece connecting California's groundwater depletion to agriculture's reliance on it, and the cost that lands on the public when household wells run dry in droughts. It is a tragedy of the commons told in data, and one result along the way is a re-estimate of how long the water lasts: about 202 years, roughly half the 390 in the widely cited 2012 study.</p>
@@ -1458,6 +1459,7 @@ const L1=[
  {id:'t1960',txt:'1960',k:'sans',fs:205,x:3645,y:4467,c:1,w:480},
  {id:'t2020',txt:'2020',k:'sans',fs:205,x:3502,y:4467,c:1,w:507},
  {id:'t202',txt:'202 years\nleft',k:'mono',fs:209,x:4605,y:2460,lh:.79,w:1152},
+ {id:'tRate',txt:'at this rate',k:'mono',fs:120,x:4605,y:2225,min:9},
  {id:'tLess',txt:'less usable &\nharder to get',k:'mono',col:'#94BED8',fs:135,x:4011,y:2250,lh:.85,w:1074},
  {id:'tHead',txt:'THIS MUCH IS\nGONE FOREVER',k:'arch',fs:165,x:2669,y:1971,lh:.89,w:1580,min:15},
  {id:'tNever',txt:'NEVER\nCOMING\nBACK PART',k:'arch',fs:150,x:3603,y:1872,lh:.8,w:945,min:15},
@@ -1505,7 +1507,7 @@ const L2=[
  {id:'rB',txt:'Interim solution',k:'mono',col:'#378ADD',fs:190,x:0,y:0,min:10},
  {id:'rBc',txt:'About $55 to $1,100 a month, paid by the state',k:'monor',col:'#161616',fs:135,x:0,y:0,lh:1.25,wd:1150,min:11},
  {id:'rR',txt:'Outage',k:'mono',col:'#E24B4A',fs:190,x:0,y:0,min:10},
- {id:'rRc',txt:'Left to fend for themselves: about $100 to $600 a month of their own money (documented 2015 to 2024)',k:'monor',col:'#161616',fs:135,x:0,y:0,lh:1.25,wd:1150,min:11},
+ {id:'rRc',txt:'Households pay themselves: about $100 to $600 a month of their own money (documented 2015 to 2024)',k:'monor',col:'#161616',fs:135,x:0,y:0,lh:1.25,wd:1150,min:11},
  {id:'tStar',txt:'*',k:'sans',fs:300,x:78,y:5202,w:111,min:12},
  {id:'tFoot',txt:'Reported. Strong underestimate.',k:'monor',col:'#161616',fs:153,x:306,y:5256,w:2904,min:12},
  {id:'tCV',txt:'CENTRAL VALLEY\nWATER USAGE',k:'arch',fs:200,x:3073,y:1080,c:1,ta:'center',lh:.95,min:15,...(zoomFor($('#stage2'))>.7?{w:1400,min:11}:{})},
@@ -1568,14 +1570,14 @@ tl1.set('#newClipRect',{attr:{x:-3000,width:12000}},12.7);
 camTween(tl1,S1,CAM.s2,9.9,2.6);
 fade(tl1,E1('t2020'),12.0,1,.6);
 tl1.to('#curve25',{opacity:0,duration:.3,ease:'none'},12.5); tl1.to('#curve',{opacity:1,duration:.3,ease:'none'},12.5);
-fade(tl1,E1('t202'),13.8,1,.6); tl1.set('#dashArrow2',{opacity:1},13.9); tl1.to('#dashClipRect',{attr:{width:900},duration:1,ease:'none'},13.9);
+fade(tl1,[E1('t202'),E1('tRate')],13.8,1,.6); tl1.set('#dashArrow2',{opacity:1},13.9); tl1.to('#dashClipRect',{attr:{width:900},duration:1,ease:'none'},13.9);
 // only now does the long past go; the view tightens on the 1960 to 2020 part
 tl1.to('#blockFlat',{x:-6000,duration:1.5,ease:'power2.in'},16.2); fade(tl1,['#blockFlat',E1('tAgo')],16.2,0,1.2);
 camTween(tl1,S1,CAM.s2z,16.2,1.6);
 const O=-13.6;
 // block gets harder to reach
 fade(tl1,E1('tLot'),(30.2+O),1,.7);
-fade(tl1,['#gradLayer'],(29.8+O),1,1.2); fade(tl1,'#gradSide',(30.4+O),1,.8); fade(tl1,[E1('t202'),'#dashArrow2',E1('t1960'),E1('t2020')],(29.8+O),0,.6);
+fade(tl1,['#gradLayer'],(29.8+O),1,1.2); fade(tl1,'#gradSide',(30.4+O),1,.8); fade(tl1,[E1('t202'),E1('tRate'),'#dashArrow2',E1('t1960'),E1('t2020')],(29.8+O),0,.6);
 tl1.fromTo(E1('tLess'),{opacity:0,xPercent:12},{opacity:1,xPercent:0,duration:.9,ease:'power2.out'},(30.8+O));
 // block goes, curve centered and bigger
 fade(tl1,['#gradLayer','#gradSide','#blockParts',E1('tLess'),E1('tLot')],(33+O),0,1);
