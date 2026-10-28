@@ -29,6 +29,7 @@ html { scroll-behavior: auto; overscroll-behavior: none; }
        background: rgba(229,229,229,.66); border-radius: 2px;
        opacity: 0; pointer-events: none; will-change: transform, opacity; }
 .box b { font-weight: 500; }
+.box .src { display: block; margin-top: .8em; font-size: .68em; color: var(--muted); letter-spacing: .02em; }
 .box.center { left: 50%; width: min(32ch, 70vw); margin-left: calc(min(32ch, 70vw) / -2); text-align: center; font-size: clamp(15px, 1.7vw, 26px); padding: 1.1em 1.3em .8em; }
 .arrow { display: block; margin: .5em auto 0; width: 1.6em; height: 2em; animation: bob 2.4s ease-in-out infinite; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(.6em); } }
@@ -133,8 +134,8 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
   const CAP = {
     top:   'Scroll to see how groundwater is doing in California<svg class="arrow" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v24M4 19l8 8 8-8"/></svg>',
     wells: "To see how California's aquifers are doing, we measure whether water is rising or falling in thousands of &ldquo;measuring wells&rdquo;.",
-    idle:  'Some are recharging, some depleting.',
-    toCV:  "The Central Valley is California's agricultural heartland.",
+    idle:  'This is what they reveal.',
+    toCV:  'The Central Valley is California&rsquo;s agricultural heartland. It is arid farmland, which is often where groundwater depletion is worst.<br><br>California uses about 21% of all the groundwater in the US, despite having less than 3% of its farmland.<span class="src">USGS (2015 water use) &middot; USDA Census of Agriculture (2022)</span>',
     cvdrop: "Here is the valley on its own, seen from the side.",
   };
   // ----------------------------------------------------------------------------------------------------------
