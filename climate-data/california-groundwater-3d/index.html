@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>California groundwater, in 3D | Owen Mulhern</title>
+<meta name="description" content="A scroll-driven 3D look at thousands of California wells, and whether groundwater is rising or dropping, by Owen Mulhern. Data: Jasechko et al. 2024.">
+<meta property="og:title" content="California groundwater, in 3D">
+<meta property="og:description" content="Scroll through thousands of California measuring wells and see where groundwater is rising or dropping.">
+<meta property="og:type" content="article">
+<style>
+@font-face { font-family: "Azeret Mono"; src: url("AzeretMono-Regular.ttf"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Azeret Mono"; src: url("AzeretMono-Medium.ttf"); font-weight: 500; font-display: swap; }
+:root { --bg: #e5e5e5; --ink: #000; --muted: #5d6670; --blue: #235f80; --red: #94191f; --blue2: var(--blue); --red2: var(--red); }   /* blue and red are the colours of the bars in the video */
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Azeret Mono", ui-monospace, Menlo, monospace; font-weight: 400; }
+html { scroll-behavior: auto; overscroll-behavior: none; }
+#track { position: relative; }
+#stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--bg); }
+#vbox { position: absolute; left: 50%; top: 50%; width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9; transform: translate(-50%, -50%); transform-origin: 50% 50%;
+         mix-blend-mode: darken; }   /* if the browser shows the video's grey slightly lighter than the page grey, this hides the edge of the picture */
+#vid { width: 100%; height: 100%; display: block; background: var(--bg); }
+#dis { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; }   /* dissolve between year windows */
+
+/* text boxes: each one flies up the screen as you scroll through its step, and fades out before it reaches the top.
+   Slightly see-through so the model shows underneath. */
+.box { position: absolute; left: 14vw; top: 0; width: min(36ch, 40vw); font-size: clamp(13px, 1.3vw, 20px); line-height: 1.55; padding: .8em 1em;
+       background: rgba(229,229,229,.66); border-radius: 2px;
+       opacity: 0; pointer-events: none; will-change: transform, opacity; }
+.box b { font-weight: 500; }
+.box.center { left: 50%; width: min(32ch, 70vw); margin-left: calc(min(32ch, 70vw) / -2); text-align: center; font-size: clamp(15px, 1.7vw, 26px); padding: 1.1em 1.3em .8em; }
+.arrow { display: block; margin: .5em auto 0; width: 1.6em; height: 2em; animation: bob 2.4s ease-in-out infinite; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(.6em); } }
+@media (prefers-reduced-motion: reduce) { .arrow { animation: none; } }
+.box .cb { color: var(--blue); font-weight: 500; } .box .cr { color: var(--red); font-weight: 500; }
+
+/* top group: small stacked legend, then the three year windows spread over the width of the model */
+#top { position: absolute; z-index: 2; left: calc(50% - min(100vw, 177.78vh) * 0.23); width: calc(min(100vw, 177.78vh) * 0.46); top: calc(50% - min(100vh, 56.25vw) * 0.385); display: flex; flex-direction: column; align-items: flex-start;
+       font-size: clamp(10px, .95vw, 14px); text-shadow: 0 0 5px var(--bg), 0 0 5px var(--bg); pointer-events: none; }
+#yrow { opacity: 0; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 2.2em; width: 100%; margin-top: 1em; }
+.yw { text-align: center; color: #a4a9ae; transition: color .35s; }
+.yw.active { color: var(--ink); }
+.yb { font-size: 1.7em; letter-spacing: .02em; white-space: nowrap; line-height: 1.3; transition: font-weight .2s; }
+.yw.active .yb { font-weight: 500; }
+.slot { position: relative; height: 5px; margin-top: .45em; }
+.slot::before { content: ""; position: absolute; left: 0; right: 0; top: 2px; height: 1px; background: currentColor; opacity: .35; transition: opacity .35s; }
+.yw.active .slot::before { opacity: 1; height: 2px; top: 1.5px; }
+#lrow { opacity: 0; transition: opacity .6s ease; display: flex; flex-direction: column; align-items: flex-start; gap: .3em; white-space: nowrap; font-size: .95em; }
+.lg i { display: inline-block; width: .6em; height: .8em; margin-right: .6em; vertical-align: -0.1em; }
+#lrow.on { opacity: 1; }
+.lg.b i { background: var(--blue); } .lg.r i { background: var(--red); }
+#cmp .lg.b i { background: var(--blue2); } #cmp .lg.r i { background: var(--red2); }
+
+/* gauge to the right of the model: blue goes up from the model's axis, red goes down, always split at the same level */
+#gauge { position: absolute; z-index: 2; left: 0; top: 0; width: 0; height: 0; opacity: 0; pointer-events: none; font-size: clamp(9px, .8vw, 12px); color: var(--muted); }
+#gauge .gax { position: absolute; left: -16px; width: 32px; top: 0; height: 1px; background: var(--ink); opacity: .45; }
+#gauge .gup, #gauge .gdn { position: absolute; left: -3px; width: 6px; transition: height .9s cubic-bezier(.3,.7,.2,1); }
+#gauge .gup { bottom: 2px; background: var(--blue); height: 0; } #gauge .gdn { top: 2px; background: var(--red); height: 0; }
+#gauge .gl { position: absolute; left: 14px; white-space: nowrap; line-height: 1; }
+#gauge .gup .gl { top: -.5em; } #gauge .gdn .gl { bottom: -.5em; }
+
+/* legend for the dots, on the other side of the map from the text */
+#dotlg { position: absolute; right: 8vw; top: 44vh; font-size: clamp(13px, 1.25vw, 19px); opacity: 0; pointer-events: none; white-space: nowrap; }
+#dotlg i { display: inline-block; width: .7em; height: .7em; border-radius: 50%; background: #000; margin-right: .7em; vertical-align: .02em; }
+
+/* comparison screen: covers the model, three thin stacked bars, one per year window */
+#cmp { position: absolute; inset: 0; background: var(--bg); opacity: 0; pointer-events: none; z-index: 3; display: grid; place-items: center; }
+#cmpIn { width: min(62vw, 700px); font-size: clamp(11px, 1.05vw, 16px); }
+#cmpLg { display: flex; gap: 2em; justify-content: center; margin-bottom: 3em; }
+#cmpRows { position: relative; display: grid; grid-template-columns: 6.6em 1fr 11.5em; column-gap: 1.4em; row-gap: 2.2em; align-items: center; }
+.clab { font-size: 1.35em; color: var(--ink); white-space: nowrap; }
+.cbar { height: 8px; position: relative; }
+.cin { position: absolute; inset: 0; display: flex; gap: 5px; }
+.cin span { display: block; }
+.cin .bl { background: var(--blue2); } .cin .rd { background: var(--red2); }
+.cdl { color: var(--muted); font-size: .9em; line-height: 1.5; white-space: nowrap; }
+.cdl b { display: block; color: var(--ink); font-weight: 400; font-size: 1.25em; }
+#cref { position: absolute; top: -.8em; bottom: -.8em; width: 0; border-left: 1px dashed var(--muted); opacity: .8; }
+#cnote { margin-top: 2.6em; text-align: center; color: var(--muted); font-size: .85em; }
+
+/* Central Valley name tag, placed on the video with the position Blender saved */
+#tag { position: absolute; inset: 0; pointer-events: none; opacity: 0; }
+#tag .line { position: absolute; width: 1px; background: #000; }
+#tag .txt { position: absolute; transform: translate(-50%, -100%); white-space: nowrap; font-size: clamp(10px, 1.05vw, 16px); letter-spacing: .08em; padding-bottom: .5em; }
+
+#pull { position: absolute; left: 50%; bottom: 1.6vh; width: 56px; height: 2px; margin-left: -28px; background: var(--ink); transform-origin: left center; transform: scaleX(0); opacity: 0; z-index: 4; }
+#note { position: absolute; right: 2vw; bottom: 2vh; font-size: 10px; color: var(--muted); letter-spacing: .06em; z-index: 4; }
+#src { position: absolute; left: 2vw; bottom: 2vh; font-size: 10px; color: var(--muted); letter-spacing: .06em; z-index: 4; }
+#loading { position: absolute; inset: 0; display: grid; place-items: center; background: var(--bg); font-size: 13px; letter-spacing: .1em; transition: opacity .4s; z-index: 6; }
+#loading.done { opacity: 0; pointer-events: none; }
+#dbg { position: fixed; right: 8px; top: 8px; font-size: 11px; background: #fff; padding: 4px 6px; display: none; z-index: 9; }
+@media (max-width: 700px) { #top { font-size: 9px; } .box { left: 6vw; width: 82vw; font-size: 13px; } #dotlg { right: 5vw; top: 30vh; } #cmpRows { grid-template-columns: 5.6em 1fr 8.5em; font-size: .9em; } #top { width: 70vw; left: 15vw; } }
+</style>
+</head>
+<body>
+<div id="track">
+  <div id="stage">
+    <div id="vbox">
+      <video id="vid" src="story_1080p.mp4" muted playsinline preload="auto" disablepictureinpicture></video>
+      <canvas id="dis"></canvas>
+    </div>
+    <div id="top" aria-hidden="true">
+      <div id="lrow"><div class="lg b"><i></i>Water levels rising</div><div class="lg r"><i></i>Water levels dropping</div></div>
+      <div id="yrow"></div>
+    </div>
+    <div id="gauge"><div class="gax"></div><div class="gup"><span class="gl"></span></div><div class="gdn"><span class="gl"></span></div></div>
+    <div id="dotlg"><i></i>Groundwater measurement well</div>
+    <div id="boxes"></div>
+    <div id="cmp"><div id="cmpIn">
+      <div id="cmpLg"><div class="lg b"><i></i>Water levels rising</div><div class="lg r"><i></i>Water levels dropping</div></div>
+      <div id="cmpRows"></div>
+      <div id="cnote"></div>
+    </div></div>
+    <div id="pull"></div>
+    <div id="src">DATA: JASECHKO ET AL. 2024</div>
+    <div id="loading">LOADING…</div>
+  </div>
+</div>
+<div id="dbg"></div>
+
+<script>
+const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_view_dots_start": 8, "02_dots_done_pause": 128, "03_tilt_and_fade": 172, "04_bars_grow_grey_legend": 182, "05_spin_loop_start": 216, "06_spin_loop_end": 936, "07_side_1960_1980": 992, "08_side_1980_2000": 1052, "09_side_2000_2020": 1112, "10_to_central_valley": 1172, "11_outline_fades_in": 1208, "12_name_tag": 1234, "13_central_valley_hold": 1226, "14_california_drops": 1264, "15_cv_wells_pop": 1294, "16_cv_1960_1980": 1362, "17_cv_1980_2000": 1422, "18_cv_2000_2020": 1482, "19_end": 1542}, "segments": {"intro_dots": [1, 172], "to_spin": [172, 216], "spin_loop": [216, 936], "to_trench": [936, 992], "trench_state": [992, 1172], "to_central_valley": [1172, 1264], "central_valley_drop": [1264, 1362], "trench_cv": [1362, 1542]}, "loop": {"start": 216, "end": 936, "seconds": 30}, "legend_frame": 214, "dots": {"count": 5070, "first": 8, "last": 128, "pause_until": 172}, "highlight_frames": {"state": {"1960_1980": [992, 1052], "1980_2000": [1052, 1112], "2000_2020": [1112, 1172]}, "central_valley": {"1960_1980": [1326, 1422], "1980_2000": [1422, 1482], "2000_2020": [1482, 1542]}}, "tag": {"text": "CENTRAL VALLEY", "font": "Azeret Mono Medium", "frames": [1234, 1264], "base_x": 0.5181, "base_y": 0.509, "top_x": 0.5181, "top_y": 0.2239}, "well_counts": {"state": {"1960_1980": {"depleting": 1531, "recharging": 1213}, "1980_2000": {"depleting": 1539, "recharging": 1309}, "2000_2020": {"depleting": 2074, "recharging": 907}}, "central_valley": {"1960_1980": {"depleting": 290, "recharging": 115}, "1980_2000": {"depleting": 305, "recharging": 148}, "2000_2020": {"depleting": 241, "recharging": 125}}}, "well_rates": {"state": {"1960_1980": {"depleting": 727.118, "recharging": 559.773}, "1980_2000": {"depleting": 603.397, "recharging": 773.126}, "2000_2020": {"depleting": 963.168, "recharging": 271.827}}, "central_valley": {"1960_1980": {"depleting": 126.238, "recharging": 87.368}, "1980_2000": {"depleting": 122.163, "recharging": 74.272}, "2000_2020": {"depleting": 95.756, "recharging": 22.128}}}};
+
+(() => {
+  const FPS = TL.fps, L0 = TL.loop.start, L1 = TL.loop.end;
+  const seg = TL.segments, hf = TL.highlight_frames, P = ["1960_1980", "1980_2000", "2000_2020"];
+  const nice = p => p.replace("_", " to ");
+  const cnt = (k, p) => TL.well_counts[k][p];
+  const periodCap = (k, p) => `<b>${nice(p)}</b><br>${cnt(k, p).depleting.toLocaleString("en")} wells with falling water levels, ${cnt(k, p).recharging.toLocaleString("en")} with rising.`;
+
+  // ---- TEXT: edit the boxes here (HTML allowed, <b> for bold, .cb blue, .cr red). null = no box at that step ------
+  const CAP = {
+    top:   'Scroll to see how groundwater is doing in California<svg class="arrow" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v24M4 19l8 8 8-8"/></svg>',
+    wells: "To see how California's aquifers are doing, we measure whether water is rising or falling in thousands of &ldquo;measuring wells&rdquo;.",
+    idle:  'This is what they reveal.',
+    toCV:  "The Central Valley is California's agricultural heartland.",
+    cvdrop: "Here is the valley on its own, seen from the side.",
+  };
+  // ----------------------------------------------------------------------------------------------------------
+
+  // ---- FEEL: edit these to change how the scroll behaves -----------------------------------------------------
+  const TUNE = {
+    gateVH: 36,        // scroll distance (in screen heights, %) between one step and the next
+    tipFrac: 0.40,     // how far through that distance you have to pull before it tips (0.4 = 40%)
+    textHoldVH: 42,    // scroll room a text box needs to fly up and fade out before the next step tips
+    quickHoldVH: 8,    // scroll room for steps with no text
+    boxStartVH: 62,    // where a text box sits (from the top of the screen) when its step starts
+    fadeTopVH: 8,      // a box is fully gone when its top edge reaches this height...
+    fadeBandVH: 22,    // ...and starts fading this much lower down
+    dotsSpeed: 1,      // how much faster than real time the dots appear (1 = as rendered)
+    dotsStartAt: 0,    // the dots start once the text box has travelled this fraction of its way up (0 = as soon as the box appears)
+    stepWaitMs: 120,   // pause while the first text box rides in
+    tiltSpeed: 2.2,    // how much faster than real time the move from the flat view to the spin plays
+    trenchSpeed: 2.4,  // how much faster than real time the drop to the side view plays
+    exitSpeed: 1.5,    // same, for the swing from the state's last year window towards the Central Valley
+    cvDropSpeed: 2.6,  // same, for the Central Valley dropping into its side view
+    revSpeed: 1.5,     // going backwards plays this many times faster than forwards (1 = same speed)
+    dissolveMs: 350,   // cross-fade when the year window changes
+    cmpWaitMs: 500,    // pause while the comparison screen fades in
+    snapMs: 280,       // how fast it springs back if you let go before the tipping point
+    snapAfterMs: 170,  // how long you must stop scrolling before it springs back
+    settleQuietMs: 130, settleMaxMs: 2200,  // after a step lands, scroll input is ignored until the flick has died down (a fresh swipe ends this early)
+    // room above and to the right of the model for the year windows and the gauge
+    roomState: [0.86, 3, -0.08], roomCV: [0.78, 14, -0.08],   // [scale, shift down (% of screen height), shift left (fraction of the picture width)]
+    gaugeLen: 0.46,    // full height of the gauge, as a fraction of the picture height
+  };
+  // ----------------------------------------------------------------------------------------------------------
+
+  // frames that matter
+  const f = { dotsEnd: seg.intro_dots[1], tiltEnd: seg.to_spin[1], trenchIn: seg.to_trench[1], exitStart: hf.state[P[2]][1],
+              cvTagEnd: seg.to_central_valley[1], cvSide: seg.trench_cv[0] };
+
+  // steps (stations): the video rests on one frame while the reader reads; "loop" means the idle spin plays while resting;
+  // "overlay" steps show a comparison screen on top of the (resting) video
+  const T_ = TUNE.textHoldVH, Q_ = TUNE.quickHoldVH;
+  const S = [
+    { id: "top",  f: 1,                              cap: CAP.top,   hold: T_, center: true, startVH: 38 },
+    { id: "dots", f: f.dotsEnd,                      cap: CAP.wells, hold: T_, trigger: true },   // dots start by themselves once the text is part-way up
+    { id: "spin", loop: true,                        cap: CAP.idle,  hold: T_ },
+    { id: "p1",   f: hf.state[P[0]][0],             hold: Q_ },
+    { id: "p2",   f: hf.state[P[1]][0],             hold: Q_ },
+    { id: "p3",   f: hf.state[P[2]][0],             hold: Q_ },
+    { id: "cmp1", f: hf.state[P[2]][0],             overlay: "state", hold: Q_ },
+    { id: "cv",   f: f.cvTagEnd,                    cap: CAP.toCV, hold: T_ },
+    { id: "c1",   f: f.cvSide,                      hold: Q_ },
+    { id: "c2",   f: hf.central_valley[P[1]][0],    hold: Q_ },
+    { id: "c3",   f: hf.central_valley[P[2]][0],    hold: Q_ },
+    { id: "cmp2", f: hf.central_valley[P[2]][0],    overlay: "central_valley", hold: Q_ },
+  ];
+  const N = S.length, ix = id => S.findIndex(s => s.id === id);
+
+  // what the video does between step i and step i+1, forwards and backwards
+  const play = (a, b, speed = 1) => ({ k: "play", a, b, speed });
+  const cut = (from, to, fade = true) => ({ k: "cut", from, f: to, fade });
+  const wait = ms => ({ k: "wait", ms });
+  const LEGS = [
+    /* top  -> dots */ { fwd: [wait(TUNE.stepWaitMs)],                                 back: [play(f.dotsEnd, 1, TUNE.dotsSpeed)] },   // back: rewinds from wherever the dots are
+    /* dots -> spin */ { fwd: [play(f.dotsEnd, f.tiltEnd, TUNE.tiltSpeed), { k: "idleIn" }], back: [{ k: "idleOut", want: "L0" }, play(f.tiltEnd, f.dotsEnd, TUNE.tiltSpeed)] },
+    /* spin -> p1   */ { fwd: [{ k: "idleOut", want: "L1" }, play(L1, f.trenchIn, TUNE.trenchSpeed)], back: [play(f.trenchIn, L1, TUNE.trenchSpeed), { k: "idleIn" }] },
+    /* p1 -> p2     */ { fwd: [cut(S[3].f, S[4].f)],                                   back: [cut(S[4].f, S[3].f)] },
+    /* p2 -> p3     */ { fwd: [cut(S[4].f, S[5].f)],                                   back: [cut(S[5].f, S[4].f)] },
+    /* p3 -> cmp1   */ { fwd: [wait(TUNE.cmpWaitMs)],                                  back: [wait(TUNE.cmpWaitMs)] },
+    /* cmp1 -> cv   */ { fwd: [cut(S[6].f, f.exitStart, false), play(f.exitStart, f.cvTagEnd, TUNE.exitSpeed)], back: [play(f.cvTagEnd, f.exitStart, TUNE.exitSpeed), cut(f.exitStart, S[6].f, false)] },
+    /* cv -> c1     */ { fwd: [play(f.cvTagEnd, f.cvSide, TUNE.cvDropSpeed)],          back: [play(f.cvSide, f.cvTagEnd, TUNE.cvDropSpeed)] },
+    /* c1 -> c2     */ { fwd: [cut(S[8].f, S[9].f)],                                   back: [cut(S[9].f, S[8].f)] },
+    /* c2 -> c3     */ { fwd: [cut(S[9].f, S[10].f)],                                  back: [cut(S[10].f, S[9].f)] },
+    /* c3 -> cmp2   */ { fwd: [wait(TUNE.cmpWaitMs)],                                  back: [wait(TUNE.cmpWaitMs)] },
+  ];
+
+  const $ = id => document.getElementById(id);
+  const vid = $("vid"), vbox = $("vbox"), track = $("track"), boxesEl = $("boxes"), lrow = $("lrow"), pullEl = $("pull"),
+        dbg = $("dbg"), topEl = $("top"), gauge = $("gauge"), gup = gauge.querySelector(".gup"), gdn = gauge.querySelector(".gdn"), dis = $("dis"), yrow = $("yrow"), dotlg = $("dotlg"), cmp = $("cmp"), cmpRows = $("cmpRows");
+  const debug = location.search.includes("debug");
+  if (debug) dbg.style.display = "block";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+  S.forEach(s => {
+    s.vis = 0; s.box = null;
+    if (!s.cap) return;
+    const d = document.createElement("div"); d.className = "box" + (s.center ? " center" : ""); d.innerHTML = s.cap; boxesEl.appendChild(d); s.box = d;
+  });
+
+  // ---- year windows (top of the screen) ----------------------------------------------------------------------
+  const short = p => p.slice(0, 4) + "-" + p.slice(7, 9);
+  yrow.innerHTML = P.map(p => `<div class="yw pending"><div class="yb">${short(p)}</div><div class="slot"></div></div>`).join("");
+  const yws = [...yrow.querySelectorAll(".yw")];
+  const WINS = { state: P.map(p => hf.state[p]), central_valley: P.map(p => hf.central_valley[p]) };
+  const periodIdx = (scope, fr) => { const w = WINS[scope]; return fr >= w[2][0] ? 2 : (fr >= w[1][0] ? 1 : 0); };
+  let lastPi = -1;
+
+  // ---- comparison screen --------------------------------------------------------------------------------------
+  const share = (k, p) => { const c = ((TL.well_rates || {})[k] || {})[p] || cnt(k, p); return c.depleting / (c.depleting + c.recharging); };
+  const pct = v => Math.round(v * 100);
+  cmpRows.innerHTML = P.map(p => `<div class="clab">${short(p)}</div><div class="cbar"><div class="cin"><span class="bl"></span><span class="rd"></span></div></div><div class="cdl"></div>`).join("") + '<div id="cref"></div>';
+  const cins = [...cmpRows.querySelectorAll(".cin")], cdls = [...cmpRows.querySelectorAll(".cdl")], cref = $("cref");
+  let cmpScope = null;
+  function fillCmp(scope) {
+    cmpScope = scope;
+    const v0 = share(scope, P[0]);
+    P.forEach((p, k) => {
+      const v = share(scope, p), d = pct(v) - pct(v0);
+      cins[k].querySelector(".bl").style.flex = `${1 - v} 1 0`; cins[k].querySelector(".rd").style.flex = `${v} 1 0`;
+      cdls[k].innerHTML = `<b>${pct(v)}%</b>dropping` + (k ? ` (${d >= 0 ? "+" : "-"}${Math.abs(d)} pts)` : "");
+    });
+    $("cnote").textContent = `Share of the total water-level change that is dropping, compared with ${short(P[0])}`;
+    const bar = cmpRows.querySelectorAll(".cbar")[0];
+    cref.style.left = (bar.offsetLeft + bar.offsetWidth * (1 - v0)) + "px";
+  }
+  function cmpFillAnim() {
+    if (reduce) return;
+    cins.forEach((el, k) => el.animate([{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0 0 0)" }], { duration: 800, delay: 150 + k * 220, easing: "cubic-bezier(.2,.7,.2,1)", fill: "backwards" }));
+  }
+
+  // ---- layout: scroll positions of every step ---------------------------------------------------------------
+  let vh = innerHeight, G = 0, TIP = 0;
+  function layout() {
+    vh = innerHeight; G = TUNE.gateVH * vh / 100; TIP = G * TUNE.tipFrac;
+    let y = 0;
+    S.forEach(s => { s.a = y; s.b = y + s.hold * vh / 100; y = s.b + G; });
+    track.style.height = (S[N - 1].b + vh) + "px";
+  }
+  layout();
+
+  const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+  const lerp = (a, b, u) => a + (b - a) * u;
+  const easeIO = u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+  const herm = (p0, p1, m0, m1, u) => { const u2 = u * u, u3 = u2 * u; return (2 * u3 - 3 * u2 + 1) * p0 + (u3 - 2 * u2 + u) * m0 + (-2 * u3 + 3 * u2) * p1 + (u3 - u2) * m1; };
+  const tOf = fr => clamp((fr - 1 + 0.5) / FPS, 0, Math.max(0, (vid.duration || 1e9) - 0.02));   // aim at the middle of frame fr
+  const posOf = () => vid.currentTime * FPS + 1;
+
+  let st = 0, mode = "rest", seq = null, snap = null, cur = 1, lastSeek = -1, ready = false, seeked = true,
+      lastInput = 0, progY = 0, settleAt = 0, pull = 0, last = performance.now(), lastDt = 0.016, bg = null, cmpVis = 0, cmpWas = false, vSig = "";
+  vid.addEventListener("seeked", () => { seeked = true; });
+  const setY = y => { progY = y; scrollTo(0, y); };
+  const seekNow = fr => { const t = tOf(fr); vid.currentTime = t; lastSeek = t; seeked = false; };
+  const seek = fr => { const t = tOf(fr); if (Math.abs(t - lastSeek) > 0.5 / FPS / 2) { vid.currentTime = t; lastSeek = t; } };
+  const locked = () => mode === "seq" || mode === "settle";
+
+  // ---- input: while a step is running (and while the flick that caused it dies down) scrolling is ignored ------
+  const stamp = () => { lastInput = performance.now(); };
+  let prevA = 0, fresh = false;   // fresh: a new gesture started while the old flick was still being ignored
+  addEventListener("wheel", e => {
+    stamp();
+    if (locked() && !e.ctrlKey) {
+      e.preventDefault();
+      const a = Math.abs(e.deltaY);
+      if (mode === "settle" && a > 20 && a > prevA * 1.3 + 6) fresh = true;   // strengthening again = a new swipe, not the tail of the old one
+      prevA = a;
+    }
+  }, { passive: false });
+  addEventListener("touchstart", () => { stamp(); if (mode === "settle") fresh = true; }, { passive: true });
+  addEventListener("touchmove", e => { stamp(); if (locked() && e.cancelable) e.preventDefault(); }, { passive: false });
+  addEventListener("keydown", e => { stamp(); if (locked() && [" ", "PageUp", "PageDown", "ArrowUp", "ArrowDown", "Home", "End"].includes(e.key)) e.preventDefault(); });
+  addEventListener("scroll", () => { if (Math.abs(scrollY - progY) > 2) stamp(); }, { passive: true });
+  addEventListener("resize", () => {
+    const s = S[st], rel = (scrollY - s.a) / Math.max(1, s.b - s.a);
+    layout(); const n = S[st]; setY(n.a + clamp(rel, 0, 1) * (n.b - n.a));
+  });
+
+  // ---- idle spin -----------------------------------------------------------------------------------------------
+  function enterIdle() {
+    cur = L0; vid.playbackRate = 1;
+    if (reduce) { seekNow(L0); return; }
+    if (vid.paused || Math.abs(vid.currentTime - tOf(L0)) > 0.5) { vid.currentTime = tOf(L0); lastSeek = -1; }
+    vid.play().catch(() => {});
+  }
+  function idleMaintain() {
+    if (reduce) return;
+    cur = clamp(posOf(), L0, L1);
+    if (vid.currentTime >= tOf(L1)) { vid.currentTime = tOf(L0); lastSeek = -1; }   // both ends show the same picture
+  }
+
+  // ---- a step: a list of legs played one after another ----------------------------------------------------------
+  function prepIdleOut(l) {
+    // leave the spin by the shorter way round; both ends of the loop show the same picture
+    const p = clamp(posOf(), L0, L1), dF = L1 - p, dB = p - L0, vn = FPS * (l.vmul || 1);
+    let target, v0 = 0, v1 = 0;
+    if (l.want === "L1") { if (dF <= dB) { target = L1; v0 = FPS; v1 = vn; } else target = L0; l.land = L1; }
+    else                 { if (dB <= dF) { target = L0; } else { target = L1; v0 = FPS; } l.land = L0; }
+    const d = Math.abs(target - p);
+    l.p0 = p; l.p1 = target; l.target = target;
+    l.D = d < 4 ? 0 : clamp(d / 800, 0.25, 0.6);
+    l.m0 = v0 * l.D; l.m1 = v1 * l.D; l.dur = l.D;
+  }
+  function legDur(l) {
+    if (l.k === "play") return l.b >= l.a ? (l.b - l.a) / FPS / l.speed : (l.a - l.b) / FPS / l.speed / TUNE.revSpeed;
+    if (l.k === "cut") return l.fade ? 0.5 + TUNE.dissolveMs / 1000 : 0.1;
+    if (l.k === "wait") return l.ms / 1000;
+    if (l.k === "idleOut") { prepIdleOut(l); return l.dur; }
+    return 0;
+  }
+  function startSeq(i, dir) {
+    const e = LEGS[dir > 0 ? i : i - 1];
+    let legs = (dir > 0 ? e.fwd : e.back).map(l => Object.assign({}, l));
+    if (reduce) legs = legs.filter(l => l.k !== "idleOut" && l.k !== "idleIn").map(l => l.k === "play" ? { k: "cut", f: l.b, fade: false } : Object.assign(l, { fade: false }));
+    legs.forEach((l, k) => { if (l.k === "idleOut") { const n = legs[k + 1]; l.vmul = n && n.k === "play" && n.b >= n.a ? n.speed : 1; } });
+    if (i === 1) {   // leaving the dots step: carry on from, or rewind from, wherever the dots have got to
+      const l0 = legs[0], playing = !!bg;
+      if (dir > 0) { l0.a = clamp(cur, 1, f.dotsEnd); l0.cont = playing && !reduce; }
+      else { l0.a = clamp(cur, 1, f.dotsEnd); }
+    }
+    bg = null;
+    let D = 0; legs.forEach(l => { l.dur = legDur(l); D += l.dur; });
+    const to = i + dir;
+    seq = { legs, li: -1, to, dir, t: 0, D: Math.max(0.1, D), y0: scrollY, y1: dir > 0 ? S[to].a : S[to].b };
+    mode = "seq"; snap = null; pull = 0;
+  }
+  function snapshot() {
+    try { dis.width = vid.videoWidth || 1920; dis.height = vid.videoHeight || 1080; dis.getContext("2d").drawImage(vid, 0, 0, dis.width, dis.height); dis.style.transition = "none"; dis.style.opacity = 1; return true; }
+    catch (e) { return false; }
+  }
+  function beginLeg(l, next) {
+    l.t = 0; l.done = false;
+    if (l.k === "play") {
+      l.fwd = l.b >= l.a; l.native = false;
+      if (Math.abs(l.b - l.a) < 0.5) { vid.pause(); vid.playbackRate = 1; seekNow(l.b); cur = l.b; l.done = true; return; }
+      if (l.fwd && !reduce) {
+        l.keep = next && next.k === "idleIn";
+        if (l.cont && !vid.paused) { l.t0 = vid.currentTime; vid.playbackRate = l.speed; }   // already playing: just carry on
+        else { seekNow(l.a); l.t0 = vid.currentTime; vid.playbackRate = l.speed; vid.play().catch(() => { l.native = false; }); }
+        l.native = true;
+      } else vid.pause();
+      cur = l.a;
+    } else if (l.k === "cut") {
+      vid.pause(); l.fading = false; l.snap = l.fade && !reduce && snapshot();
+      seekNow(l.f); cur = l.f;
+    } else if (l.k === "idleOut") {
+      vid.pause();
+      if (l.D === 0) { seekNow(l.land); cur = l.land; l.done = true; }
+    } else if (l.k === "idleIn") { enterIdle(); l.done = true; }
+  }
+  function tickLeg(l, dt) {
+    l.t += dt;
+    if (l.k === "play") {
+      if (l.native) {
+        cur = clamp(posOf(), l.a, l.b);
+        if (l.t > 0.7 && vid.currentTime - l.t0 < 0.05) { l.native = false; vid.pause(); vid.playbackRate = 1; }   // playback did not start: step by hand instead
+        else if (vid.currentTime >= tOf(l.b) - 0.002 || l.t > l.dur + 2) {
+          vid.playbackRate = 1;
+          if (!l.keep) { vid.pause(); seekNow(l.b); }
+          cur = l.b; l.done = true;
+        }
+        return;
+      }
+      const u = clamp(l.t / Math.max(l.dur, 1e-6), 0, 1);
+      cur = l.a + (l.b - l.a) * u; seek(cur);
+      if (u >= 1) { seekNow(l.b); cur = l.b; l.done = true; }
+    } else if (l.k === "cut") {
+      if (l.snap) {
+        if (!l.fading && (seeked || l.t > 0.45)) { l.fading = true; l.ft = 0; dis.style.transition = `opacity ${TUNE.dissolveMs}ms ease`; dis.style.opacity = 0; }
+        if (l.fading) { l.ft += dt; if (l.ft >= TUNE.dissolveMs / 1000) l.done = true; }
+      } else if (seeked || l.t > 0.1) l.done = true;
+    } else if (l.k === "wait") {
+      if (l.t >= l.dur) l.done = true;
+    } else if (l.k === "idleOut") {
+      const u = clamp(l.t / l.D, 0, 1);
+      cur = herm(l.p0, l.p1, l.m0, l.m1, u); seek(cur);
+      if (u >= 1) { seekNow(l.land); cur = l.land; l.done = true; }
+    }
+  }
+  function stepSeq(dt, now) {
+    seq.t += dt;
+    setY(seq.y0 + (seq.y1 - seq.y0) * easeIO(clamp(seq.t / seq.D, 0, 1)));
+    for (let g = 0; g < 6; g++) {
+      if (seq.li < 0 || seq.leg.done) {
+        seq.li++;
+        if (seq.li >= seq.legs.length) { finishSeq(now); return; }
+        seq.leg = seq.legs[seq.li]; beginLeg(seq.leg, seq.legs[seq.li + 1]);
+      }
+      tickLeg(seq.leg, g ? 0 : dt);
+      if (!seq.leg.done) break;
+    }
+  }
+  function finishSeq(now) {
+    st = seq.to; setY(seq.y1); seq = null; mode = "settle"; settleAt = now; fresh = false;
+    if (!S[st].loop) { vid.pause(); vid.playbackRate = 1; if (!S[st].trigger) cur = S[st].f; }
+  }
+
+  function applyStation(i) {
+    st = i; mode = "rest"; seq = null; snap = null;
+    if (S[i].loop) enterIdle(); else { vid.pause(); cur = S[i].f; seekNow(cur); }
+    setY(S[i].a);
+  }
+
+  // the dots play by themselves, at their own speed, once the text box is part-way up (scrolling stays free meanwhile)
+  function startBg() {
+    bg = { t: 0, t0: vid.currentTime, native: !reduce, f: cur };
+    vid.playbackRate = TUNE.dotsSpeed;
+    if (reduce) { seekNow(f.dotsEnd); cur = f.dotsEnd; bg = null; return; }
+    vid.play().catch(() => { bg.native = false; });
+  }
+  function tickBg(dt) {
+    bg.t += dt;
+    if (bg.native) {
+      cur = clamp(posOf(), 1, f.dotsEnd);
+      if (bg.t > 0.7 && vid.currentTime - bg.t0 < 0.05) { bg.native = false; vid.pause(); vid.playbackRate = 1; bg.f = cur; bg.t = 0; }   // playback did not start: step by hand
+      else if (vid.currentTime >= tOf(f.dotsEnd) - 0.002) { vid.pause(); vid.playbackRate = 1; seekNow(f.dotsEnd); cur = f.dotsEnd; bg = null; }
+    } else {
+      cur = bg.f + bg.t * FPS * TUNE.dotsSpeed; seek(cur);
+      if (cur >= f.dotsEnd) { cur = f.dotsEnd; seekNow(cur); bg = null; }
+    }
+  }
+
+  function tick(now) {
+    const dt = Math.min(0.1, (now - last) / 1000); last = now; lastDt = dt;
+    if (ready) {
+      if (mode === "seq") stepSeq(dt, now);
+      else {
+        if (S[st].loop) idleMaintain();
+        const s = S[st], y = scrollY;
+        if (bg) tickBg(dt);
+        else if (s.trigger && (mode === "rest" || mode === "settle") && cur < f.dotsEnd - 0.5 && (y - s.a) / (s.b - s.a) >= TUNE.dotsStartAt) startBg();
+        if (mode === "settle") {
+          setY(progY);   // hold the landing position while the flick dies down
+          if (fresh || (now - lastInput > TUNE.settleQuietMs && now - settleAt > 120) || now - settleAt > TUNE.settleMaxMs) { mode = "rest"; fresh = false; }
+          pull = 0;
+        } else {
+          const fw = st < N - 1 ? (y - s.b) / TIP : 0, bw = st > 0 ? (s.a - y) / TIP : 0;
+          if (fw >= 1) startSeq(st, 1);
+          else if (bw >= 1) startSeq(st, -1);
+          else {
+            pull = Math.max(0, fw, bw);
+            const outside = y < s.a - 0.5 || y > s.b + 0.5;
+            if (outside && !snap && now - lastInput > TUNE.snapAfterMs) snap = { y0: y, y1: clamp(y, s.a, s.b), t: 0, at: lastInput };
+            if (snap) {
+              if (lastInput !== snap.at) snap = null;
+              else { snap.t += dt; const u = clamp(snap.t / (TUNE.snapMs / 1000), 0, 1); setY(snap.y0 + (snap.y1 - snap.y0) * easeIO(u)); if (u >= 1) snap = null; }
+            }
+          }
+        }
+      }
+      updateUI();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // room above the model, driven by the video frame (more headroom in the side views so the year windows have space)
+  function room(fr) {
+    const A = TUNE.roomState, C = TUNE.roomCV;
+    const K = [[0, 1, 0, 0], [960, 1, 0, 0], [992, A[0], A[1], A[2]], [1172, A[0], A[1], A[2]], [1226, 1, 0, 0],
+               [1326, 1, 0, 0], [1362, C[0], C[1], C[2]], [1e9, C[0], C[1], C[2]]];
+    for (let i = 1; i < K.length; i++) if (fr <= K[i][0]) { const u = (fr - K[i - 1][0]) / (K[i][0] - K[i - 1][0]); return [1, 2, 3].map(j => lerp(K[i - 1][j], K[i][j], u)); }
+    return [1, 0, 0];
+  }
+
+  // year windows and gauge are placed relative to the (shrunken, shifted) model
+  const AXIS = { state: 0.508, central_valley: 0.369 };   // where the model's flat surface sits in the picture (0 = top, 1 = bottom)
+  const HALF = { state: 0.226, central_valley: 0.218 };    // half the model's width, as a fraction of the picture width (at scale 1)
+  const DATES_UP = { state: 0.462, central_valley: 0.52 }; // how far above the model's surface the dates start (fraction of the picture height)
+  let gaugeV = null, gaugeL = 0;
+  function placeUI(sc, sh, shX, scope) {
+    const W = vbox.offsetWidth, H = vbox.offsetHeight, narrow = innerWidth < 700, cx = innerWidth / 2 + (narrow ? 0 : shX * W), cy = vh * (0.5 + sh / 100);
+    const gy = cy + (AXIS[scope] - 0.5) * H * sc, tw = narrow ? innerWidth * 0.7 : W * 0.431;
+    topEl.style.width = tw + "px"; topEl.style.left = (cx - tw / 2) + "px"; topEl.style.top = (gy - H * sc * DATES_UP[scope]) + "px";
+    gauge.style.left = (cx + W * sc * HALF[scope] + W * 0.03) + "px"; gauge.style.top = gy + "px"; gauge.style.display = narrow ? "none" : "";
+    gaugeL = H * sc * TUNE.gaugeLen; gaugeVals(gaugeV == null ? 0.5 : gaugeV);
+  }
+  function gaugeVals(v) {
+    gup.style.height = ((1 - v) * gaugeL) + "px"; gdn.style.height = (v * gaugeL) + "px";
+    gup.firstChild.textContent = pct(1 - v) + "% rising"; gdn.firstChild.textContent = pct(v) + "% dropping";
+  }
+
+  function updateUI() {
+    const playing = mode === "seq", y = scrollY, dest = playing ? seq.to : st;
+    // text boxes ride up the screen with the scroll and fade out before the top; the next step's box rides in while a step plays
+    S.forEach((s, k) => {
+      if (!s.box) return;
+      s.vis += (((k === dest) ? 1 : 0) - s.vis) * (1 - Math.exp(-lastDt * 9));
+      if (s.vis < 0.01) { s.box.style.opacity = 0; return; }
+      const top = (s.startVH || TUNE.boxStartVH) * vh / 100 - (y - s.a);
+      const op = clamp((top - TUNE.fadeTopVH * vh / 100) / (TUNE.fadeBandVH * vh / 100), 0, 1) * clamp((vh - top) / (0.1 * vh), 0, 1) * s.vis;
+      s.box.style.opacity = op.toFixed(3); s.box.style.transform = `translate3d(0,${top.toFixed(1)}px,0)`;
+    });
+
+    // comparison screen
+    const want = !!S[dest].overlay;
+    if (want && !cmpWas) { if (cmpScope !== S[dest].overlay) fillCmp(S[dest].overlay); cmpFillAnim(); }
+    cmpWas = want;
+    cmpVis += ((want ? 1 : 0) - cmpVis) * (1 - Math.exp(-lastDt * 7));
+    cmp.style.opacity = cmpVis < 0.01 ? 0 : cmpVis.toFixed(3);
+
+    dotlg.style.opacity = (clamp((cur - 8) / 16, 0, 1) * (1 - clamp((cur - f.dotsEnd) / 14, 0, 1))).toFixed(3);
+    pullEl.style.transform = `scaleX(${pull})`; pullEl.style.opacity = pull > 0.02 ? 1 : 0;
+
+    // more room above the model in the side views
+    const [sc, sh, shX] = room(cur), scope = cur >= 1300 ? "central_valley" : "state", sig = sc.toFixed(3) + sh.toFixed(2) + shX.toFixed(3) + scope + vh + innerWidth;
+    if (sig !== vSig) {
+      vSig = sig;
+      vbox.style.transform = `translate(calc(-50% + ${innerWidth < 700 ? 0 : shX * vbox.offsetWidth}px), calc(-50% + ${sh}vh)) scale(${sc})`;
+      placeUI(sc, sh, shX, scope);
+    }
+
+    // year windows follow the video frame, so they behave the same going forwards and backwards
+    const alpha = scope === "state"
+      ? clamp((cur - (f.trenchIn - 14)) / 14, 0, 1) * (1 - clamp((cur - f.exitStart) / 20, 0, 1))
+      : clamp((cur - (f.cvSide - 16)) / 16, 0, 1);
+    yrow.style.opacity = alpha.toFixed(3); gauge.style.opacity = alpha.toFixed(3);
+    lrow.classList.toggle("on", cur >= TL.legend_frame);
+    if (alpha > 0.05) {
+      const pi = periodIdx(scope, cur);
+      if (pi !== lastPi) {
+        yws.forEach((w, k) => { w.classList.toggle("done", k < pi); w.classList.toggle("active", k === pi); w.classList.toggle("pending", k > pi); });
+        lastPi = pi;
+        gaugeV = share(scope, P[pi]);
+        gaugeVals(gaugeV);
+      }
+    } else if (alpha === 0) lastPi = -1;
+    if (debug) dbg.textContent = `frame ${cur.toFixed(1)} | step ${st} ${S[st].id} | ${mode} | y ${Math.round(y)} | pull ${pull.toFixed(2)}`;
+  }
+
+  vid.addEventListener("loadeddata", () => {
+    ready = true;
+    const q = parseInt(new URLSearchParams(location.search).get("s"), 10);   // ?s=5 jumps to step 5 (handy for testing)
+    applyStation(isNaN(q) ? 0 : clamp(q, 0, N - 1));
+    $("loading").classList.add("done");
+  });
+  if (vid.readyState >= 2 && !ready) vid.dispatchEvent(new Event("loadeddata"));
+  if (debug) window.__pg = { get st() { return st; }, get mode() { return mode; }, get cur() { return cur; }, get pull() { return pull; }, get y() { return scrollY; }, S, TIP, G, ix };
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
