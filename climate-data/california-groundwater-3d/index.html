@@ -133,7 +133,7 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
   const CAP = {
     top:   'Scroll to see how groundwater is doing in California<svg class="arrow" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v24M4 19l8 8 8-8"/></svg>',
     wells: "To see how California's aquifers are doing, we measure whether water is rising or falling in thousands of &ldquo;measuring wells&rdquo;.",
-    idle:  'This is what they reveal.',
+    idle:  'Some are recharging, some depleting.',
     toCV:  "The Central Valley is California's agricultural heartland.",
     cvdrop: "Here is the valley on its own, seen from the side.",
   };
@@ -162,8 +162,9 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
     snapAfterMs: 170,  // how long you must stop scrolling before it springs back
     settleQuietMs: 130, settleMaxMs: 2200,  // after a step lands, scroll input is ignored until the flick has died down (a fresh swipe ends this early)
     // room above and to the right of the model for the year windows and the gauge
-    roomState: [0.86, 3, -0.08], roomCV: [0.78, 14, -0.08],   // [scale, shift down (% of screen height), shift left (fraction of the picture width)]
+    roomState: [0.86, 3, 0], roomCV: [0.78, 14, 0],   // [scale, shift down (% of screen height), shift sideways (fraction of the picture width, negative = left)]
     gaugeLen: 0.46,    // full height of the gauge, as a fraction of the picture height
+    gaugeGap: 0.075,   // gap between the model and the gauge, as a fraction of the picture width
   };
   // ----------------------------------------------------------------------------------------------------------
 
@@ -494,7 +495,7 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
     const W = vbox.offsetWidth, H = vbox.offsetHeight, narrow = innerWidth < 700, cx = innerWidth / 2 + (narrow ? 0 : shX * W), cy = vh * (0.5 + sh / 100);
     const gy = cy + (AXIS[scope] - 0.5) * H * sc, tw = narrow ? innerWidth * 0.7 : W * 0.431;
     topEl.style.width = tw + "px"; topEl.style.left = (cx - tw / 2) + "px"; topEl.style.top = (gy - H * sc * DATES_UP[scope]) + "px";
-    gauge.style.left = (cx + W * sc * HALF[scope] + W * 0.03) + "px"; gauge.style.top = gy + "px"; gauge.style.display = narrow ? "none" : "";
+    gauge.style.left = (cx + W * sc * HALF[scope] + W * TUNE.gaugeGap) + "px"; gauge.style.top = gy + "px"; gauge.style.display = narrow ? "none" : "";
     gaugeL = H * sc * TUNE.gaugeLen; gaugeVals(gaugeV == null ? 0.5 : gaugeV);
   }
   function gaugeVals(v) {
