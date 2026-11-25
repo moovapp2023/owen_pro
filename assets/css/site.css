@@ -1371,3 +1371,10 @@ footer, footer a { font-size: 12px; }
   table.stage-table { display: block; overflow-x: auto; max-width: 100%; }
   table.stage-table th, table.stage-table td { font-size: 11px; padding: 6px 8px 6px 0; }
 }
+
+/* contact band: the 2026-10-21 restyle turned every heading black but left this section on the old
+   black background, so the heading and the email link were black on black. White, like the rest. */
+.contact-section { background: #fff; border-top: 1px solid #000; }
+.contact-eyebrow { color: var(--muted); }
+.contact-desc { color: #000; }
+.contact-email-link { color: #000; border-bottom-color: #000; }
