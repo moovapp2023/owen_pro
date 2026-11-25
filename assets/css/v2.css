@@ -5,7 +5,7 @@
    The idea: the work supplies the colour, the page stays black on white.
    Reading text is Aeonik. Azeret Mono is kept for the data voice only
    (dates, sources, figures). Archivo Black is for titles, in sentence case.
-   The blue and the red are the two colours of the groundwater chart.
+   The blue is the water in the groundwater chart.
    ═══════════════════════════════════════════════════════════════════════ */
 
 @font-face { font-family: 'Aeonik'; src: url('/assets/fonts/Aeonik-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -22,8 +22,7 @@
   --aquifer: #9dcce7;        /* the water in the groundwater chart */
   --aquifer-pale: #e8f3f9;
   --deep: #2f7fcf;           /* chart marks and focus rings */
-  --drawdown: #e24b4a;       /* the red band in the groundwater chart; marks only */
-
+  
   --text: 'Aeonik', -apple-system, 'Helvetica Neue', Arial, sans-serif;
   --data: 'Azeret Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --display: 'Archivo Black', 'Arial Black', Impact, sans-serif;
@@ -181,12 +180,8 @@ footer a:hover { background: var(--aquifer); border: 0; }
 
 /* feature: the groundwater pieces */
 .feature { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 28px 48px; align-items: start; }
-.feature-img { display: block; }
-.feature-img img { display: block; width: 100%; border: 1px solid #000; background: #fff; }
-.feature h3 { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 2.8vw, 38px); line-height: 1.05; letter-spacing: -0.015em; margin: 8px 0 16px; text-wrap: balance; }
-.feature p { margin: 0 0 14px; max-width: 34em; }
-.feature .finding { border-left: 6px solid var(--drawdown); padding: 2px 0 2px 16px; margin: 20px 0; font-size: 19px; line-height: 1.4; }
-.feature-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 20px; list-style: none; padding: 0; }
+.feature h3 { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 2.8vw, 38px); line-height: 1.05; letter-spacing: -0.015em; margin: 8px 0 12px; text-wrap: balance; }
+.feature-sub { font-size: 19px; line-height: 1.4; margin: 0 0 26px; max-width: 26em; }
 
 /* earth.org: the role, and one honest figure */
 .context { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px 64px; align-items: start; margin-top: clamp(48px, 6vw, 80px); padding-top: 28px; border-top: 1px solid #000; }
