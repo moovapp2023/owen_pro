@@ -39,14 +39,13 @@ html { scroll-behavior: auto; overscroll-behavior: none; }
 /* top group: small stacked legend, then the three year windows spread over the width of the model */
 #top { position: absolute; z-index: 2; left: calc(50% - min(100vw, 177.78vh) * 0.23); width: calc(min(100vw, 177.78vh) * 0.46); top: calc(50% - min(100vh, 56.25vw) * 0.385); display: flex; flex-direction: column; align-items: flex-start;
        font-size: clamp(10px, .95vw, 14px); text-shadow: 0 0 5px var(--bg), 0 0 5px var(--bg); pointer-events: none; }
-#yrow { opacity: 0; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 2.2em; width: 100%; margin-top: 1em; }
-.yw { text-align: center; color: #a4a9ae; transition: color .35s; }
-.yw.active { color: var(--ink); }
-.yb { font-size: 1.7em; letter-spacing: .02em; white-space: nowrap; line-height: 1.3; transition: font-weight .2s; }
-.yw.active .yb { font-weight: 500; }
-.slot { position: relative; height: 5px; margin-top: .45em; }
-.slot::before { content: ""; position: absolute; left: 0; right: 0; top: 2px; height: 1px; background: currentColor; opacity: .35; transition: opacity .35s; }
-.yw.active .slot::before { opacity: 1; height: 2px; top: 1.5px; }
+/* the date: one big slot dial at the top right of the box around the map; it rolls as you scroll */
+#ydial { --yh: 1.22em; opacity: 0; position: absolute; right: 0; top: 0; height: var(--yh); overflow: hidden;
+         font-size: 3.1em; letter-spacing: .01em; text-align: right; pointer-events: none;
+         -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+                 mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent); }
+#yreel { will-change: transform; }
+#yreel div { height: var(--yh); line-height: var(--yh); white-space: nowrap; font-weight: 500; color: var(--ink); }
 #lrow { opacity: 0; transition: opacity .6s ease; display: flex; flex-direction: column; align-items: flex-start; gap: .3em; white-space: nowrap; font-size: .95em; }
 .lg i { display: inline-block; width: .6em; height: .8em; margin-right: .6em; vertical-align: -0.1em; }
 #lrow.on { opacity: 1; }
@@ -103,7 +102,7 @@ html { scroll-behavior: auto; overscroll-behavior: none; }
     </div>
     <div id="top" aria-hidden="true">
       <div id="lrow"><div class="lg b"><i></i>Water levels rising</div><div class="lg r"><i></i>Water levels dropping</div></div>
-      <div id="yrow"></div>
+      <div id="ydial"><div id="yreel"></div></div>
     </div>
     <div id="gauge"><div class="gax"></div><div class="gup"><span class="gl"></span></div><div class="gdn"><span class="gl"></span></div></div>
     <div id="dotlg"><i></i>Groundwater measurement well</div>
@@ -167,6 +166,8 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
     settleQuietMs: 130, settleMaxMs: 2200,  // after a step lands, scroll input is ignored until the flick has died down (a fresh swipe ends this early)
     // room above and to the right of the model for the year windows and the gauge
     roomState: [0.86, 3, 0], roomCV: [0.78, 14, 0],   // [scale, shift down (% of screen height), shift sideways (fraction of the picture width, negative = left)]
+    datePeek: 0.17,    // how far the date dial rolls towards the next one while you are pulling (1 = a whole date); it never gets there until the step tips
+    dateTip: 13,       // how fast the dial snaps onto the new date once the step has tipped (higher = snappier)
     gaugeLen: 0.46,    // full height of the gauge, as a fraction of the picture height
     gaugeGap: 0.075,   // gap between the model and the gauge, as a fraction of the picture width
   };
@@ -218,7 +219,7 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
 
   const $ = id => document.getElementById(id);
   const vid = $("vid"), vbox = $("vbox"), track = $("track"), boxesEl = $("boxes"), lrow = $("lrow"), pullEl = $("pull"),
-        dbg = $("dbg"), topEl = $("top"), gauge = $("gauge"), gup = gauge.querySelector(".gup"), gdn = gauge.querySelector(".gdn"), dis = $("dis"), yrow = $("yrow"), dotlg = $("dotlg"), cmp = $("cmp"), cmpRows = $("cmpRows");
+        dbg = $("dbg"), topEl = $("top"), gauge = $("gauge"), gup = gauge.querySelector(".gup"), gdn = gauge.querySelector(".gdn"), dis = $("dis"), ydial = $("ydial"), yreel = $("yreel"), dotlg = $("dotlg"), cmp = $("cmp"), cmpRows = $("cmpRows");
   const debug = location.search.includes("debug");
   if (debug) dbg.style.display = "block";
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -236,8 +237,7 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
 
   // ---- year windows (top of the screen) ----------------------------------------------------------------------
   const short = p => p.slice(0, 4) + "-" + p.slice(7, 9);
-  yrow.innerHTML = P.map(p => `<div class="yw pending"><div class="yb">${short(p)}</div><div class="slot"></div></div>`).join("");
-  const yws = [...yrow.querySelectorAll(".yw")];
+  yreel.innerHTML = P.map(p => `<div>${short(p)}</div>`).join("");
   const WINS = { state: P.map(p => hf.state[p]), central_valley: P.map(p => hf.central_valley[p]) };
   const periodIdx = (scope, fr) => { const w = WINS[scope]; return fr >= w[2][0] ? 2 : (fr >= w[1][0] ? 1 : 0); };
   let lastPi = -1;
@@ -283,7 +283,7 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
   const posOf = () => vid.currentTime * FPS + 1;
 
   let st = 0, mode = "rest", seq = null, snap = null, cur = 1, lastSeek = -1, ready = false, seeked = true,
-      lastInput = 0, progY = 0, settleAt = 0, pull = 0, last = performance.now(), lastDt = 0.016, bg = null, cmpVis = 0, cmpWas = false, vSig = "";
+      lastInput = 0, progY = 0, settleAt = 0, pull = 0, pullDir = 0, yPos = 0, last = performance.now(), lastDt = 0.016, bg = null, cmpVis = 0, cmpWas = false, vSig = "";
   vid.addEventListener("seeked", () => { seeked = true; });
   const setY = y => { progY = y; scrollTo(0, y); };
   const seekNow = fr => { const t = tOf(fr); vid.currentTime = t; lastSeek = t; seeked = false; };
@@ -357,7 +357,7 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
     let D = 0; legs.forEach(l => { l.dur = legDur(l); D += l.dur; });
     const to = i + dir;
     seq = { legs, li: -1, to, dir, t: 0, D: Math.max(0.1, D), y0: scrollY, y1: dir > 0 ? S[to].a : S[to].b };
-    mode = "seq"; snap = null; pull = 0;
+    mode = "seq"; snap = null; pull = 0; pullDir = 0;
   }
   function snapshot() {
     try { dis.width = vid.videoWidth || 1920; dis.height = vid.videoHeight || 1080; dis.getContext("2d").drawImage(vid, 0, 0, dis.width, dis.height); dis.style.transition = "none"; dis.style.opacity = 1; return true; }
@@ -467,13 +467,14 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
         if (mode === "settle") {
           setY(progY);   // hold the landing position while the flick dies down
           if (fresh || (now - lastInput > TUNE.settleQuietMs && now - settleAt > 120) || now - settleAt > TUNE.settleMaxMs) { mode = "rest"; fresh = false; }
-          pull = 0;
+          pull = 0; pullDir = 0;
         } else {
           const fw = st < N - 1 ? (y - s.b) / TIP : 0, bw = st > 0 ? (s.a - y) / TIP : 0;
           if (fw >= 1) startSeq(st, 1);
           else if (bw >= 1) startSeq(st, -1);
           else {
             pull = Math.max(0, fw, bw);
+            pullDir = pull <= 0 ? 0 : (fw >= bw ? 1 : -1);
             const outside = y < s.a - 0.5 || y > s.b + 0.5;
             if (outside && !snap && now - lastInput > TUNE.snapAfterMs) snap = { y0: y, y1: clamp(y, s.a, s.b), t: 0, at: lastInput };
             if (snap) {
@@ -550,17 +551,27 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
     const alpha = scope === "state"
       ? clamp((cur - (f.trenchIn - 14)) / 14, 0, 1) * (1 - clamp((cur - f.exitStart) / 20, 0, 1))
       : clamp((cur - (f.cvSide - 16)) / 16, 0, 1);
-    yrow.style.opacity = alpha.toFixed(3); gauge.style.opacity = alpha.toFixed(3);
+    ydial.style.opacity = alpha.toFixed(3); gauge.style.opacity = alpha.toFixed(3);
     lrow.classList.toggle("on", cur >= TL.legend_frame);
     if (alpha > 0.05) {
       const pi = periodIdx(scope, cur);
       if (pi !== lastPi) {
-        yws.forEach((w, k) => { w.classList.toggle("done", k < pi); w.classList.toggle("active", k === pi); w.classList.toggle("pending", k > pi); });
         lastPi = pi;
         gaugeV = share(scope, P[pi]);
         gaugeVals(gaugeV);
       }
-    } else if (alpha === 0) lastPi = -1;
+
+      // the dial: while you pull it creeps towards the next date and stiffens as it goes (it only ever moves
+      // datePeek of the way), then the step tips, the frame lands on the new date and the dial rolls the rest.
+      const nb = S[clamp(st + (pullDir || 0), 0, N - 1)];
+      const nbPi = (pullDir && nb.f != null && (nb.f >= 1300) === (scope === "central_valley"))
+                 ? periodIdx(scope, nb.f) : pi;
+      const ease = p => 1 - (1 - p) * (1 - p);          // moves freely at first, then resists
+      const peek = (nbPi !== pi ? Math.sign(nbPi - pi) : 0) * TUNE.datePeek * ease(clamp(pull, 0, 1));
+      const yTarget = clamp(pi + peek, 0, P.length - 1);
+      yPos += (yTarget - yPos) * (1 - Math.exp(-lastDt * TUNE.dateTip));
+      yreel.style.transform = `translate3d(0,${(-yPos * ydial.clientHeight).toFixed(2)}px,0)`;
+    } else if (alpha === 0) { lastPi = -1; yPos = periodIdx(scope, cur); }
     if (debug) dbg.textContent = `frame ${cur.toFixed(1)} | step ${st} ${S[st].id} | ${mode} | y ${Math.round(y)} | pull ${pull.toFixed(2)}`;
   }
 
