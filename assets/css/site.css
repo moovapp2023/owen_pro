@@ -1378,3 +1378,8 @@ footer, footer a { font-size: 12px; }
 .contact-eyebrow { color: var(--muted); }
 .contact-desc { color: #000; }
 .contact-email-link { color: #000; border-bottom-color: #000; }
+
+/* dropdown items: ".nav-links a:hover" above is more specific than ".nav-dropdown-item:hover",
+   so the text stayed black on the black highlight and the item was unreadable. */
+.nav-links .nav-dropdown-item:hover,
+.nav-links .nav-dropdown-item:focus-visible { background: #000; color: #fff; text-decoration: none; }
