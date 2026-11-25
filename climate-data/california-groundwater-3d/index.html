@@ -133,8 +133,10 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
   // ---- TEXT: edit the boxes here (HTML allowed, <b> for bold, .cb blue, .cr red). null = no box at that step ------
   const CAP = {
     top:   'Scroll to see how groundwater is doing in California<svg class="arrow" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v24M4 19l8 8 8-8"/></svg>',
-    wells: "To see how California's aquifers are doing, we measure whether water is rising or falling in thousands of &ldquo;measuring wells&rdquo;.",
-    idle:  'This is what they reveal.',
+    wells: ["These are measurement wells.",
+            "We regularly check how deep we have to go to reach water in them."],
+    idle:  ['If the water is getting closer to the surface, that pocket is <span class="cb">recharging</span>.',
+            'If the water is deeper down over time, that aquifer is <span class="cr">emptying</span>.'],
     toCV:  'The Central Valley is California&rsquo;s agricultural heartland. It is arid farmland, which is often where groundwater depletion is worst.<br><br>California uses about 21% of all the groundwater in the US, despite having less than 3% of its farmland.<span class="src">USGS (2015 water use) &middot; USDA Census of Agriculture (2022)</span>',
     cvdrop: "Here is the valley on its own, seen from the side.",
   };
@@ -147,6 +149,7 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
     textHoldVH: 42,    // scroll room a text box needs to fly up and fade out before the next step tips
     quickHoldVH: 8,    // scroll room for steps with no text
     boxStartVH: 62,    // where a text box sits (from the top of the screen) when its step starts
+    capGapVH: 56,      // when a scene has several text boxes in a row, how far apart they ride (the next one arrives as the one before it is fading out)
     fadeTopVH: 8,      // a box is fully gone when its top edge reaches this height...
     fadeBandVH: 22,    // ...and starts fading this much lower down
     dotsSpeed: 1,      // how much faster than real time the dots appear (1 = as rendered)
@@ -190,6 +193,9 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
     { id: "c3",   f: hf.central_valley[P[2]][0],    hold: Q_ },
     { id: "cmp2", f: hf.central_valley[P[2]][0],    overlay: "central_valley", hold: Q_ },
   ];
+  // a scene with several text boxes needs extra scroll room so each one can ride up and fade before the next step tips
+  S.forEach(s => { const n = s.cap ? [].concat(s.cap).length : 1; if (n > 1) s.hold += (n - 1) * TUNE.capGapVH; });
+
   const N = S.length, ix = id => S.findIndex(s => s.id === id);
 
   // what the video does between step i and step i+1, forwards and backwards
@@ -219,9 +225,13 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
   S.forEach(s => {
-    s.vis = 0; s.box = null;
+    s.vis = 0; s.boxes = [];
     if (!s.cap) return;
-    const d = document.createElement("div"); d.className = "box" + (s.center ? " center" : ""); d.innerHTML = s.cap; boxesEl.appendChild(d); s.box = d;
+    // a step can carry one caption or a list of them; a list rides up one after another on the same scene
+    [].concat(s.cap).forEach(html => {
+      const d = document.createElement("div"); d.className = "box" + (s.center ? " center" : ""); d.innerHTML = html;
+      boxesEl.appendChild(d); s.boxes.push(d);
+    });
   });
 
   // ---- year windows (top of the screen) ----------------------------------------------------------------------
@@ -508,12 +518,14 @@ const TL = {"fps": 24, "frame_start": 1, "frame_end": 1542, "markers": {"01_top_
     const playing = mode === "seq", y = scrollY, dest = playing ? seq.to : st;
     // text boxes ride up the screen with the scroll and fade out before the top; the next step's box rides in while a step plays
     S.forEach((s, k) => {
-      if (!s.box) return;
+      if (!s.boxes.length) return;
       s.vis += (((k === dest) ? 1 : 0) - s.vis) * (1 - Math.exp(-lastDt * 9));
-      if (s.vis < 0.01) { s.box.style.opacity = 0; return; }
-      const top = (s.startVH || TUNE.boxStartVH) * vh / 100 - (y - s.a);
-      const op = clamp((top - TUNE.fadeTopVH * vh / 100) / (TUNE.fadeBandVH * vh / 100), 0, 1) * clamp((vh - top) / (0.1 * vh), 0, 1) * s.vis;
-      s.box.style.opacity = op.toFixed(3); s.box.style.transform = `translate3d(0,${top.toFixed(1)}px,0)`;
+      if (s.vis < 0.01) { s.boxes.forEach(b => b.style.opacity = 0); return; }
+      s.boxes.forEach((box, i) => {
+        const top = ((s.startVH || TUNE.boxStartVH) + i * TUNE.capGapVH) * vh / 100 - (y - s.a);
+        const op = clamp((top - TUNE.fadeTopVH * vh / 100) / (TUNE.fadeBandVH * vh / 100), 0, 1) * clamp((vh - top) / (0.1 * vh), 0, 1) * s.vis;
+        box.style.opacity = op.toFixed(3); box.style.transform = `translate3d(0,${top.toFixed(1)}px,0)`;
+      });
     });
 
     // comparison screen
