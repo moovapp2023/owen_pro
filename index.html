@@ -16,6 +16,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
 <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 <link rel="stylesheet" href="/assets/css/site.css?v=20261125b">
+<link rel="stylesheet" href="/assets/css/v2.css?v=20261125v2">
 </head>
 <body>
 
@@ -60,257 +61,270 @@
   </ul>
 </nav>
 
-<!-- HERO -->
-<!-- POSITIONING (draft, Owen to confirm): the headline, subline and credentials line live in this one block. -->
-<section class="hero">
-  <div class="hero-text">
-    <p class="hero-eyebrow">Owen Mulhern</p>
-    <hr class="hero-rule">
-    <h1 class="hero-headline">(Data) storytelling and content distribution.</h1>
-    <p class="hero-desc hero-sub">Climate data storytelling and business writing, designed to reach people online and drive them to action.</p>
-    <p class="hero-creds">Imperial College-trained scientist &nbsp;·&nbsp; Paris &nbsp;·&nbsp; English and French</p>
-    <a class="services-cta" href="mailto:owen@getmulhern.com">Let's talk &nearr;</a>
-  </div>
-  <img class="hero-photo" src="/assets/images/owen-profile.webp" alt="Owen Mulhern">
-</section>
+<main>
 
-<!-- CITED-BY BAR -->
-<div class="cited-bar">
-  <div class="cited-inner">
-    <span class="cited-label">Cited by</span>
-    <div class="cited-viewport" id="citedViewport">
-      <div class="cited-track" id="citedTrack">
-        <div class="cited-logo-wrap"><a href="https://www.ppc.gov.qa/Admin/sukkannewletter/PPC_Sukan_2023_issue53_EN.pdf" target="_blank" aria-label="Qatar Planning and Statistics Authority"><img class="cited-logo cited-logo--xxl" src="/assets/logos/cited-by/qatar.png" alt="Qatar Planning Authority"></a></div>
-        <div class="cited-logo-wrap"><a href="https://climate.upenn.edu/news/fast-fashion/" target="_blank" aria-label="UPenn Environmental Innovations Initiative"><img class="cited-logo" src="/assets/logos/cited-by/upenn.svg" alt="University of Pennsylvania"></a></div>
-        <div class="cited-logo-wrap"><a href="https://www.verisk.com/blog/its-time-to-fill-in-your-2022-emerging-issues-bracket/" target="_blank" aria-label="Verisk"><img class="cited-logo" src="/assets/logos/cited-by/verisk.png" alt="Verisk"></a></div>
-        <div class="cited-logo-wrap"><a href="https://static.rusi.org/future-iuu-fishing-in-a-warming-world-a-global-horizon-scan.pdf" target="_blank" aria-label="RUSI"><img class="cited-logo" src="/assets/logos/cited-by/rusi.png" alt="RUSI"></a></div>
-        <div class="cited-logo-wrap"><a href="https://www.jstor.org/stable/27113977" target="_blank" aria-label="JSTOR"><img class="cited-logo" src="/assets/logos/cited-by/jstor.png" alt="JSTOR"></a></div>
-        <div class="cited-logo-wrap"><a href="https://eiui.ca/wp-content/uploads/2021/10/PGWells-Considering-lag-times-in-environmental-science-and-management-CSEB-78-3-2021.pdf" target="_blank" aria-label="Canadian Journal of Earth Sciences"><img class="cited-logo" src="/assets/logos/cited-by/canadian-earth.jpg" alt="Canadian Journal of Earth Sciences"></a></div>
-        <div class="cited-logo-wrap"><a href="https://ideaexchange.uakron.edu/cgi/viewcontent.cgi?article=2615&context=akronlawreview" target="_blank" aria-label="University of Akron Law Review"><img class="cited-logo" src="/assets/logos/cited-by/akron.jpeg" alt="Akron Law Review"></a></div>
-        <div class="cited-logo-wrap"><a href="https://scholarcommons.sc.edu/cgi/viewcontent.cgi?article=4526&context=sclr" target="_blank" aria-label="South Carolina Law Review"><img class="cited-logo" src="/assets/logos/cited-by/sc-law.png" alt="South Carolina Law Review"></a></div>
-        <div class="cited-logo-wrap"><a href="https://scholarship.law.wm.edu/cgi/viewcontent.cgi?article=1892&context=wmelpr" target="_blank" aria-label="William and Mary Law Review"><img class="cited-logo" src="/assets/logos/cited-by/william-mary.jpg" alt="William and Mary Law Review"></a></div>
-        <div class="cited-logo-wrap"><a href="https://sites.law.duq.edu/joule/wp-content/uploads/2025/08/Codispot_Joule.pdf" target="_blank" aria-label="Duquesne Law Journal"><img class="cited-logo" src="/assets/logos/cited-by/duquesne.png" alt="Duquesne Law Journal"></a></div>
-        <div class="cited-logo-wrap"><a href="https://oceanmaterial.com/9-2/" target="_blank" aria-label="OceanMaterial"><img class="cited-logo" src="/assets/logos/cited-by/oceanmaterial.png" alt="OceanMaterial"></a></div>
-        <div class="cited-logo-wrap"><a href="https://pcc.uw.edu/wp-content/uploads/sites/15/2023/09/Anton_Climate-Science-Without-Climate-Action-An-Impacts-Approach-to-Decarbonizing-University-Systems.pdf" target="_blank" aria-label="University of Washington"><img class="cited-logo" src="/assets/logos/cited-by/uw.png" alt="University of Washington"></a></div>
-      </div>
+<!-- INTRO -->
+<!-- POSITIONING (draft, Owen to confirm): the headline, subline and credentials live in this one block. -->
+<header class="intro wrap">
+  <h1>(Data) storytelling and content distribution.</h1>
+  <div class="intro-row">
+    <div>
+      <p class="intro-sub">Climate data storytelling and business writing, designed to reach people online and drive them to action.</p>
+      <p class="intro-actions">
+        <a class="btn" href="mailto:owen@getmulhern.com">Email Owen</a>
+        <a class="link" href="#climate">See the work</a>
+      </p>
+    </div>
+    <div class="intro-who">
+      <img src="/assets/images/owen-profile.webp" alt="Owen Mulhern" width="92" height="92">
+      <p><strong>Owen Mulhern</strong><br>Imperial College-trained scientist<br>Paris. English and French.</p>
     </div>
   </div>
+</header>
+
+<!-- PLATES: three pieces at one height, each at its own proportion -->
+<div class="plates wrap">
+  <a class="plate" style="--ar:1.33" href="/climate-data/sea-level-rise-2100/">
+    <img class="plate-img" src="/assets/images/slr-hcm.webp" alt="Map of coastal flooding in Ho Chi Minh City in 2100, with 78% of the population exposed" width="1920" height="1444">
+    <span class="plate-cap">
+      <span class="plate-title">Sea Level Rise 2100</span>
+      <span class="plate-note">72 city maps in about six weeks. Cited in US law reviews and university research.</span>
+    </span>
+  </a>
+  <a class="plate" style="--ar:1.6" href="/climate-data/california-groundwater/">
+    <img class="plate-img" src="/assets/groundwater/gw-cover-202.webp" alt="California Groundwater Crisis: a thick black curve of falling groundwater storage under a red band, annotated 202 years left" width="1200" height="750">
+    <span class="plate-cap">
+      <span class="plate-title">California’s Groundwater Crisis: Who Pays?</span>
+      <span class="plate-note">A scroll-driven piece with a re-estimate of how long the water lasts: about 202 years.</span>
+    </span>
+  </a>
+  <a class="plate" style="--ar:1" href="/climate-data/air-pollution-london/">
+    <img class="plate-img" src="/assets/images/air-pollution-london.webp" alt="Hexagon map of London air pollution expressed as cigarettes smoked per week" width="650" height="650">
+    <span class="plate-cap">
+      <span class="plate-title">Air Pollution in London</span>
+      <span class="plate-note">PM2.5 translated into cigarettes smoked per week.</span>
+    </span>
+  </a>
 </div>
 
-<!-- THE THREE ROWS -->
-<section class="home-rows">
-  <div class="home-row home-row--climate">
-    <div class="home-row-head">
-      <div>
-        <a class="home-row-title" href="/climate-data/"><h2>Climate data stories</h2></a>
-      </div>
-      <a class="home-row-all" href="/climate-data/">See all &rarr;</a>
+<!-- CITED BY -->
+<section class="cited" aria-labelledby="cited-h">
+  <div class="cited-grid wrap">
+    <div>
+      <h2 id="cited-h">Cited by more than 20 sources, with no outreach or link-building.</h2>
+      <p class="cited-lede">The data journalism I led at Earth.Org from 2020 to 2022 has been cited by peer-reviewed journals, law reviews, think tanks and universities.</p>
+      <p><a class="link" href="/citations/">Every citation, with its link</a></p>
+      <figure class="embedded">
+        <img src="/assets/images/fastfashion.webp" alt="Line chart: growth of clothing sales and decline in clothing utilisation since 2000" width="2048" height="1080" loading="lazy">
+        <figcaption>This chart, from the Earth.Org data team I led, was embedded in a University of Pennsylvania editorial on fast fashion.</figcaption>
+      </figure>
     </div>
-    <div class="tile-row">
-      <a class="tile" href="/climate-data/california-groundwater/" title="California’s Groundwater Crisis: Who Pays?" aria-label="California’s Groundwater Crisis: Who Pays?"><div class="tile-media"><img src="/assets/groundwater/gw-cover-202.webp" alt="California Groundwater Crisis: a thick black curve of falling groundwater storage under a red band" loading="lazy"></div></a>
-      <a class="tile" href="/climate-data/sea-level-rise-2100/" title="Sea Level Rise 2100" aria-label="Sea Level Rise 2100"><div class="tile-media"><img src="/assets/images/slr-hcm.webp" alt="Sea Level Rise 2100" loading="lazy"></div></a>
-      <a class="tile" href="/climate-data/air-pollution-london/" title="Air Pollution in London" aria-label="Air Pollution in London"><div class="tile-media"><img src="/assets/images/air-pollution-london.webp" alt="Air Pollution in London" loading="lazy"></div></a>
-      <a class="tile" href="/climate-data/us-dams-under-pressure/" title="Hotspots: US Dams Under Pressure" aria-label="Hotspots: US Dams Under Pressure"><div class="tile-media"><img src="/assets/images/dams.webp" alt="Hotspots: US Dams Under Pressure" loading="lazy"></div></a>
-      <a class="tile" href="/climate-data/too-hot-to-live/" title="Too Hot To Live" aria-label="Too Hot To Live"><div class="tile-media"><img src="/assets/images/thtl.jpg" alt="Too Hot To Live" loading="lazy"></div></a>
-      <a class="tile" href="/climate-data/shifting-baselines/" title="Shifting Baselines and the Elusiveness of Climate Change" aria-label="Shifting Baselines and the Elusiveness of Climate Change"><div class="tile-media"><img src="/assets/images/shifting-baselines.webp" alt="Shifting Baselines and the Elusiveness of Climate Change" loading="lazy"></div></a>
-      <a class="tile" href="/climate-data/extreme-temperatures-france/" title="Extreme Temperatures, Part II: France" aria-label="Extreme Temperatures, Part II: France"><div class="tile-media"><img src="/assets/images/temp-france.webp" alt="Extreme Temperatures, Part II: France" loading="lazy"></div></a>
-      <a class="tile" href="/climate-data/extreme-temperatures-canada/" title="Extreme Temperatures, Part III: Canada" aria-label="Extreme Temperatures, Part III: Canada"><div class="tile-media"><img src="/assets/images/temp-canada.webp" alt="Extreme Temperatures, Part III: Canada" loading="lazy"></div></a>
-      <a class="tile-all" href="/climate-data/">All climate data &rarr;</a>
-    </div>
-  </div>
-  <div class="home-row home-row--cases">
-    <div class="home-row-head">
-      <div>
-        <a class="home-row-title" href="/reach-and-results/"><h2>Growth strategy</h2></a>
-      </div>
-      <a class="home-row-all" href="/reach-and-results/">See all &rarr;</a>
-    </div>
-    <div class="tile-row">
-      <a class="tile" href="/reach-and-results/zest-pillar-page/" title="Zest pillar page rebuild" aria-label="Zest pillar page rebuild"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">SEO</span><span class="tile-visual-big">HR software</span></div></div></a>
-      <a class="tile" href="/reach-and-results/zest-roi-calculator/" title="Zest ROI calculator" aria-label="Zest ROI calculator"><div class="tile-media"><img src="/assets/images/roi-calculator.png" alt="Zest ROI calculator" loading="lazy"></div></a>
-      <a class="tile" href="/reach-and-results/zest-2023/" title="Zest audience and messaging work" aria-label="Zest audience and messaging work"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">Audience research</span><span class="tile-visual-big">HR software</span></div></div></a>
-      <a class="tile" href="/reach-and-results/semrush-newsletters/" title="Semrush newsletter turnaround" aria-label="Semrush newsletter turnaround"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">Newsletters</span><span class="tile-visual-big">Marketing</span></div></div></a>
-      <a class="tile" href="/reach-and-results/private-client-gtm/" title="Go-to-market strategy for a venture advisory" aria-label="Go-to-market strategy for a venture advisory"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">Strategy</span><span class="tile-visual-big">Venture advisory</span></div></div></a>
-    </div>
-  </div>
-  <div class="home-row home-row--writing">
-    <div class="home-row-head">
-      <div>
-        <a class="home-row-title" href="/writing/"><h2>Writing</h2></a>
-      </div>
-      <a class="home-row-all" href="/writing/">See all &rarr;</a>
-    </div>
-    <div class="tile-row">
-      <a class="tile" href="/writing/dtc-times/" title="DTC Times" aria-label="DTC Times"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">Newsletter</span><span class="tile-visual-big">E-commerce</span></div></div></a>
-      <a class="tile" href="/writing/semrush/" title="Semrush articles" aria-label="Semrush articles"><div class="tile-media"><img src="/assets/images/content-strategy.png" alt="The Growth Bulletin" loading="lazy"></div></a>
-      <a class="tile" href="/writing/email/" title="Email newsletters" aria-label="Email newsletters"><div class="tile-media"><div class="tile-visual"><span class="tile-visual-label">Email</span><span class="tile-visual-big">Marketing</span></div></div></a>
-      <a class="tile" href="/writing/ads/" title="Ad copy &amp; design" aria-label="Ad copy &amp; design"><div class="tile-media"><img src="/assets/ads/real-wealth.webp" alt="Semrush ad: Real wealth" loading="lazy"></div></a>
-      <a class="tile" href="/writing/landing-pages/" title="Landing pages" aria-label="Landing pages"><div class="tile-media"><img src="/assets/images/lp-tgb.webp" alt="The Growth Bulletin landing page" loading="lazy"></div></a>
+    <div>
+      <ul class="register">
+        <li><a href="https://www.jstor.org/stable/27113977" target="_blank" rel="noopener">Carbon &amp; Climate Law Review, on JSTOR</a><span class="meta">Peer-reviewed, 2021</span></li>
+        <li><a href="https://static.rusi.org/future-iuu-fishing-in-a-warming-world-a-global-horizon-scan.pdf" target="_blank" rel="noopener">RUSI, Royal United Services Institute</a><span class="meta">Think tank, 2022</span></li>
+        <li><a href="https://climate.upenn.edu/news/fast-fashion/" target="_blank" rel="noopener">University of Pennsylvania</a><span class="meta">University, 2024</span></li>
+        <li><a href="https://pcc.uw.edu/wp-content/uploads/sites/15/2023/09/Anton_Climate-Science-Without-Climate-Action-An-Impacts-Approach-to-Decarbonizing-University-Systems.pdf" target="_blank" rel="noopener">University of Washington</a><span class="meta">University, 2023</span></li>
+        <li><a href="https://www.verisk.com/blog/its-time-to-fill-in-your-2022-emerging-issues-bracket/" target="_blank" rel="noopener">Verisk</a><span class="meta">Risk analytics, 2022</span></li>
+        <li><a href="https://www.ppc.gov.qa/Admin/sukkannewletter/PPC_Sukan_2023_issue53_EN.pdf" target="_blank" rel="noopener">Qatar Planning &amp; Statistics Authority</a><span class="meta">Government, 2023</span></li>
+        <li><a href="https://scholarship.law.wm.edu/cgi/viewcontent.cgi?article=1892&amp;context=wmelpr" target="_blank" rel="noopener">William &amp; Mary Environmental Law &amp; Policy Review</a><span class="meta">Law review, 2022</span></li>
+        <li><a href="https://scholarcommons.sc.edu/cgi/viewcontent.cgi?article=4526&amp;context=sclr" target="_blank" rel="noopener">South Carolina Law Review</a><span class="meta">Law review, 2022</span></li>
+        <li><a href="https://ideaexchange.uakron.edu/cgi/viewcontent.cgi?article=2615&amp;context=akronlawreview" target="_blank" rel="noopener">University of Akron Law Review</a><span class="meta">Law review, 2022</span></li>
+        <li><a href="https://sites.law.duq.edu/joule/wp-content/uploads/2025/08/Codispot_Joule.pdf" target="_blank" rel="noopener">Duquesne Law Journal, Joule</a><span class="meta">Law journal, 2025</span></li>
+        <li><a href="https://eiui.ca/wp-content/uploads/2021/10/PGWells-Considering-lag-times-in-environmental-science-and-management-CSEB-78-3-2021.pdf" target="_blank" rel="noopener">Canadian Journal of Earth Sciences</a><span class="meta">Peer-reviewed, 2021</span></li>
+        <li><a href="https://oceanmaterial.com/9-2/" target="_blank" rel="noopener">OceanMaterial</a><span class="meta">Republished, 2022</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- PULL QUOTE -->
-<div class="quote-section">
-  <p class="pull-quote">"One of those growth marketers who's just as comfortable in a strategy conversation as he is deep in a spreadsheet."</p>
-  <p class="pull-quote-attr">Beatus Hoang &nbsp;·&nbsp; Sr. Growth Manager, Semrush &nbsp;·&nbsp; managed Owen directly</p>
-</div>
+<!-- CLIMATE DATA STORIES -->
+<section class="sect wrap" id="climate" aria-labelledby="climate-h">
+  <div class="sect-head">
+    <h2 id="climate-h">Climate data stories</h2>
+    <p>Research, data acquisition and analysis, and visualisation, with the writing around it. Each project has its own page with how it was made. <a class="link" href="/climate-data/">All climate data</a></p>
+  </div>
 
-<!-- HOW I CAN HELP -->
+  <div class="feature">
+    <figure class="feature-img" style="margin:0">
+      <a href="/climate-data/california-groundwater-3d/"><img src="/assets/groundwater/gw3d-card.webp" alt="A 3D terrain model of California with thin blue and red bars where groundwater levels are rising or falling" width="1200" height="750" loading="lazy"></a>
+      <figcaption class="meta" style="margin-top:8px">California’s measurement wells as a 3D model. Blue where water levels are rising, red where they are dropping.</figcaption>
+    </figure>
+    <div>
+      <p class="meta">Independent work, 2026</p>
+      <h3>California’s Groundwater Crisis: Who Pays?</h3>
+      <p>A scroll-driven piece linking groundwater depletion to agriculture's reliance on it and the cost to households when wells run dry in droughts.</p>
+      <p class="finding">One result along the way: at this rate the water lasts about 202 years, roughly half the 390 in the widely cited 2012 study.</p>
+      <ul class="feature-links">
+        <li><a class="link" href="/climate-data/california-groundwater/">Read the piece</a></li>
+        <li><a class="link" href="/climate-data/california-groundwater-3d/">See it in 3D</a></li>
+        <li><a class="link" href="/groundwater-methods/">Methods and sources</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="context">
+    <div>
+      <h3>Earth.Org, 2020 to 2022</h3>
+      <p>I was Data Visualization Team Lead at Earth.Org from January 2020 to January 2022, leading a volunteer data team of between 5 and 15 people.</p>
+      <p>For each piece I conceptualised it, did the research and directed the number crunching and the final design; a graphic designer handled final production.</p>
+      <p class="meta">Python, QGIS, Adobe Illustrator</p>
+    </div>
+    <figure class="scale">
+      <p class="scale-title">Earth.Org monthly clicks during my time there</p>
+      <div class="scale-row">
+        <div class="scale-bar scale-bar--start"></div>
+        <span class="scale-label">Start: <b>about 10,000</b></span>
+      </div>
+      <div class="scale-row">
+        <div class="scale-bar scale-bar--end"></div>
+        <span class="scale-label">End: <b>about 680,000</b>, 68 times more</span>
+      </div>
+      <figcaption>Bars drawn to scale. That is the whole site's growth, which I contributed to.</figcaption>
+    </figure>
+  </div>
+
+  <ul class="pieces">
+    <li class="piece"><a href="/climate-data/sea-level-rise-2100/"><img src="/assets/slr2100/slr-miami.jpg" alt="Map of coastal flooding in Miami in 2100" loading="lazy"><span class="piece-title">Sea Level Rise 2100</span><span class="piece-note">A 72-piece series, city by city.</span></a></li>
+    <li class="piece"><a href="/climate-data/air-pollution-london/"><img src="/assets/images/air-pollution-london.webp" alt="Hexagon map of air pollution in London" loading="lazy"><span class="piece-title">Air Pollution in London</span><span class="piece-note">PM2.5 as cigarettes smoked per week.</span></a></li>
+    <li class="piece"><a href="/climate-data/us-dams-under-pressure/"><img src="/assets/images/dams.webp" alt="Map of Texas dams sized by age" loading="lazy"><span class="piece-title">Hotspots: US Dams Under Pressure</span><span class="piece-note">Texas dams by age, against projected extreme heat.</span></a></li>
+    <li class="piece"><a href="/climate-data/too-hot-to-live/"><img src="/assets/images/thtl.jpg" alt="Two maps of mean annual temperature in 2020 and 2070" loading="lazy"><span class="piece-title">Too Hot To Live</span><span class="piece-note">Where mean annual temperatures could pass 29°C.</span></a></li>
+    <li class="piece"><a href="/climate-data/shifting-baselines/"><img src="/assets/images/shifting-baselines.webp" alt="Chart of yearly hot days experienced by each generation in Germany" loading="lazy"><span class="piece-title">Shifting Baselines and the Elusiveness of Climate Change</span><span class="piece-note">What each generation in Germany has experienced as normal.</span></a></li>
+    <li class="piece"><a href="/climate-data/extreme-temperatures-france/"><img src="/assets/images/temp-france.webp" alt="Map of France with farms and vineyards against extreme heat zones" loading="lazy"><span class="piece-title">Extreme Temperatures, Part II: France</span><span class="piece-note">Dairy farms and vineyards against 38°C heat.</span></a></li>
+    <li class="piece"><a href="/climate-data/extreme-temperatures-canada/"><img src="/assets/images/temp-canada.webp" alt="World map of extreme temperatures" loading="lazy"><span class="piece-title">Extreme Temperatures, Part III: Canada</span><span class="piece-note">Canola fields under 2°C and 4°C of warming.</span></a></li>
+    <li class="piece piece--more"><a href="/climate-data/"><span class="piece-title">All climate data</span><span class="piece-note">Including the social media graphics made for Earth.Org.</span></a></li>
+  </ul>
+</section>
+
+<!-- GROWTH STRATEGY -->
+<section class="sect wrap" id="growth" aria-labelledby="growth-h">
+  <div class="sect-head">
+    <h2 id="growth-h">Growth strategy</h2>
+    <p>Making sure people find it, and act on it. Audience research, search, newsletters, tools and go-to-market strategy. <a class="link" href="/reach-and-results/">All growth strategy</a></p>
+  </div>
+
+  <table class="ledger">
+    <caption>Each project is explained end to end on its own page: the problem, what I did, the tools, who I worked with, the result and the limits.</caption>
+    <thead>
+      <tr><th scope="col">Project</th><th scope="col">What happened</th><th scope="col">What it does not show</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><a class="ledger-title" href="/reach-and-results/zest-pillar-page/">Zest pillar page rebuild</a><span class="meta">Zest, 2026. SEO and conversion</span></th>
+        <td data-h="What happened">Search position rose from around <b>12 to 2</b>. The page produced two demo requests in its first 30 days.</td>
+        <td class="limit" data-h="What it does not show">Two demo requests is a small sample, and several things changed at once. I did not run a controlled test.</td>
+      </tr>
+      <tr>
+        <th scope="row"><a class="ledger-title" href="/reach-and-results/semrush-newsletters/">Semrush newsletter turnaround</a><span class="meta">Semrush, Oct 2024 to Oct 2025</span></th>
+        <td data-h="What happened">A bot-heavy list of about <b>50,000 contacts</b> cleaned out and rebuilt to about <b>6,000 engaged readers</b> within a few months.</td>
+        <td class="limit" data-h="What it does not show">Paid acquisition was part of the rebuild, so the growth was not organic. The two figures cannot be compared directly.</td>
+      </tr>
+      <tr>
+        <th scope="row"><a class="ledger-title" href="/reach-and-results/zest-roi-calculator/">Zest ROI calculator</a><span class="meta">Zest, 2026. Search content and a tool</span></th>
+        <td data-h="What happened">A calculator, and the article around it, for budgeting a social climate survey. Zest's in-house experts validated the formula, and Yapluqua picked it up.</td>
+        <td class="limit" data-h="What it does not show">Press pickup shows the calculator was noticed. It is not a measure of leads.</td>
+      </tr>
+      <tr>
+        <th scope="row"><a class="ledger-title" href="/reach-and-results/zest-2023/">Zest audience and messaging work</a><span class="meta">Zest, 2023</span></th>
+        <td data-h="What happened">Buyer personas, pain points and <b>more than 100 hooks</b>, built from competitor and customer review research and tested in a cold email campaign.</td>
+        <td class="limit" data-h="What it does not show">I do not publish a metric for this work.</td>
+      </tr>
+      <tr>
+        <th scope="row"><a class="ledger-title" href="/reach-and-results/private-client-gtm/">Go-to-market strategy for a venture advisory</a><span class="meta">Private client, 2026</span></th>
+        <td data-h="What happened">A diagnosis of broken unit economics, a five-step roadmap and a live financial model covering <b>18 configurations</b>.</td>
+        <td class="limit" data-h="What it does not show">These are model projections built on assumed starting figures. No result from the engagement is claimed.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- WRITING -->
+<section class="sect wrap" id="writing" aria-labelledby="writing-h">
+  <div class="sect-head">
+    <h2 id="writing-h">Writing</h2>
+    <p>Newsletters, articles, ads and landing pages, grouped by where they ran. <a class="link" href="/writing/">All writing</a></p>
+  </div>
+  <div class="writing">
+    <ul class="shelf">
+      <li><a href="/writing/dtc-times/">DTC Times</a><span class="meta">Mar to Oct 2024</span><p>Issues of a direct-to-consumer newsletter, with the best section of each named.</p></li>
+      <li><a href="/writing/semrush/">Semrush articles</a><span class="meta">2024 to 2025</span><p>Newsletter issues, articles and resources from The Growth Bulletin, plus an unpublished framework.</p></li>
+      <li><a href="/writing/email/">Email newsletters</a><span class="meta">Semrush, 2024 to 2025</span><p>Long-form and short-form issues for The Growth Bulletin and The Early Checkout, each opening as a PDF.</p></li>
+      <li><a href="/writing/ads/">Ad copy &amp; design</a><span class="meta">Semrush, 2024 to 2025</span><p>Static, animated and newsletter ads that I wrote and designed.</p></li>
+      <li><a href="/writing/landing-pages/">Landing pages</a><span class="meta">Semrush, 2024 to 2025</span><p>The Growth Bulletin newsletter landing page: copy, structure and value proposition.</p></li>
+      <li><a href="/writing/social/">Social content</a><span class="meta">MOVA</span><p>Posts for a mobile app on X and LinkedIn.</p></li>
+    </ul>
+    <div class="samples">
+      <div class="samples-col">
+        <figure><a href="/writing/ads/"><img src="/assets/ads/real-wealth.webp" alt="Semrush ad: Real wealth" width="880" height="1115" loading="lazy"></a><figcaption>Ad for Semrush</figcaption></figure>
+      </div>
+      <div class="samples-col">
+        <figure><a href="/writing/ads/"><img src="/assets/ads/now-later-seo.webp" alt="Semrush ad: now, ads; later, SEO" width="1920" height="1080" loading="lazy"></a><figcaption>Ad for Semrush</figcaption></figure>
+        <figure><a href="/writing/landing-pages/"><img src="/assets/images/lp-tgb.webp" alt="The Growth Bulletin landing page" width="2726" height="1502" loading="lazy"></a><figcaption>Landing page, The Growth Bulletin</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="sect wrap" id="references" aria-labelledby="references-h">
+  <div class="sect-head">
+    <h2 id="references-h">References</h2>
+    <p>From a manager and a client, in their own words.</p>
+  </div>
+  <div class="refs">
+    <figure class="ref">
+      <blockquote>
+        <p>“Owen is one of those growth marketers who's just as comfortable in a strategy conversation as he is deep in a spreadsheet debugging GA4 tracking issues.</p>
+        <p>He reported to me while running Semrush's acquired email assets, The Growth Bulletin and The Early Checkout. He didn't just keep the lights on. He completely overhauled our email program… Whether he was tracking down data discrepancies or running content experiments that doubled our click volume, he owned it completely. He never made excuses and was fully transparent when things didn't work.</p>
+        <p>He's calm under pressure, manages contractors and budgets well, and treats whatever channel he's running like it's his own business. I highly recommend Owen for any growth role.”</p>
+      </blockquote>
+      <figcaption>
+        <img src="/assets/images/beatus.jpeg" alt="Beatus Hoang" width="60" height="60" loading="lazy">
+        <span><span class="ref-name"><a class="link" href="https://www.linkedin.com/in/beatus-hoang/" target="_blank" rel="noopener">Beatus Hoang</a></span><span class="meta">Sr. Growth Manager, Semrush. Managed Owen directly. Feb 2026</span></span>
+      </figcaption>
+    </figure>
+    <figure class="ref">
+      <blockquote lang="fr">
+        <p>«&nbsp;J'ai eu le plaisir de collaborer avec Owen et je le recommande sans hésitation.</p>
+        <p>Owen dispose d'une excellente capacité d'analyse et saisit rapidement les enjeux d'un projet. Il sait transformer ses analyses en plans d'action concrets et efficaces, parfaitement adaptés aux objectifs. Au-delà de ses compétences techniques, Owen apporte une vraie valeur par sa collaboration naturelle. C'est un professionnel sur qui on peut compter.</p>
+        <p>Owen réunit toutes les qualités d'un excellent growth marketer : rigueur analytique, pragmatisme et intelligence relationnelle. Je le recommande les yeux fermés.&nbsp;»</p>
+      </blockquote>
+      <figcaption>
+        <img src="/assets/images/sandrine.jpeg" alt="Sandrine Dervin" width="60" height="60" loading="lazy">
+        <span><span class="ref-name"><a class="link" href="https://www.linkedin.com/in/sandrine-dervin/" target="_blank" rel="noopener">Sandrine Dervin</a></span><span class="meta">Head of Marketing, Zest. Client, 2023 and 2026</span></span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- WHAT I CAN DO FOR YOU + CONTACT -->
 <!-- TODO(Owen): the services copy below is a draft from our positioning chat (Oct 2026). Edit it here in one place. -->
-<section class="services-section">
-  <p class="services-eyebrow">How I can help</p>
-  <h2 class="services-heading">What I can do for you</h2>
-  <div class="services-grid two">
-    <div class="service-card">
-      <p class="service-num">01</p>
-      <h3 class="service-title">I make climate data viz and write copy&hellip;</h3>
-      <p class="service-desc">Research, data acquisition and analysis, visualisation, and the writing around it.</p>
-    </div>
-    <div class="service-card">
-      <p class="service-num">02</p>
-      <h3 class="service-title">&hellip;then I make sure people find it and act on it.</h3>
-      <p class="service-desc">Working out who the audience is and what to say to them, search and AI-answer visibility, testing channels, and designing the site, content and assets that turn visits into clicks, sign-ups and purchases.</p>
-    </div>
-  </div>
-  <a class="services-cta" href="mailto:owen@getmulhern.com">Let's talk &nearr;</a>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="references">
-  <div class="testimonials-section">
-    <p class="clients-label">References</p>
-    <div class="testimonials-grid">
-
-      <div class="testimonial">
-        <p class="testimonial-quote">"Owen is one of those growth marketers who's just as comfortable in a strategy conversation as he is deep in a spreadsheet debugging GA4 tracking issues. He reported to me while running Semrush's acquired email assets, The Growth Bulletin and The Early Checkout. He didn't just keep the lights on. He completely overhauled our email program… Whether he was tracking down data discrepancies or running content experiments that doubled our click volume, he owned it completely. He never made excuses and was fully transparent when things didn't work. He's calm under pressure, manages contractors and budgets well, and treats whatever channel he's running like it's his own business. I highly recommend Owen for any growth role."</p>
-        <div class="testimonial-author">
-          <img class="testimonial-avatar" src="/assets/images/beatus.jpeg" alt="Beatus Hoang">
-          <div>
-            <p class="testimonial-name"><a href="https://www.linkedin.com/in/beatus-hoang/" target="_blank">Beatus Hoang</a></p>
-            <p class="testimonial-role">Sr. Growth Manager, Semrush &nbsp;·&nbsp; managed Owen directly &nbsp;·&nbsp; Feb 2026</p>
-          </div>
-        </div>
+<section class="closing" id="contact" aria-labelledby="closing-h">
+  <div class="closing-inner wrap">
+    <h2 id="closing-h">What I can do for you</h2>
+    <div class="offer">
+      <div>
+        <h3>I make climate data viz and write copy&hellip;</h3>
+        <p>Research, data acquisition and analysis, visualisation, and the writing around it.</p>
       </div>
-
-      <div class="testimonial">
-        <p class="testimonial-quote">"J'ai eu le plaisir de collaborer avec Owen et je le recommande sans hésitation. Owen dispose d'une excellente capacité d'analyse et saisit rapidement les enjeux d'un projet. Il sait transformer ses analyses en plans d'action concrets et efficaces, parfaitement adaptés aux objectifs. Au-delà de ses compétences techniques, Owen apporte une vraie valeur par sa collaboration naturelle. C'est un professionnel sur qui on peut compter. Owen réunit toutes les qualités d'un excellent growth marketer : rigueur analytique, pragmatisme et intelligence relationnelle. Je le recommande les yeux fermés."</p>
-        <div class="testimonial-author">
-          <img class="testimonial-avatar" src="/assets/images/sandrine.jpeg" alt="Sandrine Dervin">
-          <div>
-            <p class="testimonial-name"><a href="https://www.linkedin.com/in/sandrine-dervin/" target="_blank">Sandrine Dervin</a></p>
-            <p class="testimonial-role">Head of Marketing, Zest &nbsp;·&nbsp; client &nbsp;·&nbsp; 2023 and 2026</p>
-          </div>
-        </div>
+      <div>
+        <h3>&hellip;then I make sure people find it and act on it.</h3>
+        <p>Working out who the audience is and what to say to them, search and AI-answer visibility, testing channels, and designing the site, content and assets that turn visits into clicks, sign-ups and purchases.</p>
       </div>
-
+    </div>
+    <div class="closing-cta">
+      <p>Let's talk</p>
+      <a class="closing-mail" href="mailto:owen@getmulhern.com">owen@getmulhern.com</a>
     </div>
   </div>
 </section>
 
-
-<!-- CONTACT -->
-<section class="contact-section">
-  <div class="contact-inner">
-    <p class="contact-eyebrow">Get in touch</p>
-    <h2 class="contact-heading">Let's work together</h2>
-    <p class="contact-desc">Climate data visualisation and writing, and making sure the right people find it and act on it.</p>
-    <a class="contact-email-link" href="mailto:owen@getmulhern.com">owen@getmulhern.com</a>
-  </div>
-</section>
+</main>
 
 <footer>
   <span>Owen Mulhern &middot; <a href="mailto:owen@getmulhern.com">owen@getmulhern.com</a></span>
   <span><a href="/citations/">Citations</a> &nbsp;&middot;&nbsp; <a href="/">Home</a></span>
 </footer>
-<script>
-(function () {
-  // ─── CITED-BY LOGO SLIDER ───────────────────────────
-  (function () {
-    var vp    = document.getElementById('citedViewport');
-    var track = document.getElementById('citedTrack');
-    var wraps = Array.from(track.querySelectorAll('.cited-logo-wrap'));
-    var REAL  = wraps.length;
-    var SLOT_W = 260; // matches CSS flex: 0 0 260px
-    var TOTAL  = SLOT_W * REAL;
-    var pos    = 0;   // unbounded scroll position
-    var speed  = 0.5;
-    var dragging      = false;
-    var dragStartX    = 0;
-    var dragPosAtStart = 0;
-    var dragDelta     = 0;
-
-    // Clone originals for seamless loop
-    wraps.forEach(function (w) {
-      var cl = w.cloneNode(true);
-      cl.setAttribute('aria-hidden', 'true');
-      track.appendChild(cl);
-    });
-
-    function render() {
-      // Always normalise for display, so there is no jump because pos stays smooth
-      var norm = ((pos % TOTAL) + TOTAL) % TOTAL;
-      track.style.transform = 'translateX(' + (-norm) + 'px)';
-    }
-
-    function tick() {
-      if (!dragging) pos += speed;
-      render();
-      requestAnimationFrame(tick);
-    }
-
-    requestAnimationFrame(tick);
-
-    vp.addEventListener('mouseenter', function () { speed = 0; });
-    vp.addEventListener('mouseleave', function () { speed = 0.5; });
-
-    function startDrag(x) {
-      dragging     = true;
-      dragStartX   = x;
-      dragDelta    = 0;
-      // Anchor pos in [TOTAL, 2×TOTAL) so backward drag never hits 0 and wraps
-      pos          = (pos % TOTAL) + TOTAL;
-      dragPosAtStart = pos;
-      vp.classList.add('dragging');
-    }
-
-    function moveDrag(x) {
-      if (!dragging) return;
-      var dx = dragStartX - x;
-      dragDelta = Math.abs(dx);
-      pos = dragPosAtStart + dx;
-      render();
-    }
-
-    function endDrag() {
-      if (!dragging) return;
-      dragging = false;
-      vp.classList.remove('dragging');
-      // Normalise so auto-scroll resumes cleanly
-      pos = ((pos % TOTAL) + TOTAL) % TOTAL;
-      speed = 0.5;
-    }
-
-    // Mouse
-    vp.addEventListener('mousedown', function (e) { startDrag(e.clientX); });
-    window.addEventListener('mousemove', function (e) { moveDrag(e.clientX); });
-    window.addEventListener('mouseup', endDrag);
-    // Only block link clicks when actually dragged (not a tap)
-    vp.addEventListener('click', function (e) {
-      if (dragDelta > 6) e.preventDefault();
-    }, true);
-
-    // Touch
-    vp.addEventListener('touchstart', function (e) {
-      startDrag(e.touches[0].clientX);
-    }, { passive: true });
-    vp.addEventListener('touchmove', function (e) {
-      moveDrag(e.touches[0].clientX);
-    }, { passive: true });
-    vp.addEventListener('touchend', endDrag);
-  })();
-})();
-</script>
 
 </body>
 </html>
